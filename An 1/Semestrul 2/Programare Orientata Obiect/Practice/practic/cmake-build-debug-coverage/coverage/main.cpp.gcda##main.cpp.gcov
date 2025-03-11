@@ -1,0 +1,72 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/practic/main.cpp
+        -:    0:Graph:C:\Users\emanu\CLionProjects\practic\cmake-build-debug-coverage\CMakeFiles\practic.dir\main.cpp.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\practic\cmake-build-debug-coverage\CMakeFiles\practic.dir\main.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <QApplication>
+        -:    2:#include "gui.h"
+        -:    3:#include "service.h"
+        -:    4:#include "validator.h"
+        -:    5:#include "repo.h"
+        -:    6:#include "teste.h"
+        -:    7:
+function main called 1 returned 100% blocks executed 61%
+        1:    8:int main(int argc, char *argv[]) {
+        1:    9:    ruleaza_toate_testele();
+        1:    9-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   10:    QApplication a(argc, argv);
+        1:   10-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   11:    Repo repo;
+        1:   11-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   12:    Validator validator;
+        1:   13:    Service service(repo, validator);
+        1:   13-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   13-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   13-block  2
+call    6 returned 1
+    $$$$$:   13-block  3
+call    7 never executed
+    $$$$$:   13-block  4
+        1:   14:    GUI gui(service);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   15:    gui.show();
+        1:   15-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   16:    return QApplication::exec();
+        1:   16-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   16-block  1
+        1:   17:}
+        1:   17-block  0
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+call    3 returned 1
+    $$$$$:   17-block  1
+call    4 never executed
+    $$$$$:   17-block  2
+call    5 never executed
+    $$$$$:   17-block  3
+call    6 never executed
+    $$$$$:   17-block  4
+call    7 never executed

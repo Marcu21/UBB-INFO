@@ -1,0 +1,146 @@
+     1                                  bits 32 
+     2                                  global start
+     3                                  
+     4                                  extern exit, printf
+     5                                  import exit msvcrt.dll
+     6                                  import printf msvcrt.dll
+     7                                  
+     8                                  segment data use32 class=data
+     9 00000000 78A63412785634127D-         sir dd 1234A678h, 12345678h, 1AC3B47Dh, 0FEDC9876h
+     9 00000009 B4C31A7698DCFE     
+    10                                      ; 78 a6 23 12       
+    11                                      ; esi :
+    12                                      ; sir_nou = A6 78 ... 
+    13                                      len_sir equ ($-$$)/4
+    14                                      
+    15 00000010 00<rept>                    sir_nou times len_sir db 0
+    16 00000014 257800                      format db "%x", 0
+    17                                      
+    18 00000017 00                          sum db 0
+    19 00000018 256400                      d_format db "%d", 0 
+    20                                      
+    21 0000001B 00<rept>                    sir_rank times len_sir db 0
+    22 0000001F 00                          poz db 0
+    23 00000020 01                          cnt db 1
+    24                                      
+    25 00000021 257300                      s_format db "%s", 0
+    26                                  
+    27                                  segment code use32 class=code
+    28                                      start:
+    29 00000000 BF[10000000]                    mov edi, sir_nou
+    30 00000005 BE[00000000]                    mov esi, sir 
+    31 0000000A B904000000                      mov ecx, len_sir
+    32                                          repeta:
+    33 0000000F 30DB                                xor bl, bl ;bl - maximul (A6)
+    34 00000011 B205                                mov dl, 5
+    35                                              repeta2:
+    36 00000013 FECA                                    dec dl 
+    37 00000015 80FA00                                  cmp dl, 0 
+    38 00000018 7409                                    je exit_repeta2
+    39 0000001A AC                                      lodsb
+    40 0000001B 38C3                                    cmp bl, al ;bl-al
+    41 0000001D 7702                                    ja sari
+    42 0000001F 88C3                                    mov bl, al
+    43                                                  sari:
+    44                                                  
+    45 00000021 EBF0                                jmp repeta2
+    46                                                   
+    47                                              exit_repeta2:
+    48 00000023 88D8                                mov al, bl 
+    49 00000025 AA                                  stosb  
+    50                                          
+    51 00000026 E2E7                            loop repeta
+    52                                          
+    53 00000028 B904000000                      mov ecx, len_sir
+    54 0000002D BF[10000000]                    mov edi, sir_nou
+    55                                          repeta1:
+    56 00000032 AC                                  lodsb
+    57 00000033 0005[17000000]                      add byte[sum], al
+    58 00000039 0FB6C0                              movzx eax, al 
+    59 0000003C 51                                  push ecx 
+    60 0000003D 50                                  push dword eax 
+    61 0000003E 68[14000000]                        push dword format
+    62 00000043 FF15[00000000]                      call [printf]
+    63 00000049 83C408                              add esp, 4*2
+    64 0000004C 59                                  pop ecx 
+    65                                              
+    66 0000004D E2E3                            loop repeta1
+    67                                          
+    68 0000004F A0[17000000]                    mov al, [sum] 
+    69 00000054 0FBEC0                          movsx eax, al
+    70 00000057 50                              push dword eax
+    71 00000058 68[18000000]                    push dword d_format
+    72 0000005D FF15[00000000]                  call [printf]
+    73 00000063 83C408                          add esp, 4*2
+    74                                          
+    75 00000066 31FF                            xor edi, edi
+    76 00000068 31F6                            xor esi, esi 
+    77 0000006A BE[10000000]                    mov esi, sir_nou
+    78 0000006F BF[1B000000]                    mov edi, sir_rank
+    79 00000074 B904000000                      mov ecx, len_sir
+    80 00000079 B300                            mov bl, 0
+    81                                          repeta3:
+    82 0000007B BE[10000000]                    mov esi, sir_nou
+    83 00000080 B300                            mov bl, 0
+    84 00000082 51                              push ecx
+    85 00000083 B904000000                      mov ecx, len_sir
+    86                                              repeta4:
+    87 00000088 AC                                  lodsb
+    88 00000089 BF[1B000000]                        mov edi, sir_rank
+    89 0000008E 01F7                                add edi, esi
+    90 00000090 81EF[10000000]                      sub edi, sir_nou
+    91 00000096 83FF00                              cmp edi, 0
+    92 00000099 7514                                jne nu_compara
+    93 0000009B 38D8                                cmp al, bl
+    94 0000009D 7210                                jb nu_compara
+    95 0000009F 88C3                                mov bl, al
+    96 000000A1 89F2                                mov edx, esi
+    97 000000A3 81EA[10000000]                      sub edx, sir_nou
+    98 000000A9 8815[1F000000]                      mov byte [poz], dl
+    99                                              nu_compara:
+   100                                              
+   101 000000AF E2D7                                loop repeta4
+   102 000000B1 80FB00                              cmp bl, 0
+   103 000000B4 7426                                je peste
+   104 000000B6 BA00000000                          mov edx, 0
+   105 000000BB 8A15[20000000]                      mov dl, byte [cnt]
+   106 000000C1 80C230                              add dl, '0'
+   107 000000C4 BF[1B000000]                        mov edi, sir_rank
+   108 000000C9 A0[1F000000]                        mov al, byte [poz]
+   109 000000CE 0FB6C0                              movzx eax, al
+   110 000000D1 01C7                                add edi, eax
+   111 000000D3 88D0                                mov al, dl
+   112 000000D5 AA                                  stosb
+   113 000000D6 FE05[20000000]                      inc byte [cnt]
+   114                                              peste:
+   115 000000DC 59                              pop ecx
+   116 000000DD E29C                            loop repeta3
+   117                                          
+   118 000000DF B904000000                      mov ecx, len_sir
+   119 000000E4 BE[1B000000]                    mov esi, sir_rank
+   120                                          repeta5:
+   121 000000E9 AC                              lodsb 
+   122 000000EA 0FB6C0                          movzx eax, al
+   123 000000ED 50                              push eax
+   124 000000EE 68[21000000]                    push dword s_format
+   125 000000F3 FF15[00000000]                  call [printf]
+   126 000000F9 83C408                          add esp, 4*2
+   127 000000FC E2EB                            loop repeta5
+   128                                          
+   129                                      
+   130                                      
+   131 000000FE 6A00                        push dword 0
+   132 00000100 FF15[00000000]              call [exit]
+   133                                      
+   134                                      
+   135                                      
+   136                                      
+   137                                      
+   138                                      
+   139                                      
+   140                                      
+   141                                      
+   142                                      
+   143                                      
+   144                                      
+   145                                      

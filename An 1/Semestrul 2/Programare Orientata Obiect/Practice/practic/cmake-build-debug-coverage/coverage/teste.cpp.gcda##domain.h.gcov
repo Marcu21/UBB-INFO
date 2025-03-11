@@ -1,0 +1,36 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/practic/domain.h
+        -:    0:Graph:C:\Users\emanu\CLionProjects\practic\cmake-build-debug-coverage\CMakeFiles\practic.dir\teste.cpp.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\practic\cmake-build-debug-coverage\CMakeFiles\practic.dir\teste.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#pragma once
+        -:    2:#include <string>
+        -:    3:using std::string;
+        -:    4:
+        -:    5:class Utilaj
+        -:    6:{
+        -:    7:private:
+        -:    8:    int id;
+        -:    9:    string denumire;
+        -:   10:    string tip;
+        -:   11:    int cilindrii;
+        -:   12:public:
+function _ZN6UtilajC1EiNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_i called 0 returned 0% blocks executed 0%
+    #####:   13:    Utilaj(int id, string denumire, string tip, int cilindrii): id{id}, denumire{denumire}, tip{tip}, cilindrii{cilindrii} {};
+    %%%%%:   13-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    %%%%%:   13-block  1
+    $$$$$:   13-block  2
+call    4 never executed
+        -:   14:    void set_id(int id_nou);
+        -:   15:    void set_denumire(string denumire_noua);
+        -:   16:    void set_tip(string tip_nou);
+        -:   17:    void set_cilindrii(int cilindrii_nou);
+        -:   18:    int get_id() const;
+        -:   19:    string get_denumire() const;
+        -:   20:    string get_tip() const;
+        -:   21:    int get_cilindrii() const;
+        -:   22:
+        -:   23:};

@@ -1,0 +1,223 @@
+        -:    0:Source:C:/Qt/6.7.0/mingw_64/include/QtCore/qarraydata.h
+        -:    0:Graph:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\main.cpp.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\main.cpp.gcda
+        -:    0:Runs:1
+        -:    1:// Copyright (C) 2020 The Qt Company Ltd.
+        -:    2:// Copyright (C) 2019 Intel Corporation.
+        -:    3:// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+        -:    4:
+        -:    5:#ifndef QARRAYDATA_H
+        -:    6:#define QARRAYDATA_H
+        -:    7:
+        -:    8:#include <QtCore/qpair.h>
+        -:    9:#include <QtCore/qatomic.h>
+        -:   10:#include <QtCore/qflags.h>
+        -:   11:#include <string.h>
+        -:   12:
+        -:   13:QT_BEGIN_NAMESPACE
+        -:   14:
+        -:   15:#if __has_cpp_attribute(gnu::malloc)
+        -:   16:#  define Q_DECL_MALLOCLIKE [[nodiscard, gnu::malloc]]
+        -:   17:#else
+        -:   18:#  define Q_DECL_MALLOCLIKE [[nodiscard]]
+        -:   19:#endif
+        -:   20:
+        -:   21:template <class T> struct QTypedArrayData;
+        -:   22:
+        -:   23:struct QArrayData
+        -:   24:{
+        -:   25:    enum AllocationOption {
+        -:   26:        Grow,
+        -:   27:        KeepSize
+        -:   28:    };
+        -:   29:
+        -:   30:    enum GrowthPosition {
+        -:   31:        GrowsAtEnd,
+        -:   32:        GrowsAtBeginning
+        -:   33:    };
+        -:   34:
+        -:   35:   enum ArrayOption {
+        -:   36:        ArrayOptionDefault = 0,
+        -:   37:        CapacityReserved     = 0x1  //!< the capacity was reserved by the user, try to keep it
+        -:   38:    };
+        -:   39:    Q_DECLARE_FLAGS(ArrayOptions, ArrayOption)
+        -:   40:
+        -:   41:    QBasicAtomicInt ref_;
+        -:   42:    ArrayOptions flags;
+        -:   43:    qsizetype alloc;
+        -:   44:
+        -:   45:    qsizetype allocatedCapacity() noexcept
+        -:   46:    {
+        -:   47:        return alloc;
+        -:   48:    }
+        -:   49:
+        -:   50:    qsizetype constAllocatedCapacity() const noexcept
+        -:   51:    {
+        -:   52:        return alloc;
+        -:   53:    }
+        -:   54:
+        -:   55:    /// Returns true if sharing took place
+        -:   56:    bool ref() noexcept
+        -:   57:    {
+        -:   58:        ref_.ref();
+        -:   59:        return true;
+        -:   60:    }
+        -:   61:
+        -:   62:    /// Returns false if deallocation is necessary
+function _ZN10QArrayData5derefEv called 28 returned 100% blocks executed 100%
+       28:   63:    bool deref() noexcept
+        -:   64:    {
+       28:   65:        return ref_.deref();
+       28:   65-block  0
+call    0 returned 28
+        -:   66:    }
+        -:   67:
+        -:   68:    bool isShared() const noexcept
+        -:   69:    {
+        -:   70:        return ref_.loadRelaxed() != 1;
+        -:   71:    }
+        -:   72:
+        -:   73:    // Returns true if a detach is necessary before modifying the data
+        -:   74:    // This method is intentionally not const: if you want to know whether
+        -:   75:    // detaching is necessary, you should be in a non-const function already
+        -:   76:    bool needsDetach() noexcept
+        -:   77:    {
+        -:   78:        return ref_.loadRelaxed() > 1;
+        -:   79:    }
+        -:   80:
+        -:   81:    qsizetype detachCapacity(qsizetype newSize) const noexcept
+        -:   82:    {
+        -:   83:        if (flags & CapacityReserved && newSize < constAllocatedCapacity())
+        -:   84:            return constAllocatedCapacity();
+        -:   85:        return newSize;
+        -:   86:    }
+        -:   87:
+        -:   88:    Q_DECL_MALLOCLIKE
+        -:   89:    static Q_CORE_EXPORT void *allocate(QArrayData **pdata, qsizetype objectSize, qsizetype alignment,
+        -:   90:            qsizetype capacity, AllocationOption option = QArrayData::KeepSize) noexcept;
+        -:   91:    Q_DECL_MALLOCLIKE
+        -:   92:    static Q_CORE_EXPORT void *allocate1(QArrayData **pdata, qsizetype capacity,
+        -:   93:                                         AllocationOption option = QArrayData::KeepSize) noexcept;
+        -:   94:    Q_DECL_MALLOCLIKE
+        -:   95:    static Q_CORE_EXPORT void *allocate2(QArrayData **pdata, qsizetype capacity,
+        -:   96:                                         AllocationOption option = QArrayData::KeepSize) noexcept;
+        -:   97:
+        -:   98:    [[nodiscard]] static Q_CORE_EXPORT std::pair<QArrayData *, void *> reallocateUnaligned(QArrayData *data, void *dataPointer,
+        -:   99:            qsizetype objectSize, qsizetype newCapacity, AllocationOption option) noexcept;
+        -:  100:    static Q_CORE_EXPORT void deallocate(QArrayData *data, qsizetype objectSize,
+        -:  101:            qsizetype alignment) noexcept;
+        -:  102:};
+        -:  103:
+        -:  104:Q_DECLARE_OPERATORS_FOR_FLAGS(QArrayData::ArrayOptions)
+        -:  105:
+        -:  106:namespace QtPrivate {
+        -:  107:// QArrayData with strictest alignment requirements supported by malloc()
+        -:  108:#if defined(Q_PROCESSOR_X86_32) && defined(Q_CC_GNU)
+        -:  109:// GCC's definition is incorrect since GCC 8 (commit r240248 in SVN; commit
+        -:  110:// 63012d9a57edc950c5f30242d1e19318b5708060 in Git). This is applied to all
+        -:  111:// GCC-like compilers in case they decide to follow GCC's lead in being wrong.
+        -:  112:constexpr size_t MaxPrimitiveAlignment = 2 * sizeof(void *);
+        -:  113:#else
+        -:  114:constexpr size_t MaxPrimitiveAlignment = alignof(std::max_align_t);
+        -:  115:#endif
+        -:  116:
+        -:  117:struct alignas(MaxPrimitiveAlignment) AlignedQArrayData : QArrayData
+        -:  118:{
+        -:  119:};
+        -:  120:}
+        -:  121:
+        -:  122:template <class T>
+        -:  123:struct QTypedArrayData
+        -:  124:    : QArrayData
+        -:  125:{
+        -:  126:    struct AlignmentDummy { QtPrivate::AlignedQArrayData header; T data; };
+        -:  127:
+        -:  128:    [[nodiscard]] static std::pair<QTypedArrayData *, T *> allocate(qsizetype capacity, AllocationOption option = QArrayData::KeepSize)
+        -:  129:    {
+        -:  130:        static_assert(sizeof(QTypedArrayData) == sizeof(QArrayData));
+        -:  131:        QArrayData *d;
+        -:  132:        void *result;
+        -:  133:        if constexpr (sizeof(T) == 1) {
+        -:  134:            // necessarily, alignof(T) == 1
+        -:  135:            result = allocate1(&d, capacity, option);
+        -:  136:        } else if constexpr (sizeof(T) == 2) {
+        -:  137:            // alignof(T) may be 1, but that makes no difference
+        -:  138:            result = allocate2(&d, capacity, option);
+        -:  139:        } else {
+        -:  140:            result = QArrayData::allocate(&d, sizeof(T), alignof(AlignmentDummy), capacity, option);
+        -:  141:        }
+        -:  142:#if __has_builtin(__builtin_assume_aligned)
+        -:  143:        // and yet we do offer results that have stricter alignment
+        -:  144:        result = __builtin_assume_aligned(result, Q_ALIGNOF(AlignmentDummy));
+        -:  145:#endif
+        -:  146:        return {static_cast<QTypedArrayData *>(d), static_cast<T *>(result)};
+        -:  147:    }
+        -:  148:
+        -:  149:    static std::pair<QTypedArrayData *, T *>
+        -:  150:    reallocateUnaligned(QTypedArrayData *data, T *dataPointer, qsizetype capacity, AllocationOption option)
+        -:  151:    {
+        -:  152:        static_assert(sizeof(QTypedArrayData) == sizeof(QArrayData));
+        -:  153:        std::pair<QArrayData *, void *> pair =
+        -:  154:                QArrayData::reallocateUnaligned(data, dataPointer, sizeof(T), capacity, option);
+        -:  155:        return {static_cast<QTypedArrayData *>(pair.first), static_cast<T *>(pair.second)};
+        -:  156:    }
+        -:  157:
+        -:  158:    static void deallocate(QArrayData *data) noexcept
+        -:  159:    {
+        -:  160:        static_assert(sizeof(QTypedArrayData) == sizeof(QArrayData));
+        -:  161:        QArrayData::deallocate(data, sizeof(T), alignof(AlignmentDummy));
+        -:  162:    }
+        -:  163:
+        -:  164:    static T *dataStart(QArrayData *data, qsizetype alignment) noexcept
+        -:  165:    {
+        -:  166:        // Alignment is a power of two
+        -:  167:        Q_ASSERT(alignment >= qsizetype(alignof(QArrayData)) && !(alignment & (alignment - 1)));
+        -:  168:        void *start =  reinterpret_cast<void *>(
+        -:  169:            (quintptr(data) + sizeof(QArrayData) + alignment - 1) & ~(alignment - 1));
+        -:  170:        return static_cast<T *>(start);
+        -:  171:    }
+        -:  172:};
+        -:  173:
+        -:  174:namespace QtPrivate {
+        -:  175:struct Q_CORE_EXPORT QContainerImplHelper
+        -:  176:{
+        -:  177:    enum CutResult { Null, Empty, Full, Subset };
+        -:  178:    static constexpr CutResult mid(qsizetype originalLength, qsizetype *_position, qsizetype *_length)
+        -:  179:    {
+        -:  180:        qsizetype &position = *_position;
+        -:  181:        qsizetype &length = *_length;
+        -:  182:        if (position > originalLength) {
+        -:  183:            position = 0;
+        -:  184:            length = 0;
+        -:  185:            return Null;
+        -:  186:        }
+        -:  187:
+        -:  188:        if (position < 0) {
+        -:  189:            if (length < 0 || length + position >= originalLength) {
+        -:  190:                position = 0;
+        -:  191:                length = originalLength;
+        -:  192:                return Full;
+        -:  193:            }
+        -:  194:            if (length + position <= 0) {
+        -:  195:                position = length = 0;
+        -:  196:                return Null;
+        -:  197:            }
+        -:  198:            length += position;
+        -:  199:            position = 0;
+        -:  200:        } else if (size_t(length) > size_t(originalLength - position)) {
+        -:  201:            length = originalLength - position;
+        -:  202:        }
+        -:  203:
+        -:  204:        if (position == 0 && length == originalLength)
+        -:  205:            return Full;
+        -:  206:
+        -:  207:        return length > 0 ? Subset : Empty;
+        -:  208:    }
+        -:  209:};
+        -:  210:}
+        -:  211:
+        -:  212:#undef Q_DECL_MALLOCLIKE
+        -:  213:
+        -:  214:QT_END_NAMESPACE
+        -:  215:
+        -:  216:#endif // include guard

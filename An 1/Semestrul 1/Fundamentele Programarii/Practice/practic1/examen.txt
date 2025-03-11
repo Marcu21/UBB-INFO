@@ -1,0 +1,7 @@
+29.01,12:00,FP,normal
+30.01,11:00,Analiza,restanta
+29.01,08:00,Algebra,restanta
+01.02,13:00,Logica,sesiune
+04.02,09:00,FP,restanta
+30.01,10:02,Sport,normala
+01.02,11:01,Analiza,normala

@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "melodii1",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "melodii1::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-melodii1-Debug-351db6a41369565907e0.json",
+					"name" : "melodii1",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "melodii1_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-melodii1_autogen-Debug-94bc0b4f1f6904be1781.json",
+					"name" : "melodii1_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "melodii1_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-melodii1_autogen_timestamp_deps-Debug-41a1375440554c667efb.json",
+					"name" : "melodii1_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/emanu/CLionProjects/melodii1/cmake-build-debug",
+		"source" : "C:/Users/emanu/CLionProjects/melodii1"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

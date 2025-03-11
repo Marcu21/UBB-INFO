@@ -1,0 +1,65 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ;1234ABCDh, 12565678h, 12AB4344h.
+    14 00000000 7856AB12CDAB561244-         sir dd 12AB5678h, 1256ABCDh, 12344344h
+    14 00000009 433412             
+    15                                      len equ $-sir
+    16 0000000C 0000<rept>                  sir2 times len dw 0
+    17 00000024 0000<rept>                  sir3 times len dw 0
+    18                                  ; our code starts here
+    19                                  segment code use32 class=code
+    20                                      start:
+    21 00000000 BE[00000000]                    mov esi, sir
+    22 00000005 BF[0C000000]                    mov edi, sir2
+    23 0000000A B903000000                      mov ecx, len / 4
+    24 0000000F E343                            jecxz final
+    25                                      repeta:
+    26 00000011 AD                              lodsd
+    27 00000012 C1C010                          rol eax, 16
+    28 00000015 66AB                            stosw
+    29 00000017 E2F8                        loop repeta
+    30                                      
+    31 00000019 B903000000                      mov ecx, len/4
+    32 0000001E 49                              dec ecx                    
+    33 0000001F BE00000000                      mov esi, 0                 
+    34                                      loop_1:
+    35 00000024 668B86[0C000000]                mov ax, [sir2+esi]             
+    36                                          
+    37 0000002B 89F3                            mov ebx, esi
+    38 0000002D 43                              inc ebx                    
+    39                                          loop_2:
+    40 0000002E 668B93[0C000000]                    mov dx, [sir2+ebx]       
+    41                                              
+    42 00000035 6639D0                              cmp ax, dx
+    43 00000038 7211                                jb no_swap
+    44                                              
+    45 0000003A 668983[0C000000]                    mov [sir2+ebx], ax
+    46 00000041 668996[0C000000]                    mov [sir2+esi], dx
+    47 00000048 6689D0                              mov ax, dx
+    48                                              
+    49                                          no_swap:
+    50 0000004B 43                                  inc ebx                
+    51 0000004C 83FB03                              cmp ebx, len/4
+    52 0000004F 72DD                                jb loop_2              
+    53                                  
+    54                                      next:
+    55 00000051 46                              inc esi                    
+    56 00000052 E2D0                            loop loop_1
+    57                                      
+    58                                     
+    59                                      
+    60                                      
+    61                                      final:
+    62                                          ; exit(0)
+    63 00000054 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    64 00000056 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

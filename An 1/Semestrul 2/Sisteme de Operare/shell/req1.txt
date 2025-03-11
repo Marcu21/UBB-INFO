@@ -1,0 +1,5 @@
+2021-07-01 12:01:33 info req1 doing action a
+2021-07-01 12:01:35 info req1 doing action d quickly
+2021-07-01 12:01:37 debug req1 doing action e and it may cause an error or two
+2021-07-01 12:01:38 error req1 failed doing action f
+2021-07-01 12:01:40 info req1 doing action i

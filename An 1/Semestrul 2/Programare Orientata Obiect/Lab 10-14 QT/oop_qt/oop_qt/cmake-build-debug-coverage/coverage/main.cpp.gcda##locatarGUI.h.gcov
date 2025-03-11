@@ -1,0 +1,2540 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/oop_qt/locatarGUI.h
+        -:    0:Graph:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\main.cpp.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\main.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <QApplication>
+        -:    2:#include <QLabel>
+        -:    3:#include <QPushButton>
+        -:    4:#include <QFormLayout>
+        -:    5:#include <qlineedit.h>
+        -:    6:#include <QListWidget>
+        -:    7:#include <qmessagebox.h>
+        -:    8:#include <qdebug.h>
+        -:    9:#include <vector>
+        -:   10:#include <string>
+        -:   11:#include "locatar_service.h"
+        -:   12:#include "exception.h"
+        -:   13:
+        -:   14:using std::vector;
+        -:   15:using std::string;
+        -:   16:
+        -:   17:class LocatarGUI : public QWidget {
+        -:   18:    locatar_service& service;
+        -:   19:    QVBoxLayout* dynamicButtonsLayout = new QVBoxLayout;
+        -:   20:public:
+function _ZN10LocatarGUIC1ER15locatar_service called 1 returned 100% blocks executed 64%
+        1:   21:    LocatarGUI(locatar_service& service) :service{ service } {
+        1:   21-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   21-block  1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   21-block  2
+call    7 returned 1
+branch  8 taken 1 (fallthrough)
+branch  9 taken 0 (throw)
+        1:   21-block  3
+call   10 returned 1
+branch 11 taken 1 (fallthrough)
+branch 12 taken 0 (throw)
+        1:   21-block  4
+call   13 returned 1
+branch 14 taken 1 (fallthrough)
+branch 15 taken 0 (throw)
+        1:   21-block  5
+call   16 returned 1
+branch 17 taken 1 (fallthrough)
+branch 18 taken 0 (throw)
+        1:   21-block  6
+call   19 returned 1
+branch 20 taken 1 (fallthrough)
+branch 21 taken 0 (throw)
+        1:   21-block  7
+call   22 returned 1
+branch 23 taken 1 (fallthrough)
+branch 24 taken 0 (throw)
+        1:   21-block  8
+call   25 returned 1
+call   26 returned 1
+branch 27 taken 1 (fallthrough)
+branch 28 taken 0 (throw)
+        1:   21-block  9
+call   29 returned 1
+branch 30 taken 1 (fallthrough)
+branch 31 taken 0 (throw)
+        1:   21-block 10
+call   32 returned 1
+branch 33 taken 1 (fallthrough)
+branch 34 taken 0 (throw)
+        1:   21-block 11
+call   35 returned 1
+call   36 returned 1
+branch 37 taken 1 (fallthrough)
+branch 38 taken 0 (throw)
+        1:   21-block 12
+call   39 returned 1
+branch 40 taken 1 (fallthrough)
+branch 41 taken 0 (throw)
+        1:   21-block 13
+call   42 returned 1
+branch 43 taken 1 (fallthrough)
+branch 44 taken 0 (throw)
+        1:   21-block 14
+call   45 returned 1
+call   46 returned 1
+branch 47 taken 1 (fallthrough)
+branch 48 taken 0 (throw)
+        1:   21-block 15
+call   49 returned 1
+branch 50 taken 1 (fallthrough)
+branch 51 taken 0 (throw)
+        1:   21-block 16
+call   52 returned 1
+branch 53 taken 1 (fallthrough)
+branch 54 taken 0 (throw)
+        1:   21-block 17
+call   55 returned 1
+call   56 returned 1
+branch 57 taken 1 (fallthrough)
+branch 58 taken 0 (throw)
+        1:   21-block 18
+call   59 returned 1
+branch 60 taken 1 (fallthrough)
+branch 61 taken 0 (throw)
+        1:   21-block 19
+call   62 returned 1
+branch 63 taken 1 (fallthrough)
+branch 64 taken 0 (throw)
+        1:   21-block 20
+call   65 returned 1
+call   66 returned 1
+branch 67 taken 1 (fallthrough)
+branch 68 taken 0 (throw)
+        1:   21-block 21
+call   69 returned 1
+branch 70 taken 1 (fallthrough)
+branch 71 taken 0 (throw)
+        1:   21-block 22
+call   72 returned 1
+branch 73 taken 1 (fallthrough)
+branch 74 taken 0 (throw)
+        1:   21-block 23
+call   75 returned 1
+call   76 returned 1
+branch 77 taken 1 (fallthrough)
+branch 78 taken 0 (throw)
+        1:   21-block 24
+call   79 returned 1
+branch 80 taken 1 (fallthrough)
+branch 81 taken 0 (throw)
+        1:   21-block 25
+call   82 returned 1
+branch 83 taken 1 (fallthrough)
+branch 84 taken 0 (throw)
+        1:   21-block 26
+call   85 returned 1
+call   86 returned 1
+branch 87 taken 1 (fallthrough)
+branch 88 taken 0 (throw)
+        1:   21-block 27
+call   89 returned 1
+branch 90 taken 1 (fallthrough)
+branch 91 taken 0 (throw)
+        1:   21-block 28
+call   92 returned 1
+branch 93 taken 1 (fallthrough)
+branch 94 taken 0 (throw)
+        1:   21-block 29
+call   95 returned 1
+call   96 returned 1
+branch 97 taken 1 (fallthrough)
+branch 98 taken 0 (throw)
+        1:   21-block 30
+call   99 returned 1
+branch 100 taken 1 (fallthrough)
+branch 101 taken 0 (throw)
+        1:   21-block 31
+call   102 returned 1
+branch 103 taken 1 (fallthrough)
+branch 104 taken 0 (throw)
+        1:   21-block 32
+call   105 returned 1
+call   106 returned 1
+branch 107 taken 1 (fallthrough)
+branch 108 taken 0 (throw)
+        1:   21-block 33
+call   109 returned 1
+branch 110 taken 1 (fallthrough)
+branch 111 taken 0 (throw)
+        1:   21-block 34
+call   112 returned 1
+branch 113 taken 1 (fallthrough)
+branch 114 taken 0 (throw)
+        1:   21-block 35
+call   115 returned 1
+call   116 returned 1
+branch 117 taken 1 (fallthrough)
+branch 118 taken 0 (throw)
+        1:   21-block 36
+call   119 returned 1
+branch 120 taken 1 (fallthrough)
+branch 121 taken 0 (throw)
+        1:   21-block 37
+call   122 returned 1
+branch 123 taken 1 (fallthrough)
+branch 124 taken 0 (throw)
+        1:   21-block 38
+call   125 returned 1
+call   126 returned 1
+branch 127 taken 1 (fallthrough)
+branch 128 taken 0 (throw)
+        1:   21-block 39
+call   129 returned 1
+branch 130 taken 1 (fallthrough)
+branch 131 taken 0 (throw)
+        1:   21-block 40
+call   132 returned 1
+branch 133 taken 1 (fallthrough)
+branch 134 taken 0 (throw)
+        1:   21-block 41
+call   135 returned 1
+call   136 returned 1
+branch 137 taken 1 (fallthrough)
+branch 138 taken 0 (throw)
+        1:   21-block 42
+call   139 returned 1
+branch 140 taken 1 (fallthrough)
+branch 141 taken 0 (throw)
+        1:   21-block 43
+call   142 returned 1
+branch 143 taken 1 (fallthrough)
+branch 144 taken 0 (throw)
+        1:   21-block 44
+call   145 returned 1
+branch 146 taken 1 (fallthrough)
+branch 147 taken 0 (throw)
+        1:   21-block 45
+call   148 returned 1
+branch 149 taken 1 (fallthrough)
+branch 150 taken 0 (throw)
+        1:   21-block 46
+call   151 returned 1
+branch 152 taken 1 (fallthrough)
+branch 153 taken 0 (throw)
+        1:   21-block 47
+call   154 returned 1
+branch 155 taken 1 (fallthrough)
+branch 156 taken 0 (throw)
+        1:   21-block 48
+call   157 returned 1
+branch 158 taken 1 (fallthrough)
+branch 159 taken 0 (throw)
+    $$$$$:   21-block 49
+call   160 never executed
+    $$$$$:   21-block 50
+call   161 never executed
+    $$$$$:   21-block 51
+    $$$$$:   21-block 52
+call   162 never executed
+    $$$$$:   21-block 53
+    $$$$$:   21-block 54
+call   163 never executed
+    $$$$$:   21-block 55
+    $$$$$:   21-block 56
+call   164 never executed
+    $$$$$:   21-block 57
+    $$$$$:   21-block 58
+call   165 never executed
+    $$$$$:   21-block 59
+    $$$$$:   21-block 60
+call   166 never executed
+    $$$$$:   21-block 61
+    $$$$$:   21-block 62
+call   167 never executed
+    $$$$$:   21-block 63
+    $$$$$:   21-block 64
+call   168 never executed
+    $$$$$:   21-block 65
+    $$$$$:   21-block 66
+call   169 never executed
+    $$$$$:   21-block 67
+    $$$$$:   21-block 68
+call   170 never executed
+    $$$$$:   21-block 69
+    $$$$$:   21-block 70
+call   171 never executed
+    $$$$$:   21-block 71
+    $$$$$:   21-block 72
+call   172 never executed
+    $$$$$:   21-block 73
+        1:   22:        initGUI();
+        1:   22-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   23:        loadData();
+        1:   23-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   24:        initConnect();
+        1:   24-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   25:        initDynamicButtons();
+        1:   25-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   26:    }
+        1:   26-block  0
+    $$$$$:   26-block  1
+call    0 never executed
+        -:   27:private:
+        -:   28:    QListWidget* lst = new QListWidget;
+        -:   29:    QPushButton* btnExit= new QPushButton{"&Exit"};
+        -:   30:    QPushButton* btnAdd = new QPushButton{"&Adauga"};
+        -:   31:    QPushButton* btnSterge = new QPushButton{"&Sterge"};
+        -:   32:    QPushButton* btnModifica = new QPushButton{"&Modifica"};
+        -:   33:    QPushButton* btnCauta = new QPushButton{"&Cauta"};
+        -:   34:    QPushButton* btnFiltrareTip = new QPushButton{"&Filtrare tip"};
+        -:   35:    QPushButton* btnFiltrareSuprafata = new QPushButton{"&Filtrare suprafata"};
+        -:   36:    QPushButton* btnSortareNumeProprietar = new QPushButton{"&Sortare nume proprietar"};
+        -:   37:    QPushButton* btnSortareSuprafata = new QPushButton{"&Sortare suprafata"};
+        -:   38:    QPushButton* btnSortareTipSuprafata = new QPushButton{"&Sortare tip suprafata"};
+        -:   39:    QPushButton* btnRaport = new QPushButton{"&Raport"};
+        -:   40:    QPushButton* btnUndo = new QPushButton{"&Undo"};
+        -:   41:    QLineEdit* txtApartament = new QLineEdit;
+        -:   42:    QLineEdit* txtNumeProprietar = new QLineEdit;
+        -:   43:    QLineEdit* txtSuprafata = new QLineEdit;
+        -:   44:    QLineEdit* txtTipApartament = new QLineEdit;
+        -:   45:
+function _ZN10LocatarGUI18initDynamicButtonsEv called 2 returned 100% blocks executed 26%
+        2:   46:    void initDynamicButtons() {
+        -:   47:        QLayoutItem* child;
+        2:   48:        while ((child = dynamicButtonsLayout->takeAt(0)) != nullptr) {
+        2:   48-block  0
+        2:   48-block  1
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   48-block  2
+branch  3 taken 0
+branch  4 taken 2 (fallthrough)
+    #####:   49:            delete child->widget(); // Distrugem widget-ul
+    %%%%%:   49-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   49-block  1
+branch  3 never executed (fallthrough)
+branch  4 never executed
+    %%%%%:   49-block  2
+call    5 never executed
+    #####:   50:            delete child; // Eliberăm memoria ocupată de layout item
+    %%%%%:   50-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    %%%%%:   50-block  1
+call    2 never executed
+        -:   51:        }
+        -:   52:
+        2:   53:        auto types = service.getUniqueTypes();
+        2:   53-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+       2*:   54:        for (const auto& type : types) {
+        2:   54-block  0
+call    0 returned 2
+call    1 returned 2
+    %%%%%:   54-block  1
+call    2 never executed
+        2:   54-block  2
+call    3 returned 2
+branch  4 taken 0
+branch  5 taken 2 (fallthrough)
+    #####:   55:            QPushButton* btnType = new QPushButton{QString::fromStdString(type)};
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   55-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   55-block  1
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:   55-block  2
+call    9 never executed
+    $$$$$:   55-block  3
+call   10 never executed
+    $$$$$:   55-block  4
+    $$$$$:   55-block  5
+branch 11 never executed (fallthrough)
+branch 12 never executed
+    $$$$$:   55-block  6
+call   13 never executed
+    #####:   56:            dynamicButtonsLayout->addWidget(btnType);
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    $$$$$:   56-block  0
+function _ZZN10LocatarGUI18initDynamicButtonsEvENKUlvE_clEv called 0 returned 0% blocks executed 0%
+    #####:   57:            QObject::connect(btnType, &QPushButton::clicked, [this, type]() {
+    %%%%%:   57-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   57-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   57-block  2
+call    6 never executed
+call    7 never executed
+call    8 never executed
+    $$$$$:   57-block  3
+call    9 never executed
+    $$$$$:   57-block  4
+    $$$$$:   57-block  5
+    #####:   58:                auto count = service.countByType(type);
+    %%%%%:   58-block  0
+call    0 never executed
+    #####:   59:                QMessageBox::information(this, "Număr apartamente", "Număr de apartamente de tip " + QString::fromStdString(type) + ": " + QString::number(count));
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    %%%%%:   59-block  0
+call    4 never executed
+branch  5 never executed (fallthrough)
+branch  6 never executed (throw)
+    %%%%%:   59-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   59-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   59-block  3
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   59-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   59-block  5
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:   59-block  6
+call   22 never executed
+call   23 never executed
+call   24 never executed
+call   25 never executed
+call   26 never executed
+call   27 never executed
+    $$$$$:   59-block  7
+call   28 never executed
+    $$$$$:   59-block  8
+    $$$$$:   59-block  9
+call   29 never executed
+    $$$$$:   59-block 10
+call   30 never executed
+    $$$$$:   59-block 11
+call   31 never executed
+    $$$$$:   59-block 12
+call   32 never executed
+    $$$$$:   59-block 13
+    $$$$$:   59-block 14
+    $$$$$:   59-block 15
+    $$$$$:   59-block 16
+call   33 never executed
+    $$$$$:   59-block 17
+    $$$$$:   59-block 18
+    #####:   60:            });
+        -:   61:        }
+        2:   62:    }
+        2:   62-block  0
+call    0 returned 2
+    $$$$$:   62-block  1
+call    1 never executed
+        -:   63:
+function _ZN10LocatarGUI11initConnectEv called 1 returned 100% blocks executed 53%
+        1:   64:    void initConnect(){
+function _ZZN10LocatarGUI11initConnectEvENKUlvE_clEv called 1 returned 100% blocks executed 57%
+        1:   65:        QObject::connect(btnExit, &QPushButton::clicked, [&](){
+        1:   65-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   65-block  1
+call    3 returned 1
+    $$$$$:   65-block  2
+    $$$$$:   65-block  3
+call    4 never executed
+        1:   66:            qDebug()<< "Exit button clicked!!!!";
+        1:   66-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   66-block  1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   66-block  2
+call    7 returned 1
+    $$$$$:   66-block  3
+call    8 never executed
+    $$$$$:   66-block  4
+    $$$$$:   66-block  5
+call    9 never executed
+        1:   67:            QMessageBox::information(nullptr, "Info", "Exit button clicked");
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   67-block  0
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   67-block  1
+call    7 returned 1
+branch  8 taken 1 (fallthrough)
+branch  9 taken 0 (throw)
+        1:   67-block  2
+call   10 returned 1
+call   11 returned 1
+    $$$$$:   67-block  3
+call   12 never executed
+    $$$$$:   67-block  4
+    $$$$$:   67-block  5
+call   13 never executed
+    $$$$$:   67-block  6
+        1:   68:            close();
+call    0 returned 1
+        1:   69:        });
+function _ZZN10LocatarGUI11initConnectEvENKUlvE0_clEv called 0 returned 0% blocks executed 0%
+       1*:   70:        QObject::connect(btnAdd, &QPushButton::clicked, [&](){
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   70-block  0
+call    3 returned 1
+    $$$$$:   70-block  1
+    $$$$$:   70-block  2
+call    4 never executed
+    #####:   71:            auto apartament = txtApartament->text().toInt();
+    %%%%%:   71-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   71-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   71-block  2
+call    6 never executed
+    $$$$$:   71-block  3
+call    7 never executed
+    $$$$$:   71-block  4
+    #####:   72:            auto numeProprietar = txtNumeProprietar->text().toStdString();
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   72-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   72-block  1
+call    6 never executed
+    $$$$$:   72-block  2
+call    7 never executed
+    $$$$$:   72-block  3
+    #####:   73:            auto suprafata = txtSuprafata->text().toInt();
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   73-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   73-block  1
+call    6 never executed
+    $$$$$:   73-block  2
+call    7 never executed
+    $$$$$:   73-block  3
+    #####:   74:            auto tipApartament = txtTipApartament->text().toStdString();
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   74-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   74-block  1
+call    6 never executed
+    $$$$$:   74-block  2
+call    7 never executed
+    $$$$$:   74-block  3
+    #####:   75:            qDebug()<< "Apartament: "<<apartament<<" Nume proprietar: "<<numeProprietar<<" Suprafata: "<<suprafata<<" Tip apartament: "<<tipApartament;
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    %%%%%:   75-block  0
+call    4 never executed
+branch  5 never executed (fallthrough)
+branch  6 never executed (throw)
+    %%%%%:   75-block  1
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:   75-block  2
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:   75-block  3
+call   13 never executed
+branch 14 never executed (fallthrough)
+branch 15 never executed (throw)
+    %%%%%:   75-block  4
+call   16 never executed
+branch 17 never executed (fallthrough)
+branch 18 never executed (throw)
+    %%%%%:   75-block  5
+call   19 never executed
+branch 20 never executed (fallthrough)
+branch 21 never executed (throw)
+    %%%%%:   75-block  6
+call   22 never executed
+branch 23 never executed (fallthrough)
+branch 24 never executed (throw)
+    %%%%%:   75-block  7
+call   25 never executed
+branch 26 never executed (fallthrough)
+branch 27 never executed (throw)
+    %%%%%:   75-block  8
+call   28 never executed
+    $$$$$:   75-block  9
+call   29 never executed
+    $$$$$:   75-block 10
+    $$$$$:   75-block 11
+        -:   76:            try {
+    #####:   77:                service.add(apartament, numeProprietar, suprafata, tipApartament);
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:   78:            }
+    =====:   79:            catch (const std::exception& ex) {
+    $$$$$:   79-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+    $$$$$:   79-block  1
+call    4 never executed
+    =====:   80:                QMessageBox::warning(nullptr, "Warning", ex.what());
+call    0 never executed
+call    1 never executed
+call    2 never executed
+branch  3 never executed (fallthrough)
+branch  4 never executed (throw)
+    $$$$$:   80-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    $$$$$:   80-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    $$$$$:   80-block  2
+call   11 never executed
+call   12 never executed
+    $$$$$:   80-block  3
+call   13 never executed
+    $$$$$:   80-block  4
+    $$$$$:   80-block  5
+call   14 never executed
+    $$$$$:   80-block  6
+    $$$$$:   80-block  7
+    =====:   81:            }
+call    0 never executed
+    $$$$$:   81-block  0
+call    1 never executed
+    =====:   82:            catch(repo_exception& ex){
+    $$$$$:   82-block  0
+call    0 never executed
+    =====:   83:                QMessageBox::warning(nullptr, "Warning", ex.get_msg().c_str());
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    $$$$$:   83-block  0
+call    4 never executed
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    $$$$$:   83-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    $$$$$:   83-block  2
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    $$$$$:   83-block  3
+call   14 never executed
+call   15 never executed
+call   16 never executed
+    $$$$$:   83-block  4
+call   17 never executed
+    $$$$$:   83-block  5
+    $$$$$:   83-block  6
+call   18 never executed
+    $$$$$:   83-block  7
+call   19 never executed
+    $$$$$:   83-block  8
+    $$$$$:   83-block  9
+    $$$$$:   83-block 10
+    =====:   84:            }
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:   84-block  0
+call    3 never executed
+    =====:   85:            catch(validator_exception& ex){
+    $$$$$:   85-block  0
+call    0 never executed
+    =====:   86:                QMessageBox::warning(nullptr, "Warning", ex.get_msg().c_str());
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    $$$$$:   86-block  0
+call    4 never executed
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    $$$$$:   86-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    $$$$$:   86-block  2
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    $$$$$:   86-block  3
+call   14 never executed
+call   15 never executed
+call   16 never executed
+    $$$$$:   86-block  4
+call   17 never executed
+    $$$$$:   86-block  5
+    $$$$$:   86-block  6
+call   18 never executed
+    $$$$$:   86-block  7
+call   19 never executed
+    $$$$$:   86-block  8
+    $$$$$:   86-block  9
+    $$$$$:   86-block 10
+    =====:   87:            }
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:   87-block  0
+call    3 never executed
+    #####:   88:            loadData();
+    %%%%%:   88-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:   89:        });
+    %%%%%:   89-block  0
+call    0 never executed
+call    1 never executed
+    $$$$$:   89-block  1
+call    2 never executed
+    $$$$$:   89-block  2
+call    3 never executed
+function _ZZN10LocatarGUI11initConnectEvENKUlvE1_clEv called 0 returned 0% blocks executed 0%
+       1*:   90:        QObject::connect(btnSterge, &QPushButton::clicked, [&](){
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   90-block  0
+call    3 returned 1
+    $$$$$:   90-block  1
+    $$$$$:   90-block  2
+call    4 never executed
+    #####:   91:            auto apartament = txtApartament->text().toInt();
+    %%%%%:   91-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   91-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   91-block  2
+call    6 never executed
+    $$$$$:   91-block  3
+call    7 never executed
+    $$$$$:   91-block  4
+    #####:   92:            auto numeProprietar = txtNumeProprietar->text().toStdString();
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   92-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   92-block  1
+call    6 never executed
+    $$$$$:   92-block  2
+call    7 never executed
+    $$$$$:   92-block  3
+        -:   93:            try {
+    #####:   94:                service.sterge(apartament, numeProprietar);
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:   95:            }
+    =====:   96:            catch (const std::exception& ex) {
+    $$$$$:   96-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+branch  2 never executed
+    $$$$$:   96-block  1
+call    3 never executed
+    =====:   97:                QMessageBox::warning(nullptr, "Warning", ex.what());
+call    0 never executed
+call    1 never executed
+call    2 never executed
+branch  3 never executed (fallthrough)
+branch  4 never executed (throw)
+    $$$$$:   97-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    $$$$$:   97-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    $$$$$:   97-block  2
+call   11 never executed
+call   12 never executed
+    $$$$$:   97-block  3
+call   13 never executed
+    $$$$$:   97-block  4
+    $$$$$:   97-block  5
+call   14 never executed
+    $$$$$:   97-block  6
+    $$$$$:   97-block  7
+    =====:   98:            }
+call    0 never executed
+    $$$$$:   98-block  0
+call    1 never executed
+    =====:   99:            catch(repo_exception& ex){
+    $$$$$:   99-block  0
+call    0 never executed
+    =====:  100:                QMessageBox::warning(nullptr, "Warning", ex.get_msg().c_str());
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    $$$$$:  100-block  0
+call    4 never executed
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    $$$$$:  100-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    $$$$$:  100-block  2
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    $$$$$:  100-block  3
+call   14 never executed
+call   15 never executed
+call   16 never executed
+    $$$$$:  100-block  4
+call   17 never executed
+    $$$$$:  100-block  5
+    $$$$$:  100-block  6
+call   18 never executed
+    $$$$$:  100-block  7
+call   19 never executed
+    $$$$$:  100-block  8
+    $$$$$:  100-block  9
+    $$$$$:  100-block 10
+    =====:  101:            }
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:  101-block  0
+call    3 never executed
+    #####:  102:            loadData();
+    %%%%%:  102-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  103:        });
+    %%%%%:  103-block  0
+call    0 never executed
+    $$$$$:  103-block  1
+call    1 never executed
+function _ZZN10LocatarGUI11initConnectEvENKUlvE2_clEv called 0 returned 0% blocks executed 0%
+       1*:  104:        QObject::connect(btnModifica, &QPushButton::clicked, [&](){
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  104-block  0
+call    3 returned 1
+    $$$$$:  104-block  1
+    $$$$$:  104-block  2
+call    4 never executed
+    #####:  105:            auto apartament = txtApartament->text().toInt();
+    %%%%%:  105-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  105-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  105-block  2
+call    6 never executed
+    $$$$$:  105-block  3
+call    7 never executed
+    $$$$$:  105-block  4
+    #####:  106:            auto numeProprietar = txtNumeProprietar->text().toStdString();
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  106-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  106-block  1
+call    6 never executed
+    $$$$$:  106-block  2
+call    7 never executed
+    $$$$$:  106-block  3
+    #####:  107:            auto suprafata = txtSuprafata->text().toInt();
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  107-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  107-block  1
+call    6 never executed
+    $$$$$:  107-block  2
+call    7 never executed
+    $$$$$:  107-block  3
+    #####:  108:            auto tipApartament = txtTipApartament->text().toStdString();
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  108-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  108-block  1
+call    6 never executed
+    $$$$$:  108-block  2
+call    7 never executed
+    $$$$$:  108-block  3
+        -:  109:            try {
+    #####:  110:                service.modifica(apartament, numeProprietar, suprafata, tipApartament);
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:  111:            }
+    =====:  112:            catch (const std::exception& ex) {
+    $$$$$:  112-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+    $$$$$:  112-block  1
+call    4 never executed
+    =====:  113:                QMessageBox::warning(nullptr, "Warning", ex.what());
+call    0 never executed
+call    1 never executed
+call    2 never executed
+branch  3 never executed (fallthrough)
+branch  4 never executed (throw)
+    $$$$$:  113-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    $$$$$:  113-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    $$$$$:  113-block  2
+call   11 never executed
+call   12 never executed
+    $$$$$:  113-block  3
+call   13 never executed
+    $$$$$:  113-block  4
+    $$$$$:  113-block  5
+call   14 never executed
+    $$$$$:  113-block  6
+    $$$$$:  113-block  7
+    =====:  114:            }
+call    0 never executed
+    $$$$$:  114-block  0
+call    1 never executed
+    =====:  115:            catch(repo_exception& ex){
+    $$$$$:  115-block  0
+call    0 never executed
+    =====:  116:                QMessageBox::warning(nullptr, "Warning", ex.get_msg().c_str());
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    $$$$$:  116-block  0
+call    4 never executed
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    $$$$$:  116-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    $$$$$:  116-block  2
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    $$$$$:  116-block  3
+call   14 never executed
+call   15 never executed
+call   16 never executed
+    $$$$$:  116-block  4
+call   17 never executed
+    $$$$$:  116-block  5
+    $$$$$:  116-block  6
+call   18 never executed
+    $$$$$:  116-block  7
+call   19 never executed
+    $$$$$:  116-block  8
+    $$$$$:  116-block  9
+    $$$$$:  116-block 10
+    =====:  117:            }
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:  117-block  0
+call    3 never executed
+    =====:  118:            catch(validator_exception& ex){
+    $$$$$:  118-block  0
+call    0 never executed
+    =====:  119:                QMessageBox::warning(nullptr, "Warning", ex.get_msg().c_str());
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    $$$$$:  119-block  0
+call    4 never executed
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    $$$$$:  119-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    $$$$$:  119-block  2
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    $$$$$:  119-block  3
+call   14 never executed
+call   15 never executed
+call   16 never executed
+    $$$$$:  119-block  4
+call   17 never executed
+    $$$$$:  119-block  5
+    $$$$$:  119-block  6
+call   18 never executed
+    $$$$$:  119-block  7
+call   19 never executed
+    $$$$$:  119-block  8
+    $$$$$:  119-block  9
+    $$$$$:  119-block 10
+    =====:  120:            }
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    $$$$$:  120-block  0
+call    3 never executed
+    #####:  121:            loadData();
+    %%%%%:  121-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  122:        });
+    %%%%%:  122-block  0
+call    0 never executed
+call    1 never executed
+    $$$$$:  122-block  1
+call    2 never executed
+    $$$$$:  122-block  2
+call    3 never executed
+function _ZZN10LocatarGUI11initConnectEvENKUlvE3_clEv called 0 returned 0% blocks executed 0%
+       1*:  123:        QObject::connect(btnCauta, &QPushButton::clicked, [&](){
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  123-block  0
+call    3 returned 1
+    $$$$$:  123-block  1
+    $$$$$:  123-block  2
+call    4 never executed
+    #####:  124:            auto apartament = txtApartament->text().toInt();
+    %%%%%:  124-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  124-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  124-block  2
+call    6 never executed
+    $$$$$:  124-block  3
+call    7 never executed
+    $$$$$:  124-block  4
+call    8 never executed
+        -:  125:            try {
+    #####:  126:                auto locatar = service.cauta(apartament);
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  127:                QMessageBox::information(nullptr, "Info", QString::fromStdString(locatar.get_nume_proprietar()));
+    %%%%%:  127-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    %%%%%:  127-block  1
+call    4 never executed
+branch  5 never executed (fallthrough)
+branch  6 never executed (throw)
+    %%%%%:  127-block  2
+call    7 never executed
+branch  8 never executed (fallthrough)
+branch  9 never executed (throw)
+    %%%%%:  127-block  3
+call   10 never executed
+branch 11 never executed (fallthrough)
+branch 12 never executed (throw)
+    %%%%%:  127-block  4
+call   13 never executed
+call   14 never executed
+call   15 never executed
+    $$$$$:  127-block  5
+call   16 never executed
+    $$$$$:  127-block  6
+    $$$$$:  127-block  7
+call   17 never executed
+    $$$$$:  127-block  8
+call   18 never executed
+    $$$$$:  127-block  9
+    $$$$$:  127-block 10
+    $$$$$:  127-block 11
+    #####:  128:            }
+call    0 never executed
+    $$$$$:  128-block  0
+call    1 never executed
+    =====:  129:            catch (const std::exception& ex) {
+    $$$$$:  129-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+branch  2 never executed
+    $$$$$:  129-block  1
+call    3 never executed
+    =====:  130:                QMessageBox::warning(nullptr, "Warning", ex.what());
+call    0 never executed
+call    1 never executed
+call    2 never executed
+branch  3 never executed (fallthrough)
+branch  4 never executed (throw)
+    $$$$$:  130-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    $$$$$:  130-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    $$$$$:  130-block  2
+call   11 never executed
+call   12 never executed
+    $$$$$:  130-block  3
+call   13 never executed
+    $$$$$:  130-block  4
+    $$$$$:  130-block  5
+call   14 never executed
+    $$$$$:  130-block  6
+    $$$$$:  130-block  7
+    =====:  131:            }
+call    0 never executed
+    $$$$$:  131-block  0
+call    1 never executed
+    =====:  132:            catch(repo_exception& ex){
+    $$$$$:  132-block  0
+call    0 never executed
+    =====:  133:                QMessageBox::warning(nullptr, "Warning", ex.get_msg().c_str());
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    $$$$$:  133-block  0
+call    4 never executed
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    $$$$$:  133-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    $$$$$:  133-block  2
+call   11 never executed
+branch 12 never executed (fallthrough)
+branch 13 never executed (throw)
+    $$$$$:  133-block  3
+call   14 never executed
+call   15 never executed
+call   16 never executed
+    $$$$$:  133-block  4
+call   17 never executed
+    $$$$$:  133-block  5
+    $$$$$:  133-block  6
+call   18 never executed
+    $$$$$:  133-block  7
+call   19 never executed
+    $$$$$:  133-block  8
+    $$$$$:  133-block  9
+    $$$$$:  133-block 10
+    =====:  134:            }
+call    0 never executed
+    $$$$$:  134-block  0
+call    1 never executed
+    #####:  135:        });
+    %%%%%:  135-block  0
+function _ZZN10LocatarGUI11initConnectEvENKUlvE4_clEv called 0 returned 0% blocks executed 0%
+       1*:  136:        QObject::connect(btnFiltrareTip, &QPushButton::clicked, [&](){
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  136-block  0
+call    3 returned 1
+    $$$$$:  136-block  1
+    $$$$$:  136-block  2
+call    4 never executed
+    #####:  137:            auto tipApartament = txtTipApartament->text().toStdString();
+    %%%%%:  137-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  137-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  137-block  2
+call    6 never executed
+    $$$$$:  137-block  3
+call    7 never executed
+    $$$$$:  137-block  4
+    #####:  138:            auto locatari = service.filtrare_tip(tipApartament);
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  139:            lst->clear();
+    %%%%%:  139-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  140:            for (const auto& locatar : locatari) {
+    %%%%%:  140-block  0
+call    0 never executed
+call    1 never executed
+    %%%%%:  140-block  1
+call    2 never executed
+    %%%%%:  140-block  2
+call    3 never executed
+branch  4 never executed
+branch  5 never executed (fallthrough)
+    #####:  141:                lst->addItem(QString::number(locatar.get_apartament()) + ", " +
+    %%%%%:  141-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  141-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  141-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  141-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  141-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+call   15 never executed
+call   16 never executed
+call   17 never executed
+    $$$$$:  141-block  5
+call   18 never executed
+    $$$$$:  141-block  6
+call   19 never executed
+    $$$$$:  141-block  7
+call   20 never executed
+    $$$$$:  141-block  8
+    $$$$$:  141-block  9
+    $$$$$:  141-block 10
+    #####:  142:                             QString::fromStdString(locatar.get_nume_proprietar()) + ", " +
+    %%%%%:  142-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  142-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  142-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  142-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+call   12 never executed
+call   13 never executed
+call   14 never executed
+call   15 never executed
+    $$$$$:  142-block  4
+call   16 never executed
+    $$$$$:  142-block  5
+call   17 never executed
+    $$$$$:  142-block  6
+call   18 never executed
+    $$$$$:  142-block  7
+call   19 never executed
+    $$$$$:  142-block  8
+    $$$$$:  142-block  9
+    $$$$$:  142-block 10
+    $$$$$:  142-block 11
+    #####:  143:                             QString::number(locatar.get_suprafata()) + ", " +
+    %%%%%:  143-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  143-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  143-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  143-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  143-block  4
+call   12 never executed
+call   13 never executed
+call   14 never executed
+    $$$$$:  143-block  5
+call   15 never executed
+    $$$$$:  143-block  6
+call   16 never executed
+    $$$$$:  143-block  7
+call   17 never executed
+    $$$$$:  143-block  8
+    $$$$$:  143-block  9
+    $$$$$:  143-block 10
+    #####:  144:                             QString::fromStdString(locatar.get_tip_apartament()));
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  144-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+call    6 never executed
+call    7 never executed
+call    8 never executed
+    $$$$$:  144-block  1
+call    9 never executed
+    $$$$$:  144-block  2
+call   10 never executed
+    $$$$$:  144-block  3
+    $$$$$:  144-block  4
+        -:  145:            }
+    #####:  146:        });
+    %%%%%:  146-block  0
+call    0 never executed
+call    1 never executed
+    $$$$$:  146-block  1
+call    2 never executed
+    $$$$$:  146-block  2
+call    3 never executed
+function _ZZN10LocatarGUI11initConnectEvENKUlvE5_clEv called 0 returned 0% blocks executed 0%
+       1*:  147:        QObject::connect(btnFiltrareSuprafata, &QPushButton::clicked, [&](){
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  147-block  0
+call    3 returned 1
+    $$$$$:  147-block  1
+    $$$$$:  147-block  2
+call    4 never executed
+    #####:  148:            auto suprafata = txtSuprafata->text().toInt();
+    %%%%%:  148-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  148-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  148-block  2
+call    6 never executed
+    $$$$$:  148-block  3
+call    7 never executed
+    $$$$$:  148-block  4
+    #####:  149:            auto locatari = service.filtrare_suprafata(suprafata);
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  150:            lst->clear();
+    %%%%%:  150-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  151:            for (const auto& locatar : locatari) {
+    %%%%%:  151-block  0
+call    0 never executed
+call    1 never executed
+    %%%%%:  151-block  1
+call    2 never executed
+    %%%%%:  151-block  2
+call    3 never executed
+branch  4 never executed
+branch  5 never executed (fallthrough)
+    #####:  152:                lst->addItem(QString::number(locatar.get_apartament()) + ", " +
+    %%%%%:  152-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  152-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  152-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  152-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  152-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+call   15 never executed
+call   16 never executed
+call   17 never executed
+    $$$$$:  152-block  5
+call   18 never executed
+    $$$$$:  152-block  6
+call   19 never executed
+    $$$$$:  152-block  7
+call   20 never executed
+    $$$$$:  152-block  8
+    $$$$$:  152-block  9
+    $$$$$:  152-block 10
+    #####:  153:                             QString::fromStdString(locatar.get_nume_proprietar()) + ", " +
+    %%%%%:  153-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  153-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  153-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  153-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+call   12 never executed
+call   13 never executed
+call   14 never executed
+call   15 never executed
+    $$$$$:  153-block  4
+call   16 never executed
+    $$$$$:  153-block  5
+call   17 never executed
+    $$$$$:  153-block  6
+call   18 never executed
+    $$$$$:  153-block  7
+call   19 never executed
+    $$$$$:  153-block  8
+    $$$$$:  153-block  9
+    $$$$$:  153-block 10
+    $$$$$:  153-block 11
+    #####:  154:                             QString::number(locatar.get_suprafata()) + ", " +
+    %%%%%:  154-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  154-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  154-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  154-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  154-block  4
+call   12 never executed
+call   13 never executed
+call   14 never executed
+    $$$$$:  154-block  5
+call   15 never executed
+    $$$$$:  154-block  6
+call   16 never executed
+    $$$$$:  154-block  7
+call   17 never executed
+    $$$$$:  154-block  8
+    $$$$$:  154-block  9
+    $$$$$:  154-block 10
+    #####:  155:                             QString::fromStdString(locatar.get_tip_apartament()));
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  155-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+call    6 never executed
+call    7 never executed
+call    8 never executed
+    $$$$$:  155-block  1
+call    9 never executed
+    $$$$$:  155-block  2
+call   10 never executed
+    $$$$$:  155-block  3
+    $$$$$:  155-block  4
+        -:  156:            }
+    #####:  157:        });
+    %%%%%:  157-block  0
+call    0 never executed
+    $$$$$:  157-block  1
+call    1 never executed
+function _ZZN10LocatarGUI11initConnectEvENKUlvE6_clEv called 0 returned 0% blocks executed 0%
+       1*:  158:        QObject::connect(btnSortareNumeProprietar, &QPushButton::clicked, [&](){
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  158-block  0
+call    3 returned 1
+    $$$$$:  158-block  1
+    $$$$$:  158-block  2
+call    4 never executed
+    #####:  159:            auto locatari = service.sortare_nume_proprietar();
+    %%%%%:  159-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  160:            lst->clear();
+    %%%%%:  160-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  161:            for (const auto& locatar : locatari) {
+    %%%%%:  161-block  0
+call    0 never executed
+call    1 never executed
+    %%%%%:  161-block  1
+call    2 never executed
+    %%%%%:  161-block  2
+call    3 never executed
+branch  4 never executed
+branch  5 never executed (fallthrough)
+    #####:  162:                lst->addItem(QString::number(locatar.get_apartament()) + ", " +
+    %%%%%:  162-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  162-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  162-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  162-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  162-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+call   15 never executed
+call   16 never executed
+call   17 never executed
+    $$$$$:  162-block  5
+call   18 never executed
+    $$$$$:  162-block  6
+call   19 never executed
+    $$$$$:  162-block  7
+call   20 never executed
+    $$$$$:  162-block  8
+    $$$$$:  162-block  9
+    $$$$$:  162-block 10
+    #####:  163:                             QString::fromStdString(locatar.get_nume_proprietar()) + ", " +
+    %%%%%:  163-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  163-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  163-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  163-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+call   12 never executed
+call   13 never executed
+call   14 never executed
+call   15 never executed
+    $$$$$:  163-block  4
+call   16 never executed
+    $$$$$:  163-block  5
+call   17 never executed
+    $$$$$:  163-block  6
+call   18 never executed
+    $$$$$:  163-block  7
+call   19 never executed
+    $$$$$:  163-block  8
+    $$$$$:  163-block  9
+    $$$$$:  163-block 10
+    $$$$$:  163-block 11
+    #####:  164:                             QString::number(locatar.get_suprafata()) + ", " +
+    %%%%%:  164-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  164-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  164-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  164-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  164-block  4
+call   12 never executed
+call   13 never executed
+call   14 never executed
+    $$$$$:  164-block  5
+call   15 never executed
+    $$$$$:  164-block  6
+call   16 never executed
+    $$$$$:  164-block  7
+call   17 never executed
+    $$$$$:  164-block  8
+    $$$$$:  164-block  9
+    $$$$$:  164-block 10
+    #####:  165:                             QString::fromStdString(locatar.get_tip_apartament()));
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  165-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+call    6 never executed
+call    7 never executed
+call    8 never executed
+    $$$$$:  165-block  1
+call    9 never executed
+    $$$$$:  165-block  2
+call   10 never executed
+    $$$$$:  165-block  3
+    $$$$$:  165-block  4
+        -:  166:            }
+    #####:  167:        });
+    %%%%%:  167-block  0
+call    0 never executed
+    $$$$$:  167-block  1
+call    1 never executed
+function _ZZN10LocatarGUI11initConnectEvENKUlvE7_clEv called 0 returned 0% blocks executed 0%
+       1*:  168:        QObject::connect(btnSortareSuprafata, &QPushButton::clicked, [&](){
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  168-block  0
+call    3 returned 1
+    $$$$$:  168-block  1
+    $$$$$:  168-block  2
+call    4 never executed
+    #####:  169:            auto locatari = service.sortare_suprafata();
+    %%%%%:  169-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  170:            lst->clear();
+    %%%%%:  170-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  171:            for (const auto& locatar : locatari) {
+    %%%%%:  171-block  0
+call    0 never executed
+call    1 never executed
+    %%%%%:  171-block  1
+call    2 never executed
+    %%%%%:  171-block  2
+call    3 never executed
+branch  4 never executed
+branch  5 never executed (fallthrough)
+    #####:  172:                lst->addItem(QString::number(locatar.get_apartament()) + ", " +
+    %%%%%:  172-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  172-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  172-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  172-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  172-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+call   15 never executed
+call   16 never executed
+call   17 never executed
+    $$$$$:  172-block  5
+call   18 never executed
+    $$$$$:  172-block  6
+call   19 never executed
+    $$$$$:  172-block  7
+call   20 never executed
+    $$$$$:  172-block  8
+    $$$$$:  172-block  9
+    $$$$$:  172-block 10
+    #####:  173:                             QString::fromStdString(locatar.get_nume_proprietar()) + ", " +
+    %%%%%:  173-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  173-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  173-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  173-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+call   12 never executed
+call   13 never executed
+call   14 never executed
+call   15 never executed
+    $$$$$:  173-block  4
+call   16 never executed
+    $$$$$:  173-block  5
+call   17 never executed
+    $$$$$:  173-block  6
+call   18 never executed
+    $$$$$:  173-block  7
+call   19 never executed
+    $$$$$:  173-block  8
+    $$$$$:  173-block  9
+    $$$$$:  173-block 10
+    $$$$$:  173-block 11
+    #####:  174:                             QString::number(locatar.get_suprafata()) + ", " +
+    %%%%%:  174-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  174-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  174-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  174-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  174-block  4
+call   12 never executed
+call   13 never executed
+call   14 never executed
+    $$$$$:  174-block  5
+call   15 never executed
+    $$$$$:  174-block  6
+call   16 never executed
+    $$$$$:  174-block  7
+call   17 never executed
+    $$$$$:  174-block  8
+    $$$$$:  174-block  9
+    $$$$$:  174-block 10
+    #####:  175:                             QString::fromStdString(locatar.get_tip_apartament()));
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  175-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+call    6 never executed
+call    7 never executed
+call    8 never executed
+    $$$$$:  175-block  1
+call    9 never executed
+    $$$$$:  175-block  2
+call   10 never executed
+    $$$$$:  175-block  3
+    $$$$$:  175-block  4
+        -:  176:            }
+    #####:  177:        });
+    %%%%%:  177-block  0
+call    0 never executed
+    $$$$$:  177-block  1
+call    1 never executed
+function _ZZN10LocatarGUI11initConnectEvENKUlvE8_clEv called 0 returned 0% blocks executed 0%
+       1*:  178:        QObject::connect(btnSortareTipSuprafata, &QPushButton::clicked, [&](){
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  178-block  0
+call    3 returned 1
+    $$$$$:  178-block  1
+    $$$$$:  178-block  2
+call    4 never executed
+    #####:  179:            auto locatari = service.sortare_tip_suprafata();
+    %%%%%:  179-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  180:            lst->clear();
+    %%%%%:  180-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  181:            for (const auto& locatar : locatari) {
+    %%%%%:  181-block  0
+call    0 never executed
+call    1 never executed
+    %%%%%:  181-block  1
+call    2 never executed
+    %%%%%:  181-block  2
+call    3 never executed
+branch  4 never executed
+branch  5 never executed (fallthrough)
+    #####:  182:                lst->addItem(QString::number(locatar.get_apartament()) + ", " +
+    %%%%%:  182-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  182-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  182-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  182-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  182-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+call   15 never executed
+call   16 never executed
+call   17 never executed
+    $$$$$:  182-block  5
+call   18 never executed
+    $$$$$:  182-block  6
+call   19 never executed
+    $$$$$:  182-block  7
+call   20 never executed
+    $$$$$:  182-block  8
+    $$$$$:  182-block  9
+    $$$$$:  182-block 10
+    #####:  183:                             QString::fromStdString(locatar.get_nume_proprietar()) + ", " +
+    %%%%%:  183-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  183-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  183-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  183-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+call   12 never executed
+call   13 never executed
+call   14 never executed
+call   15 never executed
+    $$$$$:  183-block  4
+call   16 never executed
+    $$$$$:  183-block  5
+call   17 never executed
+    $$$$$:  183-block  6
+call   18 never executed
+    $$$$$:  183-block  7
+call   19 never executed
+    $$$$$:  183-block  8
+    $$$$$:  183-block  9
+    $$$$$:  183-block 10
+    $$$$$:  183-block 11
+    #####:  184:                             QString::number(locatar.get_suprafata()) + ", " +
+    %%%%%:  184-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  184-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  184-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  184-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  184-block  4
+call   12 never executed
+call   13 never executed
+call   14 never executed
+    $$$$$:  184-block  5
+call   15 never executed
+    $$$$$:  184-block  6
+call   16 never executed
+    $$$$$:  184-block  7
+call   17 never executed
+    $$$$$:  184-block  8
+    $$$$$:  184-block  9
+    $$$$$:  184-block 10
+    #####:  185:                             QString::fromStdString(locatar.get_tip_apartament()));
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  185-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+call    6 never executed
+call    7 never executed
+call    8 never executed
+    $$$$$:  185-block  1
+call    9 never executed
+    $$$$$:  185-block  2
+call   10 never executed
+    $$$$$:  185-block  3
+    $$$$$:  185-block  4
+        -:  186:            }
+    #####:  187:        });
+    %%%%%:  187-block  0
+call    0 never executed
+    $$$$$:  187-block  1
+call    1 never executed
+function _ZZN10LocatarGUI11initConnectEvENKUlvE9_clEv called 0 returned 0% blocks executed 0%
+       1*:  188:        QObject::connect(btnRaport, &QPushButton::clicked, [&](){
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  188-block  0
+call    3 returned 1
+    $$$$$:  188-block  1
+    $$$$$:  188-block  2
+call    4 never executed
+    #####:  189:            auto raport = service.raport_tip_apartament();
+    %%%%%:  189-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    #####:  190:            QString msg;
+    #####:  191:            for (const auto& [tip, count] : raport) {
+    %%%%%:  191-block  0
+call    0 never executed
+call    1 never executed
+    %%%%%:  191-block  1
+call    2 never executed
+call    3 never executed
+call    4 never executed
+    %%%%%:  191-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed (fallthrough)
+    #####:  192:                msg += QString::fromStdString(tip) + ": " + QString::number(count) + "\n";
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  192-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  192-block  1
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  192-block  2
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  192-block  3
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+    %%%%%:  192-block  4
+call   15 never executed
+branch 16 never executed (fallthrough)
+branch 17 never executed (throw)
+    %%%%%:  192-block  5
+call   18 never executed
+call   19 never executed
+call   20 never executed
+call   21 never executed
+call   22 never executed
+call   23 never executed
+    $$$$$:  192-block  6
+call   24 never executed
+    $$$$$:  192-block  7
+call   25 never executed
+    $$$$$:  192-block  8
+call   26 never executed
+    $$$$$:  192-block  9
+call   27 never executed
+    $$$$$:  192-block 10
+    $$$$$:  192-block 11
+    $$$$$:  192-block 12
+call   28 never executed
+    $$$$$:  192-block 13
+    $$$$$:  192-block 14
+    $$$$$:  192-block 15
+        -:  193:            }
+    #####:  194:            QMessageBox::information(nullptr, "Raport", msg);
+    %%%%%:  194-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    %%%%%:  194-block  1
+call    4 never executed
+branch  5 never executed (fallthrough)
+branch  6 never executed (throw)
+    %%%%%:  194-block  2
+call    7 never executed
+    $$$$$:  194-block  3
+call    8 never executed
+    $$$$$:  194-block  4
+    $$$$$:  194-block  5
+    #####:  195:        });
+call    0 never executed
+call    1 never executed
+    $$$$$:  195-block  0
+call    2 never executed
+    $$$$$:  195-block  1
+call    3 never executed
+function _ZZN10LocatarGUI11initConnectEvENKUlvE10_clEv called 0 returned 0% blocks executed 0%
+       1*:  196:        QObject::connect(btnUndo, &QPushButton::clicked, [&](){
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  196-block  0
+call    3 returned 1
+    $$$$$:  196-block  1
+        -:  197:            try {
+    #####:  198:                service.undo();
+    %%%%%:  198-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:  199:            }
+    =====:  200:            catch (const std::exception& ex) {
+    $$$$$:  200-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    $$$$$:  200-block  1
+call    2 never executed
+    =====:  201:                QMessageBox::warning(nullptr, "Warning", ex.what());
+call    0 never executed
+call    1 never executed
+call    2 never executed
+branch  3 never executed (fallthrough)
+branch  4 never executed (throw)
+    $$$$$:  201-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    $$$$$:  201-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    $$$$$:  201-block  2
+call   11 never executed
+call   12 never executed
+    $$$$$:  201-block  3
+call   13 never executed
+    $$$$$:  201-block  4
+    $$$$$:  201-block  5
+call   14 never executed
+    $$$$$:  201-block  6
+    $$$$$:  201-block  7
+    =====:  202:            }
+call    0 never executed
+    $$$$$:  202-block  0
+call    1 never executed
+    #####:  203:            loadData();
+    %%%%%:  203-block  0
+call    0 never executed
+    #####:  204:        });
+        1:  205:    }
+        -:  206:
+function _ZN10LocatarGUI8loadDataEv called 1 returned 100% blocks executed 14%
+        1:  207:    void loadData() {
+        1:  208:        lst->clear();
+        1:  208-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  209:        auto allLocatar = service.get_all();
+        1:  209-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  209-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+       1*:  210:        for (const auto& locatar : allLocatar) {
+        1:  210-block  0
+call    0 returned 1
+call    1 returned 1
+    %%%%%:  210-block  1
+call    2 never executed
+        1:  210-block  2
+call    3 returned 1
+branch  4 taken 0
+branch  5 taken 1 (fallthrough)
+    #####:  211:            lst->addItem(QString::number(locatar.get_apartament()) + ", " +
+    %%%%%:  211-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  211-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  211-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  211-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  211-block  4
+call   12 never executed
+branch 13 never executed (fallthrough)
+branch 14 never executed (throw)
+call   15 never executed
+call   16 never executed
+call   17 never executed
+    $$$$$:  211-block  5
+call   18 never executed
+    $$$$$:  211-block  6
+call   19 never executed
+    $$$$$:  211-block  7
+call   20 never executed
+    $$$$$:  211-block  8
+    $$$$$:  211-block  9
+    $$$$$:  211-block 10
+    #####:  212:                         QString::fromStdString(locatar.get_nume_proprietar()) + ", " +
+    %%%%%:  212-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  212-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  212-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  212-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+call   12 never executed
+call   13 never executed
+call   14 never executed
+call   15 never executed
+    $$$$$:  212-block  4
+call   16 never executed
+    $$$$$:  212-block  5
+call   17 never executed
+    $$$$$:  212-block  6
+call   18 never executed
+    $$$$$:  212-block  7
+call   19 never executed
+    $$$$$:  212-block  8
+    $$$$$:  212-block  9
+    $$$$$:  212-block 10
+    $$$$$:  212-block 11
+    #####:  213:                         QString::number(locatar.get_suprafata()) + ", " +
+    %%%%%:  213-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  213-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  213-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  213-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  213-block  4
+call   12 never executed
+call   13 never executed
+call   14 never executed
+    $$$$$:  213-block  5
+call   15 never executed
+    $$$$$:  213-block  6
+call   16 never executed
+    $$$$$:  213-block  7
+call   17 never executed
+    $$$$$:  213-block  8
+    $$$$$:  213-block  9
+    $$$$$:  213-block 10
+    #####:  214:                         QString::fromStdString(locatar.get_tip_apartament()));
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  214-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+call    6 never executed
+call    7 never executed
+call    8 never executed
+    $$$$$:  214-block  1
+call    9 never executed
+    $$$$$:  214-block  2
+call   10 never executed
+    $$$$$:  214-block  3
+    $$$$$:  214-block  4
+        -:  215:        }
+        1:  216:        initDynamicButtons();
+        1:  216-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  217:    }
+        1:  217-block  0
+call    0 returned 1
+    $$$$$:  217-block  1
+call    1 never executed
+        -:  218:
+function _ZN10LocatarGUI7initGUIEv called 1 returned 100% blocks executed 60%
+        1:  219:    void initGUI(){
+        1:  220:        QHBoxLayout* lyMain = new QHBoxLayout{};
+        1:  220-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:  220-block  1
+branch  4 never executed (fallthrough)
+branch  5 never executed
+    $$$$$:  220-block  2
+call    6 never executed
+        1:  221:        setLayout(lyMain);
+        1:  221-block  0
+call    0 returned 1
+        -:  222:
+        1:  223:        lyMain->addWidget(lst);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:  223-block  0
+call    4 never executed
+        -:  224:
+        1:  225:        auto stgLy = new QVBoxLayout;
+        1:  225-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:  225-block  1
+branch  4 never executed (fallthrough)
+branch  5 never executed
+    $$$$$:  225-block  2
+call    6 never executed
+        1:  226:        auto formLy = new QFormLayout;
+        1:  226-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:  226-block  1
+branch  4 never executed (fallthrough)
+branch  5 never executed
+    $$$$$:  226-block  2
+call    6 never executed
+        1:  227:        formLy->addRow("Apartament", txtApartament);
+        1:  227-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  227-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  227-block  2
+call    6 returned 1
+    $$$$$:  227-block  3
+call    7 never executed
+    $$$$$:  227-block  4
+call    8 never executed
+        1:  228:        formLy->addRow("Nume proprietar", txtNumeProprietar);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  228-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  228-block  1
+call    6 returned 1
+    $$$$$:  228-block  2
+call    7 never executed
+    $$$$$:  228-block  3
+call    8 never executed
+        1:  229:        formLy->addRow("Suprafata", txtSuprafata);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  229-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  229-block  1
+call    6 returned 1
+    $$$$$:  229-block  2
+call    7 never executed
+    $$$$$:  229-block  3
+call    8 never executed
+        1:  230:        formLy->addRow("Tip apartament", txtTipApartament);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  230-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  230-block  1
+call    6 returned 1
+    $$$$$:  230-block  2
+call    7 never executed
+    $$$$$:  230-block  3
+call    8 never executed
+        1:  231:        stgLy->addLayout(formLy);
+call    0 returned 1
+        -:  232:
+        1:  233:        auto lyBtn = new QHBoxLayout{};
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:  233-block  0
+branch  4 never executed (fallthrough)
+branch  5 never executed
+    $$$$$:  233-block  1
+call    6 never executed
+        1:  234:        lyBtn->addWidget(btnAdd);
+        1:  234-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:  234-block  1
+call    4 never executed
+        1:  235:        lyBtn->addWidget(btnSterge);
+        1:  235-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:  235-block  1
+call    4 never executed
+        1:  236:        lyBtn->addWidget(btnModifica);
+        1:  236-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:  236-block  1
+call    4 never executed
+        1:  237:        lyBtn->addWidget(btnExit);
+        1:  237-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:  237-block  1
+call    4 never executed
+        1:  238:        lyBtn->addWidget(btnCauta);
+        1:  238-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:  238-block  1
+call    4 never executed
+        1:  239:        lyBtn->addWidget(btnFiltrareTip);
+        1:  239-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:  239-block  1
+call    4 never executed
+        1:  240:        lyBtn->addWidget(btnFiltrareSuprafata);
+        1:  240-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:  240-block  1
+call    4 never executed
+        1:  241:        lyBtn->addWidget(btnSortareNumeProprietar);
+        1:  241-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:  241-block  1
+call    4 never executed
+        1:  242:        lyBtn->addWidget(btnSortareSuprafata);
+        1:  242-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:  242-block  1
+call    4 never executed
+        1:  243:        lyBtn->addWidget(btnSortareTipSuprafata);
+        1:  243-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:  243-block  1
+call    4 never executed
+        1:  244:        lyBtn->addWidget(btnRaport);
+        1:  244-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:  244-block  1
+call    4 never executed
+        1:  245:        lyBtn->addWidget(btnUndo);
+        1:  245-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  246:        stgLy->addLayout(lyBtn);
+        1:  246-block  0
+call    0 returned 1
+        -:  247:
+        1:  248:        lyMain->addLayout(stgLy);
+call    0 returned 1
+        1:  249:        lyMain->addLayout(dynamicButtonsLayout);
+call    0 returned 1
+        1:  250:    }
+        -:  251:};

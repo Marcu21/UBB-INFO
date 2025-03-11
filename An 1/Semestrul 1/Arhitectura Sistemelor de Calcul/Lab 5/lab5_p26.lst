@@ -1,0 +1,50 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; Se da un sir de octeti S. Sa se determine maximul elementelor de pe pozitiile pare si minimul elementelor de pe pozitiile impare din S.
+    14                                      ; S: 1, 4, 2, 3, 8, 4, 9, 5
+    15                                      ; max_poz_pare: 9
+    16                                      ; min_poz_impare: 3
+    17 00000000 0104020308040905            s db 1, 4, 2, 3, 8, 4, 9, 5
+    18                                      len equ $-s
+    19 00000008 00                          max_poz_pare db 0
+    20 00000009 7F                          min_poz_impare db 127
+    21                                  ; our code starts here
+    22                                  segment code use32 class=code
+    23                                      start:
+    24 00000000 BE00000000                      mov esi, 0
+    25 00000005 B908000000                      mov ecx, len
+    26 0000000A E335                            jecxz final
+    27                                      repeta:
+    28 0000000C F7C601000000                    test esi, 01h
+    29 00000012 7410                            jz e_par
+    30 00000014 8A86[00000000]                  mov al, [s+esi]
+    31 0000001A 3A05[09000000]                  cmp al, [min_poz_impare]
+    32 00000020 7C10                            jl min
+    33 00000022 EB1A                            jmp contor
+    34                                      e_par:
+    35 00000024 8A86[00000000]                  mov al, [s+esi]
+    36 0000002A 3A05[08000000]                  cmp al, [max_poz_pare]
+    37 00000030 7707                            ja max
+    38                                      min:
+    39 00000032 A2[09000000]                    mov [min_poz_impare], al
+    40 00000037 EB05                            jmp contor
+    41                                      max:
+    42 00000039 A2[08000000]                    mov [max_poz_pare], al
+    43                                      contor:
+    44 0000003E 46                              inc esi
+    45 0000003F E2CB                            loop repeta
+    46                                      final:
+    47                                      
+    48                                          ; exit(0)
+    49 00000041 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    50 00000043 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

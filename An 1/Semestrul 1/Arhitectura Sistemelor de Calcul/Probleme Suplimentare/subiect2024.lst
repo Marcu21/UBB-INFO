@@ -1,0 +1,41 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  extern exit,printf
+     4                                  import exit msvcrt.dll
+     5                                  import printf msvcrt.dll
+     6                                  segment data use32 class=data
+     7                                  ;s1 dq 1234567809ABCDEFh, 2345678912345678h, 4141abcdefabcdefh ; EF CD AB 09 78 56 34 12
+     8 00000000 89674523F1DEBCFAFF-     s1 dq 0FABCDEF123456789h, 23456789123456FFh, 4141abcdefabcdefh ; 89 67 45 23 F1 DE BC FA
+     8 00000009 56341289674523EFCD-
+     8 00000012 ABEFCDAB4141       
+     9                                  len equ ($-s1)/8
+    10 00000018 00000000<rept>          s2 times len dd 0
+    11 00000024 257800                  format db "%x", 0
+    12                                  segment code use32 class=code
+    13                                  start:
+    14 00000000 B903000000                  mov ecx, len
+    15 00000005 BE[00000000]                mov esi, s1
+    16 0000000A BF[18000000]                mov edi, s2
+    17                                      repeta:
+    18 0000000F 668B4604                        mov ax, [esi+4] ;DE F1
+    19 00000013 668B5606                        mov dx, [esi+6] ;FA BC
+    20 00000017 6639C2                          cmp dx, ax
+    21 0000001A 7C04                            jl sari
+    22 0000001C 8B4604                          mov eax, [esi+4]
+    23 0000001F AB                              stosd
+    24                                          sari:
+    25 00000020 83C608                          add esi, 8
+    26 00000023 E2EA                        loop repeta
+    27 00000025 B903000000                  mov ecx, len
+    28 0000002A BE[18000000]                mov esi, s2
+    29                                      repeta2:
+    30 0000002F 51                          push ecx
+    31 00000030 AD                          lodsd
+    32 00000031 50                          push eax
+    33 00000032 68[24000000]                push dword format
+    34 00000037 FF15[00000000]              call [printf]
+    35 0000003D 59                          pop ecx
+    36 0000003E E2CF                        loop repeta
+    37                                  
+    38 00000040 6A00                    push dword 0
+    39 00000042 FF15[00000000]          call [exit]

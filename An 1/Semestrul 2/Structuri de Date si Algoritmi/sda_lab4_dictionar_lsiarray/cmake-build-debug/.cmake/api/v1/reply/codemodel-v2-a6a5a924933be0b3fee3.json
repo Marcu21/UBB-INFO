@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.28"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "sda_lab4_dictionar_lsiarray",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "sda_lab4_dictionar_lsiarray::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-sda_lab4_dictionar_lsiarray-Debug-8dbd9b65ad1a161d930c.json",
+					"name" : "sda_lab4_dictionar_lsiarray",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/emanu/CLionProjects/sda_lab4_dictionar_lsiarray/cmake-build-debug",
+		"source" : "C:/Users/emanu/CLionProjects/sda_lab4_dictionar_lsiarray"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

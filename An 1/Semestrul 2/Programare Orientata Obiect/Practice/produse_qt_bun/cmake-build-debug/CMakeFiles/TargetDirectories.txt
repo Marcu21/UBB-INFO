@@ -1,0 +1,5 @@
+C:/Users/emanu/CLionProjects/produse_qt_bun/cmake-build-debug/CMakeFiles/produse_qt_bun.dir
+C:/Users/emanu/CLionProjects/produse_qt_bun/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/emanu/CLionProjects/produse_qt_bun/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/emanu/CLionProjects/produse_qt_bun/cmake-build-debug/CMakeFiles/produse_qt_bun_autogen_timestamp_deps.dir
+C:/Users/emanu/CLionProjects/produse_qt_bun/cmake-build-debug/CMakeFiles/produse_qt_bun_autogen.dir

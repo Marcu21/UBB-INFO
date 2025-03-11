@@ -1,0 +1,24 @@
+     1                                  bits 32  
+     2                                  extern exit, printf               ; tell nasm that exit exists even if we won't be defining it
+     3                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     4                                  import printf msvcrt.dll          
+     5                                  segment data use32 class=data
+     6 00000000 6E756D61722025642C-         format db "numar %d, in baza 8 %o, caracter %c", 0x0A, 0
+     6 00000009 20696E2062617A6120-
+     6 00000012 3820256F2C20636172-
+     6 0000001B 61637465722025630A-
+     6 00000024 00                 
+     7                                  segment code use32 public code
+     8                                  global algoritm
+     9                                  
+    10                                  algoritm:
+    11 00000000 8B442404                     mov eax, [esp+4]
+    12 00000004 89C3                         mov ebx, eax
+    13 00000006 89C1                         mov ecx, eax
+    14 00000008 50                           push eax
+    15 00000009 53                           push ebx
+    16 0000000A 51                           push ecx
+    17 0000000B 68[00000000]                 push format
+    18 00000010 FF15[00000000]               call [printf]
+    19 00000016 83C410                       add esp, 4*4
+    20 00000019 C20400                       ret 4

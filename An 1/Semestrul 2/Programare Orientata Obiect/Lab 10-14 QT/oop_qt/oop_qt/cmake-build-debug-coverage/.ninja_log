@@ -1,0 +1,27 @@
+# ninja log v5
+141	599	7365367967217220	CMakeFiles/oop_qt.dir/locatar.cpp.obj	79523dbe151827b2
+29	120	7392318789784969	oop_qt_autogen/timestamp	6f9adefe60bae37a
+29	120	7392318789784969	C:/Users/emanu/CLionProjects/oop_qt/cmake-build-debug-coverage/oop_qt_autogen/timestamp	6f9adefe60bae37a
+29	120	7392318789784969	oop_qt_autogen/mocs_compilation.cpp	6f9adefe60bae37a
+123	3842	7392318826933628	CMakeFiles/oop_qt.dir/main.cpp.obj	3a41f9f845654e7b
+29	120	7392318789784969	C:/Users/emanu/CLionProjects/oop_qt/cmake-build-debug-coverage/oop_qt_autogen/mocs_compilation.cpp	6f9adefe60bae37a
+113	174	7392284027130209	CMakeFiles/oop_qt.dir/oop_qt_autogen/mocs_compilation.cpp.obj	1afbbd35f85b9bc
+154	657	7365367967797800	CMakeFiles/oop_qt.dir/validator.cpp.obj	5d33a9efc4158c5e
+151	772	7365367968938515	CMakeFiles/oop_qt.dir/undo.cpp.obj	98c67d17eaa66216
+143	1009	7365367971307906	CMakeFiles/oop_qt.dir/locatar_repo.cpp.obj	81eb79e5b648aad0
+131	1105	7392186906126565	CMakeFiles/oop_qt.dir/teste.cpp.obj	c2a805b95d75c20f
+128	1497	7392186910044990	CMakeFiles/oop_qt.dir/locatar_service.cpp.obj	dce46254cbb39578
+3842	4670	7392318832985958	oop_qt.exe	e991a71db6462217
+10	718	7392256270293509	build.ninja	21cad8069b41fab2
+31	127	7392318965513209	oop_qt_autogen/timestamp	6f9adefe60bae37a
+31	127	7392318965513209	oop_qt_autogen/mocs_compilation.cpp	6f9adefe60bae37a
+31	127	7392318965513209	C:/Users/emanu/CLionProjects/oop_qt/cmake-build-debug-coverage/oop_qt_autogen/timestamp	6f9adefe60bae37a
+31	127	7392318965513209	C:/Users/emanu/CLionProjects/oop_qt/cmake-build-debug-coverage/oop_qt_autogen/mocs_compilation.cpp	6f9adefe60bae37a
+130	3802	7392319002217671	CMakeFiles/oop_qt.dir/main.cpp.obj	3a41f9f845654e7b
+3802	4629	7392319008271771	oop_qt.exe	e991a71db6462217
+9	136	7392675211278687	oop_qt_autogen/timestamp	6f9adefe60bae37a
+9	136	7392675211278687	oop_qt_autogen/mocs_compilation.cpp	6f9adefe60bae37a
+9	136	7392675211278687	C:/Users/emanu/CLionProjects/oop_qt/cmake-build-debug-coverage/oop_qt_autogen/timestamp	6f9adefe60bae37a
+9	136	7392675211278687	C:/Users/emanu/CLionProjects/oop_qt/cmake-build-debug-coverage/oop_qt_autogen/mocs_compilation.cpp	6f9adefe60bae37a
+139	3967	7392675249534892	CMakeFiles/oop_qt.dir/main.cpp.obj	3a41f9f845654e7b
+3968	4922	7392675257831971	oop_qt.exe	e991a71db6462217

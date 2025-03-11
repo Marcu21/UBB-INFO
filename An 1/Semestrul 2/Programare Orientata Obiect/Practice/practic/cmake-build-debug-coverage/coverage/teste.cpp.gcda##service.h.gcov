@@ -1,0 +1,25 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/practic/service.h
+        -:    0:Graph:C:\Users\emanu\CLionProjects\practic\cmake-build-debug-coverage\CMakeFiles\practic.dir\teste.cpp.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\practic\cmake-build-debug-coverage\CMakeFiles\practic.dir\teste.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#pragma once
+        -:    2:#include "repo.h"
+        -:    3:#include "validator.h"
+        -:    4:
+        -:    5:class Service
+        -:    6:{
+        -:    7:private:
+        -:    8:    Repo repo;
+        -:    9:    Validator validator;
+        -:   10:public:
+function _ZN7ServiceC1E4Repo9Validator called 0 returned 0% blocks executed 0%
+    #####:   11:    Service(Repo repo, Validator validator): repo{repo}, validator{validator} {};
+    %%%%%:   11-block  0
+call    0 never executed
+        -:   12:    void adauga(int id, string denumire, string tip, int cilindrii);
+        -:   13:    void sterge(int id);
+        -:   14:    void modifica(int id, string denumire, string tip, int cilindrii);
+        -:   15:    Utilaj cauta(int id);
+        -:   16:    vector<Utilaj> get_all();
+        -:   17:    vector<Utilaj> get_all_sortat();
+        -:   18:};

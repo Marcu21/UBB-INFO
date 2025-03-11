@@ -1,0 +1,88 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/oop_qt/locatar.cpp
+        -:    0:Graph:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\locatar.cpp.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\locatar.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "locatar.h"
+        -:    2:
+function _ZNK7Locatar14get_apartamentEv called 103 returned 100% blocks executed 100%
+      103:    3:int Locatar::get_apartament() const
+        -:    4:{
+        -:    5:    //Returneaza apartamentul
+      103:    6:    return apartament;
+      103:    6-block  0
+        -:    7:}
+        -:    8:
+function _ZNK7Locatar13get_suprafataEv called 60 returned 100% blocks executed 100%
+       60:    9:int Locatar::get_suprafata() const
+        -:   10:{
+        -:   11:    //Returneaza suprafata
+       60:   12:    return suprafata;
+       60:   12-block  0
+        -:   13:}
+        -:   14:
+function _ZNK7Locatar19get_nume_proprietarB5cxx11Ev called 46 returned 100% blocks executed 100%
+       46:   15:string Locatar::get_nume_proprietar() const
+        -:   16:{
+        -:   17:    //Returneaza numele proprietarului
+       46:   18:    return nume_proprietar;
+       46:   18-block  0
+call    0 returned 46
+        -:   19:}
+        -:   20:
+function _ZNK7Locatar18get_tip_apartamentB5cxx11Ev called 62 returned 100% blocks executed 100%
+       62:   21:string Locatar::get_tip_apartament() const
+        -:   22:{
+        -:   23:    //Returneaza tipul apartamentului
+       62:   24:    return tip_apartament;
+       62:   24-block  0
+call    0 returned 62
+        -:   25:}
+        -:   26:
+function _ZN7Locatar14set_apartamentEi called 22 returned 100% blocks executed 100%
+       22:   27:void Locatar::set_apartament(int ap)
+        -:   28:{
+        -:   29:    //Seteaza apartamentul
+       22:   30:    this->apartament = ap;
+       22:   31:}
+        -:   32:
+function _ZN7Locatar13set_suprafataEi called 27 returned 100% blocks executed 100%
+       27:   33:void Locatar::set_suprafata(int sup)
+        -:   34:{
+        -:   35:    //Seteaza suprafata
+       27:   36:    this->suprafata = sup;
+       27:   37:}
+        -:   38:
+function _ZN7Locatar19set_nume_proprietarERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 27 returned 100% blocks executed 100%
+       27:   39:void Locatar::set_nume_proprietar(const string& nume)
+        -:   40:{
+        -:   41:    //Seteaza numele proprietarului
+       27:   42:    this->nume_proprietar = nume;
+       27:   42-block  0
+call    0 returned 27
+       27:   43:}
+        -:   44:
+function _ZN7Locatar18set_tip_apartamentERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 27 returned 100% blocks executed 100%
+       27:   45:void Locatar::set_tip_apartament(const string& tip)
+        -:   46:{
+        -:   47:    //Seteaza tipul apartamentului
+       27:   48:    this->tip_apartament = tip;
+       27:   48-block  0
+call    0 returned 27
+       27:   49:}
+        -:   50:
+function _ZN7Locatar15creeaza_locatarES_iRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiS7_ called 22 returned 100% blocks executed 100%
+       22:   51:Locatar Locatar::creeaza_locatar(Locatar locatar, int apartament, const string& nume_proprietar, int suprafata, const string& tip_apartament)
+        -:   52:{
+        -:   53:    // Creeaza un locatar
+       22:   54:    locatar.set_apartament(apartament);
+       22:   54-block  0
+call    0 returned 22
+       22:   55:    locatar.set_nume_proprietar(nume_proprietar);
+call    0 returned 22
+       22:   56:    locatar.set_suprafata(suprafata);
+call    0 returned 22
+       22:   57:    locatar.set_tip_apartament(tip_apartament);
+call    0 returned 22
+       22:   58:    return locatar;
+call    0 returned 22
+        -:   59:}

@@ -1,0 +1,3 @@
+C:/Users/emanu/CLionProjects/oop_lab5_marcus/cmake-build-debug/CMakeFiles/oop_lab5_marcus.dir
+C:/Users/emanu/CLionProjects/oop_lab5_marcus/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/emanu/CLionProjects/oop_lab5_marcus/cmake-build-debug/CMakeFiles/rebuild_cache.dir

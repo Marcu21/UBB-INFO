@@ -1,0 +1,127 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/practic/validator.cpp
+        -:    0:Graph:C:\Users\emanu\CLionProjects\practic\cmake-build-debug-coverage\CMakeFiles\practic.dir\validator.cpp.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\practic\cmake-build-debug-coverage\CMakeFiles\practic.dir\validator.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <stdexcept>
+        -:    2:#include "validator.h"
+        -:    3:
+function _ZN9Validator8validateE6Utilaj called 14 returned 93% blocks executed 85%
+       14:    4:void Validator::validate(Utilaj u) {
+       14:    4-block  0
+        -:    5:    //Valideaza un utilaj
+       14:    6:    string errors = "";
+       14:    6-block  0
+call    0 returned 14
+branch  1 taken 14 (fallthrough)
+branch  2 taken 0 (throw)
+    $$$$$:    6-block  1
+       14:    7:    if (u.get_id() < 0)
+call    0 returned 14
+branch  1 taken 14 (fallthrough)
+branch  2 taken 0 (throw)
+       14:    7-block  0
+branch  3 taken 1 (fallthrough)
+branch  4 taken 13
+        1:    8:        errors += "Id-ul nu poate fi negativ!\n";
+        1:    8-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       14:    9:    if (u.get_denumire().empty() == 1)
+       14:    9-block  0
+call    0 returned 14
+branch  1 taken 14 (fallthrough)
+branch  2 taken 0 (throw)
+       14:    9-block  1
+call    3 returned 14
+call    4 returned 14
+branch  5 taken 1 (fallthrough)
+branch  6 taken 13
+    $$$$$:    9-block  2
+        1:   10:        errors += "Denumirea nu poate fi vida!\n";
+        1:   10-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       14:   11:    if (u.get_tip().empty() == 1)
+       14:   11-block  0
+call    0 returned 14
+branch  1 taken 14 (fallthrough)
+branch  2 taken 0 (throw)
+       14:   11-block  1
+call    3 returned 14
+call    4 returned 14
+branch  5 taken 1 (fallthrough)
+branch  6 taken 13
+    $$$$$:   11-block  2
+        1:   12:        errors += "Tipul nu poate fi vid!\n";
+        1:   12-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       14:   13:    if (u.get_cilindrii() != 1 && u.get_cilindrii() != 2 && u.get_cilindrii() != 4 && u.get_cilindrii() != 6 && u.get_cilindrii() != 8)
+       14:   13-block  0
+call    0 returned 14
+branch  1 taken 14 (fallthrough)
+branch  2 taken 0 (throw)
+       14:   13-block  1
+branch  3 taken 13 (fallthrough)
+branch  4 taken 1
+       13:   13-block  2
+call    5 returned 13
+branch  6 taken 13 (fallthrough)
+branch  7 taken 0 (throw)
+       13:   13-block  3
+branch  8 taken 9 (fallthrough)
+branch  9 taken 4
+        9:   13-block  4
+call   10 returned 9
+branch 11 taken 9 (fallthrough)
+branch 12 taken 0 (throw)
+        9:   13-block  5
+branch 13 taken 8 (fallthrough)
+branch 14 taken 1
+        8:   13-block  6
+call   15 returned 8
+branch 16 taken 8 (fallthrough)
+branch 17 taken 0 (throw)
+        8:   13-block  7
+branch 18 taken 7 (fallthrough)
+branch 19 taken 1
+        7:   13-block  8
+call   20 returned 7
+branch 21 taken 7 (fallthrough)
+branch 22 taken 0 (throw)
+        7:   13-block  9
+branch 23 taken 1 (fallthrough)
+branch 24 taken 6
+        1:   13-block 10
+       13:   13-block 11
+       14:   13-block 12
+branch 25 taken 1 (fallthrough)
+branch 26 taken 13
+        1:   14:        errors += "Numarul de cilindrii nu poate fi negativ!\n";
+        1:   14-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       14:   15:    if (errors.size() > 0)
+       14:   15-block  0
+call    0 returned 14
+branch  1 taken 1 (fallthrough)
+branch  2 taken 13
+        1:   16:        throw std::runtime_error(errors);
+        1:   16-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   16-block  1
+call    4 returned 1
+    $$$$$:   16-block  2
+call    5 never executed
+       14:   17:}
+       13:   17-block  0
+call    0 returned 13
+        1:   17-block  1
+call    1 returned 1

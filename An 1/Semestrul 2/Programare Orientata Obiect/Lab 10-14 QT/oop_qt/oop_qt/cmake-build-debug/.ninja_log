@@ -1,0 +1,29 @@
+# ninja log v5
+21	104	7634014588121592	oop_qt_autogen/timestamp	e6c583465800272c
+25	106	7365365974267131	C:/Users/emanu/CLionProjects/oop_qt/cmake-build-debug/oop_qt_autogen/timestamp	c4b36b54c3dc00e2
+21	104	7634014588121592	oop_qt_autogen/mocs_compilation.cpp	e6c583465800272c
+25	106	7365365974267131	C:/Users/emanu/CLionProjects/oop_qt/cmake-build-debug/oop_qt_autogen/mocs_compilation.cpp	c4b36b54c3dc00e2
+189	255	7633996463670005	CMakeFiles/oop_qt.dir/oop_qt_autogen/mocs_compilation.cpp.obj	f6c603dd4bc00fbf
+107	840	7634014593981352	oop_qt.exe	1bcbb799d641c572
+193	3430	7633996495374175	CMakeFiles/oop_qt.dir/main.cpp.obj	5175125f9d0ce484
+5	617	7634021350980002	build.ninja	d71a63c79b978779
+196	674	7633996467860640	CMakeFiles/oop_qt.dir/locatar.cpp.obj	96a2d47b967bae44
+214	684	7633996467949403	CMakeFiles/oop_qt.dir/validator.cpp.obj	a32f3aaec9ab2847
+209	805	7633996469171593	CMakeFiles/oop_qt.dir/undo.cpp.obj	46ea7a76600a0d0f
+199	984	7633996470953243	CMakeFiles/oop_qt.dir/locatar_repo.cpp.obj	af997d80d53c2c36
+205	1283	7633996473939419	CMakeFiles/oop_qt.dir/teste.cpp.obj	75e68db93c658a75
+202	1820	7633996479275578	CMakeFiles/oop_qt.dir/locatar_service.cpp.obj	5e7f1ab1ea6fb386
+21	104	7634014588121592	C:/Users/emanu/Desktop/An 1/Semestrul 2/Programare Orientata Obiect/Lab 10-14 QT/oop_qt/oop_qt/cmake-build-debug/oop_qt_autogen/timestamp	e6c583465800272c
+21	104	7634014588121592	C:/Users/emanu/Desktop/An 1/Semestrul 2/Programare Orientata Obiect/Lab 10-14 QT/oop_qt/oop_qt/cmake-build-debug/oop_qt_autogen/mocs_compilation.cpp	e6c583465800272c
+43	186	7634021356915483	oop_qt_autogen/timestamp	e6c583465800272c
+43	186	7634021356915483	oop_qt_autogen/mocs_compilation.cpp	e6c583465800272c
+43	186	7634021356915483	C:/Users/emanu/Desktop/An 1/Semestrul 2/Programare Orientata Obiect/Lab 10-14 QT/oop_qt/oop_qt/cmake-build-debug/oop_qt_autogen/timestamp	e6c583465800272c
+43	186	7634021356915483	C:/Users/emanu/Desktop/An 1/Semestrul 2/Programare Orientata Obiect/Lab 10-14 QT/oop_qt/oop_qt/cmake-build-debug/oop_qt_autogen/mocs_compilation.cpp	e6c583465800272c
+193	859	7634021363589668	CMakeFiles/oop_qt.dir/domain/locatar.cpp.obj	da13e3fccff81352
+209	882	7634021363858312	CMakeFiles/oop_qt.dir/validators/validator.cpp.obj	2bd28034a98583d7
+205	1069	7634021365726603	CMakeFiles/oop_qt.dir/utils/undo.cpp.obj	49acc02d6c449435
+195	1255	7634021367569444	CMakeFiles/oop_qt.dir/repository/locatar_repo.cpp.obj	7ccea7f2406a4790
+202	1626	7634021371279989	CMakeFiles/oop_qt.dir/teste/teste.cpp.obj	6e1ebfa0783d0296
+198	2131	7634021376334939	CMakeFiles/oop_qt.dir/service/locatar_service.cpp.obj	644cf4295a3727bf
+190	4027	7634021395265547	CMakeFiles/oop_qt.dir/main.cpp.obj	5175125f9d0ce484
+4027	4766	7634021401234126	oop_qt.exe	c6e1bd61cc502656

@@ -1,0 +1,9 @@
+lab10
+lab11
+lab12
+shell
+threaduri
+naitutreaba
+da
+ex1
+ex1.c

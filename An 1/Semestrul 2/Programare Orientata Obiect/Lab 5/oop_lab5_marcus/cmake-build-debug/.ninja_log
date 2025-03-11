@@ -1,0 +1,8 @@
+# ninja log v5
+7	116	7327360079761457	CMakeFiles/oop_lab5_marcus.dir/lab2.c.obj	4d9a05c110dd1871
+22	125	7327360079852527	CMakeFiles/oop_lab5_marcus.dir/repo.c.obj	8c292e24e239fe14
+18	135	7327360079953268	CMakeFiles/oop_lab5_marcus.dir/tests.c.obj	998b34e8b02e6b68
+1	121	7327360079801816	CMakeFiles/oop_lab5_marcus.dir/domain.c.obj	60100997f1960130
+14	126	7327360079852527	CMakeFiles/oop_lab5_marcus.dir/service.c.obj	7d9658a7c46f3c3f
+11	126	7327360079862784	CMakeFiles/oop_lab5_marcus.dir/ui.c.obj	9de9f6db6cba732b
+135	257	7327360081150539	oop_lab5_marcus.exe	d5258b4df8efc015

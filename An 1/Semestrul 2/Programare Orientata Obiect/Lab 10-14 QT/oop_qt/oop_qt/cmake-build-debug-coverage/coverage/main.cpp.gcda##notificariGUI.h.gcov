@@ -1,0 +1,612 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/oop_qt/notificariGUI.h
+        -:    0:Graph:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\main.cpp.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\main.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "locatar_service.h"
+        -:    2:#include <QApplication>
+        -:    3:#include <QLabel>
+        -:    4:#include <QPushButton>
+        -:    5:#include <QFormLayout>
+        -:    6:#include <qlineedit.h>
+        -:    7:#include <QListWidget>
+        -:    8:#include <qmessagebox.h>
+        -:    9:#include <qdebug.h>
+        -:   10:#include "locatar_service.h"
+        -:   11:
+        -:   12:class NotificariGUI : public QWidget {
+        -:   13:    locatar_service &service;
+        -:   14:public:
+function _ZN13NotificariGUIC1ER15locatar_service called 1 returned 100% blocks executed 66%
+        1:   15:    NotificariGUI(locatar_service &service) : service{service} {
+        1:   15-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   15-block  1
+call    4 returned 1
+branch  5 taken 1 (fallthrough)
+branch  6 taken 0 (throw)
+        1:   15-block  2
+call    7 returned 1
+branch  8 taken 1 (fallthrough)
+branch  9 taken 0 (throw)
+        1:   15-block  3
+call   10 returned 1
+branch 11 taken 1 (fallthrough)
+branch 12 taken 0 (throw)
+        1:   15-block  4
+call   13 returned 1
+branch 14 taken 1 (fallthrough)
+branch 15 taken 0 (throw)
+        1:   15-block  5
+call   16 returned 1
+branch 17 taken 1 (fallthrough)
+branch 18 taken 0 (throw)
+        1:   15-block  6
+call   19 returned 1
+branch 20 taken 1 (fallthrough)
+branch 21 taken 0 (throw)
+        1:   15-block  7
+call   22 returned 1
+branch 23 taken 1 (fallthrough)
+branch 24 taken 0 (throw)
+        1:   15-block  8
+call   25 returned 1
+branch 26 taken 1 (fallthrough)
+branch 27 taken 0 (throw)
+        1:   15-block  9
+call   28 returned 1
+branch 29 taken 1 (fallthrough)
+branch 30 taken 0 (throw)
+        1:   15-block 10
+call   31 returned 1
+branch 32 taken 1 (fallthrough)
+branch 33 taken 0 (throw)
+        1:   15-block 11
+call   34 returned 1
+branch 35 taken 1 (fallthrough)
+branch 36 taken 0 (throw)
+        1:   15-block 12
+call   37 returned 1
+call   38 returned 1
+branch 39 taken 1 (fallthrough)
+branch 40 taken 0 (throw)
+        1:   15-block 13
+call   41 returned 1
+branch 42 taken 1 (fallthrough)
+branch 43 taken 0 (throw)
+        1:   15-block 14
+call   44 returned 1
+branch 45 taken 1 (fallthrough)
+branch 46 taken 0 (throw)
+        1:   15-block 15
+call   47 returned 1
+call   48 returned 1
+branch 49 taken 1 (fallthrough)
+branch 50 taken 0 (throw)
+        1:   15-block 16
+call   51 returned 1
+branch 52 taken 1 (fallthrough)
+branch 53 taken 0 (throw)
+        1:   15-block 17
+call   54 returned 1
+branch 55 taken 1 (fallthrough)
+branch 56 taken 0 (throw)
+        1:   15-block 18
+call   57 returned 1
+call   58 returned 1
+branch 59 taken 1 (fallthrough)
+branch 60 taken 0 (throw)
+        1:   15-block 19
+call   61 returned 1
+branch 62 taken 1 (fallthrough)
+branch 63 taken 0 (throw)
+        1:   15-block 20
+call   64 returned 1
+branch 65 taken 1 (fallthrough)
+branch 66 taken 0 (throw)
+        1:   15-block 21
+call   67 returned 1
+call   68 returned 1
+branch 69 taken 1 (fallthrough)
+branch 70 taken 0 (throw)
+        1:   15-block 22
+call   71 returned 1
+branch 72 taken 1 (fallthrough)
+branch 73 taken 0 (throw)
+        1:   15-block 23
+call   74 returned 1
+branch 75 taken 1 (fallthrough)
+branch 76 taken 0 (throw)
+        1:   15-block 24
+call   77 returned 1
+call   78 returned 1
+branch 79 taken 1 (fallthrough)
+branch 80 taken 0 (throw)
+        1:   15-block 25
+call   81 returned 1
+branch 82 taken 1 (fallthrough)
+branch 83 taken 0 (throw)
+        1:   15-block 26
+call   84 returned 1
+branch 85 taken 1 (fallthrough)
+branch 86 taken 0 (throw)
+        1:   15-block 27
+call   87 returned 1
+    $$$$$:   15-block 28
+call   88 never executed
+    $$$$$:   15-block 29
+call   89 never executed
+    $$$$$:   15-block 30
+    $$$$$:   15-block 31
+call   90 never executed
+    $$$$$:   15-block 32
+    $$$$$:   15-block 33
+call   91 never executed
+    $$$$$:   15-block 34
+    $$$$$:   15-block 35
+call   92 never executed
+    $$$$$:   15-block 36
+    $$$$$:   15-block 37
+call   93 never executed
+    $$$$$:   15-block 38
+    $$$$$:   15-block 39
+call   94 never executed
+    $$$$$:   15-block 40
+        1:   16:        initGUI();
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   17:        loadData();
+        1:   17-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   18:        initConnect();
+        1:   18-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   19:    };
+        1:   19-block  0
+    $$$$$:   19-block  1
+call    0 never executed
+        -:   20:private:
+        -:   21:    QListWidget *lst = new QListWidget;
+        -:   22:    QLineEdit *txtApartament = new QLineEdit;
+        -:   23:    QLineEdit *txtNumar = new QLineEdit;
+        -:   24:    QLineEdit *txtFisier = new QLineEdit;
+        -:   25:    QPushButton *btnAdauga = new QPushButton{"&Adauga notificare"};
+        -:   26:    QPushButton *btnSterge = new QPushButton{"&Sterge toate notificarile"};
+        -:   27:    QPushButton *btnGenereaza = new QPushButton{"&Genereaza apartamente"};
+        -:   28:    QPushButton *btnExportHTML = new QPushButton{"&Export HTML"};
+        -:   29:    QPushButton *btnExportCSV = new QPushButton{"&Export CSV"};
+        -:   30:    QPushButton *btnExit = new QPushButton{"&Exit"};
+        -:   31:
+function _ZN13NotificariGUI11initConnectEv called 1 returned 100% blocks executed 56%
+        1:   32:    void initConnect() {
+function _ZZN13NotificariGUI11initConnectEvENKUlvE_clEv called 0 returned 0% blocks executed 0%
+       1*:   33:        QObject::connect(btnAdauga, &QPushButton::clicked, [&]() {
+        1:   33-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   33-block  1
+call    3 returned 1
+    $$$$$:   33-block  2
+    $$$$$:   33-block  3
+call    4 never executed
+    #####:   34:            int apartament = txtApartament->text().toInt();
+    %%%%%:   34-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   34-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   34-block  2
+call    6 never executed
+    $$$$$:   34-block  3
+call    7 never executed
+    #####:   35:            service.add_notification(apartament);
+call    0 never executed
+    #####:   36:            loadData();
+call    0 never executed
+    #####:   37:        });
+function _ZZN13NotificariGUI11initConnectEvENKUlvE0_clEv called 0 returned 0% blocks executed 0%
+       1*:   38:        QObject::connect(btnSterge, &QPushButton::clicked, [&]() {
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   38-block  0
+call    3 returned 1
+    $$$$$:   38-block  1
+    $$$$$:   38-block  2
+call    4 never executed
+    #####:   39:            service.clear_notifications();
+    %%%%%:   39-block  0
+call    0 never executed
+    #####:   40:            loadData();
+call    0 never executed
+    #####:   41:        });
+        -:   42:
+function _ZZN13NotificariGUI11initConnectEvENKUlvE1_clEv called 0 returned 0% blocks executed 0%
+       1*:   43:        QObject::connect(btnGenereaza, &QPushButton::clicked, [&]() {
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   43-block  0
+call    3 returned 1
+    $$$$$:   43-block  1
+    $$$$$:   43-block  2
+call    4 never executed
+    #####:   44:            int numar = txtNumar->text().toInt();
+    %%%%%:   44-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   44-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   44-block  2
+call    6 never executed
+    $$$$$:   44-block  3
+call    7 never executed
+    #####:   45:            service.generate_notifications(numar);
+call    0 never executed
+    #####:   46:            loadData();
+call    0 never executed
+    #####:   47:        });
+        -:   48:
+function _ZZN13NotificariGUI11initConnectEvENKUlvE2_clEv called 1 returned 100% blocks executed 100%
+        1:   49:        QObject::connect(btnExit, &QPushButton::clicked, [&]() {
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   49-block  0
+call    3 returned 1
+    $$$$$:   49-block  1
+    $$$$$:   49-block  2
+call    4 never executed
+        1:   50:            close();
+        1:   50-block  0
+call    0 returned 1
+        1:   51:        });
+        -:   52:
+function _ZZN13NotificariGUI11initConnectEvENKUlvE3_clEv called 0 returned 0% blocks executed 0%
+       1*:   53:        QObject::connect(btnExportHTML, &QPushButton::clicked, [&]() {
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   53-block  0
+call    3 returned 1
+    $$$$$:   53-block  1
+    $$$$$:   53-block  2
+call    4 never executed
+    #####:   54:            QString fisier = txtFisier->text();
+    %%%%%:   54-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:   55:            try {
+    #####:   56:                service.export_to_html(fisier.toStdString());
+    %%%%%:   56-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   56-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   56-block  2
+call    6 never executed
+    $$$$$:   56-block  3
+call    7 never executed
+    $$$$$:   56-block  4
+        -:   57:            }
+    =====:   58:            catch (std::runtime_error& ex) {
+    $$$$$:   58-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    $$$$$:   58-block  1
+call    2 never executed
+    =====:   59:                QMessageBox::warning(nullptr, "Warning", ex.what());
+call    0 never executed
+call    1 never executed
+call    2 never executed
+branch  3 never executed (fallthrough)
+branch  4 never executed (throw)
+    $$$$$:   59-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    $$$$$:   59-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    $$$$$:   59-block  2
+call   11 never executed
+call   12 never executed
+    $$$$$:   59-block  3
+call   13 never executed
+    $$$$$:   59-block  4
+    $$$$$:   59-block  5
+call   14 never executed
+    $$$$$:   59-block  6
+    $$$$$:   59-block  7
+    =====:   60:            }
+call    0 never executed
+    $$$$$:   60-block  0
+call    1 never executed
+    #####:   61:        });
+    %%%%%:   61-block  0
+call    0 never executed
+    $$$$$:   61-block  1
+call    1 never executed
+        -:   62:
+function _ZZN13NotificariGUI11initConnectEvENKUlvE4_clEv called 0 returned 0% blocks executed 0%
+       1*:   63:        QObject::connect(btnExportCSV, &QPushButton::clicked, [&]() {
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   63-block  0
+call    3 returned 1
+    $$$$$:   63-block  1
+    #####:   64:            QString fisier = txtFisier->text();
+    %%%%%:   64-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+        -:   65:            try {
+    #####:   66:                service.export_to_csv(fisier.toStdString());
+    %%%%%:   66-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:   66-block  1
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   66-block  2
+call    6 never executed
+    $$$$$:   66-block  3
+call    7 never executed
+    $$$$$:   66-block  4
+        -:   67:            }
+    =====:   68:            catch (std::runtime_error& ex) {
+    $$$$$:   68-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    $$$$$:   68-block  1
+call    2 never executed
+    =====:   69:                QMessageBox::warning(nullptr, "Warning", ex.what());
+call    0 never executed
+call    1 never executed
+call    2 never executed
+branch  3 never executed (fallthrough)
+branch  4 never executed (throw)
+    $$$$$:   69-block  0
+call    5 never executed
+branch  6 never executed (fallthrough)
+branch  7 never executed (throw)
+    $$$$$:   69-block  1
+call    8 never executed
+branch  9 never executed (fallthrough)
+branch 10 never executed (throw)
+    $$$$$:   69-block  2
+call   11 never executed
+call   12 never executed
+    $$$$$:   69-block  3
+call   13 never executed
+    $$$$$:   69-block  4
+    $$$$$:   69-block  5
+call   14 never executed
+    $$$$$:   69-block  6
+    $$$$$:   69-block  7
+    =====:   70:            }
+call    0 never executed
+    $$$$$:   70-block  0
+call    1 never executed
+    #####:   71:        });
+    %%%%%:   71-block  0
+call    0 never executed
+    $$$$$:   71-block  1
+call    1 never executed
+        1:   72:    }
+        -:   73:
+function _ZN13NotificariGUI7initGUIEv called 1 returned 100% blocks executed 58%
+        1:   74:    void initGUI() {
+        1:   75:        QHBoxLayout *lyMain = new QHBoxLayout{};
+        1:   75-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:   75-block  1
+branch  4 never executed (fallthrough)
+branch  5 never executed
+    $$$$$:   75-block  2
+call    6 never executed
+        1:   76:        setLayout(lyMain);
+        1:   76-block  0
+call    0 returned 1
+        -:   77:
+        1:   78:        lyMain->addWidget(lst);
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:   78-block  0
+call    4 never executed
+        -:   79:
+        1:   80:        auto stgLy = new QVBoxLayout;
+        1:   80-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:   80-block  1
+branch  4 never executed (fallthrough)
+branch  5 never executed
+    $$$$$:   80-block  2
+call    6 never executed
+        1:   81:        auto formLy = new QFormLayout;
+        1:   81-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:   81-block  1
+branch  4 never executed (fallthrough)
+branch  5 never executed
+    $$$$$:   81-block  2
+call    6 never executed
+        1:   82:        formLy->addRow("Apartament", txtApartament);
+        1:   82-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   82-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   82-block  2
+call    6 returned 1
+    $$$$$:   82-block  3
+call    7 never executed
+    $$$$$:   82-block  4
+call    8 never executed
+        1:   83:        formLy->addRow("Numar", txtNumar);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   83-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   83-block  1
+call    6 returned 1
+    $$$$$:   83-block  2
+call    7 never executed
+    $$$$$:   83-block  3
+call    8 never executed
+        1:   84:        formLy->addRow("Fisier", txtFisier);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   84-block  0
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   84-block  1
+call    6 returned 1
+    $$$$$:   84-block  2
+call    7 never executed
+    $$$$$:   84-block  3
+call    8 never executed
+        1:   85:        stgLy->addLayout(formLy);
+call    0 returned 1
+        -:   86:
+        1:   87:        auto lyBtn = new QHBoxLayout{};
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:   87-block  0
+branch  4 never executed (fallthrough)
+branch  5 never executed
+    $$$$$:   87-block  1
+call    6 never executed
+        1:   88:        lyBtn->addWidget(btnAdauga);
+        1:   88-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:   88-block  1
+call    4 never executed
+        1:   89:        lyBtn->addWidget(btnSterge);
+        1:   89-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:   89-block  1
+call    4 never executed
+        1:   90:        lyBtn->addWidget(btnGenereaza);
+        1:   90-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:   90-block  1
+call    4 never executed
+        1:   91:        lyBtn->addWidget(btnExit);
+        1:   91-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:   91-block  1
+call    4 never executed
+        1:   92:        lyBtn->addWidget(btnExportHTML);
+        1:   92-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:   92-block  1
+call    4 never executed
+        1:   93:        lyBtn->addWidget(btnExportCSV);
+        1:   93-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   94:        stgLy->addLayout(lyBtn);
+        1:   94-block  0
+call    0 returned 1
+        -:   95:
+        1:   96:        lyMain->addLayout(stgLy);
+call    0 returned 1
+        1:   97:    }
+        -:   98:
+function _ZN13NotificariGUI8loadDataEv called 1 returned 100% blocks executed 50%
+        1:   99:    void loadData() {
+        1:  100:        lst->clear();
+        1:  100-block  0
+call    0 returned 1
+       1*:  101:        for (int apt : service.get_notifications()) {
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  101-block  0
+call    3 returned 1
+call    4 returned 1
+    %%%%%:  101-block  1
+call    5 never executed
+        1:  101-block  2
+call    6 returned 1
+branch  7 taken 0
+branch  8 taken 1 (fallthrough)
+    #####:  102:            lst->addItem(QString::number(apt));
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed (throw)
+    %%%%%:  102-block  0
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  102-block  1
+call    6 never executed
+call    7 never executed
+    $$$$$:  102-block  2
+call    8 never executed
+    $$$$$:  102-block  3
+        -:  103:        }
+        1:  104:    }
+        1:  104-block  0
+        -:  105:};

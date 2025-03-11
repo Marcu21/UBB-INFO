@@ -1,0 +1,112 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/oop_qt/validator.cpp
+        -:    0:Graph:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\validator.cpp.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\validator.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "validator.h"
+        -:    2:#include "exception.h"
+function _ZN9validator16validate_locatarERK7Locatar called 15 returned 73% blocks executed 65%
+       15:    3:void validator::validate_locatar(const Locatar& locatar) {
+        -:    4:    //Valideaza locatar
+       15:    5:    if (locatar.get_apartament() <= 0) {
+       15:    5-block  0
+call    0 returned 15
+branch  1 taken 1 (fallthrough)
+branch  2 taken 14
+        3:    6:        throw validator_exception("Numarul apartamentului trebuie sa fie un numar pozitiv nenul.");
+        1:    6-block  0
+call    0 returned 1
+        1:    6-block  1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:    6-block  2
+call    4 returned 1
+call    5 returned 1
+call    6 returned 0
+    $$$$$:    6-block  3
+    $$$$$:    6-block  4
+    $$$$$:    6-block  5
+call    7 never executed
+        -:    7:    }
+        -:    8:
+       14:    9:    if (locatar.get_nume_proprietar().empty()) {
+       14:    9-block  0
+call    0 returned 14
+branch  1 taken 14 (fallthrough)
+branch  2 taken 0 (throw)
+       14:    9-block  1
+call    3 returned 14
+call    4 returned 14
+branch  5 taken 1 (fallthrough)
+branch  6 taken 13
+    $$$$$:    9-block  2
+call    7 never executed
+        3:   10:        throw validator_exception("Numele proprietarului nu poate fi vid.");
+        1:   10-block  0
+call    0 returned 1
+        1:   10-block  1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   10-block  2
+call    4 returned 1
+call    5 returned 1
+call    6 returned 0
+    $$$$$:   10-block  3
+    $$$$$:   10-block  4
+    $$$$$:   10-block  5
+call    7 never executed
+        -:   11:    }
+        -:   12:
+       13:   13:    if (locatar.get_suprafata() <= 0) {
+       13:   13-block  0
+call    0 returned 13
+branch  1 taken 1 (fallthrough)
+branch  2 taken 12
+        3:   14:        throw validator_exception("Suprafata trebuie sa fie un numar pozitiv nenul.");
+        1:   14-block  0
+call    0 returned 1
+        1:   14-block  1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   14-block  2
+call    4 returned 1
+call    5 returned 1
+call    6 returned 0
+    $$$$$:   14-block  3
+    $$$$$:   14-block  4
+    $$$$$:   14-block  5
+call    7 never executed
+        -:   15:    }
+        -:   16:
+       12:   17:    if (locatar.get_tip_apartament().empty()) {
+       12:   17-block  0
+call    0 returned 12
+branch  1 taken 12 (fallthrough)
+branch  2 taken 0 (throw)
+       12:   17-block  1
+call    3 returned 12
+call    4 returned 12
+branch  5 taken 1 (fallthrough)
+branch  6 taken 11
+    $$$$$:   17-block  2
+call    7 never executed
+        3:   18:        throw validator_exception("Tipul apartamentului nu poate fi vid.");
+        1:   18-block  0
+call    0 returned 1
+        1:   18-block  1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   18-block  2
+call    4 returned 1
+call    5 returned 1
+call    6 returned 0
+    $$$$$:   18-block  3
+    $$$$$:   18-block  4
+    $$$$$:   18-block  5
+call    7 never executed
+        -:   19:    }
+       11:   20:}
+       11:   20-block  0

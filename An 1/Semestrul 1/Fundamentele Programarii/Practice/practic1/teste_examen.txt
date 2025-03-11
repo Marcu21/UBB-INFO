@@ -1,0 +1,4 @@
+22.04,08:00,FP,normala
+29.01,10:00,Analiza,normala
+29.01,16:00,Algebra,restanta
+30.01,16:00,Logica,restanta

@@ -1,0 +1,58 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                          ;a - byte, b - word, c - double word, d - qword - Interpretare fara semn
+    14 00000000 01                              a db 1
+    15 00000001 0300                            b dw 3
+    16 00000003 05000000                        c dd 5
+    17 00000007 0A00000000000000                d dq 10
+    18                                  
+    19                                  ; our code starts here
+    20                                  segment code use32 class=code
+    21                                      start:
+    22                                          ; (d+d-b)+(c-a)+d =(10+10-3)+(5-1)+10=17+4+10=31
+    23 00000000 A1[07000000]                    mov eax, dword [d]
+    24 00000005 8B15[0B000000]                  mov edx, dword [d+4]
+    25 0000000B 0305[07000000]                  add eax, dword [d]
+    26 00000011 1315[0B000000]                  adc edx, dword [d+4]
+    27 00000017 668B1D[01000000]                mov bx, [b]
+    28 0000001E 66B90000                        mov cx, 0
+    29 00000022 6651                            push cx
+    30 00000024 6653                            push bx
+    31 00000026 5B                              pop ebx
+    32 00000027 29D8                            sub eax, ebx ;edx:eax=(d+d-b)
+    33 00000029 83DA00                          sbb edx, 0        
+    34 0000002C 668B1D[03000000]                mov bx, word [c]
+    35 00000033 668B0D[05000000]                mov cx, word [c+2]
+    36 0000003A 52                              push edx
+    37 0000003B 50                              push eax
+    38 0000003C A0[00000000]                    mov al, [a]
+    39 00000041 B400                            mov ah, 0
+    40 00000043 66BA0000                        mov dx, 0
+    41 00000047 6652                            push dx
+    42 00000049 6650                            push ax
+    43 0000004B 6651                            push cx
+    44 0000004D 6653                            push bx
+    45 0000004F 5B                              pop ebx
+    46 00000050 59                              pop ecx
+    47 00000051 29CB                            sub ebx, ecx
+    48 00000053 58                              pop eax
+    49 00000054 5A                              pop edx
+    50 00000055 01D8                            add eax, ebx
+    51 00000057 83D200                          adc edx, 0
+    52 0000005A 0305[07000000]                  add eax, dword [d]
+    53 00000060 1315[0B000000]                  adc edx, dword [d+4]
+    54                                          
+    55                                      
+    56                                          ; exit(0)
+    57 00000066 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    58 00000068 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

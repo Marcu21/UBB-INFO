@@ -1,0 +1,83 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/oop_qt/undo.h
+        -:    0:Graph:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\locatar_service.cpp.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\locatar_service.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#pragma once
+        -:    2:#include "locatar.h"
+        -:    3:#include "locatar_repo.h"
+        -:    4:#include <memory>
+        -:    5:
+        -:    6:class ActiuneUndo {
+        -:    7:public:
+        -:    8:    virtual void doUndo() = 0;
+function _ZN11ActiuneUndoD2Ev called 11 returned 100% blocks executed 100%
+       11:    9:    virtual ~ActiuneUndo() = default;
+        -:   10:};
+        -:   11:
+        -:   12:class UndoAdauga : public ActiuneUndo {
+        -:   13:    Locatar addedLocatar;
+        -:   14:    LocatarRepository& repo;
+        -:   15:
+        -:   16:public:
+function _ZN10UndoAdaugaC1ER17LocatarRepositoryRK7Locatar called 7 returned 100% blocks executed 80%
+        7:   17:    UndoAdauga(LocatarRepository& repo, Locatar const& locatar)
+        7:   18:            : addedLocatar(locatar), repo(repo) {}
+        7:   18-block  0
+call    0 returned 7
+call    1 returned 7
+branch  2 taken 7 (fallthrough)
+branch  3 taken 0 (throw)
+        7:   18-block  1
+    $$$$$:   18-block  2
+call    4 never executed
+        -:   19:
+        -:   20:
+        -:   21:    void doUndo() override;
+        -:   22:};
+        -:   23:
+        -:   24:class UndoSterge : public ActiuneUndo {
+        -:   25:    Locatar deletedLocatar;
+        -:   26:    LocatarRepository& repo;
+        -:   27:
+        -:   28:public:
+function _ZN10UndoStergeC1ER17LocatarRepositoryRK7Locatar called 2 returned 100% blocks executed 80%
+        2:   29:    UndoSterge(LocatarRepository& repo, Locatar const& locatar)
+        2:   30:            : deletedLocatar(locatar), repo(repo) {}
+        2:   30-block  0
+call    0 returned 2
+call    1 returned 2
+branch  2 taken 2 (fallthrough)
+branch  3 taken 0 (throw)
+        2:   30-block  1
+    $$$$$:   30-block  2
+call    4 never executed
+        -:   31:
+        -:   32:    void doUndo() override;
+        -:   33:};
+        -:   34:
+        -:   35:class UndoModifica : public ActiuneUndo {
+        -:   36:    Locatar oldLocatar;
+        -:   37:    Locatar newLocatar;
+        -:   38:    LocatarRepository& repo;
+        -:   39:
+        -:   40:public:
+function _ZN12UndoModificaC1ER17LocatarRepositoryRK7LocatarS4_ called 2 returned 100% blocks executed 62%
+        2:   41:    UndoModifica(LocatarRepository& repo, Locatar const& oldLoc, Locatar const& newLoc)
+        2:   42:            : oldLocatar(oldLoc), newLocatar(newLoc), repo(repo) {}
+        2:   42-block  0
+call    0 returned 2
+call    1 returned 2
+branch  2 taken 2 (fallthrough)
+branch  3 taken 0 (throw)
+        2:   42-block  1
+call    4 returned 2
+branch  5 taken 2 (fallthrough)
+branch  6 taken 0 (throw)
+        2:   42-block  2
+    $$$$$:   42-block  3
+call    7 never executed
+    $$$$$:   42-block  4
+call    8 never executed
+        -:   43:
+        -:   44:    void doUndo() override;
+        -:   45:};

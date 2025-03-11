@@ -1,0 +1,489 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/oop_lab5_marcus/ui.c
+        -:    0:Graph:C:\Users\emanu\CLionProjects\oop_lab5_marcus\cmake-build-debug-coverage\CMakeFiles\oop_lab5_marcus.dir\ui.c.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\oop_lab5_marcus\cmake-build-debug-coverage\CMakeFiles\oop_lab5_marcus.dir\ui.c.gcda
+        -:    0:Runs:1
+        -:    1:#include "ui.h"
+        -:    2:#include <stdio.h>
+        -:    3:#include <stdlib.h>
+        -:    4:
+function print_materie_prima called 0 returned 0% blocks executed 0%
+    #####:    5:void print_materie_prima(MateriePrima materie_prima)
+        -:    6:{
+    #####:    7:    printf("Nume: %s, Producator: %s, Cantitate: %d\n", materie_prima.nume, materie_prima.producator, materie_prima.cantitate);
+    %%%%%:    7-block  0
+call    0 never executed
+    #####:    8:}
+        -:    9:
+function read_int called 1 returned 0% blocks executed 20%
+        1:   10:int read_int(int* val)
+        -:   11:{
+       1*:   12:    if (scanf("%d", val) == 1) return 1;
+        1:   12-block  0
+call    0 returned 0
+branch  1 never executed (fallthrough)
+branch  2 never executed
+    %%%%%:   12-block  1
+        -:   13:    int c;
+    #####:   14:    while (((c = fgetc(stdin)) != '\n') && (c != EOF));
+    %%%%%:   14-block  0
+    %%%%%:   14-block  1
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed
+    %%%%%:   14-block  2
+branch  4 never executed
+branch  5 never executed (fallthrough)
+    #####:   15:    return 0;
+    %%%%%:   15-block  0
+        -:   16:}
+        -:   17:
+function citeste_materie_prima called 0 returned 0% blocks executed 0%
+    #####:   18:MateriePrima* citeste_materie_prima()
+        -:   19:{
+    #####:   20:    printf("Introduceti numele materiei prime: ");
+    %%%%%:   20-block  0
+call    0 never executed
+        -:   21:    char nume[MAX_CHAR];
+    #####:   22:    scanf_s(MAX_CHAR_FORMAT, nume, MAX_CHAR);
+call    0 never executed
+        -:   23:
+    #####:   24:    printf("Introduceti producatorul materiei prime: ");
+call    0 never executed
+        -:   25:    char producator[MAX_CHAR];
+    #####:   26:    scanf_s(MAX_CHAR_FORMAT, producator, MAX_CHAR);
+call    0 never executed
+        -:   27:
+    #####:   28:    int cantitate = -1;
+    #####:   29:    printf("Introduceti cantitatea materiei prime: ");
+call    0 never executed
+    #####:   30:    read_int(&cantitate);
+call    0 never executed
+        -:   31:
+    #####:   32:    return creeaza_materie_prima(nume, producator, cantitate);
+call    0 never executed
+        -:   33:}
+        -:   34:
+        -:   35:
+function main_ui called 1 returned 0% blocks executed 6%
+        1:   36:void main_ui()
+        -:   37:{
+        -:   38:    MateriiPrime* materii_prime;
+        1:   39:    materii_prime = creeaza_vid();
+        1:   39-block  0
+call    0 returned 1
+        -:   40:    MateriiPrime* undoL;
+        1:   41:    undoL = creeaza_vid();
+call    0 returned 1
+        -:   42:    while (1)
+    #####:   43:    {
+    %%%%%:   43-block  0
+        1:   44:        printf("Alegeti optiunea:\n1. Adaugare materie prima\n2. Modificare materie prima\n3. Stergere materie prima\n");
+        1:   44-block  0
+call    0 returned 1
+        1:   45:        printf("4. Vizualizare materii prime pentru care cantitatea disponibila e mai mica decat un numar dat \n");
+call    0 returned 1
+        1:   46:        printf("5. Vizualizare materii prime din stoc ordonat dupa nume sau cantitate disponibila(crescator / descrescator)\n");
+call    0 returned 1
+        1:   47:        printf("6. Undo\n");
+call    0 returned 1
+        1:   48:        printf("0. Exit\n");
+call    0 returned 1
+        -:   49:
+        1:   50:        int optiune = -1;
+       1*:   51:        if (read_int(&optiune) == 0)
+call    0 returned 0
+branch  1 never executed (fallthrough)
+branch  2 never executed
+        -:   52:        {
+    #####:   53:            printf("Optiunea aleasa nu exista!\n");
+    %%%%%:   53-block  0
+call    0 never executed
+        -:   54:        }
+        -:   55:
+    #####:   56:        if (optiune == 1)
+    %%%%%:   56-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+        -:   57:        {
+    #####:   58:            if (adauga_element(materii_prime, citeste_materie_prima()) == 1)
+    %%%%%:   58-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed
+        -:   59:            {
+    #####:   60:                adauga_materie_prima(undoL, copy_list(materii_prime));
+    %%%%%:   60-block  0
+call    0 never executed
+call    1 never executed
+    #####:   61:                printf("Elementul a fost adaugat!\n");
+call    0 never executed
+        -:   62:            }
+        -:   63:            else
+        -:   64:            {
+    #####:   65:                printf("Elementul nu este valid!\n");
+    %%%%%:   65-block  0
+call    0 never executed
+        -:   66:            }
+        -:   67:        }
+    #####:   68:        else if (optiune == 2)
+    %%%%%:   68-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+        -:   69:        {
+    #####:   70:            int index_modificare = -1;
+    #####:   71:            printf("Introduceti numarul elementului modificat: ");
+    %%%%%:   71-block  0
+call    0 never executed
+    #####:   72:            read_int(&index_modificare);
+call    0 never executed
+    #####:   73:            if (modifica_element(materii_prime, index_modificare - 1, citeste_materie_prima()))
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed
+        -:   74:            {
+    #####:   75:                adauga_materie_prima(undoL, copy_list(materii_prime));
+    %%%%%:   75-block  0
+call    0 never executed
+call    1 never executed
+    #####:   76:                printf("Elementul a fost modificat!\n");
+call    0 never executed
+        -:   77:            }
+        -:   78:            else
+        -:   79:            {
+    #####:   80:                printf("Nu exista element pe pozitia introdusa sau elementul nou este invalid!\n");
+    %%%%%:   80-block  0
+call    0 never executed
+        -:   81:            }
+        -:   82:        }
+    #####:   83:        else if (optiune == 3)
+    %%%%%:   83-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+        -:   84:        {
+    #####:   85:            int index_stergere = -1;
+    #####:   86:            printf("Introduceti numarul elementului sters: ");
+    %%%%%:   86-block  0
+call    0 never executed
+    #####:   87:            read_int(&index_stergere);
+call    0 never executed
+    #####:   88:            if (sterge_element(materii_prime, index_stergere - 1) == 1)
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed
+        -:   89:            {
+    #####:   90:                adauga_materie_prima(undoL, copy_list(materii_prime));
+    %%%%%:   90-block  0
+call    0 never executed
+call    1 never executed
+    #####:   91:                printf("Elementul a fost sters!\n");
+call    0 never executed
+        -:   92:            }
+        -:   93:            else
+        -:   94:            {
+    #####:   95:                printf("Nu exista element pe pozitia introdusa!\n");
+    %%%%%:   95-block  0
+call    0 never executed
+        -:   96:            }
+        -:   97:        }
+    #####:   98:        else if (optiune == 4)
+    %%%%%:   98-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+        -:   99:        {
+    #####:  100:            printf("1. Filtrare dupa cantitate maxima\n2. Filtrare dupa nume\n");
+    %%%%%:  100-block  0
+call    0 never executed
+        -:  101:            int optiune_filtrare;
+    #####:  102:            scanf("%d", &optiune_filtrare);
+call    0 never executed
+    #####:  103:            if (optiune_filtrare == 1) {
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  104:                int cantitate_maxima = -1;
+    #####:  105:                printf("Introdu cantitatea maxima: ");
+    %%%%%:  105-block  0
+call    0 never executed
+    #####:  106:                if (!read_int(&cantitate_maxima) || cantitate_maxima < 0) {
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed
+    %%%%%:  106-block  0
+branch  3 never executed (fallthrough)
+branch  4 never executed
+    #####:  107:                    printf("Input invalid\n");
+    %%%%%:  107-block  0
+call    0 never executed
+    #####:  108:                    continue;
+        -:  109:                }
+        -:  110:
+    #####:  111:                int total = 0;
+    #####:  112:                MateriePrima *filtered = get_materii_prime_cu_cantitate_maxima(materii_prime, cantitate_maxima, &total);
+    %%%%%:  112-block  0
+call    0 never executed
+    #####:  113:                for (int i = 0; i < total; i++) {
+    %%%%%:  113-block  0
+branch  0 never executed
+branch  1 never executed (fallthrough)
+    #####:  114:                    printf("%d. ", i + 1);
+    %%%%%:  114-block  0
+call    0 never executed
+    #####:  115:                    print_materie_prima(filtered[i]);
+call    0 never executed
+        -:  116:                }
+    #####:  117:                free(filtered);
+    %%%%%:  117-block  0
+        -:  118:            }
+    #####:  119:            else if (optiune_filtrare == 2) {
+    %%%%%:  119-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+        -:  120:                char nume[MAX_CHAR];
+    #####:  121:                printf("Introdu numele materiei prime: ");
+    %%%%%:  121-block  0
+call    0 never executed
+    #####:  122:                scanf_s(MAX_CHAR_FORMAT, nume, MAX_CHAR);
+call    0 never executed
+    #####:  123:                int total = 0;
+    #####:  124:                MateriePrima *filtered = get_materii_prime_cu_nume(materii_prime, nume, &total);
+call    0 never executed
+    #####:  125:                for (int i = 0; i < total; i++) {
+    %%%%%:  125-block  0
+branch  0 never executed
+branch  1 never executed (fallthrough)
+    #####:  126:                    printf("%d. ", i + 1);
+    %%%%%:  126-block  0
+call    0 never executed
+    #####:  127:                    print_materie_prima(filtered[i]);
+call    0 never executed
+        -:  128:                }
+    #####:  129:                free(filtered);
+    %%%%%:  129-block  0
+        -:  130:            }
+        -:  131:            else {
+    #####:  132:                printf("Input invalid\n");
+    %%%%%:  132-block  0
+call    0 never executed
+        -:  133:            }
+        -:  134:        }
+    #####:  135:        else if (optiune == 5)
+    %%%%%:  135-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+        -:  136:        {
+    #####:  137:            int dupa_nume = -1;
+    #####:  138:            int descrescator = -1;
+    #####:  139:            printf("Introdu 1 daca vrei sa fie bubble sort, 0 daca vrei sa fie selection sort ");
+    %%%%%:  139-block  0
+call    0 never executed
+        -:  140:            int opt;
+    #####:  141:            scanf("%d", &opt);
+call    0 never executed
+    #####:  142:            if(opt == 1) {
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  143:                printf("Introdu 1 daca sortarea este dupa nume, 0 daca este dupa cantitate: ");
+    %%%%%:  143-block  0
+call    0 never executed
+    #####:  144:                if (!read_int(&dupa_nume)) {
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed
+    #####:  145:                    printf("Input invalid\n");
+    %%%%%:  145-block  0
+call    0 never executed
+    #####:  146:                    continue;
+    %%%%%:  146-block  0
+        -:  147:                }
+    #####:  148:                printf("Introdu 1 daca sortarea este descrescatoare, 0 daca este crescatoare: ");
+    %%%%%:  148-block  0
+call    0 never executed
+    #####:  149:                if (!read_int(&descrescator)) {
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed
+    #####:  150:                    printf("Input invalid\n");
+    %%%%%:  150-block  0
+call    0 never executed
+    #####:  151:                    continue;
+        -:  152:                }
+    #####:  153:                int (*cmp)(MateriePrima, MateriePrima) = NULL;
+    #####:  154:                if (dupa_nume == 1) {
+    %%%%%:  154-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  155:                    cmp = &compara_dupa_nume;
+    %%%%%:  155-block  0
+        -:  156:                }
+    #####:  157:                if (dupa_nume == 0) {
+    %%%%%:  157-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  158:                    cmp = &compara_dupa_cantitate;
+    %%%%%:  158-block  0
+        -:  159:                }
+    #####:  160:                if (cmp == NULL) {
+    %%%%%:  160-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  161:                    printf("Input invalid\n");
+    %%%%%:  161-block  0
+call    0 never executed
+    #####:  162:                    continue;
+        -:  163:                }
+    #####:  164:                MateriePrima *sorted = sorteaza_materii_prime(materii_prime, cmp, descrescator);
+    %%%%%:  164-block  0
+call    0 never executed
+    #####:  165:                for (int i = 0; i < materii_prime->used; i++) {
+    %%%%%:  165-block  0
+branch  0 never executed
+branch  1 never executed (fallthrough)
+    #####:  166:                    printf("%d. ", i + 1);
+    %%%%%:  166-block  0
+call    0 never executed
+    #####:  167:                    print_materie_prima(sorted[i]);
+call    0 never executed
+        -:  168:                }
+    #####:  169:                free(sorted);
+    %%%%%:  169-block  0
+        -:  170:            }
+    #####:  171:            else if(opt == 0) {
+    %%%%%:  171-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  172:                printf("Introdu 1 daca sortarea este dupa nume, 0 daca este dupa cantitate: ");
+    %%%%%:  172-block  0
+call    0 never executed
+    #####:  173:                if (!read_int(&dupa_nume)) {
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed
+    #####:  174:                    printf("Input invalid\n");
+    %%%%%:  174-block  0
+call    0 never executed
+    #####:  175:                    continue;
+        -:  176:                }
+    #####:  177:                printf("Introdu 1 daca sortarea este descrescatoare, 0 daca este crescatoare: ");
+    %%%%%:  177-block  0
+call    0 never executed
+    #####:  178:                if (!read_int(&descrescator)) {
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed
+    #####:  179:                    printf("Input invalid\n");
+    %%%%%:  179-block  0
+call    0 never executed
+    #####:  180:                    continue;
+        -:  181:                }
+    #####:  182:                int (*cmp)(MateriePrima, MateriePrima) = NULL;
+    #####:  183:                if (dupa_nume == 1) {
+    %%%%%:  183-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  184:                    cmp = &compara_dupa_nume;
+    %%%%%:  184-block  0
+        -:  185:                }
+    #####:  186:                if (dupa_nume == 0) {
+    %%%%%:  186-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  187:                    cmp = &compara_dupa_cantitate;
+    %%%%%:  187-block  0
+        -:  188:                }
+    #####:  189:                if (cmp == NULL) {
+    %%%%%:  189-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  190:                    printf("Input invalid\n");
+    %%%%%:  190-block  0
+call    0 never executed
+    #####:  191:                    continue;
+        -:  192:                }
+    #####:  193:                MateriePrima *sorted = sorteaza_materii_prime_insertion(materii_prime, cmp, descrescator);
+    %%%%%:  193-block  0
+call    0 never executed
+    #####:  194:                for (int i = 0; i < materii_prime->used; i++) {
+    %%%%%:  194-block  0
+branch  0 never executed
+branch  1 never executed (fallthrough)
+    #####:  195:                    printf("%d. ", i + 1);
+    %%%%%:  195-block  0
+call    0 never executed
+    #####:  196:                    print_materie_prima(sorted[i]);
+call    0 never executed
+        -:  197:                }
+    #####:  198:                free(sorted);
+    %%%%%:  198-block  0
+        -:  199:            }
+        -:  200:            else {
+    #####:  201:                printf("Input invalid\n");
+    %%%%%:  201-block  0
+call    0 never executed
+    #####:  202:                continue;
+        -:  203:            }
+        -:  204:
+        -:  205:        }
+    #####:  206:        else if (optiune == 6)
+    %%%%%:  206-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+        -:  207:        {
+    #####:  208:            if (undoL->used == 0)
+    %%%%%:  208-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+        -:  209:            {
+    #####:  210:                printf("Nu exista operatii de undo!\n");
+    %%%%%:  210-block  0
+call    0 never executed
+        -:  211:            }
+        -:  212:            else {
+    #####:  213:                if (undoL->used == 1) {
+    %%%%%:  213-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    #####:  214:                    distruge_materii_prime(materii_prime, (DestroyFunction)distruge_materie_prima);
+    %%%%%:  214-block  0
+call    0 never executed
+    #####:  215:                    materii_prime = creeaza_vid();
+call    0 never executed
+    #####:  216:                    undoL->used--;
+    #####:  217:                    printf("Undo efectuat cu succes!\n");
+call    0 never executed
+        -:  218:                }
+        -:  219:                else {
+    #####:  220:                    distruge_materii_prime(materii_prime, (DestroyFunction)distruge_materie_prima);
+    %%%%%:  220-block  0
+call    0 never executed
+    #####:  221:                    materii_prime = copy_list(undoL->array[undoL->used - 2]);
+call    0 never executed
+        -:  222:
+    #####:  223:                    distruge_lista_materii(undoL->array[undoL->used - 1]);
+call    0 never executed
+    #####:  224:                    undoL->used--;
+        -:  225:
+    #####:  226:                    printf("Undo efectuat cu succes!\n");
+call    0 never executed
+        -:  227:                }
+        -:  228:            }
+        -:  229:        }
+    #####:  230:        else if (optiune == 0)
+    %%%%%:  230-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+        -:  231:        {
+    #####:  232:            distruge_materii_prime(materii_prime, (DestroyFunction)distruge_materie_prima);
+    %%%%%:  232-block  0
+call    0 never executed
+    #####:  233:            return;
+        -:  234:        }
+        -:  235:        else
+        -:  236:        {
+    #####:  237:            printf("Optiunea aleasa nu exista!\n");
+    %%%%%:  237-block  0
+call    0 never executed
+        -:  238:        }
+        -:  239:    }
+        -:  240:}

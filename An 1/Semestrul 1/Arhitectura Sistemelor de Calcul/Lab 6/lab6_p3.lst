@@ -1,0 +1,85 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ;Se da un sir de 3 dublucuvinte, fiecare dublucuvant continand 2 valori pe cuvant (despachetate, deci fiecare cifra hexa e precedata de un 0). 
+    14                                      ;Sa se creeze un sir de octeti care sa contina acele valori (impachetate deci pe un singur octet), ordonate crescator in memorie, acestea fiind considerate numere cu semn.
+    15                                      ;pentru sirul initial: 0702090Ah, 0B0C0304h, 05060108h
+    16                                      ;se va obtine sirul:   72h, 9Ah, 0BCh,  34h, 56h, 18h
+    17                                      ;ordonat crescator:    9Ah, 0BCh, 18h, 34h, 56h, 72h
+    18                                  
+    19 00000000 0A09020704030C0B08-         s1 dd 0702090Ah, 0B0C0304h, 05060108h
+    19 00000009 010605             
+    20                                      len equ $-s1
+    21 0000000C 00<rept>                    s2 times len db 0
+    22                                       
+    23                                  ; our code starts here
+    24                                  segment code use32 class=code
+    25                                      start:
+    26 00000000 B903000000                      mov ecx, len / 4
+    27 00000005 E362                            jecxz final
+    28 00000007 BE[00000000]                    mov esi, s1
+    29 0000000C BF[0C000000]                    mov edi, s2
+    30                                      convert:
+    31 00000011 AD                              lodsd
+    32 00000012 C1C010                          rol eax, 16
+    33                                          
+    34 00000015 240F                            and al, 0Fh   
+    35                                  
+    36 00000017 88E3                            mov bl, ah           
+    37 00000019 80E30F                          and bl, 0Fh          
+    38 0000001C C0C304                          rol bl, 4
+    39 0000001F 08D8                            or al, bl
+    40 00000021 AA                              stosb
+    41                                          
+    42 00000022 C1C010                          rol eax, 16
+    43 00000025 240F                            and al, 0Fh   
+    44                                  
+    45 00000027 88E3                            mov bl, ah           
+    46 00000029 80E30F                          and bl, 0Fh          
+    47 0000002C C0C304                          rol bl, 4
+    48 0000002F 08D8                            or al, bl
+    49 00000031 AA                              stosb
+    50                                          
+    51                                          
+    52 00000032 E2DD                            loop convert
+    53                                  
+    54 00000034 B906000000                      mov ecx, len/2
+    55 00000039 49                              dec ecx                    
+    56 0000003A BE00000000                      mov esi, 0                 
+    57                                      loop_1:
+    58 0000003F 8A86[0C000000]                  mov al, [s2+esi]             
+    59                                          
+    60 00000045 89F3                            mov ebx, esi
+    61 00000047 43                              inc ebx                    
+    62                                          loop_2:
+    63 00000048 8A93[0C000000]                      mov dl, [s2+ebx]       
+    64                                              
+    65 0000004E 38D0                                cmp al, dl
+    66 00000050 720E                                jb no_swap
+    67                                              
+    68 00000052 8883[0C000000]                      mov [s2+ebx], al
+    69 00000058 8896[0C000000]                      mov [s2+esi], dl
+    70 0000005E 88D0                                mov al, dl
+    71                                              
+    72                                          no_swap:
+    73 00000060 43                                  inc ebx                
+    74 00000061 83FB06                              cmp ebx, len/2 
+    75 00000064 72E2                                jb loop_2              
+    76                                  
+    77                                      next:
+    78 00000066 46                              inc esi                    
+    79 00000067 E2D6                            loop loop_1
+    80                                          
+    81                                      
+    82                                      final:
+    83 00000069 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    84 0000006B FF15[00000000]                  call    [exit]       ; call exit to terminate the program

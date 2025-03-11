@@ -1,0 +1,13 @@
+# ninja log v5
+131	476	7407515420718157	CMakeFiles/practic.dir/domain.cpp.obj	3d190c7269cbf8c8
+142	665	7407515422592514	CMakeFiles/practic.dir/teste.cpp.obj	356c221273c3011b
+15	99	7407518658035122	practic_autogen/mocs_compilation.cpp	3f48a8fb76e9bc28
+15	99	7407518658035122	practic_autogen/timestamp	3f48a8fb76e9bc28
+15	99	7407518658035122	C:/Users/emanu/CLionProjects/practic/cmake-build-debug/practic_autogen/timestamp	3f48a8fb76e9bc28
+15	99	7407518658035122	C:/Users/emanu/CLionProjects/practic/cmake-build-debug/practic_autogen/mocs_compilation.cpp	3f48a8fb76e9bc28
+127	2237	7407517540823138	CMakeFiles/practic.dir/main.cpp.obj	f66ddfe3c40ebcf3
+134	182	7407033420660943	CMakeFiles/practic.dir/practic_autogen/mocs_compilation.cpp.obj	ea957120f3bf1f1d
+430	756	7407518663068764	practic.exe	f36eb24680f99b3b
+135	468	7407515420631282	CMakeFiles/practic.dir/validator.cpp.obj	314992184ee733fb
+127	697	7407515422923523	CMakeFiles/practic.dir/repo.cpp.obj	fd201aff246c4434
+103	429	7407518661337075	CMakeFiles/practic.dir/service.cpp.obj	7835b1de82526d71

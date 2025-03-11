@@ -1,0 +1,5 @@
+C:/Users/emanu/CLionProjects/oop_qt/cmake-build-debug-coverage/CMakeFiles/oop_qt.dir
+C:/Users/emanu/CLionProjects/oop_qt/cmake-build-debug-coverage/CMakeFiles/edit_cache.dir
+C:/Users/emanu/CLionProjects/oop_qt/cmake-build-debug-coverage/CMakeFiles/rebuild_cache.dir
+C:/Users/emanu/CLionProjects/oop_qt/cmake-build-debug-coverage/CMakeFiles/oop_qt_autogen_timestamp_deps.dir
+C:/Users/emanu/CLionProjects/oop_qt/cmake-build-debug-coverage/CMakeFiles/oop_qt_autogen.dir

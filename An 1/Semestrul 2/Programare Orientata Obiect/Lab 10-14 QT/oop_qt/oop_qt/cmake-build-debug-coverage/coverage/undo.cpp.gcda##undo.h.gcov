@@ -1,0 +1,50 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/oop_qt/undo.h
+        -:    0:Graph:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\undo.cpp.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\undo.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#pragma once
+        -:    2:#include "locatar.h"
+        -:    3:#include "locatar_repo.h"
+        -:    4:#include <memory>
+        -:    5:
+        -:    6:class ActiuneUndo {
+        -:    7:public:
+        -:    8:    virtual void doUndo() = 0;
+function _ZN11ActiuneUndoD2Ev called 0 returned 0% blocks executed 0%
+    #####:    9:    virtual ~ActiuneUndo() = default;
+        -:   10:};
+        -:   11:
+        -:   12:class UndoAdauga : public ActiuneUndo {
+        -:   13:    Locatar addedLocatar;
+        -:   14:    LocatarRepository& repo;
+        -:   15:
+        -:   16:public:
+        -:   17:    UndoAdauga(LocatarRepository& repo, Locatar const& locatar)
+        -:   18:            : addedLocatar(locatar), repo(repo) {}
+        -:   19:
+        -:   20:
+        -:   21:    void doUndo() override;
+        -:   22:};
+        -:   23:
+        -:   24:class UndoSterge : public ActiuneUndo {
+        -:   25:    Locatar deletedLocatar;
+        -:   26:    LocatarRepository& repo;
+        -:   27:
+        -:   28:public:
+        -:   29:    UndoSterge(LocatarRepository& repo, Locatar const& locatar)
+        -:   30:            : deletedLocatar(locatar), repo(repo) {}
+        -:   31:
+        -:   32:    void doUndo() override;
+        -:   33:};
+        -:   34:
+        -:   35:class UndoModifica : public ActiuneUndo {
+        -:   36:    Locatar oldLocatar;
+        -:   37:    Locatar newLocatar;
+        -:   38:    LocatarRepository& repo;
+        -:   39:
+        -:   40:public:
+        -:   41:    UndoModifica(LocatarRepository& repo, Locatar const& oldLoc, Locatar const& newLoc)
+        -:   42:            : oldLocatar(oldLoc), newLocatar(newLoc), repo(repo) {}
+        -:   43:
+        -:   44:    void doUndo() override;
+        -:   45:};

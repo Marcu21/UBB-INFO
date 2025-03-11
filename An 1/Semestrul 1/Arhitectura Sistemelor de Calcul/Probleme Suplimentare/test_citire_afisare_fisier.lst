@@ -1,0 +1,114 @@
+     1                                  ; Codul de mai jos va deschide un fisier numit "ana.txt" din directorul curent, va citi un text scurt din acel fisier, apoi va afisa  in consola numarul de caractere citite si textul citit din fisier.
+     2                                  ; Programul va folosi functia fopen pentru deschiderea fisierului, functia fread pentru citirea din fisier si functia fclose pentru inchiderea fisierului creat.
+     3                                  ; Deoarece in apelul functiei fopen programul foloseste modul de acces "r", daca un fisier numele dat nu exista in directorul curent,  apelul functiei fopen nu va reusi (eroare). Detalii despre modurile de acces sun
+     4                                  
+     5                                  ; In acest program sirul de caractere in care se va citi textul din fisier trebuie sa aiba o lungime cu 1 mai mare decat numarul maxim  de elemente care vor fi citite din fisier deoarece acest sir va fi afisat in co
+     6                                  ; Orice sir de caractere folosit de functia printf trebuie sa fie terminat in 0, altfel afisarea nu va fi corecta.
+     7                                  ; Daca fisierul ar contine mai mult de <len> caractere si dimensiunea sirului destinatie era exact <len>, intregul sir ar fi fost completat cu valori citite din fisier, astfel sirul nu se mai termina cu valoarea 0.
+     8                                  
+     9                                  bits 32 
+    10                                  
+    11                                  global start        
+    12                                  
+    13                                  ; declare external functions needed by our program
+    14                                  extern exit, fopen, fread, fclose, printf
+    15                                  import exit msvcrt.dll  
+    16                                  import fopen msvcrt.dll  
+    17                                  import fread msvcrt.dll
+    18                                  import fclose msvcrt.dll
+    19                                  import printf msvcrt.dll
+    20                                  
+    21                                  ; our data is declared here (the variables needed by our program)
+    22                                  segment data use32 class=data
+    23 00000000 616E612E74787400            nume_fisier db "ana.txt", 0  ; numele fisierului care va fi creat
+    24 00000008 7200                        mod_acces db "r", 0          ; modul de deschidere a fisierului - 
+    25                                                                   ; r - pentru scriere. fisierul trebuie sa existe 
+    26                                      len equ 100                  ; numarul maxim de elemente citite din fisier.                            
+    27 0000000A 00<rept>                    text times (len+1) db 0      ; sirul in care se va citi textul din fisier (dimensiune len+1 explicata mai sus)
+    28 0000006F 00                          a db 0
+    29 00000070 FFFFFFFF                    descriptor_fis dd -1         ; variabila in care vom salva descriptorul fisierului - necesar pentru a putea face referire la fisier
+    30 00000074 416D20636974697420-         format db "Am citit %d caractere din fisier.", 0  ; formatul - utilizat pentru afisarea textului citit din fisier
+    30 0000007D 256420636172616374-
+    30 00000086 6572652064696E2066-
+    30 0000008F 69736965722E00     
+    31                                                                   ; %s reprezinta un sir de caractere
+    32 00000096 7E21402324255E262A-         caractere_speciale db "~!@#$%^&*()-=_+{}[];'\,./:|<>?"
+    32 0000009F 28292D3D5F2B7B7D5B-
+    32 000000A8 5D3B275C2C2E2F3A7C-
+    32 000000B1 3C3E3F             
+    33                                      len2 equ $-caractere_speciale
+    34 000000B4 00                          numar db 0
+    35                                  
+    36                                  ; our code starts here
+    37                                  segment code use32 class=code
+    38                                      start:
+    39                                          ; apelam fopen pentru a deschide fisierul
+    40                                          ; functia va returna in EAX descriptorul fisierului sau 0 in caz de eroare
+    41                                          ; eax = fopen(nume_fisier, mod_acces)
+    42 00000000 68[08000000]                    push dword mod_acces     
+    43 00000005 68[00000000]                    push dword nume_fisier
+    44 0000000A FF15[00000000]                  call [fopen]
+    45 00000010 83C408                          add esp, 4*2                ; eliberam parametrii de pe stiva
+    46                                  
+    47 00000013 A3[70000000]                    mov [descriptor_fis], eax   ; salvam valoarea returnata de fopen in variabila descriptor_fis
+    48                                          
+    49                                          ; verificam daca functia fopen a creat cu succes fisierul (daca EAX != 0)
+    50 00000018 83F800                          cmp eax, 0
+    51 0000001B 7465                            je sfarsit
+    52                                          
+    53                                          ; citim textul in fisierul deschis folosind functia fread
+    54                                          ; eax = fread(text, 1, len, descriptor_fis)
+    55 0000001D FF35[70000000]                  push dword [descriptor_fis]
+    56 00000023 6A64                            push dword len
+    57 00000025 6A01                            push dword 1
+    58 00000027 68[0A000000]                    push dword text        
+    59 0000002C FF15[00000000]                  call [fread]
+    60 00000032 83C410                          add esp, 4*4                 ; dupa apelul functiei fread EAX contine numarul de caractere citite din fisier                 
+    61 00000035 B800000000                  mov eax, 0
+    62 0000003A B900000000                  mov ecx, 0  ; Contor pentru șirul text
+    63 0000003F BA00000000                  mov edx, 0  ; Contor pentru șirul caractere_speciale
+    64                                  
+    65                                      ; Parcurgere șir text și comparare cu șirul caractere_speciale
+    66                                      parcurge_sir:
+    67 00000044 8A81[0A000000]                  mov al, [text + ecx]
+    68 0000004A 8A9A[96000000]                  mov bl, [caractere_speciale + edx]
+    69 00000050 38D8                            cmp al, bl
+    70 00000052 7403                            je elemente_egale
+    71                                  
+    72                                          ; Avansare la următorul element în șirul text
+    73 00000054 41                              inc ecx
+    74 00000055 EB01                            jmp verificare_sfarsit
+    75                                  
+    76                                      elemente_egale:
+    77                                          ; Incrementare contor de elemente egale
+    78 00000057 40                              inc eax
+    79                                  
+    80                                      verificare_sfarsit:
+    81                                          ; Verificare dacă am ajuns la sfârșitul șirului text
+    82 00000058 3C00                            cmp al, 0
+    83 0000005A 7426                            je sfarsit
+    84                                  
+    85                                          ; Verificare dacă am ajuns la sfârșitul șirului caractere_speciale
+    86 0000005C 80FB00                          cmp bl, 0
+    87 0000005F 7421                            je sfarsit
+    88                                  
+    89                                          ; Avansare la următorul element în șirul caractere_speciale
+    90 00000061 42                              inc edx
+    91 00000062 EBE0                            jmp parcurge_sir
+    92                                     
+    93 00000064 50                              push dword eax
+    94 00000065 68[74000000]                    push dword format
+    95 0000006A FF15[00000000]                  call [printf]
+    96 00000070 83C40C                          add esp, 4*3
+    97                                          
+    98                                          ; apelam functia fclose pentru a inchide fisierul
+    99                                          ; fclose(descriptor_fis)
+   100 00000073 FF35[70000000]                  push dword [descriptor_fis]
+   101 00000079 FF15[00000000]                  call [fclose]
+   102 0000007F 83C404                          add esp, 4
+   103                                          
+   104                                        sfarsit:
+   105                                          
+   106                                          ; exit(0)
+   107 00000082 6A00                            push    dword 0      
+   108 00000084 FF15[00000000]                  call    [exit]       

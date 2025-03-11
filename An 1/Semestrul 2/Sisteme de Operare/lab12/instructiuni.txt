@@ -1,0 +1,3 @@
+dd if=/dev/urandom of=file.bin bs=4 count=100000 //creare fisier cu continut random
+xxd file.bin //afisare continut fisier respectiv
+doamne feri sa folosesti cat

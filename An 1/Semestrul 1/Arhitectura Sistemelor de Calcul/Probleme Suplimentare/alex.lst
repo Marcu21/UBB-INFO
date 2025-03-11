@@ -1,0 +1,190 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  extern exit, fopen, fread, fprintf, fclose, printf
+     4                                  import exit msvcrt.dll
+     5                                  import fopen msvcrt.dll
+     6                                  import fread msvcrt.dll
+     7                                  import fprintf msvcrt.dll
+     8                                  import fclose msvcrt.dll
+     9                                  import printf msvcrt.dll
+    10                                  ;se da fisierul input.txt din care se citeste o operatie de genu: 1/2 + 3*  7-  9
+    11                                  ;pe prima linie afiseaza sirul initial_text
+    12                                  ;pe a doua linie afiseaza lungimea sirului
+    13                                  ;pe a 3 a linie numarul de spatii
+    14                                  ;pe a 4 a linie sirul initial, dar toate operatiile sa fie cu plus
+    15                                  
+    16                                  ; 5 a linie rezultatul adunarii de pe linia 4
+    17                                  ; 6 rezultatul adunarii de pe linia 4 fara spatii
+    18                                  segment data use32 class=data
+    19 00000000 7200                        input_mode db "r", 0
+    20 00000002 696E7075742E747874-         input_file_name db "input.txt", 0
+    20 0000000B 00                 
+    21 0000000C FFFFFFFF                    input_descriptor dd -1
+    22                                     
+    23                                      
+    24 00000010 7700                        out_mode db "w", 0
+    25 00000012 6F75747075742E7478-         output_file_name db "output.txt", 0
+    25 0000001B 7400               
+    26 0000001D FFFFFFFF                    output_descriptor dd -1
+    27                                      
+    28                                      len equ 100
+    29 00000021 00<rept>                    text times (len+1) db 0
+    30                                      initial_text resb 0 
+    31 00000086 25730D0A00                  string_format db "%s", 13, 10, 0
+    32 0000008B 25640D0A00                  int_format db "%d", 13, 10, 0
+    33 00000090 00000000                    lungime dd 0
+    34 00000094 00000000                    spatii dd 0
+    35 00000098 2A2F2D00                    semne db "*/-", 0
+    36                                      len2 equ $-semne
+    37 0000009C 00<rept>                    text_plus times len db 0
+    38 00000100 00000000                    suma dd 0
+    39 00000104 00<rept>                    text_plus_fara_spatii times len db 0
+    40                                  
+    41                                  segment code use32 class=code
+    42                                      start:
+    43 00000000 68[00000000]                    push dword input_mode
+    44 00000005 68[02000000]                    push dword input_file_name
+    45 0000000A FF15[00000000]                  call [fopen]
+    46 00000010 83C408                          add esp, 4*2
+    47                                          
+    48 00000013 A3[0C000000]                    mov [input_descriptor], eax
+    49 00000018 83F800                          cmp eax, 0
+    50 0000001B 0F842B010000                    je final     
+    51                                          
+    52                                          
+    53 00000021 FF35[0C000000]                  push dword [input_descriptor]
+    54 00000027 6A64                            push dword len
+    55 00000029 6A01                            push dword 1
+    56 0000002B 68[21000000]                    push dword text
+    57 00000030 FF15[00000000]                  call [fread]
+    58 00000036 83C410                          add esp, 4*4
+    59 00000039 BE[21000000]                    mov esi, text
+    60                                          
+    61                                             
+    62 0000003E 68[10000000]                    push dword out_mode
+    63 00000043 68[12000000]                    push dword output_file_name
+    64 00000048 FF15[00000000]                  call [fopen]
+    65 0000004E 83C408                          add esp, 4*2
+    66                                          
+    67 00000051 A3[1D000000]                    mov [output_descriptor], eax
+    68 00000056 83F800                          cmp eax, 0
+    69 00000059 0F84ED000000                    je final
+    70                                          
+    71 0000005F BE[21000000]                    mov esi, text 
+    72 00000064 BF[9C000000]                    mov edi, text_plus
+    73                                          repeta:
+    74 00000069 8A06                                mov al, byte [esi]
+    75 0000006B 3C00                                cmp al, 0
+    76 0000006D 747B                                je final1
+    77 0000006F 3C20                                cmp al, ' '
+    78 00000071 7506                                jne sari
+    79 00000073 FF05[94000000]                      inc dword [spatii]
+    80                                              sari:
+    81 00000079 3C2D                                cmp al, '-'
+    82 0000007B 740A                                je plus
+    83 0000007D 3C2A                                cmp al, '*'
+    84 0000007F 7406                                je plus
+    85 00000081 3C2F                                cmp al, '/'
+    86 00000083 7402                                je plus
+    87 00000085 EB05                                jmp nu_plus
+    88                                              plus:
+    89 00000087 C6072B                                  mov byte [edi], '+'
+    90 0000008A EB04                                    jmp peste
+    91                                              nu_plus:
+    92 0000008C 8A06                                    mov al, byte [esi]
+    93 0000008E 8807                                    mov byte [edi], al
+    94                                              peste:
+    95 00000090 3C31                                cmp al, '1'
+    96 00000092 7422                                je adunare
+    97 00000094 3C32                                cmp al, '2'
+    98 00000096 741E                                je adunare
+    99 00000098 3C33                                cmp al, '3'
+   100 0000009A 741A                                je adunare
+   101 0000009C 3C34                                cmp al, '4'
+   102 0000009E 7416                                je adunare
+   103 000000A0 3C35                                cmp al, '5'
+   104 000000A2 7412                                je adunare
+   105 000000A4 3C36                                cmp al, '6'
+   106 000000A6 740E                                je adunare
+   107 000000A8 3C37                                cmp al, '7'
+   108 000000AA 740A                                je adunare
+   109 000000AC 3C38                                cmp al, '8'
+   110 000000AE 7406                                je adunare
+   111 000000B0 3C39                                cmp al, '9'
+   112 000000B2 7402                                je adunare
+   113 000000B4 EB0F                                jmp fara_adunare
+   114                                              adunare:
+   115 000000B6 B800000000                          mov eax, 0
+   116 000000BB 8A06                                mov al, byte [esi]
+   117 000000BD 2C30                                sub al, '0'
+   118 000000BF 0105[00010000]                      add dword [suma], eax
+   119                                              fara_adunare:
+   120 000000C5 59                                  pop ecx
+   121 000000C6 47                                  inc edi
+   122 000000C7 46                                  inc esi
+   123 000000C8 FF05[90000000]                      inc dword [lungime]
+   124                                              
+   125                                              
+   126 000000CE EB99                                jmp repeta
+   127 000000D0 BE[9C000000]                    mov esi, text_plus
+   128 000000D5 BF[04010000]                    mov edi, text_plus_fara_spatii
+   129                                          repeta1:
+   130 000000DA 8A06                                mov al, byte [esi]
+   131 000000DC 3C00                                cmp al, 0
+   132 000000DE 740A                                je final1
+   133 000000E0 3C20                                cmp al, ' '
+   134 000000E2 7403                                je nu
+   135 000000E4 8807                                mov byte [edi], al
+   136 000000E6 47                                  inc edi
+   137                                              nu:
+   138 000000E7 46                                  inc esi
+   139 000000E8 EBF0                                jmp repeta1
+   140                                              
+   141                                          final1:
+   142                                          
+   143 000000EA 68[21000000]                        push dword text
+   144 000000EF 68[86000000]                        push dword string_format
+   145 000000F4 FF15[00000000]                      call [printf]
+   146 000000FA 83C408                              add esp, 4*2
+   147                                              
+   148 000000FD FF35[90000000]                      push dword [lungime]
+   149 00000103 68[8B000000]                        push dword int_format
+   150 00000108 FF15[00000000]                      call [printf]
+   151 0000010E 83C408                              add esp, 4*2
+   152                                              
+   153 00000111 FF35[94000000]                      push dword [spatii]
+   154 00000117 68[8B000000]                        push dword int_format
+   155 0000011C FF15[00000000]                      call [printf]
+   156 00000122 83C408                              add esp, 4*2
+   157                                              
+   158 00000125 68[9C000000]                        push dword text_plus
+   159 0000012A 68[86000000]                        push dword string_format
+   160 0000012F FF15[00000000]                      call [printf]
+   161 00000135 83C408                              add esp, 4*2
+   162                                              
+   163 00000138 FF35[00010000]                      push dword [suma]
+   164 0000013E 68[8B000000]                        push dword int_format
+   165 00000143 FF15[00000000]                      call [printf]
+   166 00000149 83C408                              add esp, 4*2
+   167                                              
+   168                                              ;push dword text_plus_fara_spatii
+   169                                              ;push dword string_format
+   170                                              ;call [printf]
+   171                                              ;add esp, 4*2
+   172                                              
+   173                                              
+   174                                              
+   175                                              
+   176                                  
+   177                                  
+   178                                          final:
+   179 0000014C FF35[0C000000]                      push dword [input_descriptor]
+   180 00000152 FF15[00000000]                      call [fclose]
+   181 00000158 83C404                              add esp, 4
+   182                                              
+   183 0000015B FF35[1D000000]                      push dword [output_descriptor]
+   184 00000161 FF15[00000000]                      call [fclose]
+   185 00000167 83C404                              add esp, 4
+   186                                              ; exit(0)
+   187 0000016A 6A00                                push dword 0
+   188 0000016C FF15[00000000]                      call [exit]

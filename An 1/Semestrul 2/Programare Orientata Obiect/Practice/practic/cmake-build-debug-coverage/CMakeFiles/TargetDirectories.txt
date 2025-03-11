@@ -1,0 +1,5 @@
+C:/Users/emanu/CLionProjects/practic/cmake-build-debug-coverage/CMakeFiles/practic.dir
+C:/Users/emanu/CLionProjects/practic/cmake-build-debug-coverage/CMakeFiles/edit_cache.dir
+C:/Users/emanu/CLionProjects/practic/cmake-build-debug-coverage/CMakeFiles/rebuild_cache.dir
+C:/Users/emanu/CLionProjects/practic/cmake-build-debug-coverage/CMakeFiles/practic_autogen_timestamp_deps.dir
+C:/Users/emanu/CLionProjects/practic/cmake-build-debug-coverage/CMakeFiles/practic_autogen.dir

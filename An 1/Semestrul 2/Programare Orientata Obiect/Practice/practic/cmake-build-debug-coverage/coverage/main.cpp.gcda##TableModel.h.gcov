@@ -1,0 +1,281 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/practic/TableModel.h
+        -:    0:Graph:C:\Users\emanu\CLionProjects\practic\cmake-build-debug-coverage\CMakeFiles\practic.dir\main.cpp.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\practic\cmake-build-debug-coverage\CMakeFiles\practic.dir\main.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#pragma once
+        -:    2:#include <QApplication>
+        -:    3:#include <QWidget>
+        -:    4:#include <QTableView>
+        -:    5:#include <QPushButton>
+        -:    6:#include <QLineEdit>
+        -:    7:#include <QVBoxLayout>
+        -:    8:#include <QHBoxLayout>
+        -:    9:#include <QFormLayout>
+        -:   10:#include <QMessageBox>
+        -:   11:#include <QHeaderView>
+        -:   12:#include <QSlider>
+        -:   13:#include "service.h"
+        -:   14:
+        -:   15:class MyTableModel : public QAbstractTableModel {
+        -:   16:    //Modelul de tabel
+        -:   17:
+        -:   18:private:
+        -:   19:    vector<Utilaj> elemente;
+        -:   20:public:
+function _ZN12MyTableModelC1EP7QObject called 1 returned 100% blocks executed 100%
+        1:   21:    MyTableModel(QObject *parent = nullptr) : QAbstractTableModel(parent) {}
+        1:   21-block  0
+call    0 returned 1
+call    1 returned 1
+        -:   22:
+function _ZNK12MyTableModel8rowCountERK11QModelIndex called 72 returned 100% blocks executed 100%
+       72:   23:    int rowCount(const QModelIndex &parent = QModelIndex()) const override {
+        -:   24:        //Returneaza nr de linii
+       72:   25:        return elemente.size();
+       72:   25-block  0
+call    0 returned 72
+        -:   26:    }
+        -:   27:
+function _ZNK12MyTableModel11columnCountERK11QModelIndex called 72 returned 100% blocks executed 100%
+       72:   28:    int columnCount(const QModelIndex &parent = QModelIndex()) const override {
+        -:   29:        //Returneaza nr de coloane
+       72:   30:        return 5;
+       72:   30-block  0
+        -:   31:    }
+        -:   32:
+function _ZNK12MyTableModel4dataERK11QModelIndexi called 424 returned 100% blocks executed 75%
+      424:   33:    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override {
+        -:   34:        //Initializeaza coloanele tabelului
+      424:   35:        if (!index.isValid())
+      424:   35-block  0
+call    0 returned 424
+branch  1 taken 0 (fallthrough)
+branch  2 taken 424
+    #####:   36:            return QVariant();
+    %%%%%:   36-block  0
+call    0 never executed
+        -:   37:
+      424:   38:        const Utilaj &elem = elemente[index.row()];
+      424:   38-block  0
+call    0 returned 424
+call    1 returned 424
+      424:   39:        if (role == Qt::DisplayRole) {
+branch  0 taken 64 (fallthrough)
+branch  1 taken 360
+       64:   40:            switch (index.column()) {
+       64:   40-block  0
+call    0 returned 64
+branch  1 taken 13
+branch  2 taken 13
+branch  3 taken 13
+branch  4 taken 13
+branch  5 taken 12
+branch  6 taken 0
+       13:   41:                case 0:
+       13:   42:                    return QString::number(elem.get_id());
+       13:   42-block  0
+call    0 returned 13
+branch  1 taken 13 (fallthrough)
+branch  2 taken 0 (throw)
+       13:   42-block  1
+call    3 returned 13
+branch  4 taken 13 (fallthrough)
+branch  5 taken 0 (throw)
+       13:   42-block  2
+call    6 returned 13
+call    7 returned 13
+    $$$$$:   42-block  3
+call    8 never executed
+       13:   43:                case 1:
+       13:   44:                    return QString::fromStdString(elem.get_denumire());
+       13:   44-block  0
+call    0 returned 13
+branch  1 taken 13 (fallthrough)
+branch  2 taken 0 (throw)
+       13:   44-block  1
+call    3 returned 13
+branch  4 taken 13 (fallthrough)
+branch  5 taken 0 (throw)
+       13:   44-block  2
+call    6 returned 13
+call    7 returned 13
+call    8 returned 13
+    $$$$$:   44-block  3
+call    9 never executed
+    $$$$$:   44-block  4
+    $$$$$:   44-block  5
+call   10 never executed
+       13:   45:                case 2:
+       13:   46:                    return QString::fromStdString(elem.get_tip());
+       13:   46-block  0
+call    0 returned 13
+branch  1 taken 13 (fallthrough)
+branch  2 taken 0 (throw)
+       13:   46-block  1
+call    3 returned 13
+branch  4 taken 13 (fallthrough)
+branch  5 taken 0 (throw)
+       13:   46-block  2
+call    6 returned 13
+call    7 returned 13
+call    8 returned 13
+    $$$$$:   46-block  3
+call    9 never executed
+    $$$$$:   46-block  4
+    $$$$$:   46-block  5
+call   10 never executed
+       13:   47:                case 3:
+       13:   48:                    return QString::number(elem.get_cilindrii());
+       13:   48-block  0
+call    0 returned 13
+branch  1 taken 13 (fallthrough)
+branch  2 taken 0 (throw)
+       13:   48-block  1
+call    3 returned 13
+branch  4 taken 13 (fallthrough)
+branch  5 taken 0 (throw)
+       13:   48-block  2
+call    6 returned 13
+call    7 returned 13
+    $$$$$:   48-block  3
+call    8 never executed
+       12:   49:                case 4:
+        -:   50:                {
+       12:   51:                    int count = 0;
+      144:   52:                    for (const Utilaj &el : elemente) {
+       12:   52-block  0
+call    0 returned 12
+call    1 returned 12
+      132:   52-block  1
+call    2 returned 132
+      132:   52-block  2
+call    3 returned 132
+      144:   52-block  3
+call    4 returned 144
+branch  5 taken 132
+branch  6 taken 12 (fallthrough)
+      132:   53:                        if (el.get_tip() == elem.get_tip()) {
+call    0 returned 132
+branch  1 taken 132 (fallthrough)
+branch  2 taken 0 (throw)
+      132:   53-block  0
+call    3 returned 132
+branch  4 taken 132 (fallthrough)
+branch  5 taken 0 (throw)
+      132:   53-block  1
+call    6 returned 132
+call    7 returned 132
+call    8 returned 132
+branch  9 taken 20 (fallthrough)
+branch 10 taken 112
+    $$$$$:   53-block  2
+    $$$$$:   53-block  3
+call   11 never executed
+    $$$$$:   53-block  4
+       20:   54:                            ++count;
+       20:   54-block  0
+        -:   55:                        }
+        -:   56:                    }
+       12:   57:                    return QString::number(count);
+       12:   57-block  0
+call    0 returned 12
+branch  1 taken 12 (fallthrough)
+branch  2 taken 0 (throw)
+       12:   57-block  1
+call    3 returned 12
+call    4 returned 12
+        -:   58:                }
+        -:   59:            }
+        -:   60:        }
+      360:   61:        return QVariant();
+      360:   61-block  0
+call    0 returned 360
+        -:   62:    }
+        -:   63:
+function _ZNK12MyTableModel10headerDataEiN2Qt11OrientationEi called 309 returned 100% blocks executed 91%
+      309:   64:    QVariant headerData(int section, Qt::Orientation orientation, int role) const override {
+        -:   65:        //Initializeaza headerul tabelului
+      309:   66:        if (role != Qt::DisplayRole)
+      309:   66-block  0
+branch  0 taken 240 (fallthrough)
+branch  1 taken 69
+      240:   67:            return QVariant();
+      240:   67-block  0
+call    0 returned 240
+        -:   68:
+       69:   69:        if (orientation == Qt::Horizontal) {
+       69:   69-block  0
+branch  0 taken 30 (fallthrough)
+branch  1 taken 39
+       30:   70:            switch (section) {
+       30:   70-block  0
+branch  0 taken 6
+branch  1 taken 6
+branch  2 taken 6
+branch  3 taken 6
+branch  4 taken 6
+branch  5 taken 0
+       12:   71:                case 0: return QStringLiteral("ID");
+        6:   71-block  0
+call    0 returned 6
+        6:   71-block  1
+call    1 returned 6
+call    2 returned 6
+call    3 returned 6
+call    4 returned 6
+       12:   72:                case 1: return QStringLiteral("Denumire");
+        6:   72-block  0
+call    0 returned 6
+        6:   72-block  1
+call    1 returned 6
+call    2 returned 6
+call    3 returned 6
+call    4 returned 6
+       12:   73:                case 2: return QStringLiteral("Tip");
+        6:   73-block  0
+call    0 returned 6
+        6:   73-block  1
+call    1 returned 6
+call    2 returned 6
+call    3 returned 6
+call    4 returned 6
+       12:   74:                case 3: return QStringLiteral("Cilindrii");
+        6:   74-block  0
+call    0 returned 6
+        6:   74-block  1
+call    1 returned 6
+call    2 returned 6
+call    3 returned 6
+call    4 returned 6
+       12:   75:                case 4: return QStringLiteral("Nr");
+        6:   75-block  0
+call    0 returned 6
+        6:   75-block  1
+call    1 returned 6
+call    2 returned 6
+call    3 returned 6
+call    4 returned 6
+    #####:   76:                default: return QString();
+    %%%%%:   76-block  0
+call    0 never executed
+call    1 never executed
+call    2 never executed
+        -:   77:            }
+        -:   78:        }
+       39:   79:        return QVariant();
+       39:   79-block  0
+call    0 returned 39
+        -:   80:    }
+        -:   81:
+function _ZN12MyTableModel6updateERKSt6vectorI6UtilajSaIS1_EE called 1 returned 100% blocks executed 100%
+        1:   82:    void update(const vector<Utilaj>& newElements) {
+        -:   83:        //Refreshuieste tabelul
+        1:   84:        beginResetModel();
+        1:   84-block  0
+call    0 returned 1
+        1:   85:        elemente = newElements;
+call    0 returned 1
+        1:   86:        endResetModel();
+call    0 returned 1
+        1:   87:    }
+        -:   88:};

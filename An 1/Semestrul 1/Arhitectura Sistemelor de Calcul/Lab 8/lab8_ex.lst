@@ -1,0 +1,94 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit, fopen, fread, fclose, printf               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                  import fopen msvcrt.dll                          ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  import fread msvcrt.dll
+    11                                  import fclose msvcrt.dll
+    12                                  import printf msvcrt.dll
+    13                                  ; our data is declared here (the variables needed by our program)
+    14                                  segment data use32 class=data
+    15 00000000 696E7075742E747874-         nume_fisier db "input.txt", 0
+    15 00000009 00                 
+    16 0000000A 7200                        mod_acces db "r", 0
+    17 0000000C 00000000                    descriptor_fisier dd 0
+    18                                      
+    19 00000010 01000000                    dimensiune dd 1
+    20 00000014 64000000                    count dd 100
+    21                                      
+    22 00000018 <res 00000064>              text resb 100
+    23 0000007C 00000000                    lungime_sir dd 0
+    24 00000080 0A                          cifra_min db 10
+    25                                      
+    26 00000081 256400                      format_afisare db "%d", 0
+    27                                      
+    28                                  ; our code starts here
+    29                                  segment code use32 class=code
+    30                                      start:
+    31 00000000 68[0A000000]                    push dword mod_acces
+    32 00000005 68[00000000]                    push dword nume_fisier
+    33 0000000A FF15[00000000]                  call [fopen]
+    34 00000010 83C408                          add esp, 4*2
+    35                                          
+    36 00000013 83F800                          cmp eax, 0
+    37 00000016 7476                            je final ;nu s a putut deschide fisierul
+    38                                          
+    39 00000018 A3[0C000000]                    mov [descriptor_fisier], eax
+    40                                          ;;;;;;;;din acest punct avem acces la continutul fisierului
+    41                                          
+    42 0000001D FF35[0C000000]                  push dword [descriptor_fisier]
+    43 00000023 FF35[14000000]                  push dword [count]
+    44 00000029 FF35[10000000]                  push dword [dimensiune]
+    45 0000002F 68[18000000]                    push dword text
+    46 00000034 FF15[00000000]                  call [fread]
+    47 0000003A 83C410                          add esp, 4*4
+    48                                          
+    49                                          ;zona de memorie text a fost populata cu continutul fisierului
+    50                                          ;cautam cifra minima din fisier
+    51                                          
+    52 0000003D A3[7C000000]                    mov [lungime_sir], eax
+    53                                          
+    54 00000042 BE[18000000]                    mov esi, text
+    55 00000047 8B0D[7C000000]                  mov ecx, [lungime_sir]
+    56 0000004D FC                              cld
+    57 0000004E E316                            jecxz finalBucla
+    58                                          
+    59                                      bucla:
+    60 00000050 AC                              lodsb   ; al <- sir[i]
+    61 00000051 2C30                            sub al, '0'
+    62                                          
+    63 00000053 A801                            test al, 1
+    64 00000055 740D                            jz salt
+    65                                          
+    66 00000057 3A05[80000000]                  cmp al, [cifra_min]
+    67 0000005D 7705                            ja salt
+    68 0000005F A2[80000000]                    mov [cifra_min], al
+    69                                          
+    70                                      salt:
+    71 00000064 E2EA                            loop bucla
+    72                                          
+    73                                          
+    74                                      finalBucla:
+    75                                      
+    76                                          ;push dword [cifra_min] nu e ok!
+    77                                      
+    78 00000066 B800000000                      mov eax, 0
+    79 0000006B A0[80000000]                    mov al, [cifra_min]
+    80                                          
+    81 00000070 50                              push eax
+    82 00000071 68[81000000]                    push dword format_afisare
+    83 00000076 FF15[00000000]                  call [printf]
+    84 0000007C 83C408                          add esp, 4*2
+    85                                          
+    86 0000007F FF35[0C000000]                  push dword [descriptor_fisier]
+    87 00000085 FF15[00000000]                  call [fclose]
+    88 0000008B 83C404                          add esp, 4
+    89                                          
+    90                                      final:
+    91                                          ; exit(0)
+    92 0000008E 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    93 00000090 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

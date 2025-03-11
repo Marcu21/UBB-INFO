@@ -1,0 +1,65 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/practic/domain.cpp
+        -:    0:Graph:C:\Users\emanu\CLionProjects\practic\cmake-build-debug-coverage\CMakeFiles\practic.dir\domain.cpp.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\practic\cmake-build-debug-coverage\CMakeFiles\practic.dir\domain.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "domain.h"
+        -:    2:
+function _ZNK6Utilaj6get_idEv called 303 returned 100% blocks executed 100%
+      303:    3:int Utilaj::get_id() const {
+        -:    4:    //Returneaza id-ul utilajului
+      303:    5:    return id;
+      303:    5-block  0
+        -:    6:}
+        -:    7:
+function _ZNK6Utilaj12get_denumireB5cxx11Ev called 164 returned 100% blocks executed 100%
+      164:    8:string Utilaj::get_denumire() const {
+        -:    9:    //Returneaza denumirea utilajului
+      164:   10:    return denumire;
+      164:   10-block  0
+call    0 returned 164
+        -:   11:}
+        -:   12:
+function _ZNK6Utilaj7get_tipB5cxx11Ev called 694 returned 100% blocks executed 100%
+      694:   13:string Utilaj::get_tip() const {
+        -:   14:    //Returneaza tipul utilajului
+      694:   15:    return tip;
+      694:   15-block  0
+call    0 returned 694
+        -:   16:}
+        -:   17:
+function _ZNK6Utilaj13get_cilindriiEv called 191 returned 100% blocks executed 100%
+      191:   18:int Utilaj::get_cilindrii() const {
+        -:   19:    //Returneaza cilindrii utilajului
+        -:   20:
+      191:   21:    return cilindrii;
+      191:   21-block  0
+        -:   22:}
+        -:   23:
+function _ZN6Utilaj6set_idEi called 1 returned 100% blocks executed 100%
+        1:   24:void Utilaj::set_id(int id_nou) {
+        -:   25:    //Seteaza un id nou utilajului
+        1:   26:    id = id_nou;
+        1:   27:}
+        -:   28:
+function _ZN6Utilaj12set_denumireENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 3 returned 100% blocks executed 100%
+        3:   29:void Utilaj::set_denumire(std::string denumire_noua) {
+        -:   30:    //Seteaza o denumire noua utilajului
+        -:   31:
+        3:   32:    denumire = denumire_noua;
+        3:   32-block  0
+call    0 returned 3
+        3:   33:}
+        -:   34:
+function _ZN6Utilaj7set_tipENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 3 returned 100% blocks executed 100%
+        3:   35:void Utilaj::set_tip(std::string tip_nou) {
+        -:   36:    //Seteaza un tip nou utilajului
+        3:   37:    tip = tip_nou;
+        3:   37-block  0
+call    0 returned 3
+        3:   38:}
+        -:   39:
+function _ZN6Utilaj13set_cilindriiEi called 3 returned 100% blocks executed 100%
+        3:   40:void Utilaj::set_cilindrii(int cilindrii_nou) {
+        -:   41:    //Seteaza cilindrii noi utilajului
+        3:   42:    cilindrii = cilindrii_nou;
+        3:   43:}

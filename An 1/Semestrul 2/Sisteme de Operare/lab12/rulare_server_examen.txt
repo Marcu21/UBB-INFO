@@ -1,0 +1,1 @@
+gcc -Wall -o ex_special ex_special.c -pthread

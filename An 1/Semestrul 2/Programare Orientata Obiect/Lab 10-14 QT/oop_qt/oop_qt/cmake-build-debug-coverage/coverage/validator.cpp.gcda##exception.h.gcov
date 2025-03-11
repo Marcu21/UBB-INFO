@@ -1,0 +1,27 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/oop_qt/exception.h
+        -:    0:Graph:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\validator.cpp.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\validator.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <iostream>
+        -:    2:
+        -:    3:class repo_exception {
+        -:    4:    std::string msg;
+        -:    5:public:
+        -:    6:    explicit repo_exception(std::string msg) :msg{ std::move(msg) } {}
+        -:    7:    std::string get_msg()  {
+        -:    8:        return msg;
+        -:    9:    }
+        -:   10:};
+        -:   11:
+        -:   12:class validator_exception {
+        -:   13:    std::string msg;
+        -:   14:public:
+function _ZN19validator_exceptionC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 4 returned 100% blocks executed 100%
+        4:   15:    explicit validator_exception(std::string msg) :msg{ std::move(msg) } {}
+        4:   15-block  0
+call    0 returned 4
+call    1 returned 4
+        -:   16:    std::string get_msg()  {
+        -:   17:        return msg;
+        -:   18:    }
+        -:   19:};

@@ -1,0 +1,2 @@
+01.02,11:01,Analiza,normala
+30.01,11:00,Analiza,restanta

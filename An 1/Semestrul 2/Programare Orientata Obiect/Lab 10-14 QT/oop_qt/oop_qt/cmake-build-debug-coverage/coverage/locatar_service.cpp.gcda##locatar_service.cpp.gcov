@@ -1,0 +1,805 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/oop_qt/locatar_service.cpp
+        -:    0:Graph:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\locatar_service.cpp.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\locatar_service.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <vector>
+        -:    2:#include "locatar_service.h"
+        -:    3:#include "locatar.h"
+        -:    4:#include "validator.h"
+        -:    5:#include <fstream>
+        -:    6:#include <algorithm>
+        -:    7:#include <random>
+        -:    8:#include <map>
+        -:    9:
+function _ZN15locatar_service3addEiRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiS7_ called 8 returned 88% blocks executed 64%
+        8:   10:void locatar_service::add(int apartament, const string& nume_proprietar, int suprafata, const string& tip_apartament){
+        -:   11:    //Adauga un locatar daca este valid
+        8:   12:    Locatar locatar;
+        8:   12-block  0
+call    0 returned 8
+branch  1 taken 8 (fallthrough)
+branch  2 taken 0 (throw)
+        8:   13:    locatar = Locatar::creeaza_locatar(locatar, apartament, nume_proprietar, suprafata, tip_apartament);
+        8:   13-block  0
+call    0 returned 8
+branch  1 taken 8 (fallthrough)
+branch  2 taken 0 (throw)
+        8:   13-block  1
+call    3 returned 8
+branch  4 taken 8 (fallthrough)
+branch  5 taken 0 (throw)
+        8:   13-block  2
+call    6 returned 8
+branch  7 taken 8 (fallthrough)
+branch  8 taken 0 (throw)
+        8:   13-block  3
+call    9 returned 8
+call   10 returned 8
+    $$$$$:   13-block  4
+call   11 never executed
+    $$$$$:   13-block  5
+call   12 never executed
+    $$$$$:   13-block  6
+    $$$$$:   13-block  7
+        8:   14:    validator::validate_locatar(locatar);
+call    0 returned 8
+branch  1 taken 8 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   15:
+        8:   16:    repo.store(locatar);
+        8:   16-block  0
+call    0 returned 8
+branch  1 taken 7 (fallthrough)
+branch  2 taken 1 (throw)
+        7:   17:    undoStack.emplace_back(std::make_unique<UndoAdauga>(repo, locatar));
+        7:   17-block  0
+call    0 returned 7
+branch  1 taken 7 (fallthrough)
+branch  2 taken 0 (throw)
+        7:   17-block  1
+call    3 returned 7
+branch  4 taken 7 (fallthrough)
+branch  5 taken 0 (throw)
+        7:   17-block  2
+call    6 returned 7
+    $$$$$:   17-block  3
+call    7 never executed
+    $$$$$:   17-block  4
+        8:   18:}
+call    0 returned 7
+        1:   18-block  0
+call    1 returned 1
+        -:   19:
+function _ZN15locatar_service7get_allEv called 13 returned 100% blocks executed 100%
+       13:   20:std::vector<Locatar>& locatar_service::get_all() {
+        -:   21:    //Returneaza toti locatarii
+       13:   22:    return repo.get_all();
+       13:   22-block  0
+call    0 returned 13
+        -:   23:}
+        -:   24:
+        -:   25:
+function _ZN15locatar_service6stergeEiRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 3 returned 67% blocks executed 62%
+        3:   26:void locatar_service::sterge(int apartament, const string& nume_proprietar){
+        -:   27:    //Sterge un locatar
+        3:   28:    Locatar locatar = repo.find(apartament);
+        3:   28-block  0
+call    0 returned 3
+branch  1 taken 2 (fallthrough)
+branch  2 taken 1 (throw)
+        2:   29:    repo.destroy(apartament, nume_proprietar);
+        2:   29-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   30:    undoStack.emplace_back(std::make_unique<UndoSterge>(repo, locatar));
+        2:   30-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   30-block  1
+call    3 returned 2
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0 (throw)
+        2:   30-block  2
+call    6 returned 2
+    $$$$$:   30-block  3
+call    7 never executed
+    $$$$$:   30-block  4
+        2:   31:}
+call    0 returned 2
+    $$$$$:   31-block  0
+call    1 never executed
+        -:   32:
+function _ZN15locatar_service8modificaEiRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiS7_ called 3 returned 67% blocks executed 55%
+        3:   33:void locatar_service::modifica(int apartament, const string& nume_proprietar, int suprafata, const string& tip_apartament){
+        -:   34:    //Modifica un locatar daca este valid
+        3:   35:    Locatar oldLocatar = repo.find(apartament);
+        3:   35-block  0
+call    0 returned 3
+branch  1 taken 2 (fallthrough)
+branch  2 taken 1 (throw)
+        2:   36:    Locatar locatar;
+        2:   36-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   37:    locatar = Locatar::creeaza_locatar(locatar, apartament, nume_proprietar, suprafata, tip_apartament);
+        2:   37-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   37-block  1
+call    3 returned 2
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0 (throw)
+        2:   37-block  2
+call    6 returned 2
+branch  7 taken 2 (fallthrough)
+branch  8 taken 0 (throw)
+        2:   37-block  3
+call    9 returned 2
+call   10 returned 2
+    $$$$$:   37-block  4
+call   11 never executed
+    $$$$$:   37-block  5
+call   12 never executed
+    $$$$$:   37-block  6
+    $$$$$:   37-block  7
+        2:   38:    validator::validate_locatar(locatar);
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   39:    repo.modify(apartament, nume_proprietar, suprafata, tip_apartament);
+        2:   39-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   40:    undoStack.emplace_back(std::make_unique<UndoModifica>(repo, oldLocatar, locatar));
+        2:   40-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   40-block  1
+call    3 returned 2
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0 (throw)
+        2:   40-block  2
+call    6 returned 2
+    $$$$$:   40-block  3
+call    7 never executed
+    $$$$$:   40-block  4
+        2:   41:}
+call    0 returned 2
+call    1 returned 2
+    $$$$$:   41-block  0
+call    2 never executed
+    $$$$$:   41-block  1
+call    3 never executed
+        -:   42:
+function _ZN15locatar_service5cautaEi called 2 returned 50% blocks executed 100%
+        2:   43:Locatar locatar_service::cauta(int apartament){
+        -:   44:    //Cauta un locatar
+        2:   45:    return repo.find(apartament);
+        2:   45-block  0
+call    0 returned 1
+        -:   46:}
+        -:   47:
+        -:   48:
+function _ZN15locatar_service12filtrare_tipERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 2 returned 100% blocks executed 90%
+        2:   49:std::vector<Locatar> locatar_service::filtrare_tip(const string& tip_apartament) {
+        -:   50:    //Filtreaza locatarii dupa tipul apartamentului
+        2:   51:    std::vector<Locatar>& locatari = repo.get_all();
+        2:   51-block  0
+call    0 returned 2
+        2:   52:    std::vector<Locatar> locatari_filtrate;
+call    0 returned 2
+        -:   53:
+        2:   54:    std::copy_if(locatari.begin(), locatari.end(), std::back_inserter(locatari_filtrate),
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   54-block  0
+call    3 returned 2
+call    4 returned 2
+call    5 returned 2
+branch  6 taken 2 (fallthrough)
+branch  7 taken 0 (throw)
+function _ZZN15locatar_service12filtrare_tipERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEENKUlRK7LocatarE_clESA_ called 6 returned 100% blocks executed 100%
+        6:   55:                 [&tip_apartament](const Locatar& locatar) {
+        6:   56:                     return locatar.get_tip_apartament() == tip_apartament;
+        6:   56-block  0
+call    0 returned 6
+branch  1 taken 6 (fallthrough)
+branch  2 taken 0 (throw)
+        6:   56-block  1
+call    3 returned 6
+call    4 returned 6
+        6:   56-block  2
+        -:   57:                 });
+        -:   58:
+        2:   59:    return locatari_filtrate;}
+        2:   59-block  0
+        2:   59-block  1
+    $$$$$:   59-block  2
+call    0 never executed
+        -:   60:
+function _ZN15locatar_service18filtrare_suprafataEi called 2 returned 100% blocks executed 90%
+        2:   61:std::vector<Locatar> locatar_service::filtrare_suprafata(int suprafata) {
+        -:   62:    //Filtreaza locatarii dupa suprafata
+        2:   63:    const std::vector<Locatar>& locatari = repo.get_all();
+        2:   63-block  0
+call    0 returned 2
+        2:   64:    std::vector<Locatar> locatari_filtrate;
+call    0 returned 2
+        -:   65:
+        2:   66:    std::copy_if(locatari.begin(), locatari.end(), std::back_inserter(locatari_filtrate),
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   66-block  0
+call    3 returned 2
+call    4 returned 2
+call    5 returned 2
+branch  6 taken 2 (fallthrough)
+branch  7 taken 0 (throw)
+function _ZZN15locatar_service18filtrare_suprafataEiENKUlRK7LocatarE_clES2_ called 6 returned 100% blocks executed 100%
+        6:   67:                 [suprafata](const Locatar& locatar) {
+        6:   68:                     return locatar.get_suprafata() == suprafata;
+        6:   68-block  0
+call    0 returned 6
+        -:   69:                 });
+        -:   70:
+        2:   71:    return locatari_filtrate;}
+        2:   71-block  0
+        2:   71-block  1
+    $$$$$:   71-block  2
+call    0 never executed
+        -:   72:
+function _ZN15locatar_service23sortare_nume_proprietarEv called 1 returned 100% blocks executed 100%
+        1:   73:std::vector<Locatar> locatar_service::sortare_nume_proprietar(){
+        -:   74:    //Sorteaza locatarii dupa numele proprietarului
+        1:   75:    std::vector<Locatar>& locatari = repo.get_all();
+        1:   75-block  0
+call    0 returned 1
+        -:   76:
+function _ZZN15locatar_service23sortare_nume_proprietarEvENKUlRK7LocatarS2_E_clES2_S2_ called 4 returned 100% blocks executed 73%
+        1:   77:    std::sort(locatari.begin(), locatari.end(), [](const Locatar& a, const Locatar& b) {
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+        4:   78:        return a.get_nume_proprietar() < b.get_nume_proprietar();
+        4:   78-block  0
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+        4:   78-block  1
+call    3 returned 4
+branch  4 taken 4 (fallthrough)
+branch  5 taken 0 (throw)
+        4:   78-block  2
+call    6 returned 4
+call    7 returned 4
+call    8 returned 4
+        4:   78-block  3
+    $$$$$:   78-block  4
+    $$$$$:   78-block  5
+call    9 never executed
+        -:   79:    });
+        -:   80:
+        1:   81:    return locatari;
+call    0 returned 1
+        -:   82:}
+        -:   83:
+        -:   84:
+function _ZN15locatar_service17sortare_suprafataEv called 1 returned 100% blocks executed 100%
+        1:   85:std::vector<Locatar> locatar_service::sortare_suprafata(){
+        -:   86:    //Sorteaza locatarii dupa suprafata
+        1:   87:    std::vector<Locatar>& locatari = repo.get_all();
+        1:   87-block  0
+call    0 returned 1
+        -:   88:
+        1:   89:    std::sort(locatari.begin(), locatari.end(),
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+function _ZZN15locatar_service17sortare_suprafataEvENKUlRK7LocatarS2_E_clES2_S2_ called 5 returned 100% blocks executed 100%
+        5:   90:              [](const Locatar& a, const Locatar& b) {
+        5:   91:                  return a.get_suprafata() < b.get_suprafata();
+        5:   91-block  0
+call    0 returned 5
+call    1 returned 5
+        -:   92:              });
+        -:   93:
+        1:   94:    return locatari;
+call    0 returned 1
+        -:   95:}
+        -:   96:
+function _ZN15locatar_service21sortare_tip_suprafataEv called 1 returned 100% blocks executed 100%
+        1:   97:std::vector<Locatar> locatar_service::sortare_tip_suprafata(){
+        -:   98:    //Sorteaza locatarii dupa tipul apartamentului si suprafata
+        1:   99:    std::vector<Locatar>& locatari = repo.get_all();
+        1:   99-block  0
+call    0 returned 1
+        -:  100:
+        1:  101:    std::sort(locatari.begin(), locatari.end(),
+call    0 returned 1
+call    1 returned 1
+call    2 returned 1
+function _ZZN15locatar_service21sortare_tip_suprafataEvENKUlRK7LocatarS2_E_clES2_S2_ called 7 returned 100% blocks executed 71%
+        7:  102:              [](const Locatar& a, const Locatar& b) {
+        7:  103:                  if (a.get_tip_apartament() == b.get_tip_apartament()) {
+        7:  103-block  0
+call    0 returned 7
+branch  1 taken 7 (fallthrough)
+branch  2 taken 0 (throw)
+        7:  103-block  1
+call    3 returned 7
+branch  4 taken 7 (fallthrough)
+branch  5 taken 0 (throw)
+        7:  103-block  2
+call    6 returned 7
+call    7 returned 7
+call    8 returned 7
+branch  9 taken 6 (fallthrough)
+branch 10 taken 1
+    $$$$$:  103-block  3
+    $$$$$:  103-block  4
+call   11 never executed
+    $$$$$:  103-block  5
+call   12 never executed
+        6:  104:                      return a.get_suprafata() < b.get_suprafata();
+        6:  104-block  0
+call    0 returned 6
+call    1 returned 6
+        -:  105:                  }
+        1:  106:                  return a.get_tip_apartament() < b.get_tip_apartament();
+        1:  106-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  106-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:  106-block  2
+call    6 returned 1
+call    7 returned 1
+call    8 returned 1
+    $$$$$:  106-block  3
+    $$$$$:  106-block  4
+call    9 never executed
+        -:  107:              });
+        -:  108:
+        1:  109:    return locatari;
+call    0 returned 1
+        -:  110:}
+        -:  111:
+function _ZN15locatar_service16add_notificationEi called 1104 returned 100% blocks executed 100%
+     1104:  112:void locatar_service::add_notification(int apartment) {
+        -:  113:    //Adauga un apartament in lista de notificari
+     1104:  114:    auto it = std::find(notification_list.begin(), notification_list.end(), apartment);
+     1104:  114-block  0
+call    0 returned 1104
+call    1 returned 1104
+call    2 returned 1104
+branch  3 taken 1104 (fallthrough)
+branch  4 taken 0 (throw)
+     1104:  115:    if (it == notification_list.end()) {
+     1104:  115-block  0
+call    0 returned 1104
+call    1 returned 1104
+branch  2 taken 1103 (fallthrough)
+branch  3 taken 1
+     1103:  116:        notification_list.push_back(apartment);
+     1103:  116-block  0
+call    0 returned 1103
+branch  1 taken 1103 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  117:    }
+     1104:  118:}
+     1104:  118-block  0
+        -:  119:
+function _ZN15locatar_service19clear_notificationsEv called 2 returned 100% blocks executed 100%
+        2:  120:void locatar_service::clear_notifications() {
+        -:  121:    //Sterge toate notificarile
+        2:  122:    notification_list.clear();
+        2:  122-block  0
+call    0 returned 2
+        2:  123:}
+        -:  124:
+function _ZNK15locatar_service17get_notificationsEv called 6 returned 100% blocks executed 100%
+        6:  125:const std::vector<int>& locatar_service::get_notifications() const {
+        -:  126:    //Returneaza lista de notificari
+        6:  127:    return notification_list;
+        6:  127-block  0
+        -:  128:}
+        -:  129:
+function _ZN15locatar_service22generate_notificationsEi called 2 returned 100% blocks executed 82%
+        2:  130:void locatar_service::generate_notifications(int count) {
+        -:  131:    //Genereaza notificari
+        2:  132:    std::vector<int> apartments;
+        2:  132-block  0
+call    0 returned 2
+     2002:  133:    for (int i = 1; i <= 1000; ++i) {
+     2000:  133-block  0
+     2002:  133-block  1
+branch  0 taken 2000
+branch  1 taken 2 (fallthrough)
+     2000:  134:        apartments.push_back(i);
+     2000:  134-block  0
+call    0 returned 2000
+branch  1 taken 2000 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  135:    }
+        -:  136:
+        2:  137:    std::random_device rd;
+        2:  137-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  138:    std::mt19937 mt(rd());
+        2:  138-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  138-block  1
+call    3 returned 2
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0 (throw)
+        2:  139:    std::shuffle(apartments.begin(), apartments.end(), mt);
+        2:  139-block  0
+call    0 returned 2
+call    1 returned 2
+call    2 returned 2
+branch  3 taken 2 (fallthrough)
+branch  4 taken 0 (throw)
+        -:  140:
+        2:  141:    std::size_t added = 0;
+     1102:  142:    for (std::size_t i = 0; i < apartments.size() && added < static_cast<std::size_t>(count); ++i) {
+        2:  142-block  0
+     1100:  142-block  1
+     1102:  142-block  2
+call    0 returned 1102
+branch  1 taken 1101 (fallthrough)
+branch  2 taken 1
+     1101:  142-block  3
+branch  3 taken 1100 (fallthrough)
+branch  4 taken 1
+     1100:  142-block  4
+        2:  142-block  5
+     1102:  142-block  6
+branch  5 taken 1100
+branch  6 taken 2 (fallthrough)
+     1100:  143:        if (std::find(notification_list.begin(), notification_list.end(), apartments[i]) == notification_list.end()) {
+     1100:  143-block  0
+call    0 returned 1100
+call    1 returned 1100
+call    2 returned 1100
+call    3 returned 1100
+call    4 returned 1100
+branch  5 taken 1100 (fallthrough)
+branch  6 taken 0 (throw)
+     1100:  143-block  1
+call    7 returned 1100
+branch  8 taken 1100 (fallthrough)
+branch  9 taken 0
+    $$$$$:  143-block  2
+    $$$$$:  143-block  3
+     1100:  144:            add_notification(apartments[i]);
+     1100:  144-block  0
+call    0 returned 1100
+call    1 returned 1100
+branch  2 taken 1100 (fallthrough)
+branch  3 taken 0 (throw)
+     1100:  145:            added++;
+     1100:  145-block  0
+        -:  146:        }
+        -:  147:    }
+        2:  148:}
+        2:  148-block  0
+call    0 returned 2
+call    1 returned 2
+    $$$$$:  148-block  1
+call    2 never executed
+    $$$$$:  148-block  2
+call    3 never executed
+        -:  149:
+function _ZNK15locatar_service13export_to_csvERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 1 returned 100% blocks executed 50%
+        1:  150:void locatar_service::export_to_csv(const string& filename) const
+        -:  151:{
+        -:  152:    //Exporta notificarile in fisier CSV
+        1:  153:    std::ofstream file(filename);
+        1:  153-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  154:    if (!file.is_open()) throw std::runtime_error("Eroare la deschiderea fisierului.");
+        1:  154-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  154-block  1
+call    3 never executed
+call    4 never executed
+branch  5 never executed (fallthrough)
+branch  6 never executed (throw)
+    %%%%%:  154-block  2
+call    7 never executed
+    $$$$$:  154-block  3
+call    8 never executed
+        1:  155:    const auto& notifications = get_notifications();
+        1:  155-block  0
+call    0 returned 1
+       1*:  156:    for (int apt : notifications) file << apt << ",";
+call    0 returned 1
+call    1 returned 1
+    %%%%%:  156-block  0
+call    2 never executed
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  156-block  1
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  156-block  2
+call    9 never executed
+        1:  156-block  3
+call   10 returned 1
+branch 11 taken 0
+branch 12 taken 1 (fallthrough)
+        1:  157:    file.close();
+        1:  157-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  158:}
+        1:  158-block  0
+call    0 returned 1
+    $$$$$:  158-block  1
+call    1 never executed
+        -:  159:
+function _ZNK15locatar_service14export_to_htmlERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 1 returned 100% blocks executed 52%
+        1:  160:void locatar_service::export_to_html(const string& filename) const {
+        -:  161:    //Exporta notificarile in fisier HTML
+        1:  162:    std::ofstream file(filename);
+        1:  162-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  163:    if (!file.is_open()) throw std::runtime_error("Eroare la deschiderea fisierului.");
+        1:  163-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  163-block  1
+call    3 never executed
+call    4 never executed
+branch  5 never executed (fallthrough)
+branch  6 never executed (throw)
+    %%%%%:  163-block  2
+call    7 never executed
+    $$$$$:  163-block  3
+call    8 never executed
+        1:  164:    const auto& notifications = get_notifications();
+        1:  164-block  0
+call    0 returned 1
+        1:  165:    file << "<html><body><h1>Notification List</h1><ul>";
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  166:    for (int apt : notifications) file << "<li>Apartment " << apt << "</li>";
+        1:  166-block  0
+call    0 returned 1
+call    1 returned 1
+    %%%%%:  166-block  1
+call    2 never executed
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  166-block  2
+call    6 never executed
+branch  7 never executed (fallthrough)
+branch  8 never executed (throw)
+    %%%%%:  166-block  3
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:  166-block  4
+call   12 never executed
+        1:  166-block  5
+call   13 returned 1
+branch 14 taken 0
+branch 15 taken 1 (fallthrough)
+        1:  167:    file << "</ul></body></html>";
+        1:  167-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  168:    file.close();
+        1:  168-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:  169:}
+        1:  169-block  0
+call    0 returned 1
+    $$$$$:  169-block  1
+call    1 never executed
+        -:  170:
+        -:  171:
+        -:  172:
+function _ZN15locatar_service21raport_tip_apartamentB5cxx11Ev called 1 returned 100% blocks executed 74%
+        1:  173:std::map<std::string, int> locatar_service::raport_tip_apartament() {
+        -:  174:    //Genereaza un raport pentru tipul de apartamente
+        1:  175:    std::map<std::string, int> raport;
+        1:  175-block  0
+call    0 returned 1
+        1:  176:    const std::vector<Locatar>& locatari = repo.get_all();
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  177:
+        6:  178:    for (const auto& locatar : locatari) {
+        1:  178-block  0
+call    0 returned 1
+call    1 returned 1
+        5:  178-block  1
+call    2 returned 5
+        6:  178-block  2
+call    3 returned 6
+branch  4 taken 5
+branch  5 taken 1 (fallthrough)
+        5:  179:        raport[locatar.get_tip_apartament()]++;
+call    0 returned 5
+branch  1 taken 5 (fallthrough)
+branch  2 taken 0 (throw)
+        5:  179-block  0
+call    3 returned 5
+branch  4 taken 5 (fallthrough)
+branch  5 taken 0 (throw)
+        5:  179-block  1
+call    6 returned 5
+call    7 returned 5
+    $$$$$:  179-block  2
+call    8 never executed
+    $$$$$:  179-block  3
+        -:  180:    }
+        -:  181:
+        1:  182:    return raport;}
+        1:  182-block  0
+        1:  182-block  1
+    $$$$$:  182-block  2
+call    0 never executed
+        -:  183:
+        -:  184:
+function _ZN15locatar_service4undoEv called 4 returned 75% blocks executed 92%
+        4:  185:void locatar_service::undo() {
+        -:  186:    //Face operatia de undo
+        4:  187:    if (!undoStack.empty()) {
+        4:  187-block  0
+call    0 returned 4
+branch  1 taken 3 (fallthrough)
+branch  2 taken 1
+        3:  188:        undoStack.back()->doUndo();
+        3:  188-block  0
+call    0 returned 3
+call    1 returned 3
+call    2 returned 3
+        3:  189:        undoStack.pop_back();
+call    0 returned 3
+        -:  190:    } else {
+        1:  191:        throw std::runtime_error("Nu exista operatii de undo!");
+        1:  191-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  191-block  1
+call    4 returned 0
+    $$$$$:  191-block  2
+call    5 never executed
+        -:  192:    }
+        3:  193:}
+        -:  194:
+function _ZNK15locatar_service14getUniqueTypesB5cxx11Ev called 3 returned 100% blocks executed 70%
+        3:  195:std::vector<string> locatar_service::getUniqueTypes() const {
+        3:  196:    std::vector<string> types;
+        3:  196-block  0
+call    0 returned 3
+        8:  197:    for (const auto& locatar : repo.get_all()) {
+call    0 returned 3
+branch  1 taken 3 (fallthrough)
+branch  2 taken 0 (throw)
+        3:  197-block  0
+call    3 returned 3
+call    4 returned 3
+        5:  197-block  1
+call    5 returned 5
+        5:  197-block  2
+call    6 returned 5
+        8:  197-block  3
+call    7 returned 8
+branch  8 taken 5
+branch  9 taken 3 (fallthrough)
+        5:  198:        if (std::find(types.begin(), types.end(), locatar.get_tip_apartament()) == types.end()) {
+call    0 returned 5
+call    1 returned 5
+branch  2 taken 5 (fallthrough)
+branch  3 taken 0 (throw)
+        5:  198-block  0
+call    4 returned 5
+call    5 returned 5
+call    6 returned 5
+branch  7 taken 5 (fallthrough)
+branch  8 taken 0 (throw)
+        5:  198-block  1
+call    9 returned 5
+call   10 returned 5
+branch 11 taken 2 (fallthrough)
+branch 12 taken 3
+    $$$$$:  198-block  2
+call   13 never executed
+    $$$$$:  198-block  3
+    $$$$$:  198-block  4
+    $$$$$:  198-block  5
+        2:  199:            types.push_back(locatar.get_tip_apartament());
+        2:  199-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  199-block  1
+call    3 returned 2
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0 (throw)
+        2:  199-block  2
+call    6 returned 2
+    $$$$$:  199-block  3
+call    7 never executed
+    $$$$$:  199-block  4
+        -:  200:        }
+        -:  201:    }
+        3:  202:    return types;}
+        3:  202-block  0
+        3:  202-block  1
+    $$$$$:  202-block  2
+call    0 never executed
+        -:  203:
+function _ZNK15locatar_service11countByTypeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 2 returned 100% blocks executed 94%
+        2:  204:int locatar_service::countByType(const string& type) const {
+        2:  205:    int count = 0;
+       12:  206:    for (const auto& locatar : repo.get_all()) {
+        2:  206-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  206-block  1
+call    3 returned 2
+call    4 returned 2
+       10:  206-block  2
+call    5 returned 10
+       10:  206-block  3
+call    6 returned 10
+       12:  206-block  4
+call    7 returned 12
+branch  8 taken 10
+branch  9 taken 2 (fallthrough)
+       10:  207:        if (locatar.get_tip_apartament() == type) {
+call    0 returned 10
+branch  1 taken 10 (fallthrough)
+branch  2 taken 0 (throw)
+       10:  207-block  0
+call    3 returned 10
+call    4 returned 10
+branch  5 taken 5 (fallthrough)
+branch  6 taken 5
+    $$$$$:  207-block  1
+        5:  208:            count++;
+        5:  208-block  0
+        -:  209:        }
+        -:  210:    }
+        2:  211:    return count;
+        2:  211-block  0
+        2:  211-block  1
+        -:  212:}

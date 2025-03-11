@@ -1,0 +1,51 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/oop_qt/locatar.h
+        -:    0:Graph:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\locatar_repo.cpp.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\locatar_repo.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#pragma once
+        -:    2:#include <string>
+        -:    3:#include <iostream>
+        -:    4:using std::string;
+        -:    5:using std::cout;
+        -:    6:
+        -:    7:class Locatar
+        -:    8:{
+        -:    9:private:
+        -:   10:    int apartament;
+        -:   11:    string nume_proprietar;
+        -:   12:    int suprafata;
+        -:   13:    string tip_apartament;
+        -:   14:public:
+        -:   15:    [[nodiscard]] int get_apartament() const;
+        -:   16:    [[nodiscard]] int get_suprafata() const;
+        -:   17:    [[nodiscard]] string get_nume_proprietar() const;
+        -:   18:    [[nodiscard]] string get_tip_apartament() const;
+        -:   19:    void set_apartament(int apartament);
+        -:   20:    void set_suprafata(int suprafata);
+        -:   21:    void set_nume_proprietar(const string& nume_proprietar);
+        -:   22:    void set_tip_apartament(const string& tip_apartament);
+        -:   23:    static Locatar creeaza_locatar(Locatar locatar, int apartament, const string& nume_proprietar, int suprafata, const string& tip_apartament);
+function _ZN7LocatarC1ERKS_ called 0 returned 0% blocks executed 0%
+    #####:   24:    Locatar(const Locatar& locatar) = default;
+    %%%%%:   24-block  0
+call    0 never executed
+call    1 never executed
+branch  2 never executed (fallthrough)
+branch  3 never executed (throw)
+    %%%%%:   24-block  1
+    $$$$$:   24-block  2
+call    4 never executed
+function _ZN7LocatarC1Ev called 15 returned 100% blocks executed 62%
+       15:   25:    Locatar() : apartament(0), nume_proprietar(), suprafata(0), tip_apartament() {cout<<"*\n";}
+       15:   25-block  0
+call    0 returned 15
+call    1 returned 15
+call    2 returned 15
+branch  3 taken 15 (fallthrough)
+branch  4 taken 0 (throw)
+       15:   25-block  1
+    $$$$$:   25-block  2
+call    5 never executed
+    $$$$$:   25-block  3
+call    6 never executed
+        -:   26:};

@@ -1,0 +1,83 @@
+     1                                  ; Codul de mai jos va deschide un fisier numit "ana.txt" din directorul curent si va citi un text de maxim 100 de caractere din acel fisier.
+     2                                  ; Programul va folosi functia fopen pentru deschiderea fisierului, functia fread pentru citirea din fisier si functia fclose pentru inchiderea fisierului deschis.
+     3                                  ; Deoarece in apelul functiei fopen programul foloseste modul de acces "r", daca un fisier cu numele dat nu exista in directorul curent, apelul functiei fopen nu va reusi (eroare). Detalii despre modurile de acces s
+     4                                  
+     5                                  bits 32 
+     6                                  
+     7                                  global start        
+     8                                  
+     9                                  ; declare external functions needed by our program
+    10                                  extern exit, fopen, fread, fclose, printf
+    11                                  import exit msvcrt.dll  
+    12                                  import fopen msvcrt.dll  
+    13                                  import fread msvcrt.dll
+    14                                  import fclose msvcrt.dll
+    15                                  import printf msvcrt.dll
+    16                                  
+    17                                  ; our data is declared here (the variables needed by our program)
+    18                                  segment data use32 class=data
+    19 00000000 616E612E74787400            nume_fisier db "ana.txt", 0  ; numele fisierului care va fi deschis
+    20 00000008 7200                        mod_acces db "r", 0          ; modul de deschidere a fisierului - 
+    21 0000000A 256400                      format db "%d", 0                             ; r - pentru scriere. fisierul trebuie sa existe 
+    22 0000000D FFFFFFFF                    descriptor_fis dd -1         ; variabila in care vom salva descriptorul fisierului - necesar pentru a putea face referire la fisier
+    23                                      len equ 100                  ; numarul maxim de elemente citite din fisier.                            
+    24 00000011 00<rept>                    text times len db 0          ; sirul in care se va citi textul din fisier  
+    25 00000075 7E21402324255E262A-         caractere_speciale db "~!@#$%^&*()-=_+{}[];'\,./:|<>?"
+    25 0000007E 28292D3D5F2B7B7D5B-
+    25 00000087 5D3B275C2C2E2F3A7C-
+    25 00000090 3C3E3F             
+    26                                      len2 equ $-caractere_speciale
+    27 00000093 00                          numar db 0
+    28                                  ; our code starts here
+    29                                  segment code use32 class=code
+    30                                      start:
+    31 00000000 68[08000000]                    push dword mod_acces     
+    32 00000005 68[00000000]                    push dword nume_fisier
+    33 0000000A FF15[00000000]                  call [fopen]
+    34 00000010 83C408                          add esp, 4*2                
+    35 00000013 A3[0D000000]                    mov [descriptor_fis], eax   
+    36 00000018 83F800                          cmp eax, 0
+    37 0000001B 7475                            je final
+    38 0000001D FF35[0D000000]                  push dword [descriptor_fis]
+    39 00000023 6A64                            push dword len
+    40 00000025 6A01                            push dword 1
+    41 00000027 68[11000000]                    push dword text        
+    42 0000002C FF15[00000000]                  call [fread]
+    43 00000032 83C410                          add esp, 4*4                  
+    44 00000035 BE00000000                      mov esi, 0
+    45 0000003A 89C1                            mov ecx, eax
+    46 0000003C E32C                            jecxz finalbucla
+    47                                      repeta:
+    48 0000003E BF00000000                      mov edi, 0
+    49 00000043 51                              push ecx
+    50 00000044 B91E000000                      mov ecx, len2
+    51                                      repeta2:
+    52 00000049 8B86[11000000]                  mov eax, [text+esi]
+    53 0000004F 8B97[75000000]                  mov edx, [caractere_speciale+edi]
+    54 00000055 39D0                            cmp eax, edx
+    55 00000057 7407                            je egal
+    56 00000059 47                              inc edi
+    57 0000005A E2ED                            loop repeta2
+    58 0000005C 46                              inc esi
+    59 0000005D 59                              pop ecx
+    60 0000005E E2DE                            loop repeta
+    61                                      egal:
+    62 00000060 FF05[93000000]                  inc dword [numar]
+    63 00000066 46                              inc esi
+    64 00000067 49                              dec ecx
+    65 00000068 75D4                            jnz repeta
+    66                                     
+    67                                     finalbucla:
+    68 0000006A B800000000                      mov eax, 0
+    69 0000006F A0[93000000]                    mov al, [numar]
+    70 00000074 50                              push eax
+    71 00000075 68[0A000000]                    push dword format
+    72 0000007A FF15[00000000]                  call [printf]
+    73 00000080 83C408                          add esp, 4*2
+    74 00000083 FF35[0D000000]                  push dword [descriptor_fis]
+    75 00000089 FF15[00000000]                  call [fclose]
+    76 0000008F 83C404                          add esp, 4
+    77                                        final:
+    78                                          ; exit(0)
+    79 00000092 6A00                            push    dword 0      
+    80 00000094 FF15[00000000]                  call    [exit]       

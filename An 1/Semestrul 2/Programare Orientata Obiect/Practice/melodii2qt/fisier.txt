@@ -1,0 +1,2 @@
+1,baba,gheboasa,pop
+2,x,alex,rock

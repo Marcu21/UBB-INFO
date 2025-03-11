@@ -1,0 +1,70 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/oop_qt/locatar_service.h
+        -:    0:Graph:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\teste.cpp.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\teste.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#pragma once
+        -:    2:#include <string>
+        -:    3:#include "locatar.h"
+        -:    4:#include "locatar_repo.h"
+        -:    5:#include <map>
+        -:    6:#include "undo.h"
+        -:    7:#include <memory>
+        -:    8:
+        -:    9:using std::string;
+        -:   10:
+        -:   11:class locatar_service
+        -:   12:{
+        -:   13:private:
+        -:   14:    LocatarRepository& repo;
+        -:   15:    std::vector<int> notification_list;
+        -:   16:    std::vector<std::unique_ptr<ActiuneUndo>> undoStack;
+        -:   17:public:
+function _ZN15locatar_serviceC1ER17LocatarRepository called 0 returned 0% blocks executed 0%
+    #####:   18:    explicit locatar_service(LocatarRepository& repo) :repo{ repo } {
+    %%%%%:   18-block  0
+call    0 never executed
+call    1 never executed
+        -:   19:
+    #####:   20:    }
+        -:   21:    //locatar_service(const locatar_service& service) = delete;
+        -:   22:    //locatar_service() = default;
+        -:   23:    void add(int apartament, const string& nume_proprietar, int suprafata, const string& tip_apartament);
+        -:   24:
+        -:   25:    std::vector<Locatar>& get_all();
+        -:   26:
+        -:   27:    void sterge(int apartament, const string& nume_proprietar);
+        -:   28:
+        -:   29:    void modifica(int apartament, const string& nume_proprietar, int suprafata, const string& tip_apartament);
+        -:   30:
+        -:   31:    Locatar cauta(int apartament);
+        -:   32:
+        -:   33:    std::vector<Locatar> filtrare_tip(const string& tip_apartament);
+        -:   34:
+        -:   35:    std::vector<Locatar> filtrare_suprafata(int suprafata);
+        -:   36:
+        -:   37:    std::vector<Locatar> sortare_nume_proprietar();
+        -:   38:
+        -:   39:    std::vector<Locatar> sortare_suprafata();
+        -:   40:
+        -:   41:    std::vector<Locatar> sortare_tip_suprafata();
+        -:   42:
+        -:   43:    void add_notification(int apartment);
+        -:   44:
+        -:   45:    void clear_notifications();
+        -:   46:
+        -:   47:    [[nodiscard]] const std::vector<int>& get_notifications() const;
+        -:   48:
+        -:   49:    void generate_notifications(int count);
+        -:   50:
+        -:   51:    void export_to_csv(const std::string& filename) const;
+        -:   52:
+        -:   53:    void export_to_html(const std::string& filename) const;
+        -:   54:
+        -:   55:    std::map<std::string, int> raport_tip_apartament();
+        -:   56:
+        -:   57:    std::vector<string> getUniqueTypes() const;
+        -:   58:
+        -:   59:    int countByType(const string& type) const;
+        -:   60:
+        -:   61:    void undo();
+        -:   62:};

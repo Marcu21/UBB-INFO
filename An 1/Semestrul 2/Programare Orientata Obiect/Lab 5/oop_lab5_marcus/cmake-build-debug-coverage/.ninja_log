@@ -1,0 +1,16 @@
+# ninja log v5
+15	110	7332262385343380	CMakeFiles/oop_lab5_marcus.dir/tests.c.obj	7dd5e9b2b8ace711
+16	107	7332247297064801	CMakeFiles/oop_lab5_marcus.dir/repo.c.obj	e6875c01424d49d9
+2	88	7332262385121640	CMakeFiles/oop_lab5_marcus.dir/lab2.c.obj	b86bfafb5b0d54b2
+2	71	7330868514278876	CMakeFiles/oop_lab5_marcus.dir/domain.c.obj	24719a530c1b3ca2
+11	111	7332262385353417	CMakeFiles/oop_lab5_marcus.dir/service.c.obj	9eb16768c5a6cc35
+117	198	7332262386208372	oop_lab5_marcus.exe	67ee87c5a1ad91b2
+7	117	7332262385409898	CMakeFiles/oop_lab5_marcus.dir/ui.c.obj	39426eb953dd3e6e
+2	103	7332263692500708	CMakeFiles/oop_lab5_marcus.dir/service.c.obj	9eb16768c5a6cc35
+103	176	7332263693203928	oop_lab5_marcus.exe	67ee87c5a1ad91b2
+2	101	7332265171256435	CMakeFiles/oop_lab5_marcus.dir/lab2.c.obj	b86bfafb5b0d54b2
+8	104	7332265171289170	CMakeFiles/oop_lab5_marcus.dir/repo.c.obj	e6875c01424d49d9
+20	118	7332265171438845	CMakeFiles/oop_lab5_marcus.dir/service.c.obj	9eb16768c5a6cc35
+12	120	7332265171460482	CMakeFiles/oop_lab5_marcus.dir/ui.c.obj	39426eb953dd3e6e
+16	130	7332265171555775	CMakeFiles/oop_lab5_marcus.dir/tests.c.obj	7dd5e9b2b8ace711
+130	203	7332265172272669	oop_lab5_marcus.exe	67ee87c5a1ad91b2

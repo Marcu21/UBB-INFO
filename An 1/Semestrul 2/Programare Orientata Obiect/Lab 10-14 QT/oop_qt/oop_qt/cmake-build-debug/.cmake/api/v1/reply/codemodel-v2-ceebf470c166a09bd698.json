@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "oop_qt",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "oop_qt::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-oop_qt-Debug-1f7a6024c8b7edd2f37e.json",
+					"name" : "oop_qt",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "oop_qt_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-oop_qt_autogen-Debug-27cedee37573148bd6fc.json",
+					"name" : "oop_qt_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "oop_qt_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-oop_qt_autogen_timestamp_deps-Debug-ca42e9f28ea94baa04cf.json",
+					"name" : "oop_qt_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/emanu/Desktop/An 1/Semestrul 2/Programare Orientata Obiect/Lab 10-14 QT/oop_qt/oop_qt/cmake-build-debug",
+		"source" : "C:/Users/emanu/Desktop/An 1/Semestrul 2/Programare Orientata Obiect/Lab 10-14 QT/oop_qt/oop_qt"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

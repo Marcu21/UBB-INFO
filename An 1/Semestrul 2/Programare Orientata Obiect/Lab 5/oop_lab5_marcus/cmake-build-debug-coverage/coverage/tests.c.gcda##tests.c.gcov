@@ -1,0 +1,423 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/oop_lab5_marcus/tests.c
+        -:    0:Graph:C:\Users\emanu\CLionProjects\oop_lab5_marcus\cmake-build-debug-coverage\CMakeFiles\oop_lab5_marcus.dir\tests.c.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\oop_lab5_marcus\cmake-build-debug-coverage\CMakeFiles\oop_lab5_marcus.dir\tests.c.gcda
+        -:    0:Runs:1
+        -:    1:#include <assert.h>
+        -:    2:#include <stdio.h>
+        -:    3:#include <string.h>
+        -:    4:#include "service.h"
+        -:    5:
+function run_domain_tests called 1 returned 100% blocks executed 78%
+        1:    6:void run_domain_tests()
+        -:    7:{
+        1:    8:    MateriePrima* materie_prima = creeaza_materie_prima("materie", "prod", 5);
+        1:    8-block  0
+call    0 returned 1
+       1*:    9:    assert(strcmp(materie_prima->nume, "materie") == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:    9-block  0
+call    2 never executed
+        1:    9-block  1
+       1*:   10:    assert(strcmp(materie_prima->producator, "prod") == 0);
+        1:   10-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   10-block  1
+call    2 never executed
+        1:   10-block  2
+       1*:   11:    assert(materie_prima->cantitate == 5);
+        1:   11-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   11-block  1
+call    2 never executed
+        1:   11-block  2
+       1*:   12:    assert(validare(*materie_prima) == 1);
+        1:   12-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   12-block  1
+call    3 never executed
+        1:   12-block  2
+        -:   13:
+        1:   14:    distruge_materie_prima(materie_prima);
+        1:   14-block  0
+call    0 returned 1
+        -:   15:
+        1:   16:    materie_prima = creeaza_materie_prima("materie", "prod", -1);
+call    0 returned 1
+       1*:   17:    assert(validare(*materie_prima) == 0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   17-block  0
+call    3 never executed
+        1:   17-block  1
+        1:   18:    distruge_materie_prima(materie_prima);
+        1:   18-block  0
+call    0 returned 1
+        1:   19:    materie_prima = creeaza_materie_prima("", "prod", 2);
+call    0 returned 1
+       1*:   20:    assert(validare(*materie_prima) == 0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   20-block  0
+call    3 never executed
+        1:   20-block  1
+        1:   21:    MateriePrima* materie_prima2 = copy_materie(materie_prima);
+        1:   21-block  0
+call    0 returned 1
+       1*:   22:    assert(strcmp(materie_prima2->nume, materie_prima->nume) == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   22-block  0
+call    2 never executed
+        1:   22-block  1
+       1*:   23:    assert(strcmp(materie_prima2->producator, materie_prima->producator) == 0);
+        1:   23-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   23-block  1
+call    2 never executed
+        1:   23-block  2
+       1*:   24:    assert(materie_prima2->cantitate == materie_prima->cantitate);
+        1:   24-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   24-block  1
+call    2 never executed
+        1:   24-block  2
+        1:   25:    distruge_materie_prima(materie_prima);
+        1:   25-block  0
+call    0 returned 1
+        1:   26:    distruge_materie_prima(materie_prima2);
+call    0 returned 1
+        1:   27:    printf("domain passed\n");
+call    0 returned 1
+        1:   28:}
+        -:   29:
+function run_repo_tests called 1 returned 100% blocks executed 82%
+        1:   30:void run_repo_tests()
+        -:   31:{
+        -:   32:    MateriiPrime* materii_prime;
+        1:   33:    materii_prime = creeaza_vid();
+        1:   33-block  0
+call    0 returned 1
+        1:   34:    MateriePrima* materie_prima = creeaza_materie_prima("m1", "p1", 2);
+call    0 returned 1
+        1:   35:    adauga_materie_prima(materii_prime, materie_prima);
+call    0 returned 1
+       1*:   36:    assert(materii_prime->used == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   36-block  0
+call    2 never executed
+        1:   36-block  1
+        1:   37:    MateriePrima* materie_prima2 = creeaza_materie_prima("m2", "p2", 2);
+        1:   37-block  0
+call    0 returned 1
+        1:   38:    adauga_materie_prima(materii_prime, materie_prima2);
+call    0 returned 1
+       1*:   39:    assert(materii_prime->used == 2);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   39-block  0
+call    2 never executed
+        1:   39-block  1
+        1:   40:    MateriePrima* materie_prima3 = creeaza_materie_prima("m3", "p3", 99);
+        1:   40-block  0
+call    0 returned 1
+        -:   41:    MateriiPrime* materii_prime2;
+        1:   42:    materii_prime2 = copy_list(materii_prime);
+call    0 returned 1
+       1*:   43:    assert(materii_prime2->used == 2);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   43-block  0
+call    2 never executed
+        1:   43-block  1
+        1:   44:    modifica_materie_prima(materii_prime, 1, *materie_prima3);
+        1:   44-block  0
+call    0 returned 1
+       1*:   45:    assert(((MateriePrima*)materii_prime->array[1])->cantitate == 99);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   45-block  0
+call    2 never executed
+        1:   45-block  1
+        1:   46:    sterge_materie_prima(materii_prime, 0);
+        1:   46-block  0
+call    0 returned 1
+       1*:   47:    assert(materii_prime->used == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   47-block  0
+call    2 never executed
+        1:   47-block  1
+        1:   48:    sterge_materie_prima(materii_prime, 0);
+        1:   48-block  0
+call    0 returned 1
+       1*:   49:    assert(materii_prime->used == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   49-block  0
+call    2 never executed
+        1:   49-block  1
+        -:   50:    //free(materie_prima);
+        -:   51:    //free(materie_prima2);
+        -:   52:
+        1:   53:    distruge_materie_prima(materie_prima3);
+        1:   53-block  0
+call    0 returned 1
+        1:   54:    distruge_materii_prime(materii_prime, (DestroyFunction)distruge_materie_prima);
+call    0 returned 1
+        1:   55:    distruge_materii_prime(materii_prime2, (DestroyFunction)distruge_materie_prima);
+call    0 returned 1
+        1:   56:    printf("repo passed\n");
+call    0 returned 1
+        1:   57:}
+        -:   58:
+function run_service_tests called 1 returned 100% blocks executed 78%
+        1:   59:void run_service_tests()
+        -:   60:{
+        -:   61:    MateriiPrime* materii_prime;
+        1:   62:    materii_prime = creeaza_vid();
+        1:   62-block  0
+call    0 returned 1
+        1:   63:    MateriePrima* materie_prima = creeaza_materie_prima("m1", "p1", 2);
+call    0 returned 1
+        1:   64:    adauga_element(materii_prime, materie_prima);
+call    0 returned 1
+       1*:   65:    assert(materii_prime->used == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   65-block  0
+call    2 never executed
+        1:   65-block  1
+        1:   66:    MateriePrima* materie_prima2 = creeaza_materie_prima("m2", "p2", 2);
+        1:   66-block  0
+call    0 returned 1
+        1:   67:    adauga_element(materii_prime, materie_prima2);
+call    0 returned 1
+       1*:   68:    assert(materii_prime->used == 2);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   68-block  0
+call    2 never executed
+        1:   68-block  1
+        1:   69:    MateriePrima* materie_prima3 = creeaza_materie_prima("m3", "p3", -2);
+        1:   69-block  0
+call    0 returned 1
+       1*:   70:    assert(adauga_element(materii_prime, materie_prima3) == 0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   70-block  0
+call    3 never executed
+        1:   70-block  1
+        1:   71:    MateriePrima* materie_prima4 = creeaza_materie_prima("m3", "p3", 99);
+        1:   71-block  0
+call    0 returned 1
+        1:   72:    modifica_element(materii_prime, 1, materie_prima4);
+call    0 returned 1
+       1*:   73:    assert(((MateriePrima*)materii_prime->array[1])->cantitate == 99);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   73-block  0
+call    2 never executed
+        1:   73-block  1
+        1:   74:    MateriePrima* materie_prima5 = creeaza_materie_prima("m3", "p3", 99);
+        1:   74-block  0
+call    0 returned 1
+       1*:   75:    assert(modifica_element(materii_prime, 5, materie_prima5) == 0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   75-block  0
+call    3 never executed
+        1:   75-block  1
+        1:   76:    MateriePrima* sortat = sorteaza_materii_prime(materii_prime, compara_dupa_nume, 0);
+        1:   76-block  0
+call    0 returned 1
+       1*:   77:    assert(strcmp(sortat[1].nume, "m3") == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   77-block  0
+call    2 never executed
+        1:   77-block  1
+        1:   78:    free(sortat);
+        1:   79:    sortat = sorteaza_materii_prime(materii_prime, compara_dupa_nume, 1);
+        1:   79-block  0
+call    0 returned 1
+       1*:   80:    assert(strcmp(sortat[1].nume, "m1") == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   80-block  0
+call    2 never executed
+        1:   80-block  1
+        1:   81:    free(sortat);
+        1:   82:    sortat = sorteaza_materii_prime(materii_prime, compara_dupa_cantitate, 0);
+        1:   82-block  0
+call    0 returned 1
+       1*:   83:    assert(sortat[1].cantitate == 99);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   83-block  0
+call    2 never executed
+        1:   83-block  1
+        1:   84:    free(sortat);
+        1:   85:    sortat = sorteaza_materii_prime(materii_prime, compara_dupa_cantitate, 1);
+        1:   85-block  0
+call    0 returned 1
+       1*:   86:    assert(sortat[0].cantitate == 99);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   86-block  0
+call    2 never executed
+        1:   86-block  1
+        1:   87:    free(sortat);
+        1:   88:    MateriePrima* materie_prima6 = creeaza_materie_prima("m6", "p6", 4);
+        1:   88-block  0
+call    0 returned 1
+        1:   89:    adauga_element(materii_prime, materie_prima6);
+call    0 returned 1
+        1:   90:    sortat = sorteaza_materii_prime_insertion(materii_prime, compara_dupa_cantitate, 0);
+call    0 returned 1
+       1*:   91:    assert(sortat[2].cantitate == 99);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   91-block  0
+call    2 never executed
+        1:   91-block  1
+        1:   92:    free(sortat);
+        -:   93:
+        1:   94:    int total = 0;
+        1:   95:    MateriePrima* filtered = get_materii_prime_cu_cantitate_maxima(materii_prime, 90, &total);
+        1:   95-block  0
+call    0 returned 1
+       1*:   96:    assert(total == 2);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   96-block  0
+call    2 never executed
+        1:   96-block  1
+        1:   97:    free(filtered);
+        1:   98:    filtered = get_materii_prime_cu_cantitate_maxima(materii_prime, 100, &total);
+        1:   98-block  0
+call    0 returned 1
+       1*:   99:    assert(total == 3);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   99-block  0
+call    2 never executed
+        1:   99-block  1
+        1:  100:    free(filtered);
+        1:  101:    filtered = get_materii_prime_cu_nume(materii_prime, "m1", &total);
+        1:  101-block  0
+call    0 returned 1
+       1*:  102:    assert(total == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  102-block  0
+call    2 never executed
+        1:  102-block  1
+        1:  103:    free(filtered);
+       1*:  104:    assert(sterge_element(materii_prime, 1) == 1);
+        1:  104-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  104-block  1
+call    3 never executed
+        1:  104-block  2
+       1*:  105:    assert(materii_prime->used == 2);
+        1:  105-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  105-block  1
+call    2 never executed
+        1:  105-block  2
+       1*:  106:    assert(sterge_element(materii_prime, -2) == 0);
+        1:  106-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  106-block  1
+call    3 never executed
+        1:  106-block  2
+       1*:  107:    assert(sterge_element(materii_prime, 5) == 0);
+        1:  107-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  107-block  1
+call    3 never executed
+        1:  107-block  2
+        -:  108:    //free(materie_prima);
+        -:  109:    //free(materie_prima2);
+        1:  110:    distruge_materie_prima(materie_prima4);
+        1:  110-block  0
+call    0 returned 1
+        1:  111:    distruge_materii_prime(materii_prime, (DestroyFunction)distruge_materie_prima);
+call    0 returned 1
+        1:  112:    printf("service passed\n");
+call    0 returned 1
+        1:  113:}
+        -:  114:
+function test_liste_de_liste called 1 returned 100% blocks executed 88%
+        1:  115:void test_liste_de_liste()
+        -:  116:{
+        -:  117:    MateriiPrime* materii_prime;
+        1:  118:    materii_prime = creeaza_vid();
+        1:  118-block  0
+call    0 returned 1
+        1:  119:    adauga_materie_prima(materii_prime, creeaza_materie_prima("m1","p1",99));
+call    0 returned 1
+call    1 returned 1
+        1:  120:    adauga_materie_prima(materii_prime, creeaza_materie_prima("m1","p1",99));
+call    0 returned 1
+call    1 returned 1
+        -:  121:    MateriiPrime* materii_prime2;
+        1:  122:    materii_prime2 = creeaza_vid();
+call    0 returned 1
+        -:  123:    MateriiPrime* undoL;
+        1:  124:    undoL = creeaza_vid();
+call    0 returned 1
+        1:  125:    adauga_materie_prima(undoL, materii_prime);
+call    0 returned 1
+       1*:  126:    assert(undoL->used == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  126-block  0
+call    2 never executed
+        1:  126-block  1
+        1:  127:    adauga_materie_prima(undoL, materii_prime2);
+        1:  127-block  0
+call    0 returned 1
+       1*:  128:    assert(undoL->used == 2);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  128-block  0
+call    2 never executed
+        1:  128-block  1
+        1:  129:    distruge_materii_prime(undoL, (DestroyFunction)distruge_lista_materii);
+        1:  129-block  0
+call    0 returned 1
+        1:  130:}
+        -:  131:
+function run_all_tests called 1 returned 100% blocks executed 100%
+        1:  132:void run_all_tests()
+        -:  133:{
+        1:  134:    run_domain_tests();
+        1:  134-block  0
+call    0 returned 1
+        1:  135:    run_repo_tests();
+call    0 returned 1
+        1:  136:    run_service_tests();
+call    0 returned 1
+        1:  137:    test_liste_de_liste();
+call    0 returned 1
+        1:  138:}

@@ -1,0 +1,20 @@
+# ninja log v5
+121	525	7406126356435271	CMakeFiles/melodii2qt.dir/service.cpp.obj	e002d39b04ac1e20
+9	74	7406126749603545	melodii2qt_autogen/timestamp	dd18fc1eb5049c09
+9	74	7406126749603545	melodii2qt_autogen/mocs_compilation.cpp	dd18fc1eb5049c09
+9	74	7406126749603545	C:/Users/emanu/CLionProjects/melodii2qt/cmake-build-debug/melodii2qt_autogen/timestamp	dd18fc1eb5049c09
+131	635	7406126357545400	CMakeFiles/melodii2qt.dir/teste.cpp.obj	d36d135d0a86af13
+9	74	7406126749603545	C:/Users/emanu/CLionProjects/melodii2qt/cmake-build-debug/melodii2qt_autogen/mocs_compilation.cpp	dd18fc1eb5049c09
+140	190	7406004045419888	CMakeFiles/melodii2qt.dir/melodii2qt_autogen/mocs_compilation.cpp.obj	163552065878af06
+77	1953	7406126768375221	CMakeFiles/melodii2qt.dir/main.cpp.obj	e621c95d66a36595
+1953	2242	7406126769999585	melodii2qt.exe	df74ca8b2143610c
+82	440	7406068416717833	CMakeFiles/melodii2qt.dir/domain.cpp.obj	204e85dd5354f91c
+91	458	7406068416898614	CMakeFiles/melodii2qt.dir/validator.cpp.obj	7bd62bd9753a2f02
+94	141	7406066735655593	CMakeFiles/melodii2qt.dir/gui.cpp.obj	a20d78ece3f91c60
+127	676	7406126357941463	CMakeFiles/melodii2qt.dir/repo.cpp.obj	f73cafd80e3d1eb1
+11	82	7406126906875634	melodii2qt_autogen/timestamp	dd18fc1eb5049c09
+11	82	7406126906875634	melodii2qt_autogen/mocs_compilation.cpp	dd18fc1eb5049c09
+11	82	7406126906875634	C:/Users/emanu/CLionProjects/melodii2qt/cmake-build-debug/melodii2qt_autogen/timestamp	dd18fc1eb5049c09
+11	82	7406126906875634	C:/Users/emanu/CLionProjects/melodii2qt/cmake-build-debug/melodii2qt_autogen/mocs_compilation.cpp	dd18fc1eb5049c09
+85	1953	7406126925571824	CMakeFiles/melodii2qt.dir/main.cpp.obj	e621c95d66a36595
+1954	2234	7406126927122367	melodii2qt.exe	df74ca8b2143610c

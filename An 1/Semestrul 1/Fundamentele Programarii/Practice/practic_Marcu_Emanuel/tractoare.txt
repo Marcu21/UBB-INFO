@@ -1,0 +1,7 @@
+1, john deere, 100, vechi, 22.01.2024
+2, john deere, 300, nou, 20.04.2024
+3, lamborghini, 2000, nou, 25.08.2024
+4, mercedes, 1000, smecher, 21.08.2024
+5, audi, 800, slab, 20.01.2024
+6, bmw, 400, prost, 22.01.2024
+7,dafea,100,fsdfrs,20.02.2022

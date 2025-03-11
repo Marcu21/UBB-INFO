@@ -1,0 +1,2 @@
+2021-07-01 12:01:35 info req3 doing action c
+2021-07-01 12:01:39 debug req3 doing action g bot not liking it

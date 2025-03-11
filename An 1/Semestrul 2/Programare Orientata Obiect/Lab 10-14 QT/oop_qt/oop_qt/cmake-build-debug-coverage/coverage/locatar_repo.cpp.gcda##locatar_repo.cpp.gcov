@@ -1,0 +1,606 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/oop_qt/locatar_repo.cpp
+        -:    0:Graph:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\locatar_repo.cpp.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\locatar_repo.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "locatar_repo.h"
+        -:    2:#include "locatar.h"
+        -:    3:#include "exception.h"
+        -:    4:#include <algorithm>
+        -:    5:
+function _ZN12locatar_repo5storeERK7Locatar called 15 returned 87% blocks executed 69%
+       15:    6:void locatar_repo::store(const Locatar& locatar) {
+        -:    7:    //Adauga un locatar in lista de locatari
+       37:    8:    for (const Locatar& l : locatari)
+       15:    8-block  0
+call    0 returned 15
+call    1 returned 15
+       24:    8-block  1
+call    2 returned 24
+       22:    8-block  2
+call    3 returned 22
+       37:    8-block  3
+call    4 returned 37
+branch  5 taken 24
+branch  6 taken 13 (fallthrough)
+       24:    9:        if (l.get_apartament() == locatar.get_apartament() && l.get_nume_proprietar() == locatar.get_nume_proprietar())
+call    0 returned 24
+branch  1 taken 24 (fallthrough)
+branch  2 taken 0 (throw)
+       24:    9-block  0
+call    3 returned 24
+branch  4 taken 24 (fallthrough)
+branch  5 taken 0 (throw)
+       24:    9-block  1
+branch  6 taken 2 (fallthrough)
+branch  7 taken 22
+        2:    9-block  2
+call    8 returned 2
+branch  9 taken 2 (fallthrough)
+branch 10 taken 0 (throw)
+        2:    9-block  3
+call   11 returned 2
+branch 12 taken 2 (fallthrough)
+branch 13 taken 0 (throw)
+        2:    9-block  4
+call   14 returned 2
+branch 15 taken 2 (fallthrough)
+branch 16 taken 0
+        2:    9-block  5
+       22:    9-block  6
+       24:    9-block  7
+branch 17 taken 2 (fallthrough)
+branch 18 taken 22
+        2:    9-block  8
+call   19 returned 2
+       24:    9-block  9
+branch 20 taken 2 (fallthrough)
+branch 21 taken 22
+        2:    9-block 10
+call   22 returned 2
+       24:    9-block 11
+branch 23 taken 2 (fallthrough)
+branch 24 taken 22
+    $$$$$:    9-block 12
+branch 25 never executed (fallthrough)
+branch 26 never executed
+    $$$$$:    9-block 13
+call   27 never executed
+    $$$$$:    9-block 14
+    $$$$$:    9-block 15
+branch 28 never executed (fallthrough)
+branch 29 never executed
+    $$$$$:    9-block 16
+call   30 never executed
+    $$$$$:    9-block 17
+        6:   10:            throw repo_exception("Locatar deja existent!");
+        2:   10-block  0
+call    0 returned 2
+        2:   10-block  1
+call    1 returned 2
+branch  2 taken 2 (fallthrough)
+branch  3 taken 0 (throw)
+        2:   10-block  2
+call    4 returned 2
+call    5 returned 2
+call    6 returned 2
+    $$$$$:   10-block  3
+    $$$$$:   10-block  4
+    $$$$$:   10-block  5
+call    7 never executed
+       13:   11:    locatari.push_back(locatar);
+       13:   11-block  0
+call    0 returned 13
+       13:   12:}
+        -:   13:
+function _ZN12locatar_repo7get_allEv called 30 returned 100% blocks executed 100%
+       30:   14:std::vector<Locatar>& locatar_repo::get_all(){
+        -:   15:    //Returneaza lista de locatari
+       30:   16:    return locatari;
+       30:   16-block  0
+        -:   17:}
+        -:   18:
+function _ZN12locatar_repo7destroyEiRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 5 returned 80% blocks executed 72%
+        5:   19:void locatar_repo::destroy(int apartament, const string& nume_proprietar) {
+        -:   20:    // Sterge un locatar din lista de locatari
+function _ZZN12locatar_repo7destroyEiRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEENKUlRK7LocatarE_clESA_ called 8 returned 100% blocks executed 81%
+        5:   21:    auto it = std::find_if(locatari.begin(), locatari.end(), [&](const Locatar& l) {
+        5:   21-block  0
+call    0 returned 5
+call    1 returned 5
+call    2 returned 5
+branch  3 taken 5 (fallthrough)
+branch  4 taken 0 (throw)
+        8:   22:        return l.get_apartament() == apartament && l.get_nume_proprietar() == nume_proprietar;
+        8:   22-block  0
+call    0 returned 8
+branch  1 taken 8 (fallthrough)
+branch  2 taken 0 (throw)
+        8:   22-block  1
+branch  3 taken 4 (fallthrough)
+branch  4 taken 4
+        4:   22-block  2
+call    5 returned 4
+branch  6 taken 4 (fallthrough)
+branch  7 taken 0 (throw)
+        4:   22-block  3
+call    8 returned 4
+branch  9 taken 4 (fallthrough)
+branch 10 taken 0
+        4:   22-block  4
+        4:   22-block  5
+        8:   22-block  6
+        8:   22-block  7
+branch 11 taken 4 (fallthrough)
+branch 12 taken 4
+        4:   22-block  8
+call   13 returned 4
+        8:   22-block  9
+        8:   22-block 10
+    $$$$$:   22-block 11
+branch 14 never executed (fallthrough)
+branch 15 never executed
+    $$$$$:   22-block 12
+call   16 never executed
+        -:   23:    });
+        -:   24:
+        5:   25:    if (it != locatari.end()) {
+        5:   25-block  0
+call    0 returned 5
+call    1 returned 5
+branch  2 taken 4 (fallthrough)
+branch  3 taken 1
+        4:   26:        locatari.erase(it);
+        4:   26-block  0
+call    0 returned 4
+call    1 returned 4
+branch  2 taken 4 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:   26-block  1
+        -:   27:    } else {
+        3:   28:        throw repo_exception("Locatar inexistent!");
+        1:   28-block  0
+call    0 returned 1
+        1:   28-block  1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   28-block  2
+call    4 returned 1
+call    5 returned 1
+call    6 returned 1
+    $$$$$:   28-block  3
+    $$$$$:   28-block  4
+    $$$$$:   28-block  5
+call    7 never executed
+        -:   29:    }
+        4:   30:}
+        4:   30-block  0
+        -:   31:
+        -:   32:
+function _ZN12locatar_repo6modifyEiRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiS7_ called 5 returned 80% blocks executed 79%
+        5:   33:void locatar_repo::modify(int apartament, const string& nume_proprietar, int suprafata, const string& tip_apartament) {
+        -:   34:    //Modifica un locatar din lista de locatari
+        9:   35:    for (auto& locatar : locatari) {
+        5:   35-block  0
+call    0 returned 5
+call    1 returned 5
+        8:   35-block  1
+call    2 returned 8
+        4:   35-block  2
+call    3 returned 4
+        9:   35-block  3
+call    4 returned 9
+branch  5 taken 8
+branch  6 taken 1 (fallthrough)
+        8:   36:        if (locatar.get_apartament() == apartament) {
+call    0 returned 8
+branch  1 taken 8 (fallthrough)
+branch  2 taken 0 (throw)
+        8:   36-block  0
+branch  3 taken 4 (fallthrough)
+branch  4 taken 4
+        4:   37:            locatar.set_nume_proprietar(nume_proprietar);
+        4:   37-block  0
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+        4:   38:            locatar.set_suprafata(suprafata);
+        4:   38-block  0
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+        4:   39:            locatar.set_tip_apartament(tip_apartament);
+        4:   39-block  0
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+        4:   40:            return;
+        4:   40-block  0
+        4:   40-block  1
+        -:   41:        }
+        -:   42:    }
+        3:   43:    throw repo_exception("Locatar inexistent!");
+        1:   43-block  0
+call    0 returned 1
+        1:   43-block  1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   43-block  2
+call    4 returned 1
+call    5 returned 1
+call    6 returned 0
+    $$$$$:   43-block  3
+    $$$$$:   43-block  4
+    $$$$$:   43-block  5
+call    7 never executed
+        -:   44:}
+        -:   45:
+        -:   46:
+function _ZN12locatar_repo4findEi called 10 returned 60% blocks executed 77%
+       10:   47:Locatar locatar_repo::find(int apartament)
+        -:   48:{
+        -:   49:    //Cauta un locatar in lista de locatari
+function _ZZN12locatar_repo4findEiENKUlRK7LocatarE_clES2_ called 16 returned 100% blocks executed 100%
+       10:   50:    auto it = std::find_if(locatari.begin(), locatari.end(), [apartament](const Locatar& locatar) {
+       10:   50-block  0
+call    0 returned 10
+call    1 returned 10
+call    2 returned 10
+branch  3 taken 10 (fallthrough)
+branch  4 taken 0 (throw)
+       16:   51:        return locatar.get_apartament() == apartament;
+       16:   51-block  0
+call    0 returned 16
+        -:   52:    });
+        -:   53:
+       10:   54:    if (it != locatari.end()) {
+       10:   54-block  0
+call    0 returned 10
+call    1 returned 10
+branch  2 taken 6 (fallthrough)
+branch  3 taken 4
+       12:   55:        return *it;
+        6:   55-block  0
+call    0 returned 6
+call    1 returned 6
+branch  2 taken 6 (fallthrough)
+branch  3 taken 0 (throw)
+        6:   55-block  1
+        -:   56:    } else {
+       12:   57:        throw repo_exception("Locatar inexistent!");
+        4:   57-block  0
+call    0 returned 4
+        4:   57-block  1
+call    1 returned 4
+branch  2 taken 4 (fallthrough)
+branch  3 taken 0 (throw)
+        4:   57-block  2
+call    4 returned 4
+call    5 returned 4
+call    6 returned 4
+    $$$$$:   57-block  3
+    $$$$$:   57-block  4
+    $$$$$:   57-block  5
+call    7 never executed
+        -:   58:    }
+        -:   59:}
+        -:   60:
+        -:   61:
+        -:   62:
+function _ZN14repo_dictionar5storeERK7Locatar called 3 returned 33% blocks executed 74%
+        3:   63:void repo_dictionar::store(const Locatar& locatar) {
+        -:   64:    //Adauga un locatar in dictionarul de locatari
+        3:   65:    const double store_probability = 0.5;
+        3:   66:    if (probabilitate < store_probability)
+        3:   66-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 2
+        1:   67:        throw std::runtime_error("Probabilitatea nu este buna!");
+        1:   67-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   67-block  1
+call    4 returned 1
+    $$$$$:   67-block  2
+call    5 never executed
+        -:   68:
+        2:   69:    auto it = locatari.find(locatar.get_apartament());
+        2:   69-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   69-block  1
+call    3 returned 2
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0 (throw)
+    $$$$$:   69-block  2
+        2:   70:    if (it != locatari.end())
+        2:   70-block  0
+call    0 returned 2
+call    1 returned 2
+branch  2 taken 1 (fallthrough)
+branch  3 taken 1
+        1:   71:        throw std::runtime_error("Locatar deja existent!");
+        1:   71-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   71-block  1
+call    4 returned 1
+    $$$$$:   71-block  2
+call    5 never executed
+        -:   72:
+        1:   73:    locatari[locatar.get_apartament()] = locatar;
+        1:   73-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   73-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   73-block  2
+call    6 returned 1
+branch  7 taken 1 (fallthrough)
+branch  8 taken 0 (throw)
+    $$$$$:   73-block  3
+        1:   74:}
+        1:   74-block  0
+        -:   75:
+function _ZN14repo_dictionar7get_allEv called 2 returned 50% blocks executed 88%
+        2:   76:std::vector<Locatar>& repo_dictionar::get_all() {
+        -:   77:    //Returneaza toti locatarii
+        2:   78:    const double get_all_probability = 0.4;
+        2:   79:    if (probabilitate < get_all_probability)
+        2:   79-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:   80:        throw std::runtime_error("Probabilitatea nu este buna!");
+        1:   80-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   80-block  1
+call    4 returned 0
+    $$$$$:   80-block  2
+call    5 never executed
+        -:   81:
+        1:   82:    locatari_vector.clear();
+        1:   82-block  0
+call    0 returned 1
+        2:   83:    for (const auto& pair : locatari) {
+call    0 returned 1
+call    1 returned 1
+        1:   83-block  0
+call    2 returned 1
+        1:   83-block  1
+call    3 returned 1
+        2:   83-block  2
+call    4 returned 2
+branch  5 taken 1
+branch  6 taken 1 (fallthrough)
+        1:   84:        locatari_vector.push_back(pair.second);
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   85:    }
+        1:   86:    return locatari_vector;
+        1:   86-block  0
+        1:   86-block  1
+        -:   87:}
+        -:   88:
+        -:   89:
+function _ZN14repo_dictionar7destroyEiRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE called 1 returned 100% blocks executed 50%
+        1:   90:void repo_dictionar::destroy(int apartament, const std::string& nume_proprietar) {
+        -:   91:    //Sterge un locatar
+        1:   92:    const double destroy_probability = 0.6;
+       1*:   93:    if (probabilitate < destroy_probability) throw std::runtime_error("Probabilitatea nu este buna!");
+        1:   93-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   93-block  1
+call    2 never executed
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:   93-block  2
+call    6 never executed
+    $$$$$:   93-block  3
+call    7 never executed
+        -:   94:
+        1:   95:    auto it = locatari.find(apartament);
+        1:   95-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   96:    if (it == locatari.end() || it->second.get_nume_proprietar() != nume_proprietar) throw std::runtime_error("Locatar inexistent!");
+        1:   96-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   96-block  1
+call    4 returned 1
+call    5 returned 1
+branch  6 taken 1 (fallthrough)
+branch  7 taken 0 (throw)
+        1:   96-block  2
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:   96-block  3
+        1:   96-block  4
+        1:   96-block  5
+branch 11 taken 1 (fallthrough)
+branch 12 taken 0
+        1:   96-block  6
+call   13 returned 1
+        1:   96-block  7
+branch 14 taken 0 (fallthrough)
+branch 15 taken 1
+    %%%%%:   96-block  8
+call   16 never executed
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:   96-block  9
+call   20 never executed
+    $$$$$:   96-block 10
+branch 21 never executed (fallthrough)
+branch 22 never executed
+    $$$$$:   96-block 11
+call   23 never executed
+    $$$$$:   96-block 12
+    $$$$$:   96-block 13
+    $$$$$:   96-block 14
+call   24 never executed
+        -:   97:
+        1:   98:    locatari.erase(it);
+        1:   98-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   99:}
+        1:   99-block  0
+        -:  100:
+function _ZN14repo_dictionar6modifyEiRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiS7_ called 1 returned 100% blocks executed 57%
+        1:  101:void repo_dictionar::modify(int apartament, const std::string& nume_proprietar, int suprafata, const std::string& tip_apartament) {
+        -:  102:    //Modifica un locatar
+        1:  103:    const double modify_probability = 1.0;
+       1*:  104:    if (probabilitate < modify_probability) throw std::runtime_error("Probabilitatea nu este buna!");
+        1:  104-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  104-block  1
+call    2 never executed
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  104-block  2
+call    6 never executed
+    $$$$$:  104-block  3
+call    7 never executed
+        -:  105:
+        1:  106:    auto it = locatari.find(apartament);
+        1:  106-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:  107:    if (it == locatari.end() || it->second.get_nume_proprietar() != nume_proprietar) throw std::runtime_error("Locatar inexistent!");
+        1:  107-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:  107-block  1
+call    4 returned 1
+call    5 returned 1
+branch  6 taken 1 (fallthrough)
+branch  7 taken 0 (throw)
+        1:  107-block  2
+call    8 returned 1
+branch  9 taken 0 (fallthrough)
+branch 10 taken 1
+    %%%%%:  107-block  3
+        1:  107-block  4
+        1:  107-block  5
+branch 11 taken 1 (fallthrough)
+branch 12 taken 0
+        1:  107-block  6
+call   13 returned 1
+        1:  107-block  7
+branch 14 taken 0 (fallthrough)
+branch 15 taken 1
+    %%%%%:  107-block  8
+call   16 never executed
+call   17 never executed
+branch 18 never executed (fallthrough)
+branch 19 never executed (throw)
+    %%%%%:  107-block  9
+call   20 never executed
+    $$$$$:  107-block 10
+branch 21 never executed (fallthrough)
+branch 22 never executed
+    $$$$$:  107-block 11
+call   23 never executed
+    $$$$$:  107-block 12
+    $$$$$:  107-block 13
+    $$$$$:  107-block 14
+call   24 never executed
+        -:  108:
+        1:  109:    it->second.set_nume_proprietar(nume_proprietar);
+        1:  109-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  110:    it->second.set_suprafata(suprafata);
+        1:  110-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  111:    it->second.set_tip_apartament(tip_apartament);
+        1:  111-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  112:}
+        1:  112-block  0
+        -:  113:
+function _ZN14repo_dictionar4findEi called 4 returned 75% blocks executed 67%
+        4:  114:Locatar repo_dictionar::find(int apartament) {
+        -:  115:    //Cauta un locatar
+        4:  116:    const double find_probability = 0.8;
+       4*:  117:    if (probabilitate < find_probability) throw std::runtime_error("Probabilitatea nu este buna!");
+        4:  117-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 4
+    %%%%%:  117-block  1
+call    2 never executed
+call    3 never executed
+branch  4 never executed (fallthrough)
+branch  5 never executed (throw)
+    %%%%%:  117-block  2
+call    6 never executed
+    $$$$$:  117-block  3
+call    7 never executed
+        -:  118:
+        4:  119:    auto it = locatari.find(apartament);
+        4:  119-block  0
+call    0 returned 4
+branch  1 taken 4 (fallthrough)
+branch  2 taken 0 (throw)
+        4:  120:    if (it != locatari.end()) {
+        4:  120-block  0
+call    0 returned 4
+call    1 returned 4
+branch  2 taken 3 (fallthrough)
+branch  3 taken 1
+        6:  121:        return it->second;
+        3:  121-block  0
+call    0 returned 3
+call    1 returned 3
+branch  2 taken 3 (fallthrough)
+branch  3 taken 0 (throw)
+        3:  121-block  1
+        3:  121-block  2
+        -:  122:    } else {
+        1:  123:        throw std::runtime_error("Locatar inexistent!");
+        1:  123-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:  123-block  1
+call    4 returned 1
+    $$$$$:  123-block  2
+call    5 never executed
+        -:  124:    }
+        -:  125:}

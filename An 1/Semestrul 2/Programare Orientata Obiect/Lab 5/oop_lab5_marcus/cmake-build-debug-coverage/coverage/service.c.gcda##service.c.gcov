@@ -1,0 +1,268 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/oop_lab5_marcus/service.c
+        -:    0:Graph:C:\Users\emanu\CLionProjects\oop_lab5_marcus\cmake-build-debug-coverage\CMakeFiles\oop_lab5_marcus.dir\service.c.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\oop_lab5_marcus\cmake-build-debug-coverage\CMakeFiles\oop_lab5_marcus.dir\service.c.gcda
+        -:    0:Runs:1
+        -:    1:#include "service.h"
+        -:    2:#include <string.h>
+        -:    3:#include <stdio.h>
+function adauga_element called 4 returned 100% blocks executed 100%
+        4:    4:int adauga_element(MateriiPrime* materii_prime, MateriePrima* materie_prima_adaugata)
+        -:    5:{
+        4:    6:    if (validare(*materie_prima_adaugata) == 0)
+        4:    6-block  0
+call    0 returned 4
+branch  1 taken 1 (fallthrough)
+branch  2 taken 3
+        -:    7:    {
+        1:    8:        distruge_materie_prima(materie_prima_adaugata);
+        1:    8-block  0
+call    0 returned 1
+        1:    9:        return 0;
+        -:   10:    }
+        3:   11:    adauga_materie_prima(materii_prime, materie_prima_adaugata);
+        3:   11-block  0
+call    0 returned 3
+        3:   12:    return 1;
+        -:   13:}
+        -:   14:
+function modifica_element called 2 returned 100% blocks executed 100%
+        2:   15:int modifica_element(MateriiPrime* materii_prime, int index_modificare, MateriePrima* materie_noua)
+        -:   16:{
+        2:   17:    if (index_modificare >= materii_prime->used || index_modificare < 0 || validare(*materie_noua) == 0)
+        2:   17-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:   17-block  1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0
+        1:   17-block  2
+call    4 returned 1
+branch  5 taken 0 (fallthrough)
+branch  6 taken 1
+        -:   18:    {
+        1:   19:        distruge_materie_prima(materie_noua);
+        1:   19-block  0
+call    0 returned 1
+        1:   20:        return 0;
+        -:   21:    }
+        1:   22:    modifica_materie_prima(materii_prime, index_modificare, *materie_noua);
+        1:   22-block  0
+call    0 returned 1
+        -:   23:
+        1:   24:    return 1;
+        -:   25:}
+        -:   26:
+function sterge_element called 3 returned 100% blocks executed 100%
+        3:   27:int sterge_element(MateriiPrime* materii_prime, int index_stergere)
+        -:   28:{
+        3:   29:    if (index_stergere >= materii_prime->used || index_stergere < 0) return 0;
+        3:   29-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 1
+        2:   29-block  1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 1
+        2:   29-block  2
+        1:   30:    sterge_materie_prima(materii_prime, index_stergere);
+        1:   30-block  0
+call    0 returned 1
+        1:   31:    return 1;
+        -:   32:}
+        -:   33:
+function sorteaza_materii_prime called 4 returned 100% blocks executed 95%
+        4:   34:MateriePrima* sorteaza_materii_prime(MateriiPrime* materii_prime, int (*cmp)(MateriePrima, MateriePrima), int descrescator)
+        -:   35:{
+        4:   36:    MateriePrima* tmp = malloc(sizeof(MateriePrima) * materii_prime->used);
+       4*:   37:    if (tmp == NULL) return NULL;
+        4:   37-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 4
+    %%%%%:   37-block  1
+        -:   38:
+       12:   39:    for (int i = 0; i < materii_prime->used; i++)
+        4:   39-block  0
+       12:   39-block  1
+branch  0 taken 8
+branch  1 taken 4 (fallthrough)
+        -:   40:    {
+        8:   41:        tmp[i] = *((MateriePrima*)materii_prime->array[i]);
+        8:   41-block  0
+        -:   42:    }
+        -:   43:
+       12:   44:    for (int i = 0; i < materii_prime->used; i++)
+        4:   44-block  0
+        8:   44-block  1
+       12:   44-block  2
+branch  0 taken 8
+branch  1 taken 4 (fallthrough)
+        -:   45:    {
+       12:   46:        for (int j = i + 1; j < materii_prime->used; j++)
+        8:   46-block  0
+        4:   46-block  1
+       12:   46-block  2
+branch  0 taken 4
+branch  1 taken 8 (fallthrough)
+        -:   47:        {
+        4:   48:            if ((descrescator && !(*cmp)(tmp[i], tmp[j])) || (!descrescator && (*cmp)(tmp[i], tmp[j])))
+        4:   48-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 2
+        2:   48-block  1
+call    2 returned 2
+branch  3 taken 0 (fallthrough)
+branch  4 taken 2
+        2:   48-block  2
+branch  5 taken 2 (fallthrough)
+branch  6 taken 0
+        2:   48-block  3
+call    7 returned 2
+branch  8 taken 0 (fallthrough)
+branch  9 taken 2
+        -:   49:            {
+        2:   50:                MateriePrima aux = tmp[i];
+        2:   51:                tmp[i] = tmp[j];
+        2:   52:                tmp[j] = aux;
+        2:   52-block  0
+        -:   53:            }
+        -:   54:
+        -:   55:        }
+        -:   56:    }
+        4:   57:    return tmp;
+        4:   57-block  0
+        -:   58:}
+        -:   59:
+function sorteaza_materii_prime_insertion called 1 returned 100% blocks executed 84%
+        1:   60:MateriePrima* sorteaza_materii_prime_insertion(MateriiPrime* materii_prime, int (*cmp)(MateriePrima, MateriePrima), int descrescator)
+        -:   61:{
+        1:   62:    MateriePrima* tmp = malloc(sizeof(MateriePrima) * materii_prime->used);
+       1*:   63:    if (tmp == NULL) return NULL;
+        1:   63-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   63-block  1
+        -:   64:
+        4:   65:    for (int i = 0; i < materii_prime->used; i++)
+        1:   65-block  0
+        4:   65-block  1
+branch  0 taken 3
+branch  1 taken 1 (fallthrough)
+        -:   66:    {
+        3:   67:        tmp[i] = *((MateriePrima*)materii_prime->array[i]);
+        3:   67-block  0
+        -:   68:    }
+        -:   69:
+        3:   70:    for (int i = 1; i < materii_prime->used; i++)
+        1:   70-block  0
+        3:   70-block  1
+branch  0 taken 2
+branch  1 taken 1 (fallthrough)
+        -:   71:    {
+        2:   72:        MateriePrima val = tmp[i];
+        2:   73:        int j = i - 1;
+       3*:   74:        while (j >= 0 && ((!descrescator && (*cmp)(tmp[j], val)) || (descrescator && !(*cmp)(tmp[j], val))))
+        2:   74-block  0
+        3:   74-block  1
+branch  0 taken 3 (fallthrough)
+branch  1 taken 0
+        3:   74-block  2
+branch  2 taken 3 (fallthrough)
+branch  3 taken 0
+        3:   74-block  3
+call    4 returned 3
+branch  5 taken 1
+branch  6 taken 2 (fallthrough)
+        2:   74-block  4
+branch  7 taken 0 (fallthrough)
+branch  8 taken 2
+    %%%%%:   74-block  5
+call    9 never executed
+branch 10 never executed
+branch 11 never executed (fallthrough)
+        -:   75:        {
+        1:   76:            tmp[j + 1] = tmp[j];
+        1:   77:            j = j - 1;
+        1:   77-block  0
+        -:   78:        }
+        2:   79:        tmp[j + 1] = val;
+        2:   79-block  0
+        -:   80:    }
+        -:   81:
+        1:   82:    return tmp;
+        1:   82-block  0
+        -:   83:}
+        -:   84:
+        -:   85:
+        -:   86:
+function compara_dupa_nume called 2 returned 100% blocks executed 100%
+        2:   87:int compara_dupa_nume(MateriePrima a, MateriePrima b)
+        -:   88:{
+        2:   89:    return strcmp(a.nume, b.nume) > 0;
+        2:   89-block  0
+        -:   90:}
+        -:   91:
+function compara_dupa_cantitate called 5 returned 100% blocks executed 100%
+        5:   92:int compara_dupa_cantitate(MateriePrima a, MateriePrima b)
+        -:   93:{
+        5:   94:    return a.cantitate > b.cantitate;
+        5:   94-block  0
+        -:   95:}
+        -:   96:
+function get_materii_prime_cu_cantitate_maxima called 2 returned 100% blocks executed 89%
+        2:   97:MateriePrima* get_materii_prime_cu_cantitate_maxima(MateriiPrime* materii_prime, int cantitate_maxima, int* total)
+        -:   98:{
+        2:   99:    MateriePrima* tmp = (MateriePrima*)malloc(sizeof(MateriePrima) * (materii_prime->used));
+       2*:  100:    if (tmp == NULL) return NULL;
+        2:  100-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 2
+    %%%%%:  100-block  1
+        2:  101:    (*total) = 0;
+        8:  102:    for (int i = 0; i < materii_prime->used; i++)
+        2:  102-block  0
+        6:  102-block  1
+        8:  102-block  2
+branch  0 taken 6
+branch  1 taken 2 (fallthrough)
+        -:  103:    {
+        6:  104:        if (((MateriePrima*)materii_prime->array[i])->cantitate <= cantitate_maxima)
+        6:  104-block  0
+branch  0 taken 5 (fallthrough)
+branch  1 taken 1
+        -:  105:        {
+        5:  106:            tmp[(*total)++] = *((MateriePrima*)materii_prime->array[i]);
+        5:  106-block  0
+        -:  107:        }
+        -:  108:    }
+        2:  109:    return tmp;
+        2:  109-block  0
+        -:  110:}
+        -:  111:
+function get_materii_prime_cu_nume called 1 returned 100% blocks executed 89%
+        1:  112:MateriePrima* get_materii_prime_cu_nume(MateriiPrime* materii_prime, const char* nume, int* total)
+        -:  113:{
+        1:  114:    MateriePrima* tmp = (MateriePrima*)malloc(sizeof(MateriePrima) * materii_prime->used);
+       1*:  115:    if (tmp == NULL) return NULL;
+        1:  115-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  115-block  1
+        1:  116:    (*total) = 0;
+        4:  117:    for (int i = 0; i < materii_prime->used; i++)
+        1:  117-block  0
+        3:  117-block  1
+        4:  117-block  2
+branch  0 taken 3
+branch  1 taken 1 (fallthrough)
+        -:  118:    {
+        3:  119:        if (strcmp(((MateriePrima*)materii_prime->array[i])->nume, nume) == 0)
+        3:  119-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 2
+        -:  120:        {
+        1:  121:            tmp[(*total)++] = *((MateriePrima*)materii_prime->array[i]);
+        1:  121-block  0
+        -:  122:        }
+        -:  123:    }
+        1:  124:    return tmp;
+        1:  124-block  0
+        -:  125:}

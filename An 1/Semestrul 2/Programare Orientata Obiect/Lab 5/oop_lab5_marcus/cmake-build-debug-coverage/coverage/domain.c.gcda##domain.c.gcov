@@ -1,0 +1,69 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/oop_lab5_marcus/domain.c
+        -:    0:Graph:C:\Users\emanu\CLionProjects\oop_lab5_marcus\cmake-build-debug-coverage\CMakeFiles\oop_lab5_marcus.dir\domain.c.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\oop_lab5_marcus\cmake-build-debug-coverage\CMakeFiles\oop_lab5_marcus.dir\domain.c.gcda
+        -:    0:Runs:1
+        -:    1:#pragma once
+        -:    2:#include <string.h>
+        -:    3:#include <stdlib.h>
+        -:    4:#include "domain.h"
+        -:    5:
+function creeaza_materie_prima called 17 returned 100% blocks executed 100%
+       17:    6:MateriePrima* creeaza_materie_prima(char* nume, char* producator, int cantitate)
+        -:    7:{
+       17:    8:    MateriePrima* materie_prima = malloc(sizeof(MateriePrima));
+        -:    9:
+        -:   10:
+       17:   11:    materie_prima->nume = malloc(strlen(nume) + 1);
+        -:   12:
+       17:   13:    strcpy(materie_prima->nume, nume);
+        -:   14:
+       17:   15:    materie_prima->producator = malloc(strlen(producator) + 1);
+        -:   16:
+       17:   17:    strcpy(materie_prima->producator, producator);
+        -:   18:
+       17:   19:    materie_prima->cantitate = cantitate;
+        -:   20:
+       17:   21:    return materie_prima;
+       17:   21-block  0
+        -:   22:}
+        -:   23:
+        -:   24:
+function distruge_materie_prima called 17 returned 100% blocks executed 100%
+       17:   25:void distruge_materie_prima(MateriePrima* materie_prima)
+        -:   26:{
+        -:   27:
+       17:   28:    free(materie_prima->nume);
+       17:   29:    free(materie_prima->producator);
+       17:   30:    free(materie_prima);
+       17:   31:}
+        -:   32:
+        -:   33:
+function validare called 8 returned 100% blocks executed 88%
+        8:   34:int validare(MateriePrima materie_prima)
+        -:   35:{
+        8:   36:    if (strlen(materie_prima.nume) == 0) return 0;
+        8:   36-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 7
+        1:   36-block  1
+       7*:   37:    if (strlen(materie_prima.producator) == 0) return 0;
+        7:   37-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 7
+    %%%%%:   37-block  1
+        7:   38:    if (materie_prima.cantitate <= 0) return 0;
+        7:   38-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 5
+        2:   38-block  1
+        5:   39:    return 1;
+        5:   39-block  0
+        -:   40:}
+        -:   41:
+function copy_materie called 3 returned 100% blocks executed 100%
+        3:   42:MateriePrima* copy_materie(MateriePrima* m)
+        -:   43:{
+        3:   44:    return creeaza_materie_prima(m->nume,m->producator,m->cantitate);
+        3:   44-block  0
+call    0 returned 3
+        -:   45:}

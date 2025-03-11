@@ -1,0 +1,5 @@
+C:/Users/emanu/CLionProjects/melodii2qt/cmake-build-debug/CMakeFiles/melodii2qt.dir
+C:/Users/emanu/CLionProjects/melodii2qt/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/emanu/CLionProjects/melodii2qt/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/emanu/CLionProjects/melodii2qt/cmake-build-debug/CMakeFiles/melodii2qt_autogen_timestamp_deps.dir
+C:/Users/emanu/CLionProjects/melodii2qt/cmake-build-debug/CMakeFiles/melodii2qt_autogen.dir

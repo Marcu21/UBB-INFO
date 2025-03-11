@@ -1,0 +1,1024 @@
+        -:    0:Source:C:/Qt/6.7.0/mingw_64/include/QtCore/qarraydataops.h
+        -:    0:Graph:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\main.cpp.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\oop_qt\cmake-build-debug-coverage\CMakeFiles\oop_qt.dir\main.cpp.gcda
+        -:    0:Runs:1
+        -:    1:// Copyright (C) 2020 The Qt Company Ltd.
+        -:    2:// Copyright (C) 2016 Intel Corporation.
+        -:    3:// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+        -:    4:
+        -:    5:#ifndef QARRAYDATAOPS_H
+        -:    6:#define QARRAYDATAOPS_H
+        -:    7:
+        -:    8:#include <QtCore/qarraydata.h>
+        -:    9:#include <QtCore/qcontainertools_impl.h>
+        -:   10:
+        -:   11:#include <memory>
+        -:   12:#include <new>
+        -:   13:#include <string.h>
+        -:   14:#include <utility>
+        -:   15:#include <iterator>
+        -:   16:#include <tuple>
+        -:   17:#include <type_traits>
+        -:   18:
+        -:   19:QT_BEGIN_NAMESPACE
+        -:   20:
+        -:   21:template <class T> struct QArrayDataPointer;
+        -:   22:
+        -:   23:namespace QtPrivate {
+        -:   24:
+        -:   25:template <class T>
+        -:   26:struct QPodArrayOps
+        -:   27:        : public QArrayDataPointer<T>
+        -:   28:{
+        -:   29:    static_assert (std::is_nothrow_destructible_v<T>, "Types with throwing destructors are not supported in Qt containers.");
+        -:   30:
+        -:   31:protected:
+        -:   32:    typedef QTypedArrayData<T> Data;
+        -:   33:    using DataPointer = QArrayDataPointer<T>;
+        -:   34:
+        -:   35:public:
+        -:   36:    typedef typename QArrayDataPointer<T>::parameter_type parameter_type;
+        -:   37:
+        -:   38:    using QArrayDataPointer<T>::QArrayDataPointer;
+        -:   39:
+        -:   40:    void appendInitialize(qsizetype newSize) noexcept
+        -:   41:    {
+        -:   42:        Q_ASSERT(this->isMutable());
+        -:   43:        Q_ASSERT(!this->isShared());
+        -:   44:        Q_ASSERT(newSize > this->size);
+        -:   45:        Q_ASSERT(newSize - this->size <= this->freeSpaceAtEnd());
+        -:   46:
+        -:   47:        T *where = this->end();
+        -:   48:        this->size = newSize;
+        -:   49:        const T *e = this->end();
+        -:   50:        while (where != e)
+        -:   51:            *where++ = T();
+        -:   52:    }
+        -:   53:
+        -:   54:    void copyAppend(const T *b, const T *e) noexcept
+        -:   55:    {
+        -:   56:        Q_ASSERT(this->isMutable() || b == e);
+        -:   57:        Q_ASSERT(!this->isShared() || b == e);
+        -:   58:        Q_ASSERT(b <= e);
+        -:   59:        Q_ASSERT((e - b) <= this->freeSpaceAtEnd());
+        -:   60:
+        -:   61:        if (b == e)
+        -:   62:            return;
+        -:   63:
+        -:   64:        ::memcpy(static_cast<void *>(this->end()), static_cast<const void *>(b), (e - b) * sizeof(T));
+        -:   65:        this->size += (e - b);
+        -:   66:    }
+        -:   67:
+        -:   68:    void copyAppend(qsizetype n, parameter_type t) noexcept
+        -:   69:    {
+        -:   70:        Q_ASSERT(!this->isShared() || n == 0);
+        -:   71:        Q_ASSERT(this->freeSpaceAtEnd() >= n);
+        -:   72:        if (!n)
+        -:   73:            return;
+        -:   74:
+        -:   75:        T *where = this->end();
+        -:   76:        this->size += qsizetype(n);
+        -:   77:        while (n--)
+        -:   78:            *where++ = t;
+        -:   79:    }
+        -:   80:
+        -:   81:    void moveAppend(T *b, T *e) noexcept
+        -:   82:    {
+        -:   83:        copyAppend(b, e);
+        -:   84:    }
+        -:   85:
+        -:   86:    void truncate(size_t newSize) noexcept
+        -:   87:    {
+        -:   88:        Q_ASSERT(this->isMutable());
+        -:   89:        Q_ASSERT(!this->isShared());
+        -:   90:        Q_ASSERT(newSize < size_t(this->size));
+        -:   91:
+        -:   92:        this->size = qsizetype(newSize);
+        -:   93:    }
+        -:   94:
+       3*:   95:    void destroyAll() noexcept // Call from destructors, ONLY!
+        -:   96:    {
+       3*:   97:        Q_ASSERT(this->d);
+       3*:   98:        Q_ASSERT(this->d->ref_.loadRelaxed() == 0);
+        -:   99:
+        -:  100:        // As this is to be called only from destructor, it doesn't need to be
+        -:  101:        // exception safe; size not updated.
+       3*:  102:    }
+------------------
+_ZN9QtPrivate12QPodArrayOpsIDsE10destroyAllEv:
+function _ZN9QtPrivate12QPodArrayOpsIDsE10destroyAllEv called 3 returned 100% blocks executed 67%
+        3:   95:    void destroyAll() noexcept // Call from destructors, ONLY!
+        -:   96:    {
+       3*:   97:        Q_ASSERT(this->d);
+        3:   97-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 3
+    %%%%%:   97-block  1
+call    2 never executed
+       3*:   98:        Q_ASSERT(this->d->ref_.loadRelaxed() == 0);
+        3:   98-block  0
+call    0 returned 3
+branch  1 taken 0 (fallthrough)
+branch  2 taken 3
+    %%%%%:   98-block  1
+call    3 never executed
+        -:   99:
+        -:  100:        // As this is to be called only from destructor, it doesn't need to be
+        -:  101:        // exception safe; size not updated.
+        3:  102:    }
+------------------
+_ZN9QtPrivate12QPodArrayOpsIcE10destroyAllEv:
+function _ZN9QtPrivate12QPodArrayOpsIcE10destroyAllEv called 0 returned 0% blocks executed 0%
+    #####:   95:    void destroyAll() noexcept // Call from destructors, ONLY!
+        -:   96:    {
+    #####:   97:        Q_ASSERT(this->d);
+    %%%%%:   97-block  0
+branch  0 never executed (fallthrough)
+branch  1 never executed
+    %%%%%:   97-block  1
+call    2 never executed
+    #####:   98:        Q_ASSERT(this->d->ref_.loadRelaxed() == 0);
+    %%%%%:   98-block  0
+call    0 never executed
+branch  1 never executed (fallthrough)
+branch  2 never executed
+    %%%%%:   98-block  1
+call    3 never executed
+        -:   99:
+        -:  100:        // As this is to be called only from destructor, it doesn't need to be
+        -:  101:        // exception safe; size not updated.
+    #####:  102:    }
+------------------
+        -:  103:
+        -:  104:    T *createHole(QArrayData::GrowthPosition pos, qsizetype where, qsizetype n)
+        -:  105:    {
+        -:  106:        Q_ASSERT((pos == QArrayData::GrowsAtBeginning && n <= this->freeSpaceAtBegin()) ||
+        -:  107:                 (pos == QArrayData::GrowsAtEnd && n <= this->freeSpaceAtEnd()));
+        -:  108:
+        -:  109:        T *insertionPoint = this->ptr + where;
+        -:  110:        if (pos == QArrayData::GrowsAtEnd) {
+        -:  111:            if (where < this->size)
+        -:  112:                ::memmove(static_cast<void *>(insertionPoint + n), static_cast<void *>(insertionPoint), (this->size - where) * sizeof(T));
+        -:  113:        } else {
+        -:  114:            Q_ASSERT(where == 0);
+        -:  115:            this->ptr -= n;
+        -:  116:            insertionPoint -= n;
+        -:  117:        }
+        -:  118:        this->size += n;
+        -:  119:        return insertionPoint;
+        -:  120:    }
+        -:  121:
+        -:  122:    void insert(qsizetype i, const T *data, qsizetype n)
+        -:  123:    {
+        -:  124:        typename Data::GrowthPosition pos = Data::GrowsAtEnd;
+        -:  125:        if (this->size != 0 && i == 0)
+        -:  126:            pos = Data::GrowsAtBeginning;
+        -:  127:
+        -:  128:        DataPointer oldData;
+        -:  129:        this->detachAndGrow(pos, n, &data, &oldData);
+        -:  130:        Q_ASSERT((pos == Data::GrowsAtBeginning && this->freeSpaceAtBegin() >= n) ||
+        -:  131:                 (pos == Data::GrowsAtEnd && this->freeSpaceAtEnd() >= n));
+        -:  132:
+        -:  133:        T *where = createHole(pos, i, n);
+        -:  134:        ::memcpy(static_cast<void *>(where), static_cast<const void *>(data), n * sizeof(T));
+        -:  135:    }
+        -:  136:
+        -:  137:    void insert(qsizetype i, qsizetype n, parameter_type t)
+        -:  138:    {
+        -:  139:        T copy(t);
+        -:  140:
+        -:  141:        typename Data::GrowthPosition pos = Data::GrowsAtEnd;
+        -:  142:        if (this->size != 0 && i == 0)
+        -:  143:            pos = Data::GrowsAtBeginning;
+        -:  144:
+        -:  145:        this->detachAndGrow(pos, n, nullptr, nullptr);
+        -:  146:        Q_ASSERT((pos == Data::GrowsAtBeginning && this->freeSpaceAtBegin() >= n) ||
+        -:  147:                 (pos == Data::GrowsAtEnd && this->freeSpaceAtEnd() >= n));
+        -:  148:
+        -:  149:        T *where = createHole(pos, i, n);
+        -:  150:        while (n--)
+        -:  151:            *where++ = copy;
+        -:  152:    }
+        -:  153:
+        -:  154:    template<typename... Args>
+        -:  155:    void emplace(qsizetype i, Args &&... args)
+        -:  156:    {
+        -:  157:        bool detach = this->needsDetach();
+        -:  158:        if (!detach) {
+        -:  159:            if (i == this->size && this->freeSpaceAtEnd()) {
+        -:  160:                new (this->end()) T(std::forward<Args>(args)...);
+        -:  161:                ++this->size;
+        -:  162:                return;
+        -:  163:            }
+        -:  164:            if (i == 0 && this->freeSpaceAtBegin()) {
+        -:  165:                new (this->begin() - 1) T(std::forward<Args>(args)...);
+        -:  166:                --this->ptr;
+        -:  167:                ++this->size;
+        -:  168:                return;
+        -:  169:            }
+        -:  170:        }
+        -:  171:        T tmp(std::forward<Args>(args)...);
+        -:  172:        typename QArrayData::GrowthPosition pos = QArrayData::GrowsAtEnd;
+        -:  173:        if (this->size != 0 && i == 0)
+        -:  174:            pos = QArrayData::GrowsAtBeginning;
+        -:  175:
+        -:  176:        this->detachAndGrow(pos, 1, nullptr, nullptr);
+        -:  177:
+        -:  178:        T *where = createHole(pos, i, 1);
+        -:  179:        new (where) T(std::move(tmp));
+        -:  180:    }
+        -:  181:
+        -:  182:    void erase(T *b, qsizetype n)
+        -:  183:    {
+        -:  184:        T *e = b + n;
+        -:  185:        Q_ASSERT(this->isMutable());
+        -:  186:        Q_ASSERT(b < e);
+        -:  187:        Q_ASSERT(b >= this->begin() && b < this->end());
+        -:  188:        Q_ASSERT(e > this->begin() && e <= this->end());
+        -:  189:
+        -:  190:        // Comply with std::vector::erase(): erased elements and all after them
+        -:  191:        // are invalidated. However, erasing from the beginning effectively
+        -:  192:        // means that all iterators are invalidated. We can use this freedom to
+        -:  193:        // erase by moving towards the end.
+        -:  194:        if (b == this->begin() && e != this->end()) {
+        -:  195:            this->ptr = e;
+        -:  196:        } else if (e != this->end()) {
+        -:  197:            ::memmove(static_cast<void *>(b), static_cast<void *>(e),
+        -:  198:                      (static_cast<T *>(this->end()) - e) * sizeof(T));
+        -:  199:        }
+        -:  200:        this->size -= n;
+        -:  201:    }
+        -:  202:
+        -:  203:    void eraseFirst() noexcept
+        -:  204:    {
+        -:  205:        Q_ASSERT(this->isMutable());
+        -:  206:        Q_ASSERT(this->size);
+        -:  207:        ++this->ptr;
+        -:  208:        --this->size;
+        -:  209:    }
+        -:  210:
+        -:  211:    void eraseLast() noexcept
+        -:  212:    {
+        -:  213:        Q_ASSERT(this->isMutable());
+        -:  214:        Q_ASSERT(this->size);
+        -:  215:        --this->size;
+        -:  216:    }
+        -:  217:
+        -:  218:    template <typename Predicate>
+        -:  219:    qsizetype eraseIf(Predicate pred)
+        -:  220:    {
+        -:  221:        qsizetype result = 0;
+        -:  222:        if (this->size == 0)
+        -:  223:            return result;
+        -:  224:
+        -:  225:        if (!this->needsDetach()) {
+        -:  226:            auto end = this->end();
+        -:  227:            auto it = std::remove_if(this->begin(), end, pred);
+        -:  228:            if (it != end) {
+        -:  229:                result = std::distance(it, end);
+        -:  230:                erase(it, result);
+        -:  231:            }
+        -:  232:        } else {
+        -:  233:            const auto begin = this->begin();
+        -:  234:            const auto end = this->end();
+        -:  235:            auto it = std::find_if(begin, end, pred);
+        -:  236:            if (it == end)
+        -:  237:                return result;
+        -:  238:
+        -:  239:            QPodArrayOps<T> other(this->size);
+        -:  240:            Q_CHECK_PTR(other.data());
+        -:  241:            auto dest = other.begin();
+        -:  242:            // std::uninitialized_copy will fallback to ::memcpy/memmove()
+        -:  243:            dest = std::uninitialized_copy(begin, it, dest);
+        -:  244:            dest = q_uninitialized_remove_copy_if(std::next(it), end, dest, pred);
+        -:  245:            other.size = std::distance(other.data(), dest);
+        -:  246:            result = this->size - other.size;
+        -:  247:            this->swap(other);
+        -:  248:        }
+        -:  249:        return result;
+        -:  250:    }
+        -:  251:
+        -:  252:    struct Span { T *begin; T *end; };
+        -:  253:
+        -:  254:    void copyRanges(std::initializer_list<Span> ranges)
+        -:  255:    {
+        -:  256:        auto it = this->begin();
+        -:  257:        std::for_each(ranges.begin(), ranges.end(), [&it](const auto &span) {
+        -:  258:            it = std::copy(span.begin, span.end, it);
+        -:  259:        });
+        -:  260:        this->size = std::distance(this->begin(), it);
+        -:  261:    }
+        -:  262:
+        -:  263:    void assign(T *b, T *e, parameter_type t) noexcept
+        -:  264:    {
+        -:  265:        Q_ASSERT(b <= e);
+        -:  266:        Q_ASSERT(b >= this->begin() && e <= this->end());
+        -:  267:
+        -:  268:        while (b != e)
+        -:  269:            ::memcpy(static_cast<void *>(b++), static_cast<const void *>(&t), sizeof(T));
+        -:  270:    }
+        -:  271:
+        -:  272:    bool compare(const T *begin1, const T *begin2, size_t n) const
+        -:  273:    {
+        -:  274:        // only use memcmp for fundamental types or pointers.
+        -:  275:        // Other types could have padding in the data structure or custom comparison
+        -:  276:        // operators that would break the comparison using memcmp
+        -:  277:        if constexpr (QArrayDataPointer<T>::pass_parameter_by_value) {
+        -:  278:            return ::memcmp(begin1, begin2, n * sizeof(T)) == 0;
+        -:  279:        } else {
+        -:  280:            const T *end1 = begin1 + n;
+        -:  281:            while (begin1 != end1) {
+        -:  282:                if (*begin1 == *begin2) {
+        -:  283:                    ++begin1;
+        -:  284:                    ++begin2;
+        -:  285:                } else {
+        -:  286:                    return false;
+        -:  287:                }
+        -:  288:            }
+        -:  289:            return true;
+        -:  290:        }
+        -:  291:    }
+        -:  292:
+        -:  293:    void reallocate(qsizetype alloc, QArrayData::AllocationOption option)
+        -:  294:    {
+        -:  295:        auto pair = Data::reallocateUnaligned(this->d, this->ptr, alloc, option);
+        -:  296:        Q_CHECK_PTR(pair.second);
+        -:  297:        Q_ASSERT(pair.first != nullptr);
+        -:  298:        this->d = pair.first;
+        -:  299:        this->ptr = pair.second;
+        -:  300:    }
+        -:  301:};
+        -:  302:
+        -:  303:template <class T>
+        -:  304:struct QGenericArrayOps
+        -:  305:        : public QArrayDataPointer<T>
+        -:  306:{
+        -:  307:    static_assert (std::is_nothrow_destructible_v<T>, "Types with throwing destructors are not supported in Qt containers.");
+        -:  308:
+        -:  309:protected:
+        -:  310:    typedef QTypedArrayData<T> Data;
+        -:  311:    using DataPointer = QArrayDataPointer<T>;
+        -:  312:
+        -:  313:public:
+        -:  314:    typedef typename QArrayDataPointer<T>::parameter_type parameter_type;
+        -:  315:
+        -:  316:    void appendInitialize(qsizetype newSize)
+        -:  317:    {
+        -:  318:        Q_ASSERT(this->isMutable());
+        -:  319:        Q_ASSERT(!this->isShared());
+        -:  320:        Q_ASSERT(newSize > this->size);
+        -:  321:        Q_ASSERT(newSize - this->size <= this->freeSpaceAtEnd());
+        -:  322:
+        -:  323:        T *const b = this->begin();
+        -:  324:        do {
+        -:  325:            new (b + this->size) T;
+        -:  326:        } while (++this->size != newSize);
+        -:  327:    }
+        -:  328:
+        -:  329:    void copyAppend(const T *b, const T *e)
+        -:  330:    {
+        -:  331:        Q_ASSERT(this->isMutable() || b == e);
+        -:  332:        Q_ASSERT(!this->isShared() || b == e);
+        -:  333:        Q_ASSERT(b <= e);
+        -:  334:        Q_ASSERT((e - b) <= this->freeSpaceAtEnd());
+        -:  335:
+        -:  336:        if (b == e) // short-cut and handling the case b and e == nullptr
+        -:  337:            return;
+        -:  338:
+        -:  339:        T *data = this->begin();
+        -:  340:        while (b < e) {
+        -:  341:            new (data + this->size) T(*b);
+        -:  342:            ++b;
+        -:  343:            ++this->size;
+        -:  344:        }
+        -:  345:    }
+        -:  346:
+        -:  347:    void copyAppend(qsizetype n, parameter_type t)
+        -:  348:    {
+        -:  349:        Q_ASSERT(!this->isShared() || n == 0);
+        -:  350:        Q_ASSERT(this->freeSpaceAtEnd() >= n);
+        -:  351:        if (!n)
+        -:  352:            return;
+        -:  353:
+        -:  354:        T *data = this->begin();
+        -:  355:        while (n--) {
+        -:  356:            new (data + this->size) T(t);
+        -:  357:            ++this->size;
+        -:  358:        }
+        -:  359:    }
+        -:  360:
+        -:  361:    void moveAppend(T *b, T *e)
+        -:  362:    {
+        -:  363:        Q_ASSERT(this->isMutable() || b == e);
+        -:  364:        Q_ASSERT(!this->isShared() || b == e);
+        -:  365:        Q_ASSERT(b <= e);
+        -:  366:        Q_ASSERT((e - b) <= this->freeSpaceAtEnd());
+        -:  367:
+        -:  368:        if (b == e)
+        -:  369:            return;
+        -:  370:
+        -:  371:        T *data = this->begin();
+        -:  372:        while (b < e) {
+        -:  373:            new (data + this->size) T(std::move(*b));
+        -:  374:            ++b;
+        -:  375:            ++this->size;
+        -:  376:        }
+        -:  377:    }
+        -:  378:
+        -:  379:    void truncate(size_t newSize)
+        -:  380:    {
+        -:  381:        Q_ASSERT(this->isMutable());
+        -:  382:        Q_ASSERT(!this->isShared());
+        -:  383:        Q_ASSERT(newSize < size_t(this->size));
+        -:  384:
+        -:  385:        std::destroy(this->begin() + newSize, this->end());
+        -:  386:        this->size = newSize;
+        -:  387:    }
+        -:  388:
+        -:  389:    void destroyAll() // Call from destructors, ONLY
+        -:  390:    {
+        -:  391:        Q_ASSERT(this->d);
+        -:  392:        // As this is to be called only from destructor, it doesn't need to be
+        -:  393:        // exception safe; size not updated.
+        -:  394:
+        -:  395:        Q_ASSERT(this->d->ref_.loadRelaxed() == 0);
+        -:  396:
+        -:  397:        std::destroy(this->begin(), this->end());
+        -:  398:    }
+        -:  399:
+        -:  400:    struct Inserter
+        -:  401:    {
+        -:  402:        QArrayDataPointer<T> *data;
+        -:  403:        T *begin;
+        -:  404:        qsizetype size;
+        -:  405:
+        -:  406:        qsizetype sourceCopyConstruct = 0, nSource = 0, move = 0, sourceCopyAssign = 0;
+        -:  407:        T *end = nullptr, *last = nullptr, *where = nullptr;
+        -:  408:
+        -:  409:        Inserter(QArrayDataPointer<T> *d) : data(d)
+        -:  410:        {
+        -:  411:            begin = d->ptr;
+        -:  412:            size = d->size;
+        -:  413:        }
+        -:  414:        ~Inserter() {
+        -:  415:            data->ptr = begin;
+        -:  416:            data->size = size;
+        -:  417:        }
+        -:  418:        Q_DISABLE_COPY(Inserter)
+        -:  419:
+        -:  420:        void setup(qsizetype pos, qsizetype n)
+        -:  421:        {
+        -:  422:            end = begin + size;
+        -:  423:            last = end - 1;
+        -:  424:            where = begin + pos;
+        -:  425:            qsizetype dist = size - pos;
+        -:  426:            sourceCopyConstruct = 0;
+        -:  427:            nSource = n;
+        -:  428:            move = n - dist; // smaller 0
+        -:  429:            sourceCopyAssign = n;
+        -:  430:            if (n > dist) {
+        -:  431:                sourceCopyConstruct = n - dist;
+        -:  432:                move = 0;
+        -:  433:                sourceCopyAssign -= sourceCopyConstruct;
+        -:  434:            }
+        -:  435:        }
+        -:  436:
+        -:  437:        void insert(qsizetype pos, const T *source, qsizetype n)
+        -:  438:        {
+        -:  439:            qsizetype oldSize = size;
+        -:  440:            Q_UNUSED(oldSize);
+        -:  441:
+        -:  442:            setup(pos, n);
+        -:  443:
+        -:  444:            // first create new elements at the end, by copying from elements
+        -:  445:            // to be inserted (if they extend past the current end of the array)
+        -:  446:            for (qsizetype i = 0; i != sourceCopyConstruct; ++i) {
+        -:  447:                new (end + i) T(source[nSource - sourceCopyConstruct + i]);
+        -:  448:                ++size;
+        -:  449:            }
+        -:  450:            Q_ASSERT(size <= oldSize + n);
+        -:  451:
+        -:  452:            // now move construct new elements at the end from existing elements inside
+        -:  453:            // the array.
+        -:  454:            for (qsizetype i = sourceCopyConstruct; i != nSource; ++i) {
+        -:  455:                new (end + i) T(std::move(*(end + i - nSource)));
+        -:  456:                ++size;
+        -:  457:            }
+        -:  458:            // array has the new size now!
+        -:  459:            Q_ASSERT(size == oldSize + n);
+        -:  460:
+        -:  461:            // now move assign existing elements towards the end
+        -:  462:            for (qsizetype i = 0; i != move; --i)
+        -:  463:                last[i] = std::move(last[i - nSource]);
+        -:  464:
+        -:  465:            // finally copy the remaining elements from source over
+        -:  466:            for (qsizetype i = 0; i != sourceCopyAssign; ++i)
+        -:  467:                where[i] = source[i];
+        -:  468:        }
+        -:  469:
+        -:  470:        void insert(qsizetype pos, const T &t, qsizetype n)
+        -:  471:        {
+        -:  472:            const qsizetype oldSize = size;
+        -:  473:            Q_UNUSED(oldSize);
+        -:  474:
+        -:  475:            setup(pos, n);
+        -:  476:
+        -:  477:            // first create new elements at the end, by copying from elements
+        -:  478:            // to be inserted (if they extend past the current end of the array)
+        -:  479:            for (qsizetype i = 0; i != sourceCopyConstruct; ++i) {
+        -:  480:                new (end + i) T(t);
+        -:  481:                ++size;
+        -:  482:            }
+        -:  483:            Q_ASSERT(size <= oldSize + n);
+        -:  484:
+        -:  485:            // now move construct new elements at the end from existing elements inside
+        -:  486:            // the array.
+        -:  487:            for (qsizetype i = sourceCopyConstruct; i != nSource; ++i) {
+        -:  488:                new (end + i) T(std::move(*(end + i - nSource)));
+        -:  489:                ++size;
+        -:  490:            }
+        -:  491:            // array has the new size now!
+        -:  492:            Q_ASSERT(size == oldSize + n);
+        -:  493:
+        -:  494:            // now move assign existing elements towards the end
+        -:  495:            for (qsizetype i = 0; i != move; --i)
+        -:  496:                last[i] = std::move(last[i - nSource]);
+        -:  497:
+        -:  498:            // finally copy the remaining elements from source over
+        -:  499:            for (qsizetype i = 0; i != sourceCopyAssign; ++i)
+        -:  500:                where[i] = t;
+        -:  501:        }
+        -:  502:
+        -:  503:        void insertOne(qsizetype pos, T &&t)
+        -:  504:        {
+        -:  505:            setup(pos, 1);
+        -:  506:
+        -:  507:            if (sourceCopyConstruct) {
+        -:  508:                Q_ASSERT(sourceCopyConstruct == 1);
+        -:  509:                new (end) T(std::move(t));
+        -:  510:                ++size;
+        -:  511:            } else {
+        -:  512:                // create a new element at the end by move constructing one existing element
+        -:  513:                // inside the array.
+        -:  514:                new (end) T(std::move(*(end - 1)));
+        -:  515:                ++size;
+        -:  516:
+        -:  517:                // now move assign existing elements towards the end
+        -:  518:                for (qsizetype i = 0; i != move; --i)
+        -:  519:                    last[i] = std::move(last[i - 1]);
+        -:  520:
+        -:  521:                // and move the new item into place
+        -:  522:                *where = std::move(t);
+        -:  523:            }
+        -:  524:        }
+        -:  525:    };
+        -:  526:
+        -:  527:    void insert(qsizetype i, const T *data, qsizetype n)
+        -:  528:    {
+        -:  529:        const bool growsAtBegin = this->size != 0 && i == 0;
+        -:  530:        const auto pos = growsAtBegin ? Data::GrowsAtBeginning : Data::GrowsAtEnd;
+        -:  531:
+        -:  532:        DataPointer oldData;
+        -:  533:        this->detachAndGrow(pos, n, &data, &oldData);
+        -:  534:        Q_ASSERT((pos == Data::GrowsAtBeginning && this->freeSpaceAtBegin() >= n) ||
+        -:  535:                 (pos == Data::GrowsAtEnd && this->freeSpaceAtEnd() >= n));
+        -:  536:
+        -:  537:        if (growsAtBegin) {
+        -:  538:            // copy construct items in reverse order at the begin
+        -:  539:            Q_ASSERT(this->freeSpaceAtBegin() >= n);
+        -:  540:            while (n) {
+        -:  541:                --n;
+        -:  542:                new (this->begin() - 1) T(data[n]);
+        -:  543:                --this->ptr;
+        -:  544:                ++this->size;
+        -:  545:            }
+        -:  546:        } else {
+        -:  547:            Inserter(this).insert(i, data, n);
+        -:  548:        }
+        -:  549:    }
+        -:  550:
+        -:  551:    void insert(qsizetype i, qsizetype n, parameter_type t)
+        -:  552:    {
+        -:  553:        T copy(t);
+        -:  554:
+        -:  555:        const bool growsAtBegin = this->size != 0 && i == 0;
+        -:  556:        const auto pos = growsAtBegin ? Data::GrowsAtBeginning : Data::GrowsAtEnd;
+        -:  557:
+        -:  558:        this->detachAndGrow(pos, n, nullptr, nullptr);
+        -:  559:        Q_ASSERT((pos == Data::GrowsAtBeginning && this->freeSpaceAtBegin() >= n) ||
+        -:  560:                 (pos == Data::GrowsAtEnd && this->freeSpaceAtEnd() >= n));
+        -:  561:
+        -:  562:        if (growsAtBegin) {
+        -:  563:            // copy construct items in reverse order at the begin
+        -:  564:            Q_ASSERT(this->freeSpaceAtBegin() >= n);
+        -:  565:            while (n--) {
+        -:  566:                new (this->begin() - 1) T(copy);
+        -:  567:                --this->ptr;
+        -:  568:                ++this->size;
+        -:  569:            }
+        -:  570:        } else {
+        -:  571:            Inserter(this).insert(i, copy, n);
+        -:  572:        }
+        -:  573:    }
+        -:  574:
+        -:  575:    template<typename... Args>
+        -:  576:    void emplace(qsizetype i, Args &&... args)
+        -:  577:    {
+        -:  578:        bool detach = this->needsDetach();
+        -:  579:        if (!detach) {
+        -:  580:            if (i == this->size && this->freeSpaceAtEnd()) {
+        -:  581:                new (this->end()) T(std::forward<Args>(args)...);
+        -:  582:                ++this->size;
+        -:  583:                return;
+        -:  584:            }
+        -:  585:            if (i == 0 && this->freeSpaceAtBegin()) {
+        -:  586:                new (this->begin() - 1) T(std::forward<Args>(args)...);
+        -:  587:                --this->ptr;
+        -:  588:                ++this->size;
+        -:  589:                return;
+        -:  590:            }
+        -:  591:        }
+        -:  592:        T tmp(std::forward<Args>(args)...);
+        -:  593:        const bool growsAtBegin = this->size != 0 && i == 0;
+        -:  594:        const auto pos = growsAtBegin ? Data::GrowsAtBeginning : Data::GrowsAtEnd;
+        -:  595:
+        -:  596:        this->detachAndGrow(pos, 1, nullptr, nullptr);
+        -:  597:
+        -:  598:        if (growsAtBegin) {
+        -:  599:            Q_ASSERT(this->freeSpaceAtBegin());
+        -:  600:            new (this->begin() - 1) T(std::move(tmp));
+        -:  601:            --this->ptr;
+        -:  602:            ++this->size;
+        -:  603:        } else {
+        -:  604:            Inserter(this).insertOne(i, std::move(tmp));
+        -:  605:        }
+        -:  606:    }
+        -:  607:
+        -:  608:    void erase(T *b, qsizetype n)
+        -:  609:    {
+        -:  610:        T *e = b + n;
+        -:  611:        Q_ASSERT(this->isMutable());
+        -:  612:        Q_ASSERT(b < e);
+        -:  613:        Q_ASSERT(b >= this->begin() && b < this->end());
+        -:  614:        Q_ASSERT(e > this->begin() && e <= this->end());
+        -:  615:
+        -:  616:        // Comply with std::vector::erase(): erased elements and all after them
+        -:  617:        // are invalidated. However, erasing from the beginning effectively
+        -:  618:        // means that all iterators are invalidated. We can use this freedom to
+        -:  619:        // erase by moving towards the end.
+        -:  620:        if (b == this->begin() && e != this->end()) {
+        -:  621:            this->ptr = e;
+        -:  622:        } else {
+        -:  623:            const T *const end = this->end();
+        -:  624:
+        -:  625:            // move (by assignment) the elements from e to end
+        -:  626:            // onto b to the new end
+        -:  627:            while (e != end) {
+        -:  628:                *b = std::move(*e);
+        -:  629:                ++b;
+        -:  630:                ++e;
+        -:  631:            }
+        -:  632:        }
+        -:  633:        this->size -= n;
+        -:  634:        std::destroy(b, e);
+        -:  635:    }
+        -:  636:
+        -:  637:    void eraseFirst() noexcept
+        -:  638:    {
+        -:  639:        Q_ASSERT(this->isMutable());
+        -:  640:        Q_ASSERT(this->size);
+        -:  641:        this->begin()->~T();
+        -:  642:        ++this->ptr;
+        -:  643:        --this->size;
+        -:  644:    }
+        -:  645:
+        -:  646:    void eraseLast() noexcept
+        -:  647:    {
+        -:  648:        Q_ASSERT(this->isMutable());
+        -:  649:        Q_ASSERT(this->size);
+        -:  650:        (this->end() - 1)->~T();
+        -:  651:        --this->size;
+        -:  652:    }
+        -:  653:
+        -:  654:
+        -:  655:    void assign(T *b, T *e, parameter_type t)
+        -:  656:    {
+        -:  657:        Q_ASSERT(b <= e);
+        -:  658:        Q_ASSERT(b >= this->begin() && e <= this->end());
+        -:  659:
+        -:  660:        while (b != e)
+        -:  661:            *b++ = t;
+        -:  662:    }
+        -:  663:
+        -:  664:    bool compare(const T *begin1, const T *begin2, size_t n) const
+        -:  665:    {
+        -:  666:        const T *end1 = begin1 + n;
+        -:  667:        while (begin1 != end1) {
+        -:  668:            if (*begin1 == *begin2) {
+        -:  669:                ++begin1;
+        -:  670:                ++begin2;
+        -:  671:            } else {
+        -:  672:                return false;
+        -:  673:            }
+        -:  674:        }
+        -:  675:        return true;
+        -:  676:    }
+        -:  677:};
+        -:  678:
+        -:  679:template <class T>
+        -:  680:struct QMovableArrayOps
+        -:  681:    : QGenericArrayOps<T>
+        -:  682:{
+        -:  683:    static_assert (std::is_nothrow_destructible_v<T>, "Types with throwing destructors are not supported in Qt containers.");
+        -:  684:
+        -:  685:protected:
+        -:  686:    typedef QTypedArrayData<T> Data;
+        -:  687:    using DataPointer = QArrayDataPointer<T>;
+        -:  688:
+        -:  689:public:
+        -:  690:    // using QGenericArrayOps<T>::copyAppend;
+        -:  691:    // using QGenericArrayOps<T>::moveAppend;
+        -:  692:    // using QGenericArrayOps<T>::truncate;
+        -:  693:    // using QGenericArrayOps<T>::destroyAll;
+        -:  694:    typedef typename QGenericArrayOps<T>::parameter_type parameter_type;
+        -:  695:
+        -:  696:    struct Inserter
+        -:  697:    {
+        -:  698:        QArrayDataPointer<T> *data;
+        -:  699:        T *displaceFrom;
+        -:  700:        T *displaceTo;
+        -:  701:        qsizetype nInserts = 0;
+        -:  702:        qsizetype bytes;
+        -:  703:
+        -:  704:        Inserter(QArrayDataPointer<T> *d) : data(d) { }
+        -:  705:        ~Inserter() {
+        -:  706:            if constexpr (!std::is_nothrow_copy_constructible_v<T>) {
+        -:  707:                if (displaceFrom != displaceTo) {
+        -:  708:                    ::memmove(static_cast<void *>(displaceFrom), static_cast<void *>(displaceTo), bytes);
+        -:  709:                    nInserts -= qAbs(displaceFrom - displaceTo);
+        -:  710:                }
+        -:  711:            }
+        -:  712:            data->size += nInserts;
+        -:  713:        }
+        -:  714:        Q_DISABLE_COPY(Inserter)
+        -:  715:
+        -:  716:        T *displace(qsizetype pos, qsizetype n)
+        -:  717:        {
+        -:  718:            nInserts = n;
+        -:  719:            T *insertionPoint = data->ptr + pos;
+        -:  720:            displaceFrom = data->ptr + pos;
+        -:  721:            displaceTo = displaceFrom + n;
+        -:  722:            bytes = data->size - pos;
+        -:  723:            bytes *= sizeof(T);
+        -:  724:            ::memmove(static_cast<void *>(displaceTo), static_cast<void *>(displaceFrom), bytes);
+        -:  725:            return insertionPoint;
+        -:  726:        }
+        -:  727:
+        -:  728:        void insert(qsizetype pos, const T *source, qsizetype n)
+        -:  729:        {
+        -:  730:            T *where = displace(pos, n);
+        -:  731:
+        -:  732:            while (n--) {
+        -:  733:                new (where) T(*source);
+        -:  734:                ++where;
+        -:  735:                ++source;
+        -:  736:                ++displaceFrom;
+        -:  737:            }
+        -:  738:        }
+        -:  739:
+        -:  740:        void insert(qsizetype pos, const T &t, qsizetype n)
+        -:  741:        {
+        -:  742:            T *where = displace(pos, n);
+        -:  743:
+        -:  744:            while (n--) {
+        -:  745:                new (where) T(t);
+        -:  746:                ++where;
+        -:  747:                ++displaceFrom;
+        -:  748:            }
+        -:  749:        }
+        -:  750:
+        -:  751:        void insertOne(qsizetype pos, T &&t)
+        -:  752:        {
+        -:  753:            T *where = displace(pos, 1);
+        -:  754:            new (where) T(std::move(t));
+        -:  755:            ++displaceFrom;
+        -:  756:            Q_ASSERT(displaceFrom == displaceTo);
+        -:  757:        }
+        -:  758:
+        -:  759:    };
+        -:  760:
+        -:  761:
+        -:  762:    void insert(qsizetype i, const T *data, qsizetype n)
+        -:  763:    {
+        -:  764:        const bool growsAtBegin = this->size != 0 && i == 0;
+        -:  765:        const auto pos = growsAtBegin ? Data::GrowsAtBeginning : Data::GrowsAtEnd;
+        -:  766:
+        -:  767:        DataPointer oldData;
+        -:  768:        this->detachAndGrow(pos, n, &data, &oldData);
+        -:  769:        Q_ASSERT((pos == Data::GrowsAtBeginning && this->freeSpaceAtBegin() >= n) ||
+        -:  770:                 (pos == Data::GrowsAtEnd && this->freeSpaceAtEnd() >= n));
+        -:  771:
+        -:  772:        if (growsAtBegin) {
+        -:  773:            // copy construct items in reverse order at the begin
+        -:  774:            Q_ASSERT(this->freeSpaceAtBegin() >= n);
+        -:  775:            while (n) {
+        -:  776:                --n;
+        -:  777:                new (this->begin() - 1) T(data[n]);
+        -:  778:                --this->ptr;
+        -:  779:                ++this->size;
+        -:  780:            }
+        -:  781:        } else {
+        -:  782:            Inserter(this).insert(i, data, n);
+        -:  783:        }
+        -:  784:    }
+        -:  785:
+        -:  786:    void insert(qsizetype i, qsizetype n, parameter_type t)
+        -:  787:    {
+        -:  788:        T copy(t);
+        -:  789:
+        -:  790:        const bool growsAtBegin = this->size != 0 && i == 0;
+        -:  791:        const auto pos = growsAtBegin ? Data::GrowsAtBeginning : Data::GrowsAtEnd;
+        -:  792:
+        -:  793:        this->detachAndGrow(pos, n, nullptr, nullptr);
+        -:  794:        Q_ASSERT((pos == Data::GrowsAtBeginning && this->freeSpaceAtBegin() >= n) ||
+        -:  795:                 (pos == Data::GrowsAtEnd && this->freeSpaceAtEnd() >= n));
+        -:  796:
+        -:  797:        if (growsAtBegin) {
+        -:  798:            // copy construct items in reverse order at the begin
+        -:  799:            Q_ASSERT(this->freeSpaceAtBegin() >= n);
+        -:  800:            while (n--) {
+        -:  801:                new (this->begin() - 1) T(copy);
+        -:  802:                --this->ptr;
+        -:  803:                ++this->size;
+        -:  804:            }
+        -:  805:        } else {
+        -:  806:            Inserter(this).insert(i, copy, n);
+        -:  807:        }
+        -:  808:    }
+        -:  809:
+        -:  810:    template<typename... Args>
+        -:  811:    void emplace(qsizetype i, Args &&... args)
+        -:  812:    {
+        -:  813:        bool detach = this->needsDetach();
+        -:  814:        if (!detach) {
+        -:  815:            if (i == this->size && this->freeSpaceAtEnd()) {
+        -:  816:                new (this->end()) T(std::forward<Args>(args)...);
+        -:  817:                ++this->size;
+        -:  818:                return;
+        -:  819:            }
+        -:  820:            if (i == 0 && this->freeSpaceAtBegin()) {
+        -:  821:                new (this->begin() - 1) T(std::forward<Args>(args)...);
+        -:  822:                --this->ptr;
+        -:  823:                ++this->size;
+        -:  824:                return;
+        -:  825:            }
+        -:  826:        }
+        -:  827:        T tmp(std::forward<Args>(args)...);
+        -:  828:        const bool growsAtBegin = this->size != 0 && i == 0;
+        -:  829:        const auto pos = growsAtBegin ? Data::GrowsAtBeginning : Data::GrowsAtEnd;
+        -:  830:
+        -:  831:        this->detachAndGrow(pos, 1, nullptr, nullptr);
+        -:  832:        if (growsAtBegin) {
+        -:  833:            Q_ASSERT(this->freeSpaceAtBegin());
+        -:  834:            new (this->begin() - 1) T(std::move(tmp));
+        -:  835:            --this->ptr;
+        -:  836:            ++this->size;
+        -:  837:        } else {
+        -:  838:            Inserter(this).insertOne(i, std::move(tmp));
+        -:  839:        }
+        -:  840:    }
+        -:  841:
+        -:  842:    void erase(T *b, qsizetype n)
+        -:  843:    {
+        -:  844:        T *e = b + n;
+        -:  845:
+        -:  846:        Q_ASSERT(this->isMutable());
+        -:  847:        Q_ASSERT(b < e);
+        -:  848:        Q_ASSERT(b >= this->begin() && b < this->end());
+        -:  849:        Q_ASSERT(e > this->begin() && e <= this->end());
+        -:  850:
+        -:  851:        // Comply with std::vector::erase(): erased elements and all after them
+        -:  852:        // are invalidated. However, erasing from the beginning effectively
+        -:  853:        // means that all iterators are invalidated. We can use this freedom to
+        -:  854:        // erase by moving towards the end.
+        -:  855:
+        -:  856:        std::destroy(b, e);
+        -:  857:        if (b == this->begin() && e != this->end()) {
+        -:  858:            this->ptr = e;
+        -:  859:        } else if (e != this->end()) {
+        -:  860:            memmove(static_cast<void *>(b), static_cast<const void *>(e), (static_cast<const T *>(this->end()) - e)*sizeof(T));
+        -:  861:        }
+        -:  862:        this->size -= n;
+        -:  863:    }
+        -:  864:
+        -:  865:    void reallocate(qsizetype alloc, QArrayData::AllocationOption option)
+        -:  866:    {
+        -:  867:        auto pair = Data::reallocateUnaligned(this->d, this->ptr, alloc, option);
+        -:  868:        Q_CHECK_PTR(pair.second);
+        -:  869:        Q_ASSERT(pair.first != nullptr);
+        -:  870:        this->d = pair.first;
+        -:  871:        this->ptr = pair.second;
+        -:  872:    }
+        -:  873:};
+        -:  874:
+        -:  875:template <class T, class = void>
+        -:  876:struct QArrayOpsSelector
+        -:  877:{
+        -:  878:    typedef QGenericArrayOps<T> Type;
+        -:  879:};
+        -:  880:
+        -:  881:template <class T>
+        -:  882:struct QArrayOpsSelector<T,
+        -:  883:    typename std::enable_if<
+        -:  884:        !QTypeInfo<T>::isComplex && QTypeInfo<T>::isRelocatable
+        -:  885:    >::type>
+        -:  886:{
+        -:  887:    typedef QPodArrayOps<T> Type;
+        -:  888:};
+        -:  889:
+        -:  890:template <class T>
+        -:  891:struct QArrayOpsSelector<T,
+        -:  892:    typename std::enable_if<
+        -:  893:        QTypeInfo<T>::isComplex && QTypeInfo<T>::isRelocatable
+        -:  894:    >::type>
+        -:  895:{
+        -:  896:    typedef QMovableArrayOps<T> Type;
+        -:  897:};
+        -:  898:
+        -:  899:template <class T>
+        -:  900:struct QCommonArrayOps : QArrayOpsSelector<T>::Type
+        -:  901:{
+        -:  902:    using Base = typename QArrayOpsSelector<T>::Type;
+        -:  903:    using Data = QTypedArrayData<T>;
+        -:  904:    using DataPointer = QArrayDataPointer<T>;
+        -:  905:    using parameter_type = typename Base::parameter_type;
+        -:  906:
+        -:  907:protected:
+        -:  908:    using Self = QCommonArrayOps<T>;
+        -:  909:
+        -:  910:public:
+        -:  911:    // using Base::truncate;
+        -:  912:    // using Base::destroyAll;
+        -:  913:    // using Base::assign;
+        -:  914:    // using Base::compare;
+        -:  915:
+        -:  916:    template<typename It>
+        -:  917:    void appendIteratorRange(It b, It e, QtPrivate::IfIsForwardIterator<It> = true)
+        -:  918:    {
+        -:  919:        Q_ASSERT(this->isMutable() || b == e);
+        -:  920:        Q_ASSERT(!this->isShared() || b == e);
+        -:  921:        const qsizetype distance = std::distance(b, e);
+        -:  922:        Q_ASSERT(distance >= 0 && distance <= this->allocatedCapacity() - this->size);
+        -:  923:        Q_UNUSED(distance);
+        -:  924:
+        -:  925:#if __cplusplus >= 202002L && defined(__cpp_concepts) && defined(__cpp_lib_concepts)
+        -:  926:        constexpr bool canUseCopyAppend =
+        -:  927:                std::contiguous_iterator<It> &&
+        -:  928:                std::is_same_v<
+        -:  929:                    std::remove_cv_t<typename std::iterator_traits<It>::value_type>,
+        -:  930:                    T
+        -:  931:                >;
+        -:  932:        if constexpr (canUseCopyAppend) {
+        -:  933:            this->copyAppend(std::to_address(b), std::to_address(e));
+        -:  934:        } else
+        -:  935:#endif
+        -:  936:        {
+        -:  937:            T *iter = this->end();
+        -:  938:            for (; b != e; ++iter, ++b) {
+        -:  939:                new (iter) T(*b);
+        -:  940:                ++this->size;
+        -:  941:            }
+        -:  942:        }
+        -:  943:    }
+        -:  944:
+        -:  945:    // slightly higher level API than copyAppend() that also preallocates space
+        -:  946:    void growAppend(const T *b, const T *e)
+        -:  947:    {
+        -:  948:        if (b == e)
+        -:  949:            return;
+        -:  950:        Q_ASSERT(b < e);
+        -:  951:        const qsizetype n = e - b;
+        -:  952:        DataPointer old;
+        -:  953:
+        -:  954:        // points into range:
+        -:  955:        if (QtPrivate::q_points_into_range(b, *this))
+        -:  956:            this->detachAndGrow(QArrayData::GrowsAtEnd, n, &b, &old);
+        -:  957:        else
+        -:  958:            this->detachAndGrow(QArrayData::GrowsAtEnd, n, nullptr, nullptr);
+        -:  959:        Q_ASSERT(this->freeSpaceAtEnd() >= n);
+        -:  960:        // b might be updated so use [b, n)
+        -:  961:        this->copyAppend(b, b + n);
+        -:  962:    }
+        -:  963:};
+        -:  964:
+        -:  965:} // namespace QtPrivate
+        -:  966:
+        -:  967:template <class T>
+        -:  968:struct QArrayDataOps
+        -:  969:    : QtPrivate::QCommonArrayOps<T>
+        -:  970:{
+        -:  971:};
+        -:  972:
+        -:  973:QT_END_NAMESPACE
+        -:  974:
+        -:  975:#endif // include guard

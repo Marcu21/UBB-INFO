@@ -1,0 +1,59 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                  ;Se dau doua siruri de octeti. Sa se parcurga cel mai scurt sir dintre cele doua siruri si sa se construiasca un al treilea sir care va contine
+    14                                  ;cel mai mare element de acelasi rang din cele doua siruri, iar pana la lungimea celui mai lung sir, sirul al treilea se va completa alternativ cu valoarea 1 respectiv 0.
+    15 00000000 0203090506                  s1 db 2, 3, 9, 5, 6
+    16                                      l1 equ $ - s1
+    17 00000005 04050604080914              s2 db 4, 5, 6, 4, 8, 9, 20
+    18                                      l2 equ $ - s2
+    19 0000000C 00<rept>                    d times (l1 + l2) db 0
+    20                                  
+    21                                  ; our code starts here
+    22                                  segment code use32 class=code
+    23                                      start:
+    24 00000000 B205                            mov dl, l1
+    25 00000002 80FA07                          cmp dl, l2
+    26                                          
+    27 00000005 7711                            ja l1maimare
+    28                                          ;l1 < l2
+    29 00000007 B905000000                      mov ecx, l1
+    30 0000000C BE[00000000]                    mov esi, s1
+    31 00000011 BF[05000000]                    mov edi, s2
+    32                                          
+    33 00000016 EB0F                            jmp dupa_comparatie
+    34                                          
+    35                                          l1maimare:
+    36 00000018 B907000000                      mov ecx, l2
+    37 0000001D BE[05000000]                    mov esi, s2
+    38 00000022 BF[00000000]                    mov edi, s1
+    39                                          dupa_comparatie:
+    40 00000027 BB00000000                      mov ebx, 0
+    41 0000002C FC                              cld
+    42                                          repeta:
+    43 0000002D AC                                  lodsb
+    44 0000002E AE                                  scasb 
+    45 0000002F 7703                                ja maxim_in_al
+    46 00000031 8A47FF                                  mov al, [edi - 1]
+    47                                              
+    48                                              maxim_in_al:
+    49                                              
+    50 00000034 8883[0C000000]                      mov [d + ebx], al
+    51 0000003A 43                                  inc ebx
+    52                                              
+    53 0000003B E2F0                            loop repeta
+    54                                         
+    55                                         
+    56                                      
+    57                                          ; exit(0)
+    58 0000003D 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    59 0000003F FF15[00000000]                  call    [exit]       ; call exit to terminate the program

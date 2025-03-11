@@ -1,0 +1,413 @@
+        -:    0:Source:C:/Users/emanu/CLionProjects/practic/repo.cpp
+        -:    0:Graph:C:\Users\emanu\CLionProjects\practic\cmake-build-debug-coverage\CMakeFiles\practic.dir\repo.cpp.gcno
+        -:    0:Data:C:\Users\emanu\CLionProjects\practic\cmake-build-debug-coverage\CMakeFiles\practic.dir\repo.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include <fstream>
+        -:    2:#include "repo.h"
+        -:    3:#include <stdexcept>
+        -:    4:
+function _ZN4Repo14citeste_fisierEv called 13 returned 100% blocks executed 62%
+       13:    5:void Repo::citeste_fisier() {
+        -:    6:    //Citeste din fisier
+       13:    7:    utilaje.clear();
+       13:    7-block  0
+call    0 returned 13
+       13:    8:    std::ifstream f(fisier);
+call    0 returned 13
+branch  1 taken 13 (fallthrough)
+branch  2 taken 0 (throw)
+        -:    9:    int id, cilindrii;
+       13:   10:    string denumire, tip;
+       13:   10-block  0
+call    0 returned 13
+call    1 returned 13
+      110:   11:    while(f>>id>>denumire>>tip>>cilindrii)
+      110:   11-block  0
+call    0 returned 110
+branch  1 taken 110 (fallthrough)
+branch  2 taken 0 (throw)
+      110:   11-block  1
+call    3 returned 110
+branch  4 taken 110 (fallthrough)
+branch  5 taken 0 (throw)
+      110:   11-block  2
+call    6 returned 110
+branch  7 taken 110 (fallthrough)
+branch  8 taken 0 (throw)
+      110:   11-block  3
+call    9 returned 110
+branch 10 taken 110 (fallthrough)
+branch 11 taken 0 (throw)
+      110:   11-block  4
+call   12 returned 110
+branch 13 taken 110 (fallthrough)
+branch 14 taken 0 (throw)
+      110:   11-block  5
+branch 15 taken 97
+branch 16 taken 13 (fallthrough)
+        -:   12:    {
+       97:   13:        utilaje.push_back(Utilaj{id, denumire, tip, cilindrii});
+       97:   13-block  0
+call    0 returned 97
+branch  1 taken 97 (fallthrough)
+branch  2 taken 0 (throw)
+       97:   13-block  1
+call    3 returned 97
+branch  4 taken 97 (fallthrough)
+branch  5 taken 0 (throw)
+       97:   13-block  2
+call    6 returned 97
+branch  7 taken 97 (fallthrough)
+branch  8 taken 0 (throw)
+       97:   13-block  3
+call    9 returned 97
+branch 10 taken 97 (fallthrough)
+branch 11 taken 0 (throw)
+       97:   13-block  4
+call   12 returned 97
+call   13 returned 97
+call   14 returned 97
+    $$$$$:   13-block  5
+call   15 never executed
+    $$$$$:   13-block  6
+call   16 never executed
+    $$$$$:   13-block  7
+    $$$$$:   13-block  8
+call   17 never executed
+    $$$$$:   13-block  9
+    $$$$$:   13-block 10
+        -:   14:    }
+       13:   15:    f.close();
+       13:   15-block  0
+call    0 returned 13
+branch  1 taken 13 (fallthrough)
+branch  2 taken 0 (throw)
+       13:   16:}
+       13:   16-block  0
+call    0 returned 13
+call    1 returned 13
+call    2 returned 13
+    $$$$$:   16-block  1
+call    3 never executed
+    $$$$$:   16-block  2
+call    4 never executed
+    $$$$$:   16-block  3
+call    5 never executed
+        -:   17:
+function _ZN4Repo12scrie_fisierEv called 17 returned 100% blocks executed 74%
+       17:   18:void Repo::scrie_fisier() {
+        -:   19:    //Scrie in fisier
+       17:   20:    std::ofstream f(fisier);
+       17:   20-block  0
+call    0 returned 17
+branch  1 taken 17 (fallthrough)
+branch  2 taken 0 (throw)
+      116:   21:    for(const auto& elem:utilaje)
+       17:   21-block  0
+call    0 returned 17
+call    1 returned 17
+       99:   21-block  1
+call    2 returned 99
+      116:   21-block  2
+call    3 returned 116
+branch  4 taken 99
+branch  5 taken 17 (fallthrough)
+        -:   22:    {
+       99:   23:        f<<elem.get_id()<<' '<<elem.get_denumire()<<' '<<elem.get_tip()<<' '<<elem.get_cilindrii()<<'\n';
+call    0 returned 99
+branch  1 taken 99 (fallthrough)
+branch  2 taken 0 (throw)
+       99:   23-block  0
+call    3 returned 99
+branch  4 taken 99 (fallthrough)
+branch  5 taken 0 (throw)
+       99:   23-block  1
+call    6 returned 99
+branch  7 taken 99 (fallthrough)
+branch  8 taken 0 (throw)
+       99:   23-block  2
+call    9 returned 99
+branch 10 taken 99 (fallthrough)
+branch 11 taken 0 (throw)
+       99:   23-block  3
+call   12 returned 99
+branch 13 taken 99 (fallthrough)
+branch 14 taken 0 (throw)
+       99:   23-block  4
+call   15 returned 99
+branch 16 taken 99 (fallthrough)
+branch 17 taken 0 (throw)
+       99:   23-block  5
+call   18 returned 99
+branch 19 taken 99 (fallthrough)
+branch 20 taken 0 (throw)
+       99:   23-block  6
+call   21 returned 99
+branch 22 taken 99 (fallthrough)
+branch 23 taken 0 (throw)
+       99:   23-block  7
+call   24 returned 99
+branch 25 taken 99 (fallthrough)
+branch 26 taken 0 (throw)
+       99:   23-block  8
+call   27 returned 99
+branch 28 taken 99 (fallthrough)
+branch 29 taken 0 (throw)
+       99:   23-block  9
+call   30 returned 99
+branch 31 taken 99 (fallthrough)
+branch 32 taken 0 (throw)
+       99:   23-block 10
+call   33 returned 99
+branch 34 taken 99 (fallthrough)
+branch 35 taken 0 (throw)
+       99:   23-block 11
+call   36 returned 99
+call   37 returned 99
+call   38 returned 99
+    $$$$$:   23-block 12
+call   39 never executed
+    $$$$$:   23-block 13
+    $$$$$:   23-block 14
+call   40 never executed
+    $$$$$:   23-block 15
+        -:   24:    }
+       17:   25:    f.close();
+       17:   25-block  0
+call    0 returned 17
+branch  1 taken 17 (fallthrough)
+branch  2 taken 0 (throw)
+       17:   26:}
+       17:   26-block  0
+call    0 returned 17
+    $$$$$:   26-block  1
+call    1 never executed
+        -:   27:
+function _ZN4Repo3addE6Utilaj called 13 returned 100% blocks executed 72%
+       13:   28:void Repo::add(Utilaj u) {
+        -:   29:    //Adauga un utilaj
+       78:   30:    for(const auto& elem: utilaje)
+       13:   30-block  0
+call    0 returned 13
+call    1 returned 13
+       65:   30-block  1
+call    2 returned 65
+       65:   30-block  2
+call    3 returned 65
+       78:   30-block  3
+call    4 returned 78
+branch  5 taken 65
+branch  6 taken 13 (fallthrough)
+        -:   31:    {
+      65*:   32:        if(elem.get_id() == u.get_id()) throw std::runtime_error("Utilajul cu acest id exista deja!");
+call    0 returned 65
+branch  1 taken 65 (fallthrough)
+branch  2 taken 0 (throw)
+       65:   32-block  0
+call    3 returned 65
+branch  4 taken 65 (fallthrough)
+branch  5 taken 0 (throw)
+       65:   32-block  1
+branch  6 taken 0 (fallthrough)
+branch  7 taken 65
+    %%%%%:   32-block  2
+call    8 never executed
+call    9 never executed
+branch 10 never executed (fallthrough)
+branch 11 never executed (throw)
+    %%%%%:   32-block  3
+call   12 never executed
+    $$$$$:   32-block  4
+call   13 never executed
+        -:   33:    }
+       13:   34:    utilaje.push_back(u);
+       13:   34-block  0
+call    0 returned 13
+       13:   35:    scrie_fisier();
+call    0 returned 13
+       13:   36:}
+        -:   37:
+function _ZN4Repo6modifyEiRK6Utilaj called 3 returned 67% blocks executed 74%
+        3:   38:void Repo::modify(int id, const Utilaj& u) {
+        -:   39:
+        -:   40:    //Modifica un utilaj
+       12:   41:    for (Utilaj& ut : utilaje) {
+        3:   41-block  0
+call    0 returned 3
+call    1 returned 3
+       11:   41-block  1
+call    2 returned 11
+        9:   41-block  2
+call    3 returned 9
+       12:   41-block  3
+call    4 returned 12
+branch  5 taken 11
+branch  6 taken 1 (fallthrough)
+       11:   42:        if (ut.get_id() == id) {
+call    0 returned 11
+branch  1 taken 11 (fallthrough)
+branch  2 taken 0 (throw)
+       11:   42-block  0
+branch  3 taken 2 (fallthrough)
+branch  4 taken 9
+        2:   43:            ut.set_denumire(u.get_denumire());
+        2:   43-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   43-block  1
+call    3 returned 2
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0 (throw)
+        2:   43-block  2
+call    6 returned 2
+    $$$$$:   43-block  3
+call    7 never executed
+    $$$$$:   43-block  4
+        2:   44:            ut.set_tip(u.get_tip());
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   44-block  0
+call    3 returned 2
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0 (throw)
+        2:   44-block  1
+call    6 returned 2
+    $$$$$:   44-block  2
+call    7 never executed
+    $$$$$:   44-block  3
+        2:   45:            ut.set_cilindrii(u.get_cilindrii());
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   45-block  0
+call    3 returned 2
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0 (throw)
+        2:   46:            scrie_fisier();
+        2:   46-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   47:            return;
+        2:   47-block  0
+        2:   47-block  1
+        -:   48:        }
+        -:   49:    }
+        1:   50:    throw std::runtime_error("Nu exista utilajul cu acest id!");
+        1:   50-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   50-block  1
+call    4 returned 0
+    $$$$$:   50-block  2
+call    5 never executed
+        -:   51:}
+        -:   52:
+function _ZN4Repo6removeEi called 3 returned 67% blocks executed 85%
+        3:   53:void Repo::remove(int id) {
+        -:   54:    //Sterge un utilaj
+       12:   55:    for(auto it = utilaje.begin(); it!=utilaje.end();it++)
+        3:   55-block  0
+call    0 returned 3
+        9:   55-block  1
+call    1 returned 9
+       12:   55-block  2
+call    2 returned 12
+call    3 returned 12
+branch  4 taken 11
+branch  5 taken 1 (fallthrough)
+        -:   56:    {
+       11:   57:        if(it->get_id() == id)
+       11:   57-block  0
+call    0 returned 11
+call    1 returned 11
+branch  2 taken 11 (fallthrough)
+branch  3 taken 0 (throw)
+       11:   57-block  1
+branch  4 taken 2 (fallthrough)
+branch  5 taken 9
+        -:   58:        {
+        2:   59:            utilaje.erase(it);
+        2:   59-block  0
+call    0 returned 2
+call    1 returned 2
+branch  2 taken 2 (fallthrough)
+branch  3 taken 0 (throw)
+    $$$$$:   59-block  1
+        2:   60:            scrie_fisier();
+        2:   60-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   61:            return;
+        2:   61-block  0
+        2:   61-block  1
+        -:   62:        }
+        -:   63:    }
+        1:   64:    throw std::runtime_error("Nu exista utilajul cu acest id!");
+        1:   64-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   64-block  1
+call    4 returned 0
+    $$$$$:   64-block  2
+call    5 never executed
+        -:   65:}
+        -:   66:
+function _ZN4Repo4findEi called 5 returned 80% blocks executed 88%
+        5:   67:Utilaj Repo::find(int id) {
+        -:   68:    //Cauta un utilaj
+       24:   69:    for(const auto& elem: utilaje)
+        5:   69-block  0
+call    0 returned 5
+call    1 returned 5
+       23:   69-block  1
+call    2 returned 23
+       19:   69-block  2
+call    3 returned 19
+       24:   69-block  3
+call    4 returned 24
+branch  5 taken 23
+branch  6 taken 1 (fallthrough)
+        -:   70:    {
+       23:   71:        if(elem.get_id() == id) return elem;
+call    0 returned 23
+branch  1 taken 23 (fallthrough)
+branch  2 taken 0 (throw)
+       23:   71-block  0
+branch  3 taken 4 (fallthrough)
+branch  4 taken 19
+        4:   71-block  1
+call    5 returned 4
+branch  6 taken 4 (fallthrough)
+branch  7 taken 0 (throw)
+        4:   71-block  2
+        4:   71-block  3
+        -:   72:    }
+        1:   73:    throw std::runtime_error("Nu exista utilajul cu acest id!");
+        1:   73-block  0
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 0 (throw)
+        1:   73-block  1
+call    4 returned 0
+    $$$$$:   73-block  2
+call    5 never executed
+        -:   74:}
+        -:   75:
+function _ZN4Repo7get_allEv called 13 returned 100% blocks executed 100%
+       13:   76:vector<Utilaj> Repo::get_all() {
+        -:   77:    //Returneaza lista de utilaje
+       13:   78:    citeste_fisier();
+       13:   78-block  0
+call    0 returned 13
+       13:   79:    return utilaje;
+call    0 returned 13
+        -:   80:}
