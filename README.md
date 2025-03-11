@@ -4,32 +4,32 @@ UBB Informatica Romana 2023-2026
 # 🏛️ **Anul 1**
 
 ## 📅 **Semestrul 1**
-🏗️ **Arhitectura sistemelor de calcul**  
-🤖 **Logica computațională**  
-🔢 **Algebră**  
-💻 **Fundamentele programării**  
-📈 **Analiză matematică**
+🔧 **Arhitectura Sistemelor de Calcul**  
+🧠 **Logica Computațională**  
+🔣 **Algebră**  
+💻 **Fundamentele Programării**  
+📐 **Analiză Matematică**
 
 ## 📅 **Semestrul 2**
-🔄 **Sisteme dinamice**  
-🖥️ **Sisteme de operare**  
-🕸️ **Algoritmică grafelor**  
-📊 **Structuri de date și algoritmi**  
-🏗️ **Programare orientată pe obiecte**  
-📐 **Geometrie**
+🔄 **Sisteme Dinamice**  
+🖥️ **Sisteme de Operare**  
+🔗 **Algoritmica Grafelor**  
+🗃️ **Structuri de Date și Algoritmi**  
+🧩 **Programare Orientată Obiect**  
+📏 **Geometrie**
 
 # 🏛️ **Anul 2**
 
 ## 📅 **Semestrul 3**
-🌐 **Rețele de calculatoare**  
-🎲 **Probabilități și statistică**  
-🗄️ **Baze de date**  
-🚀 **Metode avansate de programare**  
-🔗 **Programare logică și funcțională**
+🌐 **Rețele de Calculatoare**  
+🎲 **Probabilități și Statistică**  
+🗄️ **Baze de Date**  
+🚀 **Metode Avansate de Programare**  
+🔮 **Programare Logică și Funcțională**
 
 ## 📅 **Semestrul 4**
-🌍 **Programare web**  
-🏗️ **Ingineria sistemelor software**  
-🧠 **Inteligență artificială**  
-💾 **Sisteme de gestiune a bazelor de date**  
-🛠️ **Medii de proiectare și programare**
+🕸️ **Programare Web**  
+🏗️ **Ingineria Sistemelor Software**  
+🤖 **Inteligență Artificială**  
+💾 **Sisteme de Gestiune a Bazelor de Date**  
+🛠️ **Medii de Proiectare și Programare**
