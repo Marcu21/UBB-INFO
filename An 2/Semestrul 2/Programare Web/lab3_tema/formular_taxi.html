@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Formular Aplicare - Șofer Taxi</title>
+</head>
+<body bgcolor="#f2f2f2">
+<center>
+    <h2>Formular Aplicare - Șofer Taxi</h2>
+    <a href="firma.jpeg" target="_blank">
+        <img src="firma.jpeg" alt="Poza firma" width="200" height="150"/>
+    </a>
+    <br>
+    <span>(click pe imagine pentru mărire)</span>
+</center>
+
+<form name="aplicare_taximetrist">
+    <fieldset>
+        <legend><strong>Date Personale</strong></legend>
+        <table>
+            <tr>
+                <td><b>Nume:</b></td>
+                <td colspan="2"><input type="text" name="nume" size="30" maxlength="50"/></td>
+            </tr>
+            <tr>
+                <td><b>Prenume:</b></td>
+                <td colspan="2"><input type="text" name="prenume" size="30" maxlength="50"/></td>
+            </tr>
+            <tr>
+                <td><b>Data nașterii:</b></td>
+                <td colspan="2"><input type="date" name="data_nasterii"/></td>
+            </tr>
+            <tr>
+                <td colspan="3"><b>Adresă:</b><br>
+                    <textarea name="adresa" cols="70" rows="3"></textarea>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <br>
+
+    <fieldset>
+        <legend><strong>Detalii Licență</strong></legend>
+        <table border="1" width="90%" align="center">
+            <tr>
+                <td><b>Categorii permis deținute:</b></td>
+                <td colspan="2">
+                    <input type="checkbox" name="cat_a"/> A
+                    <input type="checkbox" name="cat_b" checked/> B
+                    <input type="checkbox" name="cat_c"/> C
+                    <input type="checkbox" name="cat_d"/> D
+                </td>
+            </tr>
+            <tr>
+                <td><b>Experiență ca taximetrist:</b></td>
+                <td colspan="2">
+                    <select name="experienta" multiple size="4">
+                        <option value="fara" selected>Fără experiență</option>
+                        <option value="sub1">Sub 1 an</option>
+                        <option value="1-3">1-3 ani</option>
+                        <option value="3plus">Peste 3 ani</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Atestat taximetrist:</b></td>
+                <td colspan="2">
+                    <input type="checkbox" name="atestat_da" checked/> Da
+                    <input type="checkbox" name="atestat_nu" disabled/> Nu
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <br>
+
+    <fieldset>
+        <legend><strong>Preferințe și Abilități</strong></legend>
+        <table border="1" width="90%" align="center">
+            <tr>
+                <td valign="top" rowspan="2" height="150"><b>Limbi străine vorbite:</b>
+                    <ul>
+                        <li>Engleză
+                            <ol type="A" start="1">
+                                <li><input type="radio" name="engleza"/> Deloc</li>
+                                <li><input type="radio" name="engleza"/> Bine</li>
+                                <li><input type="radio" name="engleza"/> Perfect</li>
+                            </ol>
+                        </li>
+                        <li>Maghiară
+                            <ol type="I" start="1">
+                                <li><input type="radio" name="maghiara"/> Deloc</li>
+                                <li><input type="radio" name="maghiara"/> Bine</li>
+                                <li><input type="radio" name="maghiara"/> Perfect</li>
+                            </ol>
+                        </li>
+                    </ul>
+                </td>
+
+                <td valign="top" colspan="2">
+                    <b>Disponibilitate:</b>
+                    <ul>
+                        <li>Program:
+                            <ul>
+                                <li><input type="radio" name="program"/> Zi</li>
+                                <li><input type="radio" name="program"/> Noapte</li>
+                                <li><input type="radio" name="program"/> Ture</li>
+                            </ul>
+                        </li>
+                        <li>Ore lucrate pe zi:
+                            <input type="number" name="ore_zi" min="8" max="16" step="1" value="12"/>
+                        </li>
+                        <li>Zile libere pe săptămână:
+                            <input type="number" name="zile_libere" min="1" max="2" step="1" value="1"/>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <b>Comentarii adiționale:</b><br>
+                    <textarea name="observatii" cols="70" rows="3" readonly>Fără comentarii</textarea>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <br>
+
+    <fieldset>
+        <legend><strong>Documente încărcate</strong></legend>
+        <table border="1" width="90%" align="center">
+            <tr>
+                <td colspan="2">
+                    <table border="1" width="100%">
+                        <tr>
+                            <td>Permis conducere</td>
+                            <td><input type="file" name="permis"/></td>
+                        </tr>
+                        <tr>
+                            <td>Carte identitate</td>
+                            <td><input type="file" name="ci"/></td>
+                        </tr>
+                    </table>
+                </td>
+                <td valign="middle" align="center" rowspan="2">
+                    <b>Poza candidat:</b><br>
+                    <input type="file" name="poza_candidat"/><br>
+                    <span>(format recomandat: JPG, max. 2MB)</span>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <br>
+
+    <center>
+        <input type="submit" value="Trimite formularul"/>
+        <input type="reset" value="Resetează formularul"/>
+    </center>
+</form>
+</body>
+</html>

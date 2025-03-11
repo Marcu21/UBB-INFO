@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efect Parallax Simplu</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .parallax {
+            height: 100vh;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .img1 {
+            background-image: url('https://images.unsplash.com/photo-1470813740244-df37b8c1edcb');
+        }
+
+        .img2 {
+            background-image: url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29');
+        }
+
+        .img3 {
+            background-image: url('https://images.unsplash.com/photo-1518063319789-7217e6706b04');
+        }
+
+        .section {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #f1f1f1;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="parallax img1"></div>
+
+<div class="section">
+    <h2>Sectiunea 1</h2>
+    <p>Text simplu între imagini.</p>
+</div>
+
+<div class="parallax img2"></div>
+
+<div class="section">
+    <h2>Sectiunea 2</h2>
+    <p>Încă un text simplu între imagini.</p>
+</div>
+
+<div class="parallax img3"></div>
+
+</body>
+</html>

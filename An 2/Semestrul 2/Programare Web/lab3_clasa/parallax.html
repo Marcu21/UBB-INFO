@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Efect Parallax Simplu</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    .parallax {
+      height: 100vh;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .img1 {
+      background-image: url('marcu.jpg');
+    }
+
+    .img2 {
+      background-image: url('palat.jpg');
+    }
+
+    .img3 {
+      background-image: url('cipri.png');
+    }
+
+    .section {
+      text-align: center;
+      padding: 50px 20px;
+      background-image: url('tare.webp');
+      background-size: cover;
+      color: #fff;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="parallax img1"></div>
+
+<div class="section">
+  <h2>Late night car drives</h2>
+  <p>Asta sunt eu</p>
+</div>
+
+<div class="parallax img2"></div>
+
+<div class="section">
+  <h2>Alta masina, acelasi vibe</h2>
+  <p>Asta-s tot eu</p>
+</div>
+
+<div class="parallax img3"></div>
+
+<div class="section">
+  <h2>Spiritul sarbatorilor</h2>
+  <p>Asta-i taica-meu</p>
+</div>
+
+
+</body>
+</html>

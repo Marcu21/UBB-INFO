@@ -1,0 +1,105 @@
+12. a) Definiti o functie care intoarce produsul scalar a doi vectori.
+
+produs_scalar(a1...an, b2...bn) = { 0, daca a si b sunt vide
+								  { a1*b1 + produs_scalar(a2...an, b2...bn)
+
+(defun produs_scalar (v1 v2)
+	(cond
+		((OR (null v1) (null v2)) 0)
+		(T (+ (* (car v1) (car v2)) (produs_scalar (cdr v1) (cdr v2))))
+	)
+)
+
+
+
+(produs_scalar '(2 2 2) '(3 4 5))
+(produs_scalar '(1 2 3) '(4 5 6))
+
+
+b) Sa se construiasca o functie care intoarce maximul atomilor numerici
+dintr-o lista, de la orice nivel.
+
+								 {max_cur, daca lista e vida
+maxim_numeric(l1...ln, max_cur)= {maxim_numeric(l2...ln, l1), daca l1 e atom, l1 e numar si (l1 > max_cur sau max_cur = NIL)
+								 {maxim_numeric(l2...ln, maxim_numeric(l1, max_cur)), daca l1 este lista
+								 {maxim_numeric(l2...ln, max_cur), altfel
+
+(defun maxim_numeric (lista &optional max_curent)
+	(cond
+		((null lista) max_curent)
+		((and (atom (car lista)) (numberp (car lista)) (or (null max_curent) (> (car lista) max_curent))) (maxim_numeric (cdr lista) (car lista)))
+		((listp (car lista)) (maxim_numeric (cdr lista) (maxim_numeric (car lista) max_curent)))
+		(T (maxim_numeric (cdr lista) max_curent))
+	)
+)
+
+(maxim_numeric '((-3 9 10) 5 (4 (14 1) 3) 2))
+(maxim_numeric '((a b c) 10 (20 (x y z) 30) 15))
+(maxim_numeric '((-1 -2 (-3 -4)) -5))
+(maxim_numeric '(5 () 10 15))
+
+
+c) Sa se scrie o functie care intoarce lista permutarilor unei liste date.
+	
+							{ (), daca lista e vida
+remove_first(el, l1...ln) = { l2...ln, daca l1 = e
+							{ l1 + remove_first(el, l2...ln), altfel
+
+(defun remove_first (element lista)
+  (cond 
+	((null lista) nil)
+    ((equal (car lista) element) (cdr lista))
+    (T (cons (car lista) (remove_first element (cdr lista))))
+   )
+)
+
+permutari(l1...ln) = { (), daca lista e vida
+					 { (li + permutarij(remove_first(li, lista))), unde i = {1, n}, unde j = 
+
+(defun permutari (lista)
+  (cond
+	((null lista) (list nil))
+	(T (apply #'append
+			   (mapcar
+			     (lambda (el)
+			       (mapcar
+				     (lambda (perm) (cons el perm))
+				       (permutari (remove_first el lista))
+				    )
+			      )
+				lista
+			    )
+	    )
+	)
+  )
+)
+
+(permutari '(1 2 3))
+(permutari '(A B C))
+(permutari '(1 A B 2))
+
+
+d) Sa se scrie o functie care intoarce T daca o lista are numar par de
+elemente pe primul nivel si NIL in caz contrar, fara sa se numere
+elementele listei.
+
+verif_par(lista) = { par_impar(lista, true)
+
+par_impar(l1...ln, flag) = { flag, daca lista e vida
+						   { par_impar(l2...ln, !flag), altfel
+
+(defun verif_par (lista)
+  (par_impar lista T))
+
+(defun par_impar (lista stare_par)
+  (if (null lista)
+      stare_par
+      (par_impar (cdr lista) (not stare_par))
+  )
+)
+
+
+(par_impar '(1 2 3 4 5))
+(par_impar '(1 2 3 4))
+(par_impar '(1 (2 3) 5 4))
+(par_impar '(1 (2 (3)) 5 4))

@@ -1,0 +1,14 @@
+		   { l, daca l este numar
+maxim(l) = { nil, daca l este atom nenumeric
+		   { max({maxim(x) | x apartine l}), daca l este lista
+
+(defun maxim (l)
+	(cond
+		((numberp l) l)
+		((atom l) nil)
+		(t (apply #'max (remove nil (mapcar #'maxim l))))
+	)
+)
+
+(maxim '(1 (2 (3 4) 5) 6 (7 (8))))
+(maxim '(a (1 c) (9 (12 d))))

@@ -1,0 +1,14 @@
+C:\Users\emanu\RiderProjects\lab9_map\lab9_map\bin\Debug\net9.0\lab9_map.exe
+C:\Users\emanu\RiderProjects\lab9_map\lab9_map\bin\Debug\net9.0\lab9_map.deps.json
+C:\Users\emanu\RiderProjects\lab9_map\lab9_map\bin\Debug\net9.0\lab9_map.runtimeconfig.json
+C:\Users\emanu\RiderProjects\lab9_map\lab9_map\bin\Debug\net9.0\lab9_map.dll
+C:\Users\emanu\RiderProjects\lab9_map\lab9_map\bin\Debug\net9.0\lab9_map.pdb
+C:\Users\emanu\RiderProjects\lab9_map\lab9_map\obj\Debug\net9.0\lab9_map.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\emanu\RiderProjects\lab9_map\lab9_map\obj\Debug\net9.0\lab9_map.AssemblyInfoInputs.cache
+C:\Users\emanu\RiderProjects\lab9_map\lab9_map\obj\Debug\net9.0\lab9_map.AssemblyInfo.cs
+C:\Users\emanu\RiderProjects\lab9_map\lab9_map\obj\Debug\net9.0\lab9_map.csproj.CoreCompileInputs.cache
+C:\Users\emanu\RiderProjects\lab9_map\lab9_map\obj\Debug\net9.0\lab9_map.dll
+C:\Users\emanu\RiderProjects\lab9_map\lab9_map\obj\Debug\net9.0\refint\lab9_map.dll
+C:\Users\emanu\RiderProjects\lab9_map\lab9_map\obj\Debug\net9.0\lab9_map.pdb
+C:\Users\emanu\RiderProjects\lab9_map\lab9_map\obj\Debug\net9.0\lab9_map.genruntimeconfig.cache
+C:\Users\emanu\RiderProjects\lab9_map\lab9_map\obj\Debug\net9.0\ref\lab9_map.dll

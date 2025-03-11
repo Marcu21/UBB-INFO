@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="435.0" prefWidth="534.0" spacing="10.0"
+      xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.practic_restaurant.controller.TableController">
+
+    <Label fx:id="tableLabel" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Table" />
+
+    <!-- Antreuri -->
+    <Label text="Antreuri" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+    <TableView fx:id="antreuriTable" prefHeight="200.0" prefWidth="500.0">
+        <columns>
+            <TableColumn fx:id="antreuriItemColumn" text="Produs" prefWidth="200.0"/>
+            <TableColumn fx:id="antreuriPriceColumn" text="Preț" prefWidth="100.0"/>
+        </columns>
+    </TableView>
+
+    <!-- Fel Principal -->
+    <Label text="Fel Principal" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+    <TableView fx:id="felPrincipalTable" prefHeight="200.0" prefWidth="500.0">
+        <columns>
+            <TableColumn fx:id="felPrincipalItemColumn" text="Produs" prefWidth="200.0"/>
+            <TableColumn fx:id="felPrincipalPriceColumn" text="Preț" prefWidth="100.0"/>
+        </columns>
+    </TableView>
+
+    <!-- Butonul pentru plasarea comenzii -->
+    <Button fx:id="placeOrderButton" text="Place Order" onAction="#placeOrder"/>
+</VBox>

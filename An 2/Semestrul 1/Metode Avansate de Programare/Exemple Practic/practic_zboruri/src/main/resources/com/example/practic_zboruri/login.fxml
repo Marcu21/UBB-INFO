@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="352.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.practic_zboruri.controller.LoginController">
+
+    <TextField fx:id="usernameField" layoutX="102.0" layoutY="149.0" promptText="Enter username" />
+    <Button fx:id="loginButton" layoutX="154.0" layoutY="188.0" onAction="#handleLoginButtonAction" text="Login" />
+
+</AnchorPane>

@@ -1,0 +1,296 @@
+Un client TCP se conecteaza la un server concurent TCP si trimite acestuia un numar de port, dupa care trimite periodic "mesaje" pana la trimiterea mesajului "by" care practic inseamna ca clientul vrea sa inchida conexiunea cu serverul. Fiecare "mesaj" se termina cu codul ASCII 0 (NULL).
+
+Serverul TCP va trimite tuturor clientilor conectati inapoi prin UDP pe portul primit de la fiecare client si pe adresa IP a fiecaruia "mesajul" primit de la fiecare client impreuna cu adresa IP a clientului, mai putin clientului care a trimis "mesajul" respectiv. Fiecare client afiseaza mesajul precum si adresa IP a clientului care a transmis mesajul respectiv.
+
+
+CLIENT:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netinet/ip.h>
+#include <arpa/inet.h>
+
+#define MAX_MSG_LEN 1024
+#define SERVER_IP "127.0.0.1"  // Adresa IP a serverului
+#define SERVER_PORT 1234        // Portul TCP al serverului
+
+int main() {
+    int tcp_sock, udp_sock;
+    struct sockaddr_in server_addr, udp_addr;
+    char buffer[MAX_MSG_LEN];
+    int port;
+
+    // Solicitarea portului UDP de la utilizator
+    printf("Introdu portul UDP: ");
+    scanf("%d", &port);
+    getchar(); // Consumăm newline-ul rămas după scanf
+
+    // Creare socket TCP
+    tcp_sock = socket(AF_INET, SOCK_STREAM, 0);
+    if (tcp_sock < 0) {
+        perror("Eroare la crearea socketului TCP");
+        return 1;
+    }
+
+    memset(&server_addr, 0, sizeof(server_addr));
+    server_addr.sin_family = AF_INET;
+    server_addr.sin_port = htons(SERVER_PORT);
+    server_addr.sin_addr.s_addr = inet_addr(SERVER_IP);
+
+    // Conectare la serverul TCP
+    if (connect(tcp_sock, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0) {
+        perror("Eroare la conectare TCP");
+        close(tcp_sock);
+        return 1;
+    }
+
+    // Trimite serverului numărul de port UDP
+    if (send(tcp_sock, &port, sizeof(port), 0) < 0) {
+        perror("Eroare la trimiterea portului UDP");
+        close(tcp_sock);
+        return 1;
+    }
+
+    // Creare socket UDP
+    udp_sock = socket(AF_INET, SOCK_DGRAM, 0);
+    if (udp_sock < 0) {
+        perror("Eroare la crearea socketului UDP");
+        close(tcp_sock);
+        return 1;
+    }
+
+    memset(&udp_addr, 0, sizeof(udp_addr));
+    udp_addr.sin_family = AF_INET;
+    udp_addr.sin_port = htons(port);
+    udp_addr.sin_addr.s_addr = INADDR_ANY;
+
+    // Bind pe socketul UDP
+    if (bind(udp_sock, (struct sockaddr *)&udp_addr, sizeof(udp_addr)) < 0) {
+        perror("Eroare la bind UDP");
+        close(udp_sock);
+        close(tcp_sock);
+        return 1;
+    }
+
+    // Începe să primești și să trimiți mesaje
+    struct sockaddr_in from_addr;
+    socklen_t from_len = sizeof(from_addr);
+    while (1) {
+        printf("Introdu mesajul (scrie 'by' pentru a închide): ");
+        fgets(buffer, MAX_MSG_LEN, stdin);
+        if (strcmp(buffer, "by\n") == 0) {
+            send(tcp_sock, "by", 3, 0); // Include NULL terminator
+            break;
+        }
+
+        // Trimitere mesaj prin TCP pentru a fi redirecționat de server
+        if (send(tcp_sock, buffer, strlen(buffer) + 1, 0) < 0) {
+            perror("Eroare la trimiterea mesajului");
+            continue;
+        }
+
+        // Așteaptă mesaje de la server prin UDP
+        memset(buffer, 0, MAX_MSG_LEN);
+        if (recvfrom(udp_sock, buffer, MAX_MSG_LEN, 0, (struct sockaddr *)&from_addr, &from_len) > 0) {
+            printf("Mesaj pentru %s de la %s\n", inet_ntoa(from_addr.sin_addr), buffer);
+        }
+    }
+
+    close(udp_sock);
+    close(tcp_sock);
+    return 0;
+}
+
+
+
+SERVER:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netinet/ip.h>
+#include <arpa/inet.h>
+#include <pthread.h>
+
+#define MAX_CLIENTS 100
+#define BUF_SIZE 1024
+
+typedef struct {
+    struct sockaddr_in addr;
+    int active;
+} Client;
+
+Client clients[MAX_CLIENTS];
+int udp_sock;
+pthread_mutex_t lock;
+
+void *client_handler(void *arg) {
+    int sock = *(int *)arg;
+    free(arg);
+    int port;
+    char buffer[BUF_SIZE];
+    struct sockaddr_in client_addr;
+    socklen_t len = sizeof(client_addr);
+
+    if (recv(sock, &port, sizeof(port), 0) <= 0) {
+        perror("Failed to receive UDP port");
+        close(sock);
+        return NULL;
+    }
+
+    if (getpeername(sock, (struct sockaddr *)&client_addr, &len) == -1) {
+        perror("Failed to get client address");
+        close(sock);
+        return NULL;
+    }
+
+    client_addr.sin_port = htons(port);  // Set the UDP port received from the client
+
+    pthread_mutex_lock(&lock);
+    int index = -1;
+    for (int i = 0; i < MAX_CLIENTS; i++) {
+        if (!clients[i].active) {
+            clients[i].addr = client_addr;
+            clients[i].active = 1;
+            index = i;
+            break;
+        }
+    }
+    pthread_mutex_unlock(&lock);
+
+    if (index == -1) {
+        fprintf(stderr, "Server full.\n");
+        close(sock);
+        return NULL;
+    }
+
+    while ((recv(sock, buffer, BUF_SIZE, 0)) > 0) {
+        if (strcmp(buffer, "by") == 0) {
+            break;
+        }
+        char msg[BUF_SIZE];
+        snprintf(msg, BUF_SIZE, "%s: %s", inet_ntoa(client_addr.sin_addr), buffer);
+
+        pthread_mutex_lock(&lock);
+        for (int i = 0; i < MAX_CLIENTS; i++) {
+            if (i != index && clients[i].active) {
+                sendto(udp_sock, msg, strlen(msg) + 1, 0,
+                       (struct sockaddr *)&clients[i].addr, sizeof(clients[i].addr));
+            }
+        }
+        pthread_mutex_unlock(&lock);
+    }
+
+    pthread_mutex_lock(&lock);
+    clients[index].active = 0;
+    pthread_mutex_unlock(&lock);
+    close(sock);
+    return NULL;
+}
+
+int main() {
+    int tcp_sock, *new_sock;
+    struct sockaddr_in server_addr, client_addr;
+    socklen_t addr_size;
+    pthread_t tid;
+
+    tcp_sock = socket(AF_INET, SOCK_STREAM, 0);
+    if (tcp_sock < 0) {
+        perror("Failed to create TCP socket");
+        return 1;
+    }
+
+    memset(&server_addr, 0, sizeof(server_addr));
+    server_addr.sin_family = AF_INET;
+    server_addr.sin_port = htons(1234);
+    server_addr.sin_addr.s_addr = INADDR_ANY;
+
+    if (bind(tcp_sock, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0) {
+        perror("Failed to bind TCP socket");
+        return 1;
+    }
+
+    listen(tcp_sock, MAX_CLIENTS);
+    printf("TCP server ready for connections...\n");
+
+    udp_sock = socket(AF_INET, SOCK_DGRAM, 0);
+    if (udp_sock < 0) {
+        perror("Failed to create UDP socket");
+        return 1;
+    }
+
+    memset(clients, 0, sizeof(clients));
+    pthread_mutex_init(&lock, NULL);
+
+    while (1) {
+        new_sock = malloc(sizeof(int));
+        *new_sock = accept(tcp_sock, (struct sockaddr *)&client_addr, &addr_size);
+        if (*new_sock < 0) {
+            perror("Failed to accept connection");
+            free(new_sock);
+            continue;
+        }
+        pthread_create(&tid, NULL, client_handler, new_sock);
+    }
+
+    close(tcp_sock);
+    close(udp_sock);
+    pthread_mutex_destroy(&lock);
+    return 0;
+}
+
+
+
+
+
+
+
+
+portul e un numar pe 2 octeti fara semn
+
+serverul tine minte pt fiecare client: ip-ul clientului, lista cu ip-ul clientilor si portul trimis de acestia
+
+pe ip client:port udp se face server udp sa receptioneze datele de la server
+
+
+accept
+citire port (UDP)
+ip port intr o structura retinuta de procesul server
+facem un fiu
+
+
+
+
+
+
+while(1)
+{
+	c'=accept(s, ip_client)
+	recv(c', portUDP)
+	add(client.IP, client.port)
+	if fork()
+	{
+		tratare();
+	}
+}
+
+
+
+void tratare(c')
+{
+	if(mesaj=='by')
+	{
+		close(c');
+		remove client from lista detinuta de procesul parinte server
+	}
+	send to others mesajul primit
+}

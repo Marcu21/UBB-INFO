@@ -1,0 +1,42 @@
+				   { (), daca l e vida
+liniara_atomi(l) = { (l), daca l e numar
+				   { (), daca l e atom nenumeric
+				   { ({liniara_atomi(li) | li apartine l1...ln}), altfel
+				   
+(defun liniara_atomi (l)
+	(cond
+		((null l) nil)
+		((numberp l) (list l))
+		((atom l) nil)
+		(t (apply #'append (mapcar #'liniara_atomi l)))
+	)
+)
+
+						   { (), daca l e vida
+elimina_atom(l1...ln, e) = { l1 + elimina_atom(l2...ln, e), daca l1 e atom si l1 != e
+						   { elimina_atom(l2...ln, e), altfel (daca l1 e atom si l1 = e)
+						   
+(defun elimina_atom (l e)
+	(cond
+		((null l) nil)
+		((AND (atom (car l)) (not (= (car l) e))) (cons (car l) (elimina_atom (cdr l) e)))
+		(t (elimina_atom (cdr l) e))
+	)
+)
+
+						 { (), daca l e vida
+multime_atomi(l1...ln) = { l1 + multime_atomi(elimina_atom(l1...ln, l1)), altfel
+
+(defun multime_atomi (l)
+	(cond
+		((null l) nil)
+		(t (cons (car l) (multime_atomi (elimina_atom l (car l)))))
+	)
+)
+
+main(l) = multime_atomi(liniara_atomi(l))
+
+(defun main (l) (multime_atomi (liniara_atomi l)))
+
+
+(main '(1 F (2 (1 3 E (2 4) 3) E 1) (1 4)))

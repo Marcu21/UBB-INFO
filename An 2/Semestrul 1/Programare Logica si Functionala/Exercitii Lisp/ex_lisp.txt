@@ -1,0 +1,1632 @@
+1.
+a) Sa se insereze intr-o lista liniara un atom a dat dupa al 2-lea, al 4-lea,
+al 6-lea,....element.
+b) Definiti o functie care obtine dintr-o lista data lista tuturor atomilor
+care apar, pe orice nivel, dar in ordine inversa. De exemplu: (((A B) C)
+(D E)) --> (E D C B A)
+c) Definiti o functie care intoarce cel mai mare divizor comun al numerelor
+dintr-o lista neliniara.
+d) Sa se scrie o functie care determina numarul de aparitii ale unui atom dat
+intr-o lista neliniara.
+
+a)
+							{ (), daca l e vida
+inserare(l1...ln, a, poz) = { l1 + inserare(l2...ln, a, poz+1), daca poz < 2
+							{ l1 + a + inserare(l2...ln, a, 1), daca poz = 2
+							
+inserare_main(l1...ln, a) = inserare(l1...ln, a, 1)
+
+(defun inserare (l a poz)
+	(cond
+		((null l) nil)
+		((< poz 2) (cons (car l) (inserare (cdr l) a (+ poz 1))))
+		(t (cons (car l) (cons a (inserare (cdr l) a 1))))
+	)
+)
+
+(defun inserare_main (l a) (inserare l a 1))
+
+
+b) 
+							{ (), daca l e vida
+colectare_invers(l1...ln) = { colectare_invers(l2...ln) + l1, daca l1 e atom
+							{ colectare_invers(l2...ln) + colectare_invers(l1), daca l1 e lista
+
+
+(defun colectare_invers (l)
+    (cond
+        ((null l) nil)
+        ((atom (car l)) (append (colectare_invers (cdr l)) (list (car l))))
+		(t (append (colectare_invers (cdr l)) (colectare_invers (car l))))
+    )
+)
+
+
+c)
+						{ (), daca l e vida
+liniarizeaza(l1...ln) = { l1 + liniarizeaza(l2...ln), daca l1 e atom
+						{ liniarizeaza(l1) + liniarizeaza(l2...ln), daca l1 e lista
+	
+			 { |a|, daca b = 0
+cmmdc(a,b) = { cmmdc(b, a % b), altfel
+
+	
+					   { 0, daca l e vida
+cmmdc_lista(l1...ln) = { l, daca l e atom
+					   { cmmdc(l1, cmmdc_lista(l2...ln)), altfel
+
+
+(defun liniarizeaza (l)
+	(cond
+		((null l) nil)
+		((atom (car l)) (cons (car l) (liniarizeaza (cdr l))))
+		(t (append (liniarizeaza (car l)) (liniarizeaza (cdr l))))
+	)
+)
+
+(defun cmmdc (a b)
+	(cond
+		(( = b 0) (abs a))
+		(t (cmmdc b (mod a b)))
+	)
+)
+
+(defun cmmdc_lista (l)
+	(cond
+		((null l) 0)
+		((atom l) l)
+		(t (cmmdc (car l) (cmmdc_lista (cdr l))))
+	)
+)
+
+(defun main (l) (cmmdc_lista (liniarizeaza l)))
+
+
+d)
+					 { 0, daca l e vida
+numara(l1...ln, a) = { 1 + numara(l2...ln, a), daca l1 = a
+					 { numara(l2...ln, a), daca l1 e atom
+					 { numara(l1, a) + numara(l2...ln, a), daca l1 e lista
+
+(defun numara (l a)
+	(cond
+		((null l) 0)
+		((eq (car l) a) (+ 1 (numara (cdr l) a)))
+		((atom (car l)) (numara (cdr l) a))
+		(t (+ (numara (car l) a) (numara (cdr l) a)))
+	)
+)
+
+
+2.
+a) Definiti o functie care selecteaza al n-lea element al unei liste, sau
+NIL, daca nu exista.
+b) Sa se construiasca o functie care verifica daca un atom e membru al unei
+liste nu neaparat liniara.
+c) Sa se construiasca lista tuturor sublistelor unei liste. Prin sublista se
+intelege fie lista insasi, fie un element de pe orice nivel, care este
+lista. Exemplu: (1 2 (3 (4 5) (6 7)) 8 (9 10)) =>
+( (1 2 (3 (4 5) (6 7)) 8 (9 10)) (3 (4 5) (6 7)) (4 5) (6 7) (9 10) ).
+d) Sa se scrie o functie care transforma o lista liniara intr-o multime.
+
+
+a)
+					   { (), daca l e vida
+select_n(l1...ln, n) = { l1, daca n = 1
+					   { select_n(l2...ln, n-1), daca n > 1
+					   
+(defun select_n (l n)
+	(cond
+		((null l) nil)
+		(( = n 1) (car l))
+		(t (select_n (cdr l) (- n 1)))
+	)
+)
+
+b)
+					 { 0, daca l e vida
+nr_ap(a, l1...ln) =  { 1 + nr_ap(a, l2...ln), daca l1 e atom si l1 = a
+					 { nr_ap(a, l2...ln), daca l1 e atom si l1!=a
+					 { nr_ap(a, l1) sau nr_ap(a, l2...ln), daca l1 e lista
+
+(defun nr_ap (a l)
+	(cond
+		((null l) 0)
+		((eq (car l) a) (+ 1 (nr_ap a (cdr l))))
+		((atom (car l)) (nr_ap a (cdr l)))
+		(t (+ (nr_ap a (car l)) (nr_ap a (cdr l))))
+	)
+)
+
+(defun membru (a l)
+	(if (> (nr_ap a l) 0)
+		t
+		nil
+	)
+)
+
+c)
+							   { (), daca l e vida
+colecteaza_subliste(l1...ln) = { colecteaza_subliste(l2...ln), daca l1 e atom
+							   { l1 + colecteaza_subliste(l1) + colecteaza_subliste(l2...ln), daca l1 e lista
+
+(defun colecteaza_subliste (l)
+	(cond
+		((null l) nil)
+		((atom (car l)) (colecteaza_subliste (cdr l)))
+		(t (cons (car l) (append (colecteaza_subliste (car l)) (colecteaza_subliste (cdr l)))))
+	)
+)
+
+(defun toate_sublistele (l) (cons l (colecteaza_subliste l)))
+
+d)
+	   			   { (), daca l e vida
+multime(l1...ln) = { l1 + multime(l2...ln), daca nr_ap(l1, l) = 1
+				   { multime(l2...ln), altfel
+
+(defun multime (l)
+	(cond
+		((null l) nil)
+		((= (nr_ap (car l) l) 1) (cons (car l) (multime (cdr l))))
+		(t (multime (cdr l)))
+	)
+)
+
+(defun nr_ap (a l)
+	(cond
+		((null l) 0)
+		((eq (car l) a) (+ 1 (nr_ap a (cdr l))))
+		((atom (car l)) (nr_ap a (cdr l)))
+		(t (+ (nr_ap a (car l)) (nr_ap a (cdr l))))
+	)
+)
+
+
+3.
+a) Definiti o functie care intoarce produsul a doi vectori.
+b) Sa se construiasca o functie care intoarce adancimea unei liste.
+c) Definiti o functie care sorteaza fara pastrarea dublurilor o lista
+liniara.
+d) Sa se scrie o functie care intoarce intersectia a doua multimi.
+
+
+a)
+
+produs_scalar(a1...an, b2...bn) = { 0, daca a si b sunt vide
+								  { a1*b1 + produs_scalar(a2...an, b2...bn)
+
+(defun produs_scalar (v1 v2)
+	(cond
+		((OR (null v1) (null v2)) 0)
+		(T (+ (* (car v1) (car v2)) (produs_scalar (cdr v1) (cdr v2))))
+	)
+)
+
+
+b)
+						{ nr, daca l e vida
+adancime(l1...ln, nr) = { adancime(l2...ln, nr), daca l1 e atom
+						{ max(adancime(l1, nr+1) + adancime(l2...ln, nr)), daca l1 e lista
+					
+(defun adancime (l nr)
+	(cond
+		((null l) nr)
+		((atom (car l)) (adancime (cdr l) nr))
+		(t (max (adancime (car l) (+ 1 nr)) (adancime (cdr l) nr)))
+	)
+)
+
+
+c)
+
+                               | e, daca l e vida
+inserare_crescator(l1...ln, e)=| l1 + inserare_crescator(l2...ln, e), e > l1
+                               | e + l1 + ... + ln, e < l1   (fara pastrarea dublurilor)
+							   | l1...ln, altfel
+							   
+sortare(l1...ln)=| (), daca l e vida
+				 | inserare_crescator(sortare(l2...ln), l1), altfel
+				 
+(defun inserare_crescator (l e)
+	(cond
+		((null l) (list e))
+		((> e (car l)) (cons (car l) (inserare_crescator (cdr l) e)))
+		((< e (car l)) (cons e l))
+		(t l)
+	)
+)
+
+(defun sortare (l)
+	(cond
+		((null l) nil)
+		(t (inserare_crescator (sortare (cdr l)) (car l)))
+	)
+)
+
+
+d)
+REUNIUNE
+							 { (), daca n = 0, m = 0
+							 { l1...ln, daca n!=0 si m = 0
+reuniune(l1...ln, k1...km) = { k1...km, daca n = 0 si m != 0
+							 { l1 + reuniune(l2...ln, k1...km), daca l1 < k1
+							 { k1 + reuniune(l1...ln, k2...km), daca l1 > k2
+							 { l1 + reuniune(l2...ln, k2...km), daca l1 = k1
+								
+(defun reuniune (l k)
+	(cond
+		((AND (null l) (null k)) nil)
+		((null k) l)
+		((null l) k)
+		((< (car l) (car k)) (cons (car l) (reuniune (cdr l) k)))
+		((> (car l) (car k)) (cons (car k) (reuniune l (cdr k))))
+		(t (cons (car l) (reuniune (cdr l) (cdr k))))
+	)
+)
+
+INTERSECTIE
+
+								{ (), daca n = 0 sau m = 0
+intersectie(l1...ln, k1...km) = { intersectie(l2...ln, k1...km), daca l1 < k1
+								{ intersectie(l1...ln, k2...km), daca l1 > k1
+								{ l1 + intersectie(l2...ln, k2...km), daca l1 = k1
+								
+(defun intersectie (l k)
+	(cond
+		((OR (null l) (null k)) nil)
+		((< (car l) (car k)) (intersectie (cdr l) k))
+		((> (car l) (car k)) (intersectie l (cdr k)))
+		(t (cons (car l) (intersectie (cdr l) (cdr k))))
+	)
+)
+
+
+4.
+a) Definiti o functie care intoarce suma a doi vectori.
+b) Definiti o functie care obtine dintr-o lista data lista tuturor atomilor
+care apar, pe orice nivel, dar in aceeasi ordine. De exemplu:
+(((A B) C) (D E)) --> (A B C D E)
+c) Sa se scrie o functie care plecand de la o lista data ca argument,
+inverseaza numai secventele continue de atomi. Exemplu:
+(a b c (d (e f) g h i)) ==> (c b a (d (f e) i h g))
+d) Sa se construiasca o functie care intoarce maximul atomilor numerici
+dintr-o lista, de la nivelul superficial.
+
+
+a)
+						 { (), daca l e vid sau k e vid
+suma(l1...ln, k1...km) = { l1 + k1 + suma(l2...ln, k1...km)
+
+(defun suma (l k)
+	(cond
+		((OR (null l) (null k)) nil)
+		(t (cons (+ (car l) (car k)) (suma (cdr l) (cdr k))))
+	)
+)
+
+b)
+
+						{ (), daca l e vida
+liniarizeaza(l1...ln) = { l1 + liniarizeaza(l2...ln), daca l1 e atom
+						{ liniarizeaza(l1) + liniarizeaza(l2...ln), daca l1 e lista
+
+(defun liniarizeaza (l)
+	(cond
+		((null l) nil)
+		((atom (car l)) (cons (car l) (liniarizeaza (cdr l))))
+		(t (append (liniarizeaza (car l)) (liniarizeaza (cdr l))))
+	)
+)
+
+c)
+						   { invers(col), daca l e vida
+invers_aux(l1...ln, col) = { invers_aux(l2...ln, l1 + col), daca l1 e atom
+						   { col + invers_aux(l1, ()) + invers_aux(l2...ln, ()), daca l1 e lista
+
+(defun invers_aux (l col)
+	(cond
+		((null l) col)
+		((atom (car l)) (invers_aux (cdr l) (cons (car l) col)))
+		(t (append col (list (invers_aux (car l) nil)) (invers_aux (cdr l) nil)))
+	)
+)
+
+(defun invers_cont (l) (invers_aux l nil))
+
+
+d)
+								   { maxcur, daca l e vida
+max_superficial(l1...ln, maxcur) = { max_superficial(l2...ln, l1), daca l1 numar, l1 > maxcur sau maxcur = nil
+								   { max_superficial(l2...ln, maxcur), daca l1 numar, l1 <= maxcur
+								   { max_superficial(l2...ln, maxcur), daca l1 e atom nenumeric sau lista
+
+(defun max_superficial (l maxcur)
+	(cond
+		((null l) maxcur)
+		((AND (NUMBERP (car l)) (OR (null maxcur) (> (car l) maxcur))) (max_superficial (cdr l) (car l)))
+		(t (max_superficial (cdr l) maxcur))
+	)
+)
+
+(defun max_main (l) (max_superficial l nil))
+
+
+5.
+a) Definiti o functie care interclaseaza cu pastrarea dublurilor doua liste
+liniare sortate.
+b) Definiti o functie care substituie un element E prin elementele unei liste
+L1 la toate nivelurile unei liste date L.
+c) Definiti o functie care determina suma a doua numere in reprezentare de
+lista si calculeaza numarul zecimal corespunzator sumei.
+d) Definiti o functie care intoarce cel mai mare divizor comun al numerelor
+dintr-o lista liniara.
+
+
+a)
+										    { (), daca l e vida si k e vida
+								            { l1...ln, daca k e vida
+interclasare_cu_dubluri(l1...ln, k1...km) = { k1...km, daca l e vida
+											{ l1 + interclasare_cu_dubluri(l2...ln, k1...km), daca l1 <= k1
+											{ k1 + interclasare_cu_dubluri(l1...ln, k2...km), daca l1 > k1
+											
+(defun interclasare_cu_dubluri (l k)
+	(cond
+		((AND (null l) (null k)) nil)
+		((null k) l)
+		((null l) k)
+		((<= (car l) (car k)) (cons (car l) (interclasare_cu_dubluri (cdr l) k)))
+		(t (cons (car k) (interclasare_cu_dubluri l (cdr k))))
+	)
+)
+
+
+b)
+								  { (), daca l e vida
+substituie(l1...ln, e, k1...km) = { k1...km + substituie(l2...ln, e, k1...km), daca l1 = e
+								  { l1 + substituie(l2...ln, e, k1...km), daca l1 e atom si l1 != e
+								  { substituie(l1, e, k1...km) + substituie(l2...ln, e, k1...km), daca l1 e lista
+								  
+(defun substituie (l e k)
+	(cond
+		((null l) nil)
+		((eq (car l) e) (append k (substituie (cdr l) e k)))
+		((atom (car l)) (cons (car l) (substituie (cdr l) e k)))
+		(t (append (list (substituie (car l) e k)) (substituie (cdr l) e k)))
+	)
+)
+
+
+c)
+							{ 0, daca a e vida si b e vida
+suma(a1...an, b1...bn, p) = { p*(a1+b1) + suma(a2...an, b2...bn, p * 10), altfel
+
+
+(defun suma (a b p)
+	(cond
+		((AND (null a) (null b)) 0)
+		(t (+ (* p (+ (car a) (car b))) (suma (cdr a) (cdr b) (* p 10))))
+	)
+)
+
+
+(defun main (a b) (suma a b 1))
+
+
+d)
+
+			 { |a|, daca b = 0
+cmmdc(a,b) = { cmmdc(b, a % b), altfel
+
+	
+					   { 0, daca l e vida
+cmmdc_lista(l1...ln) = { l, daca l e atom
+					   { cmmdc(l1, cmmdc_lista(l2...ln)), altfel
+
+(defun cmmdc (a b)
+	(cond
+		(( = b 0) (abs a))
+		(t (cmmdc b (mod a b)))
+	)
+)
+
+(defun cmmdc_lista (l)
+	(cond
+		((null l) 0)
+		((atom l) l)
+		(t (cmmdc (car l) (cmmdc_lista (cdr l))))
+	)
+)
+
+
+6.
+a) Sa se scrie de doua ori elementul de pe pozitia a n-a a unei liste
+liniare. De exemplu, pentru (10 20 30 40 50) si n=3 se va produce (10 20
+30 30 40 50).
+b) Sa se scrie o functie care realizeaza o lista de asociere cu cele doua
+liste pe care le primeste. De ex: (A B C) (X Y Z) --> ((A.X) (B.Y)
+(C.Z)).
+c) Sa se determine numarul tuturor sublistelor unei liste date, pe orice
+nivel. Prin sublista se intelege fie lista insasi, fie un element de pe
+orice nivel, care este lista. Exemplu: (1 2 (3 (4 5) (6 7)) 8 (9 10)) => 5 (lista insasi, (3 ...), (4 5), (6 7), (9 10)).
+d) Sa se construiasca o functie care intoarce numarul atomilor dintr-o lista,
+de la nivel superficial.
+
+
+a)
+							 { (), daca l e vida
+dubleaza_poz(l1...ln, poz) = { l1 + dubleaza_poz(l2...ln, poz -1), daca poz != 1
+							 { l1 + l1 + dubleaza_poz(l2...ln, poz -1), daca poz = 1
+							 
+(defun dubleaza_poz (l poz)
+	(cond
+		((null l) nil)
+		((= poz 1) (cons (car l) (cons (car l) (dubleaza_poz (cdr l) (- poz 1)))))
+		(t (cons (car l) (dubleaza_poz (cdr l) (- poz 1))))
+	)
+)
+
+
+b)
+							 { (), daca l e vida sau k e vida
+asociere(l1...ln, k1...kn) = { l1.k1 + asociere(l2...ln, k2...kn), altfel
+
+(defun asociere (l k)
+	(cond
+		((OR (null l) (null k)) nil)
+		(t (cons (cons (car l) (car k)) (asociere (cdr l) (cdr k))))
+	)
+)
+
+
+c)
+					   { 0, daca l e vida
+nr_subliste(l1...ln) = { nr_subliste(l2...ln), daca l1 e atom
+					   { 1 + nr_subliste(l1) + nr_subliste(l2...ln), daca l1 e lista
+					   
+(defun nr_subliste (l)
+	(cond
+		((null l) 0)
+		((atom (car l)) (nr_subliste (cdr l)))
+		(t (+ 1 (nr_subliste (car l)) (nr_subliste (cdr l))))
+	)
+)
+
+(defun nr_total_subliste (l)
+	(cond
+		((null l) 0)
+		(t (+ 1 (nr_subliste l)))
+	)
+)
+
+
+d)
+								{ 0, daca l e vida
+nr_atomi_superficial(l1...ln) = { 1 + nr_atomi_superficial(l2...ln), daca l1 e atom
+								{ nr_atomi_superficial(l2...ln), daca l1 e lista
+								
+(defun nr_atomi_superficial (l)
+	(cond
+		((null l) 0)
+		((atom (car l)) (+ 1 (nr_atomi_superficial (cdr l))))
+		(t (nr_atomi_superficial (cdr l)))
+	)
+)
+
+
+7.
+a) Sa se scrie o functie care testeaza daca o lista este liniara.
+b) Definiti o functie care substituie prima aparitie a unui element intr-o
+lista data.
+c) Sa se inlocuiasca fiecare sublista a unei liste cu ultimul ei element.
+Prin sublista se intelege element de pe primul nivel, care este lista.
+Exemplu: (a (b c) (d (e (f)))) ==> (a c (e (f))) ==> (a c (f)) ==> (a c f)
+(a (b c) (d ((e) f))) ==> (a c ((e) f)) ==> (a c f)
+d) Definiti o functie care interclaseaza fara pastrarea dublurilor doua liste
+liniare sortate.
+
+
+a)
+				       { true, daca l e vid
+test_liniar(l1...ln) = { false, daca l1 e lista
+					   { test_liniar(l2...ln), daca l1 e atom
+					   
+(defun test_liniar (l)
+	(cond
+		((null l) t)
+		((listp (car l)) nil)
+		(t (test_liniar (cdr l)))
+	)
+)
+
+
+b)
+										{ (), daca l e vida
+substituie_prima(l1...ln, e, k1...km) = { k1...km + l2...ln, daca l1 = e
+										{ l1 + substituie_prima(l2...ln, e, k1...km), altfel
+									  
+(defun substituie_prima (l e k)
+	(cond
+		((null l) nil)
+		((eq (car l) e) (cons k (cdr l)))
+		(t (cons (car l) (substituie_prima (cdr l) e k)))
+	)
+)
+
+
+c)
+								{ (), daca l e vida
+inlocuieste_sublista(l1...ln) = { l1 + inlocuieste_sublista(l2...ln), daca l1 e atom
+								{ ultim_sublista(l1) + inlocuieste_sublista(l2...ln), daca l1 e lista
+
+						{ (), daca l e vida
+liniarizeaza(l1...ln) = { l1 + liniarizeaza(l2...ln), daca l1 e atom
+						{ liniarizeaza(l1) + liniarizeaza(l2...ln), daca l1 e lista
+						
+				 { l1, daca n = 1
+ultim(l1...ln) = { ultim(l2...ln), altfel
+
+ultim_sublista(l1...ln) = ultim (liniarizeaza (l1...ln))
+
+
+(defun inlocuieste_sublista (l)
+	(cond
+		((null l) nil)
+		((atom (car l)) (cons (car l) (inlocuieste_sublista (cdr l))))
+		(t (cons (ultim_sublista (car l)) (inlocuieste_sublista (cdr l))))
+	)
+)
+
+(defun liniarizeaza (l)
+	(cond
+		((null l) nil)
+		((atom (car l)) (cons (car l) (liniarizeaza (cdr l))))
+		(t (append (liniarizeaza (car l)) (liniarizeaza (cdr l))))
+	)
+)
+
+(defun ultim (l)
+  (cond
+	((null (cdr l)) (car l))
+    (t (ultim (cdr l)))
+  )
+)
+
+(defun ultim_sublista (l) (ultim (liniarizeaza l)))
+
+
+d)
+											  { (), daca l e vida si k e vida
+											  { l1...ln, daca k e vida	
+interclasare_fara_dubluri(l1...ln, k1...km) = { k1...km, daca l e vida
+											  { l1 + interclasare_fara_dubluri(l2...ln, k1...km), daca l1 < k1
+											  { k1 + interclasare_fara_dubluri(l1...ln, k2...km), daca l1 > k1
+											  { l1 + interclasare_fara_dubluri(l2...ln, k2...km), daca l1 = k1
+
+(defun interclasare_fara_dubluri (l k)
+	(cond
+		((AND (null l) (null k)) nil)
+		((null k) l)
+		((null l) k)
+		((< (car l) (car k)) (cons (car l) (interclasare_fara_dubluri (cdr l) k)))
+		((> (car l) (car k)) (cons (car k) (interclasare_fara_dubluri l (cdr k))))
+		(t (cons (car l) (interclasare_fara_dubluri (cdr l) (cdr k))))
+	)
+)
+
+
+8.
+a) Sa se elimine elementul de pe pozitia a n-a a unei liste liniare.
+b) Definiti o functie care determina succesorul unui numar reprezentat cifra
+cu cifra intr-o lista. De ex: (1 9 3 5 9 9) --> (1 9 3 6 0 0)
+c) Sa se construiasca multimea atomilor unei liste.Exemplu: (1 (2 (1 3 (2 4)
+3) 1) (1 4)) ==> (1 2 3 4)
+d) Sa se scrie o functie care testeaza daca o lista liniara este o multime.
+
+
+a)
+							{ (), daca l e vida
+elimina_poz(l1...ln, poz) = { l1 + elimina_poz(l2...ln, poz - 1), daca poz != 1
+							{ l2...ln, daca poz = 1
+
+(defun elimina_poz (l poz)
+	(cond
+		((null l) nil)
+		((not (= poz 1)) (cons (car l) (elimina_poz (cdr l) (- poz 1))))
+		(t (cdr l))
+	)
+)
+
+
+b)
+					   { c, daca l e vid si c != 0
+succesor(l1...ln, c) = { nil, daca l e vid si c = 0
+					   { (l1+c)%10 + succesor(l2...ln, (l1+c)/10), altfel
+
+invers(l1...ln) = { (), daca l e vida
+				  { invers(l2...ln) + l1, altfel
+
+(defun succesor (l c)
+	(cond
+		((AND (null l) (not (= c 0))) (list c))
+		((AND (null l) (= c 0)) nil)
+		(t (cons (mod (+ (car l) c) 10) (succesor (cdr l) (floor (/ (+ (car l) c) 10)))))
+	)
+)
+
+(defun invers (l)
+	(cond
+		((null l) nil)
+		(t (append (invers (cdr l)) (list (car l))))
+	)
+)
+
+(defun succesor_main (l) (invers (succesor (invers l) 1)))
+
+
+c)
+						 { (), daca l e vida
+multime_atomi(l1...ln) = { l1 + multime_atomi(l2...ln), daca nr_ap(l1, l) = 1
+					     { multime_atomi(l2...ln), altfel
+
+					 { 0, daca l e vida
+nr_ap(a, l1...ln) =  { 1 + nr_ap(a, l2...ln), daca l1 e atom si l1 = a
+					 { nr_ap(a, l2...ln), daca l1 e atom si l1!=a
+					 { nr_ap(a, l1) sau nr_ap(a, l2...ln), daca l1 e lista
+					 
+					 	{ (), daca l e vida
+liniarizeaza(l1...ln) = { l1 + liniarizeaza(l2...ln), daca l1 e atom
+						{ liniarizeaza(l1) + liniarizeaza(l2...ln), daca l1 e lista
+
+					 
+(defun multime_atomi (l)
+	(cond
+		((null l) nil)
+        ((= (nr_ap (car l) l) 1) (cons (car l) (multime_atomi (cdr l))))
+        (t (multime_atomi (cdr l)))
+	)
+)
+
+(defun nr_ap (a l)
+	(cond
+		((null l) 0)
+		((eq (car l) a) (+ 1 (nr_ap a (cdr l))))
+		((atom (car l)) (nr_ap a (cdr l)))
+		(t (+ (nr_ap a (car l)) (nr_ap a (cdr l))))
+	)
+)
+
+(defun liniarizeaza (l)
+	(cond
+		((null l) nil)
+		((atom (car l)) (cons (car l) (liniarizeaza (cdr l))))
+		(t (append (liniarizeaza (car l)) (liniarizeaza (cdr l))))
+	)
+)
+
+(defun multime_atomi_main (l) (multime_atomi (liniarizeaza l)))
+
+
+d)
+						{ true, daca l e vida
+test_multime(l1...ln) = { false, daca nr_ap(l1, l) > 1
+						{ test_multime(l2...ln), altfel
+						
+					 { 0, daca l e vida
+nr_ap(a, l1...ln) =  { 1 + nr_ap(a, l2...ln), daca l1 e atom si l1 = a
+					 { nr_ap(a, l2...ln), daca l1 e atom si l1!=a
+					 { nr_ap(a, l1) sau nr_ap(a, l2...ln), daca l1 e lista
+					 
+(defun test_multime (l)
+	(cond
+		((null l) t)
+		((> (nr_ap (car l) l) 1) nil)
+		(t (test_multime (cdr l)))
+	)
+)
+			
+			
+(defun nr_ap (a l)
+	(cond
+		((null l) 0)
+		((eq (car l) a) (+ 1 (nr_ap a (cdr l))))
+		((atom (car l)) (nr_ap a (cdr l)))
+		(t (+ (nr_ap a (car l)) (nr_ap a (cdr l))))
+	)
+)
+
+
+9.
+a) Sa se scrie o functie care intoarce diferenta a doua multimi.
+b) Definiti o functie care inverseaza o lista impreuna cu toate sublistele
+sale de pe orice nivel.
+c) Dandu-se o lista, sa se construiasca lista primelor elemente ale tuturor
+elementelor lista ce au un numar impar de elemente la nivel superficial.
+Exemplu: (1 2 (3 (4 5) (6 7)) 8 (9 10 11)) => (1 3 9).
+d) Sa se construiasca o functie care intoarce suma atomilor numerici dintr-o
+lista, de la nivelul superficial.
+
+
+a)
+									  { (), daca l e vida
+									  { l1...ln, daca k e vida
+diferenta_multimi(l1...ln, k1...km) = { l1 + diferenta_multimi(l2...ln, k1...km), daca l1 < k1
+									  { k1 + diferenta_multimi(l1...ln, k2...km), daca l1 > k1
+									  { diferenta_multimi(l2...ln, k2...km), daca l1 = k1
+									  
+(defun diferenta_multimi (l k)
+	(cond
+		((null l) nil)
+		((null k) l)
+		((< (car l) (car k)) (cons (car l) (diferenta_multimi (cdr l) k)))
+		((> (car l) (car k)) (cons (car k) (diferenta_multimi l (cdr k))))
+		(t (diferenta_multimi (cdr l) (cdr k)))
+	)
+)
+
+
+b)
+
+						  { (), daca l e vida
+inverseaza_tot(l1...ln) = { inverseaza_tot(l2...ln) + l1, daca l1 e atom
+						  { inverseaza_tot(l2...ln) + inverseaza_tot(l1), daca l1 e lista
+						  
+(defun inverseaza_tot (l)
+	(cond
+		((null l) nil)
+		((atom (car l)) (append (inverseaza_tot (cdr l)) (list (car l))))
+		(t (append (inverseaza_tot (cdr l)) (list (inverseaza_tot (car l)))))
+	)
+)
+
+
+c)
+								{ (), daca l e vida
+primele_el_liste_imp(l1...ln) = { l11 + primele_el_liste_imp(l2...ln), daca l1 e lista si nr_elemente(l1) % 2 = 1, unde l11 e primul element al listei l1
+								{ primele_el_liste_imp(l2...ln), altfel
+
+					   { 0, daca l e vida
+nr_elemente(l1...ln) = { 1 + nr_elemente(l2...ln), altfel
+
+(defun primele_el_liste_imp (l)
+	(cond
+		((null l) nil)
+		((AND (listp (car l)) (= (mod (nr_elemente (car l)) 2) 1)) (cons (car (car l)) (primele_el_liste_imp (cdr l))))
+		(t (primele_el_liste_imp (cdr l)))
+	)
+)
+
+(defun nr_elemente (l)
+	(cond
+		((null l) 0)
+		(t (+ 1 (nr_elemente (cdr l))))
+	)
+)
+
+(defun main (l) (cons (car l) (primele_el_liste_imp l)))
+
+
+d)
+							{ 0, daca l e vida
+suma_superficial(l1...ln) = { l1 + suma_superficial(l2...ln), daca l1 e atom numeric
+							{ suma_superficial(l2...ln), altfel
+							
+(defun suma_superficial (l)
+	(cond
+		((null l) 0)
+		((numberp (car l)) (+ (car l) (suma_superficial (cdr l))))
+		(t (suma_superficial (cdr l)))
+	)
+)
+
+
+10.
+a) Sa se construiasca o functie care intoarce produsul atomilor numerici
+dintr-o lista, de la nivelul superficial.
+b) Sa se scrie o functie care, primind o lista, intoarce multimea tuturor
+perechilor din lista. De exemplu: (a b c d) --> ((a b) (a c) (a d) (b c) (b d) (c d))
+c) Sa se determine rezultatul unei expresii aritmetice memorate in preordine
+pe o stiva. Exemple:
+(+ 1 3) ==> 4 (1 + 3)
+(+ * 2 4 3) ==> 11 ((2 * 4) + 3)
+(+ * 2 4 - 5 * 2 2) ==> 9 ((2 * 4) + (5 - (2 * 2))
+d) Definiti o functie care, dintr-o lista de atomi, produce o lista de
+perechi (atom n), unde atom apare in lista initiala de n ori. De ex:
+(A B A B A C A) --> ((A 4) (B 2) (C 1)).
+
+
+a)
+							  { 1, daca l e vida
+produs_superficial(l1...ln) = { l1 * produs_superficial(l2...ln), daca l1 e atom numeric
+							  { produs_superficial(l2...ln), altfel
+							  
+(defun produs_superficial (l)
+	(cond
+		((null l) 1)
+		((numberp (car l)) (* (car l) (produs_superficial (cdr l))))
+		(t (produs_superficial (cdr l)))
+	)
+)
+
+
+b)
+					  { (), daca l e vida
+perechi(l1...ln, e) = { (e + l1) + perechi(l2...ln), altfel
+
+genereaza_perechi(l1...ln) = { (), daca l e vida
+							 { perechi(l2...ln, l1) + genereaza_perechi(l2...ln), altfel
+
+(defun perechi (l e)
+	(cond
+		((null l) nil)
+		(t (cons (list e (car l)) (perechi (cdr l) e)))
+	)
+)
+
+(defun genereaza_perechi (l)
+	(cond
+		((null l) nil)
+		(t (append (perechi (cdr l) (car l)) (genereaza_perechi (cdr l))))
+	)
+)
+
+
+c)
+
+!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+d)
+				   { (), daca l e vida
+perechi(l1...ln) = { (l1 + nr_ap(l1, l)) + perechi(elimina_el(l, l1)), altfel
+
+						 { (), daca l e vida
+elimina_el(l1...ln, e) = { l1 + elimina_el(l2...ln, e), daca l1 != e
+						 { elimina_el(l2...ln, e), altfel
+
+					 { 0, daca l e vida
+nr_ap(a, l1...ln) =  { 1 + nr_ap(a, l2...ln), daca l1 e atom si l1 = a
+					 { nr_ap(a, l2...ln), daca l1 e atom si l1!=a
+					 { nr_ap(a, l1) sau nr_ap(a, l2...ln), daca l1 e lista
+			
+(defun perechi (l)
+	(cond
+		((null l) nil)
+		((cons (list (car l) (nr_ap (car l) l)) (perechi (elimina_el l (car l)))))
+	)
+)
+
+(defun elimina_el (l e)
+	(cond
+		((null l) nil)
+		((not (eq (car l) e)) (cons (car l) (elimina_el (cdr l) e)))
+		(t (elimina_el (cdr l) e))
+	)
+)
+
+(defun nr_ap (a l)
+	(cond
+		((null l) 0)
+		((eq (car l) a) (+ 1 (nr_ap a (cdr l))))
+		((atom (car l)) (nr_ap a (cdr l)))
+		(t (+ (nr_ap a (car l)) (nr_ap a (cdr l))))
+	)
+)
+
+
+11.
+a) Sa se determine cel mai mic multiplu comun al valorilor numerice dintr-o
+lista neliniara.
+b) Sa se scrie o functie care sa testeze daca o lista liniara formata din
+numere intregi are aspect de "munte"(o secvență se spune ca are aspect de
+"munte" daca elementele cresc pana la un moment dat, apoi descresc. De
+ex. 10 18 29 17 11 10).
+c) Sa se elimine toate aparitiile elementului numeric maxim dintr-o lista
+neliniara.
+d) Sa se construiasca o functie care intoarce produsul atomilor numerici pari
+dintr-o lista, de la orice nivel.
+
+
+a)
+					   { 0, daca l e vida
+cmmmc_lista(l1...ln) = { l1, daca n = 1
+					   { cmmmc(l1, cmmmc_lista(l2...ln)), altfel 
+
+extrage_numere(l1...ln) = { (), daca l e vida
+						  { l1 + extrage_numere(l2...ln), daca l1 e numar
+						  { extrage_numere(l2...ln), l1 e atom
+						  { extrage_numere(l1) + extrage_numere(l2...ln), altfel
+
+			 { |a|, daca b = 0
+cmmdc(a,b) = { cmmdc(b, a % b), altfel
+
+cmmmc(a,b) = |a*b| / cmmdc(a,b)
+
+(defun cmmmc_lista (l)
+	(cond
+		((null l) 1)
+		((null (cdr l)) (car l))
+		(t (cmmmc (car l) (cmmmc_lista (cdr l))))
+	)
+)
+
+(defun cmmdc (a b)
+	(cond
+		(( = b 0) (abs a))
+		(t (cmmdc b (mod a b)))
+	)
+)
+
+(defun cmmmc (a b) (/ (abs (* a b)) (cmmdc a b)))
+
+
+
+(defun main (l) (cmmmc_lista (extrage_numere l)))(defun extrage_numere (l)
+	(cond
+		((null l) nil)
+		((numberp (car l)) (cons (car l) (extrage_numere (cdr l))))
+		((atom (car l)) (extrage_numere (cdr l)))
+		(t (append (extrage_numere (car l)) (extrage_numere (cdr l))))
+	)
+)
+
+
+b)
+
+10 18 29 17 11 10
+1  1  1  -1 -1 -1
+
+						  { true, daca n = 1 si f = -1
+						  { false, daca n = 1 si f = 1 sau f = 0
+verif_munte(l1...ln, f) = { verif_munte(l2...ln, 1), daca l1 < l2 si f = 0 sau 1
+						  { verif_munte(l2...ln, -1), daca l1 > l2 si f = 1 sau -1
+						  { false, altfel
+						  
+(defun verif_munte (l f)
+	(cond
+		((AND (null (cdr l)) (= f -1)) t)
+		((null (cdr l)) nil)
+		((AND (< (car l) (car (cdr l))) (OR (= f 0) (= f 1))) (verif_munte (cdr l) 1))
+		((AND (> (car l) (car (cdr l))) (OR (= f 1) (= f -1))) (verif_munte (cdr l) -1))
+		(t nil)
+	)
+)
+
+(defun munte (l) (verif_munte l 0))
+
+
+c)
+								{ (), daca l e vida
+elimina_maxim(l1...ln, maxim) = { elimina_maxim(l2...ln, maxim), daca l1 e numar si l1 = maxim
+							    { l1 + elimina_maxim(l2...ln, maxim), daca l1 e atom sau l1 e atom numeric si l1 != maxim
+								{ elimina_maxim(l1, maxim) + elimina_maxim(l2...ln, maxim), daca l1 e lista
+
+						 { maxcur, daca l e vida
+maxim(l1...ln, maxcur) = { maxim(l2...ln, l1), daca l1 e atom numeric, l1 > maxcur sau maxcur = nil
+					     { maxim(l2...ln, maxcur), daca l1 e atom nenumeric
+						 { max(maxim(l1, maxcur) + maxim(l2...ln, maxcur)), daca l1 e lista
+						 
+
+(defun elimina_maxim (l maxim)
+	(cond
+		((null l) nil)
+		((AND (NUMBERP (car l)) (= (car l) maxim)) (elimina_maxim (cdr l) maxim))
+		((OR (atom (car l)) (AND (numberp (car l) (not (= (car l) maxim))))) (cons (car l) (elimina_maxim (cdr l) maxim)))
+		(t (append (elimina_maxim (car l) maxim) (elimina_maxim (cdr l) maxim)))
+	)
+)
+
+(defun maximm (l maxcur)
+	(cond
+		((null l) maxcur)
+		((AND (numberp (car l)) (OR (null maxcur) (> (car l) maxcur))) (maximm (cdr l) (car l)))
+		((atom (car l)) (maximm (cdr l) maxcur))
+		(t (max (maximm (car l) maxcur) (maximm (cdr l) maxcur)))
+	)
+)
+
+(defun elimina_maxim_main (l) (elimina_maxim l (maximm l nil)))
+
+
+d)
+					   { 1, daca l e vida
+produs_pare(l1...ln) = { l1 * produs_pare(l2...ln), daca l1 e numar si l1 % 2 = 0
+					   { produs_pare(l2...ln), daca l1 e atom
+					   { produs_pare(l1) * produs_pare(l2...ln), daca l1 e lista
+					   
+(defun produs_pare (l)
+	(cond
+		((null l) 1)
+		((AND (numberp (car l)) (= (mod (car l) 2) 0)) (* (car l) (produs_pare (cdr l))))
+		((atom (car l)) (produs_pare (cdr l)))
+		(t (* (produs_pare (car l) (produs_pare (cdr l)))))
+	)
+)
+
+
+
+12.
+a) Definiti o functie care intoarce produsul scalar a doi vectori.
+b) Sa se construiasca o functie care intoarce maximul atomilor numerici
+dintr-o lista, de la orice nivel.
+c) Sa se scrie o functie care intoarce lista permutarilor unei liste date.
+d) Sa se scrie o functie care intoarce T daca o lista are numar par de
+elemente pe primul nivel si NIL in caz contrar, fara sa se numere
+elementele listei.
+
+
+a)
+
+produs_scalar(a1...an, b2...bn) = { 0, daca a si b sunt vide
+								  { a1*b1 + produs_scalar(a2...an, b2...bn)
+
+(defun produs_scalar (v1 v2)
+	(cond
+		((OR (null v1) (null v2)) 0)
+		(T (+ (* (car v1) (car v2)) (produs_scalar (cdr v1) (cdr v2))))
+	)
+)
+
+
+b)
+
+								 {max_cur, daca lista e vida
+maxim_numeric(l1...ln, max_cur)= {maxim_numeric(l2...ln, l1), daca l1 e atom, l1 e numar si (l1 > max_cur sau max_cur = NIL)
+								 {maxim_numeric(l2...ln, maxim_numeric(l1, max_cur)), daca l1 este lista
+								 {maxim_numeric(l2...ln, max_cur), altfel
+
+(defun maxim_numeric (lista &optional max_curent)
+	(cond
+		((null lista) max_curent)
+		((and (atom (car lista)) (numberp (car lista)) (or (null max_curent) (> (car lista) max_curent))) (maxim_numeric (cdr lista) (car lista)))
+		((listp (car lista)) (maxim_numeric (cdr lista) (maxim_numeric (car lista) max_curent)))
+		(T (maxim_numeric (cdr lista) max_curent))
+	)
+)
+
+
+c)
+
+							{ (), daca lista e vida
+remove_first(el, l1...ln) = { l2...ln, daca l1 = e
+							{ l1 + remove_first(el, l2...ln), altfel
+
+(defun remove_first (element lista)
+  (cond 
+	((null lista) nil)
+    ((equal (car lista) element) (cdr lista))
+    (T (cons (car lista) (remove_first element (cdr lista))))
+   )
+)
+
+permutari(l1...ln) = { (), daca lista e vida
+					 { (li + permutarij(remove_first(li, lista))), unde i = {1, n}, unde j = 
+
+(defun permutari (lista)
+  (cond
+	((null lista) (list nil))
+	(T (apply #'append
+			   (mapcar
+			     (lambda (el)
+			       (mapcar
+				     (lambda (perm) (cons el perm))
+				       (permutari (remove_first el lista))
+				    )
+			      )
+				lista
+			    )
+	    )
+	)
+  )
+)
+
+
+d)
+
+verif_par(lista) = { par_impar(lista, true)
+
+par_impar(l1...ln, flag) = { flag, daca lista e vida
+						   { par_impar(l2...ln, !flag), altfel
+
+(defun verif_par (lista)
+  (par_impar lista T))
+
+(defun par_impar (lista stare_par)
+  (if (null lista)
+      stare_par
+      (par_impar (cdr lista) (not stare_par))
+  )
+)
+
+
+
+13.
+a) Sa se intercaleze un element pe pozitia a n-a a unei liste liniare.
+b) Sa se construiasca o functie care intoarce suma atomilor numerici dintr-o
+lista, de la orice nivel.
+c) Sa se scrie o functie care intoarce multimea tuturor sublistelor unei
+liste date. Ex: Ptr. lista ((1 2 3) ((4 5) 6)) => ((1 2 3) (4 5) ((4 5) 6))
+d) Sa se scrie o functie care testeaza egalitatea a doua multimi, fara sa se
+faca apel la diferenta a doua multimi.
+
+
+a)
+								{ (), daca l e vida
+inserare_poz(l1...ln, e, poz) = { l1 + inserare_poz(l2...ln, e, poz - 1), daca poz != 1
+								{ e + l1+...+ln, altfel
+								
+
+(defun inserare_poz (l e poz)
+	(cond
+		((null l) nil)
+		((not (= poz 1)) (cons (car l) (inserare_poz (cdr l) e (- poz 1))))
+		(t (cons e l))
+	)
+)
+
+
+b)
+					{ 0, daca l e vida
+suma_tot(l1...ln) = { l1 + suma_tot(l2...ln), daca l1 e numar
+					{ suma_tot(l2...ln), daca l1 e atom nenumeric
+					{ suma_tot(l1) + suma_tot(l2...ln), daca l1 e lista
+					
+(defun suma_tot (l)
+	(cond
+		((null l) 0)
+		((numberp (car l)) (+ (car l) (suma_tot (cdr l))))
+		((atom (car l)) (suma_tot (cdr l)))
+		(t (+ (suma_tot (car l)) (suma_tot (cdr l))))
+	)
+)
+
+
+c)
+							{ (), daca l e vida
+multime_subliste(l1...ln) = { multime_subliste(l2...ln), daca l1 e atom
+							{ l1 + multime_subliste(l1) + multime_subliste(l2...ln), altfel
+							
+(defun multime_subliste (l)
+	(cond
+		((null l) nil)
+		((atom (car l)) (multime_subliste (cdr l)))
+		(t (cons (car l) (append (multime_subliste (car l)) (multime_subliste (cdr l)))))
+	)
+)
+
+
+d)
+									  {true, daca l e vida si k e vida
+egalitate_multimi(l1...ln, k1...km) = {false, daca l e vida sau k e vida
+									  {egalitate_multimi(elimina_el(l, l1), elimina_el(k, k1)), altfel 
+
+					 
+						 { (), daca l e vida
+elimina_el(l1...ln, e) = { l1 + elimina_el(l2...ln, e), daca l1 != e
+						 { elimina_el(l2...ln, e), altfel
+
+(defun egalitate_multimi (l k)
+	(cond
+		((AND (null l) (null k)) t)
+		((OR (null l) (null k)) nil)
+		(t (egalitate_multimi (elimina_el l (car l)) (elimina_el k (car l))))
+	)
+)
+
+(defun elimina_el (l e)
+	(cond
+		((null l) nil)
+		((not (eq (car l) e)) (cons (car l) (elimina_el (cdr l) e)))
+		(t (elimina_el (cdr l) e))
+	)
+)
+
+
+14.
+a) Dandu-se o lista liniara, se cere sa se elimine elementele din N in N.
+b) Sa se scrie o functie care sa testeze daca o lista liniara formata din
+numere intregi are aspect de "vale"(o secvență se spune ca are aspect de
+"vale" daca elementele descresc pana la un moment dat, apoi cresc. De ex.
+10 8 6 17 19 20).
+c) Sa se construiasca o functie care intoarce minimul atomilor numerici
+dintr-o lista, de la orice nivel.
+d) Sa se scrie o functie care sterge dintr-o lista liniara toate aparitiile
+elementului maxim numeric.
+
+
+a)
+									{ (), daca l e vida
+elimina_n_in_n(l1...ln, n, index) = { l1 + elimina_n_in_n(l2...ln, n, index + 1), daca index != n
+									{ elimina_n_in_n(l2...ln, n, 1), daca index = n
+
+(defun elimina_n_in_n (l n index)
+	(cond
+		((null l) nil)
+		((= index n) (elimina_n_in_n (cdr l) n 1))
+		(t (cons (car l) (elimina_n_in_n (cdr l) n (+ index 1))))
+	)
+)
+
+
+b)
+
+10  8  6  17 19 20
+-1 -1 -1  1  1  1
+						 { true, daca l e vida si f = 1
+						 { false, daca l e vida si f = -1 sau 0
+verif_vale(l1...ln, f) = { verif_vale(l2...ln, -1), daca l1 > l2 si f = -1 sau 0
+						 { verif_vale(l2...ln, 1), daca l1 < l2 si f = -1
+						 { false, altfel
+						 
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+L3:
+
+1. Sa se construiasca o functie care intoarce adancimea unei liste.
+
+			  { 0, daca l e vida
+adamcime(L) = { 0, daca l e atom
+			  { 1 + max{adancime(x) | x ap L}, daca l e lista
+
+(defun adancime (l)
+	(cond
+		((null l) 0)
+		((atom l) 0)
+		(t (+ 1 (apply #'max (mapcar #'adancime l))))
+	)
+)
+
+
+2. Definiti o functie care obtine dintr-o lista data lista tuturor atomilor
+ care apar, pe orice nivel, dar in aceeasi ordine. De exemplu
+ (((A B) C) (D E)) --> (A B C D E)
+ 
+				  { (), daca L e vida
+liniarizeaza(L) = { (L), daca L este atom
+				  { {liniarizeaza(x) | x ap L}, daca L este lista
+
+
+(defun liniarizeaza (l)
+	(cond
+		((null l) nil)
+		((atom l) (list l))
+		(t (mapcan #'liniarizeaza l))
+	)
+)
+
+
+3. Sa se construiasca o functie care verifica daca un atom e membru al unei liste nu neaparat liniara.
+
+			   { false, daca l e vida
+membru(l, e) = { true, daca l e atom si l = e
+			   { false, daca l e atom si l!= e
+			   { {membru(x, a) | x ap l}, altfel
+
+(defun membru (l e)
+	(cond
+		((null l) nil)
+		((AND (atom l) (eq l e)) (list t))
+		((atom l) (list nil))
+		(t (apply #'append (mapcar (lambda (el) (membru el e)) l)))
+	)
+)
+
+
+(defun membru (l e)
+	(cond
+		((null l) nil)
+		((AND (atom l) (eq l e)) t)
+		((atom l) nil)
+		(t (remove nil (mapcar (lambda (el) (membru el e)) l)))
+	)
+)
+
+
+	
+4. Sa se construiasca o functie care intoarce suma atomilor numerici dintr-o lista, de la orice nivel.
+
+		  { 0, daca l e vida
+suma(l) = { l, daca l e numar
+		  { 0, daca l e atom nenumeric
+		  { sum {suma(x) | x ap l}, altfel
+
+(defun suma (l)
+	(cond
+		((null l) 0)
+		((numberp l) l)
+		((atom l) 0)
+		(t (apply '+ (mapcar #'suma l)))
+	)
+)
+
+
+6. Sa se construiasca o functie care intoarce produsul atomilor numerici dintr-o lista, de la orice nivel.
+
+			{ 1, daca l e vida
+produs(l) = { l, daca l e numar
+			{ 1, daca l e atom nenumeric
+			{ prod {produs(x) | x ap l}, altfel
+			
+(defun produs (l)
+	(cond
+		((null l) 1)
+		((numberp l) l)
+		((atom l) 1)
+		(t (apply '* (mapcar #'produs l)))
+	)
+)
+
+
+7. Sa se scrie o functie care calculeaza suma numerelor pare minus suma numerelor impare la toate nivelurile unei liste.
+
+					   { 0, daca l e vida
+					   { l, daca l e numar par
+pare_minus_impare(l) = { -l, daca l e numar impar
+					   { 0, daca l e atom nenumeric
+					   { sum {pare_minus_impare(x) | x ap l}, altfel
+					   
+(defun pare_minus_impare (l)
+	(cond
+		((null l) 0)
+		((AND (numberp l) (= (mod l 2) 0)) l)
+		((AND (numberp l) (= (mod l 2) 1)) (- 0 l))
+		((atom l) 0)
+		(t (apply '+ (mapcar #'pare_minus_impare l)))
+	)
+)
+
+
+8. Sa se construiasca o functie care intoarce maximul atomilor numerici dintr-o lista, de la orice nivel.
+
+				 { (), daca l e vida
+maxim_lista(l) = { l, daca l e atom numeric
+				 { (), daca l e atom nenumeric
+				 { max {maxim_lista(x) | x ap l}, altfel
+
+(defun maxim_lista (l)
+	(cond
+		((null l) nil)
+		((numberp l) l)
+		((atom l) nil)
+		(t (apply #'max (remove nil (mapcar #'maxim_lista l))))
+	)
+)
+
+
+9. Definiti o functie care substituie un element E prin elementele unei liste L1 la toate nivelurile unei liste date L.
+
+					  { (), daca l e vida
+substituie(l, e, k) = { k, daca l = e
+					  { l, daca l != e
+					  { substituie(x, e, k), unde x apartine l, altfel
+					  
+(defun substituie (l e k)
+	(cond
+		((null l) nil)
+		((AND (atom l) (eq l e)) k)
+		((atom l) l)
+		(t (mapcar (lambda (el) (substituie el e k)) l))
+	)
+)
+
+
+(defun substituie (l e k)
+	(cond
+		((null l) nil)
+		((AND (atom l) (eq l e)) (list k))
+		((atom l) (list l))
+		(t (mapcan (lambda (el) (substituie el e k)) l))
+	)
+)
+
+
+11. Sa se scrie o functie care sterge toate aparitiile unui atom de la toate nivelurile unei liste.
+
+						{ (), daca l e vida
+sterge_aparitii(l, a) = { (), daca l e atom si l = a
+						{ l, daca l e atom si l != a
+						{ {sterge_aparitii(x, a) | x apartine l}, altfel
+						
+(defun sterge_aparitii (l a)
+	(cond
+		((null l) nil)
+		((AND (atom l) (= l a)) nil)
+		((atom l) l)
+		(t (remove nil (mapcar (lambda (el) (sterge_aparitii el a)) l)))
+	)
+)
+
+
+(defun sterge_aparitii (l a)
+	(cond
+		((null l) nil)
+		((AND (atom l) (= l a)) nil)
+		((atom l) (list l))
+		(t (apply #'append (mapcar (lambda (el) (sterge_aparitii el a)) l)))
+	)
+)
+
+
+13. Definiti o functie care substituie un element prin altul la toate nivelurile unei liste date.
+
+					  { (), daca l e vida
+substituie(l, a, b) = { b, daca l e atom si l = a
+					  { l, daca l e atom si l != a
+					  { {substituie(x, a, b) | x apartine l}, altfel
+					  
+(defun substituie (l a b)
+	(cond
+		((null l) nil)
+		((AND (atom l) (eq l a)) b)
+		((atom l) l)
+		(t (mapcar (lambda (el) (substituie el a b)) l))
+	)
+)
+
+
+15. Sa se construiasca o functie care intoarce numarul atomilor dintr-o lista, de la orice nivel.
+
+				 { 0, daca l e vida
+numar_atomi(l) = { 1, daca l e atom
+				 { sum{numar_atomi(x) | x apartine l}, altfel
+				 
+(defun numar_atomi (l)
+	(cond
+		((null l) 0)
+		((atom l) 1)
+		(t (apply '+ (mapcar #'numar_atomi l)))
+	)
+)
+
+
+16. Definiti o functie care inverseaza o lista impreuna cu toate sublistele sale de pe orice nivel.
+ 
+					{ (), daca l e vida
+inverseaza_tot(l) = { l, daca l e atom
+					{ invers({inverseaza_tot(x) | x apartine l}), altfel
+					
+invers(l1...ln) = { (), daca l e vida
+				  { invers(l2...ln) + l1, altfel
+				  
+(defun invers (l)
+	(cond
+		((null l) nil)
+		(t (append (invers (cdr l)) (list (car l))))
+	)
+)
+					
+(defun inverseaza_tot (l)
+	(cond
+		((null l) nil)
+		((atom l) l)
+		(t (invers (mapcar #'inverseaza_tot l)))
+	)
+)
+
+
+
+-------------------------------------------------------------------------------------------------------------
+L2
+
+
+8. Sa se construiasca lista nodurilor unui arbore de tipul (2) parcurs in inordine.  
+
+ARBORE BINAR
+
+					{ (), daca l e vida
+inordine(l1...ln) = { inordine(subarb stang) + nod + inordine(subarb drept), altfel
+
+
+(defun inordine (l)
+	(if (null l)
+		nil
+		(append
+			(inordine (car (cdr l)))
+			(list (car l))
+			(inordine (cdr (cdr l)))
+		)
+	)
+)
+
+
+ARBORE N-AR
+
+(defun inordine (l)
+	(cond
+		((null l) nil)
+		(t (append
+			(inordine (car (cdr l)))
+			(list (car l))
+			(apply #'append (mapcar #'inordine (cdr (cdr l))))
+			)	
+		)
+	)
+)
+
+
+
+10. Se da un arbore de tipul (2). Sa se precizeze nivelul pe care apare un nod x in arbore. Nivelul radacii se considera a fi 0.
+
+							  { (), daca arborele e vid
+nivel_nod(arbore, nod, niv) = { niv, daca arbore = nod
+							  { {nivel_nod(x, nod, niv+1) | x sunt subarbori}, altfel
+							  
+(defun nivel_nod (arbore nod niv)
+	(cond
+		((null arbore) nil)
+		((eq (car arbore) nod) niv)
+		(t (remove nil(mapcar (lambda (el) (nivel_nod el nod (+ niv 1))) (cdr arbore))))
+	)
+)
+
+
+SAU fara mapcar
+
+(defun nivel_nod (arbore nod niv)
+  (cond
+    ((null arbore) nil)
+    ((eq (car arbore) nod) niv)
+    (t (nivel_subarbori (cdr arbore) nod (+ niv 1)))))
+
+(defun nivel_subarbori (subarbori nod niv)
+  (if (null subarbori)
+      nil
+      (or (nivel_nod (car subarbori) nod niv)
+          (nivel_subarbori (cdr subarbori) nod niv))))
+
+(defun nivel (arbore nod)
+  (nivel_nod arbore nod 0))
+  
+  
+11. Se da un arbore de tipul (2). Sa se afiseze nivelul (si lista corespunzatoare a nodurilor) avand numar maxim de noduri. 
+Nivelul rad. se considera 0.
+
+												{ (maxnivel, maxnoduri), daca arbore e vid
+nivel_maxim(arbore, niv, maxnoduri, maxnivel) = { nivel_maxim(
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+  
+12. Sa se construiasca lista nodurilor unui arbore de tipul (2) parcurs in preordine.
+
+					{ (), daca arborele e vid
+preordine(arbore) = { nod + {preordine(subarbore) | subarbore ap arbore}, altfel
+
+(defun preordine (arbore)
+	(cond
+		((null l))
+		(t (append (list (car arbore)) (apply #'append (mapcar #'preordine (cdr arbore)))))
+	)
+)
+
+
+
+13. Se da un arbore de tipul (2). Sa se afiseze calea de la radacina pana la un nod x dat.
+
+						{
+cale_nod(arbore, nod) = 
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+14. Sa se construiasca lista nodurilor unui arbore de tipul (2) parcurs in postordine.
+
+					 { (), daca arborele e vid
+postordine(arbore) = { {postordine(subarbore) | subarbore ap arbore} + nod, altfel
+
+(defun postordine (arbore)
+	(cond
+		((null arbore) nil)
+		(t (append (apply #'append (mapcar #'postordine (cdr arbore))) (list (car arbore))))
+	)
+)
+
+
+16. Sa se decida daca un arbore de tipul (2) este echilibrat (diferenta dintre adancimile celor 2 subarbori nu este mai mare decat 1).
+

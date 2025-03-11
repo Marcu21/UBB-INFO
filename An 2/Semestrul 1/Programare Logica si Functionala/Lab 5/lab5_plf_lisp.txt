@@ -1,0 +1,55 @@
+ 					 { nivel, daca x = nod
+                                         { (), daca l e vida
+explore(x, nod, nivel, copii, l1...ln) = { l, daca copii = 0
+					 { explore(x, nod, nivel, copii -1, new), daca x!=nod, l nu e vida, copii != 0 si new = lista, unde new = explore(x, l1, nivel + 1, l2, l3...ln) 
+					 { new, altfel unde new = explore(x, l1, nivel + 1, l2, l3...ln)
+
+(defun explore (x node level children l)
+        (cond
+            ((eq x node) level)
+            ((null l) nil)
+            ((= children 0) l)
+            (t 
+                (setq new (explore x (car l) (+ level 1) (cadr l) (cddr l)))
+                (cond 
+                    ((listp new) (explore x node level (- children 1) new))
+                    (t new)
+                )
+            )
+        )
+)
+
+
+solve(x, l) = explore(x, l1, 1, l2, l3...ln)
+
+(defun solve (x l)
+    (explore x (car l) 1 (cadr l) (cddr l))
+)
+
+
+			  { (), daca l e vida
+extrage_noduri(l1...ln) = { l1 + extrage_noduri(l2...ln), daca l1 e atom nenumeric
+			  { extrage_noduri(l2...ln), altfel
+
+(defun extrage_noduri (l)
+  (cond
+    ((null l) nil)
+    ((and (atom (car l)) (not (numberp (car l)))) (cons (car l) (extrage_noduri (cdr l))))
+    (t (extrage_noduri (cdr l)))
+  )
+)
+
+
+nivel_maxim(l) = max({solve(x,l) | x apartine extrage_noduri(l)})
+
+(defun nivel_maxim (l)
+  (apply #'max 
+         (mapcar (lambda (x) (solve x l)) (extrage_noduri l))
+  )
+)
+
+
+(nivel_maxim '(A 2 B 0 C 2 D 0 E 0))
+(nivel_maxim '(A 2 B 1 G 0 C 2 D 0 E 1 F 0))
+(nivel maxim '(A 2 B 2 D 2 F 1 K 0 G 0 E 0 C 1 H 1 I 1 J 0))
+

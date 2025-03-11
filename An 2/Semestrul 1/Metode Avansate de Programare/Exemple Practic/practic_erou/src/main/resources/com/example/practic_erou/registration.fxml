@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.practic_erou.controller.RegistrationController" alignment="CENTER" spacing="20">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Titlu -->
+    <Label text="Aplicație Înregistrare și Login" style="-fx-font-size: 16px; -fx-font-weight: bold;" alignment="CENTER"/>
+
+    <!-- Secțiunea de înregistrare -->
+    <VBox alignment="CENTER" spacing="10">
+        <Label text="Înregistrare" style="-fx-font-size: 14px; -fx-font-weight: bold;" alignment="CENTER"/>
+
+        <!-- Nume -->
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Nume:"/>
+            <TextField fx:id="tfNume" promptText="Introdu numele"/>
+        </HBox>
+
+        <!-- Prenume -->
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Prenume:"/>
+            <TextField fx:id="tfPrenume" promptText="Introdu prenumele"/>
+        </HBox>
+
+        <!-- Username -->
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Username:"/>
+            <TextField fx:id="tfUsername" promptText="Introdu username-ul"/>
+        </HBox>
+
+        <!-- Parola -->
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Parola:"/>
+            <PasswordField fx:id="pfParola" promptText="Introdu parola"/>
+        </HBox>
+
+        <!-- Confirmare parolă -->
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Confirmă Parola:"/>
+            <PasswordField fx:id="pfConfirmParola" promptText="Confirmă parola"/>
+        </HBox>
+
+        <!-- Oraș -->
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Oraș:"/>
+            <ComboBox fx:id="cbOras" promptText="Alege orașul"/>
+        </HBox>
+
+        <!-- Strada -->
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Strada:"/>
+            <TextField fx:id="tfStrada" promptText="Introdu strada"/>
+        </HBox>
+
+        <!-- Număr Stradă -->
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Nr. Stradă:"/>
+            <TextField fx:id="tfNumarStrada" promptText="Introdu numărul străzii"/>
+        </HBox>
+
+        <!-- Telefon -->
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Telefon:"/>
+            <TextField fx:id="tfTelefon" promptText="Introdu numărul de telefon"/>
+        </HBox>
+
+        <!-- Buton de înregistrare -->
+        <Button text="Înregistrează-te" onAction="#handleRegister"/>
+    </VBox>
+
+    <Separator/>
+
+    <!-- Secțiunea de login -->
+    <VBox alignment="CENTER" spacing="10">
+        <Label text="Login" style="-fx-font-size: 14px; -fx-font-weight: bold;" alignment="CENTER"/>
+
+        <Label text="Selectați username-ul pentru a vă conecta:"/>
+        <ListView fx:id="lvUsers" prefHeight="150" prefWidth="300"/>
+
+        <!-- Introduce parola pentru login -->
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Parola:"/>
+            <PasswordField fx:id="pfLoginPassword" promptText="Introdu parola"/>
+        </HBox>
+
+        <!-- Buton de login -->
+        <Button text="Conectează-te" onAction="#handleLogin"/>
+    </VBox>
+
+    <!-- Mesaj de stare -->
+    <Label fx:id="lblMessage" style="-fx-text-fill: red;" alignment="CENTER"/>
+</VBox>

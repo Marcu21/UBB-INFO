@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="600.0" spacing="10" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.examen_practic.controller.AdoptionCentreController">
+
+    <Label fx:id="centreNameLabel" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    <Label fx:id="centreLocationLabel" />
+    <Label fx:id="centreCapacityLabel" />
+    <Label fx:id="centreOccupancyLabel" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+    <ComboBox fx:id="animalTypeComboBox" promptText="Select Animal Type" />
+
+    <TableView fx:id="animalTable">
+        <columns>
+            <TableColumn fx:id="idColumn" prefWidth="107.0" text="ID" />
+            <TableColumn fx:id="nameColumn" prefWidth="185.0" text="Name" />
+            <TableColumn fx:id="typeColumn" prefWidth="164.0" text="Type" />
+            <TableColumn fx:id="transferColumn" prefWidth="142.0" text="Request Transfer" />
+        </columns>
+    </TableView>
+</VBox>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="505.0" prefWidth="637.0" spacing="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="com.example.practic_vacante.controller.ClientController">
+    <VBox.margin>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </VBox.margin>
+
+    <VBox spacing="10" alignment="CENTER">
+        <ComboBox fx:id="locationComboBox" promptText="Select Location"/>
+        <DatePicker fx:id="startDatePicker" promptText="Select Start Date"/>
+        <DatePicker fx:id="endDatePicker" promptText="Select End Date"/>
+        <Button fx:id="searchHotelsButton" text="Search Hotels"/>
+        <Label fx:id="usersWatchingLabel" text="0 other user(s) are looking at the same location."/>
+    </VBox>
+
+
+    <TableView fx:id="hotelsTable" prefHeight="300" prefWidth="600">
+        <columns>
+            <TableColumn fx:id="hotelNameColumn" prefWidth="200" text="Hotel Name" />
+            <TableColumn fx:id="occupancyRateColumn" prefWidth="200" text="Occupancy Rate" />
+            <TableColumn fx:id="pricePerNightColumn" prefWidth="200" text="Price/Night" />
+        </columns>
+    </TableView>
+
+    <!-- Adăugăm butonul pentru rezervare -->
+    <Button fx:id="bookButton" text="Book Hotel" />
+</VBox>

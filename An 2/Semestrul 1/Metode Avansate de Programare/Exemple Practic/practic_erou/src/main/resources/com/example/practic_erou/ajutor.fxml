@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<TabPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.practic_erou.controller.AjutorController">
+    <Tab text="Doresc să ajut!">
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <!-- Label pentru utilizator și oraș -->
+            <Label fx:id="lblUserInfo" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+            <!-- Tabelul pentru nevoile disponibile -->
+            <Label text="Lista de nevoi pentru orașul tău:" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+            <TableView fx:id="tableNevoi">
+                <columns>
+                    <TableColumn fx:id="colTitlu" text="Titlu" prefWidth="150"/>
+                    <TableColumn fx:id="colDescriere" text="Descriere" prefWidth="250"/>
+                    <TableColumn fx:id="colDeadline" text="Deadline" prefWidth="120"/>
+                    <TableColumn fx:id="colStatus" text="Status" prefWidth="120"/>
+                </columns>
+            </TableView>
+
+            <!-- Buton pentru a confirma alegerea -->
+            <Button text="Preia această nevoie" onAction="#handlePreiaNevoie"/>
+
+            <!-- Tabelul pentru lista de fapte bune -->
+            <Label text="Lista de fapte bune:" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+            <TableView fx:id="tableFapteBune">
+                <columns>
+                    <TableColumn fx:id="colFapteTitlu" text="Titlu" prefWidth="150"/>
+                    <TableColumn fx:id="colFapteDescriere" text="Descriere" prefWidth="250"/>
+                    <TableColumn fx:id="colFapteDeadline" text="Deadline" prefWidth="120"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </Tab>
+
+    <Tab text="Doresc să fiu ajutat!">
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <!-- Formular pentru adăugarea unei nevoi -->
+            <Label text="Adaugă o nevoie proprie:" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+            <GridPane hgap="10" vgap="10">
+                <!-- Titlu -->
+                <Label text="Titlu:"/>
+                <TextField fx:id="tfTitlu" GridPane.columnIndex="1"/>
+
+                <!-- Descriere -->
+                <Label text="Descriere:" GridPane.rowIndex="1"/>
+                <TextArea fx:id="taDescriere" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <!-- Deadline -->
+                <Label text="Deadline:" GridPane.rowIndex="2"/>
+                <DatePicker fx:id="dpDeadline" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                <!-- Buton pentru adăugare -->
+                <Button text="Adaugă nevoie" GridPane.columnSpan="2" GridPane.rowIndex="3" onAction="#handleAdaugaNevoie"/>
+            </GridPane>
+        </VBox>
+    </Tab>
+</TabPane>

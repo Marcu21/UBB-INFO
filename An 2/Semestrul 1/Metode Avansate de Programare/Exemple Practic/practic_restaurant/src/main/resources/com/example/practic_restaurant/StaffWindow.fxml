@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox alignment="CENTER" prefHeight="500.0" prefWidth="600.0" spacing="20.0"
+      xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.practic_restaurant.controller.StaffController">
+    <Label text="Comenzi Active" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    <TableView fx:id="ordersTable" prefHeight="400.0" prefWidth="580.0">
+        <columns>
+            <TableColumn fx:id="tableColumn" text="ID Masă" prefWidth="100.0"/>
+            <TableColumn fx:id="dateColumn" text="Data Comenzii" prefWidth="250.0"/>
+            <TableColumn fx:id="itemsColumn" text="Produse Comandate" prefWidth="230.0"/>
+        </columns>
+    </TableView>
+</VBox>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.practic_zboruri.controller.ClientController">
+
+    <Label fx:id="loggedUserLabel" layoutX="20.0" layoutY="20.0" text="Nume utilizator logat" />
+
+    <TableView fx:id="userTicketsTable" layoutX="20.0" layoutY="50.0" prefHeight="250.0" prefWidth="560.0">
+        <columns>
+            <TableColumn fx:id="userTicketsUsernameColumn" prefWidth="196.0" text="Username" />
+            <TableColumn fx:id="userTicketsFlightIdColumn" prefWidth="164.0" text="Flight ID" />
+            <TableColumn fx:id="userTicketsPurchaseTimeColumn" prefWidth="198.0" text="Purchase Time" />
+        </columns>
+    </TableView>
+
+    <Label layoutX="20.0" layoutY="320.0" text="Bilete vandute in data de 24 ianuarie 2024" />
+
+    <TableView fx:id="allSoldTicketsTable" layoutX="20.0" layoutY="350.0" prefHeight="250.0" prefWidth="560.0">
+        <columns>
+            <TableColumn fx:id="allSoldTicketsUsernameColumn" prefWidth="196.0" text="Username" />
+            <TableColumn fx:id="allSoldTicketsFlightIdColumn" prefWidth="159.0" text="Flight ID" />
+            <TableColumn fx:id="allSoldTicketsPurchaseTimeColumn" prefWidth="204.0" text="Purchase Time" />
+        </columns>
+    </TableView>
+
+
+    <Label layoutX="20.0" layoutY="620.0" text="Gasire zboruri" />
+
+    <ComboBox fx:id="fromLocationComboBox" layoutX="20.0" layoutY="650.0" prefWidth="150.0" promptText="From" />
+    <ComboBox fx:id="toLocationComboBox" layoutX="200.0" layoutY="650.0" prefWidth="150.0" promptText="To" />
+    <DatePicker fx:id="departureDatePicker" layoutX="370.0" layoutY="650.0" prefWidth="150.0" promptText="Data Plecarii" />
+    <Button fx:id="filterFlightsButton" layoutX="540.0" layoutY="650.0" text="Cauta" />
+
+    <TableView fx:id="filteredFlightsTable" layoutX="20.0" layoutY="690.0" prefHeight="250.0" prefWidth="560.0">
+        <columns>
+            <TableColumn fx:id="filteredFlightsFromColumn" prefWidth="97.0" text="From" />
+            <TableColumn fx:id="filteredFlightsToColumn" prefWidth="93.0" text="To" />
+            <TableColumn fx:id="filteredFlightsDepartureColumn" prefWidth="155.0" text="Departure Time" />
+            <TableColumn fx:id="filteredFlightsLandingColumn" prefWidth="145.0" text="Landing Time" />
+            <TableColumn fx:id="filteredFlightsSeatsColumn" prefWidth="69.0" text="Seats" />
+        </columns>
+    </TableView>
+
+    <Button fx:id="purchaseTicketButton" layoutX="268.0" layoutY="946.0" text="Cumpara" onAction="#handleCumpara"/>
+</AnchorPane>

@@ -1,0 +1,45 @@
+1,John Doe,Scoala Gimnaziala “Horea”
+2,Jane Smith,Scoala Gimnaziala “Horea”
+3,Alice Johnson,Scoala Gimnaziala “Horea”
+4,Bob Brown,Scoala Gimnaziala “Horea”
+5,Charlie Davis,Scoala Gimnaziala “Horea”
+6,David Wilson,Scoala Gimnaziala “Horea”
+7,Eva Thomas,Scoala Gimnaziala “Horea”
+8,Frank Jones,Scoala Gimnaziala “Horea”
+9,Grace Lee,Scoala Gimnaziala “Horea”
+10,Henry White,Scoala Gimnaziala “Horea”
+11,Ivy Taylor,Scoala Gimnaziala “Horea”
+12,Jack Moore,Scoala Gimnaziala “Horea”
+13,Kate Anderson,Scoala Gimnaziala “Horea”
+14,Liam Martin,Scoala Gimnaziala “Horea”
+15,Lucy Thompson,Scoala Gimnaziala “Horea”
+16,Mike Clark,Scoala Gimnaziala "Octavian Goga" 
+17,Nancy Adams,Scoala Gimnaziala "Octavian Goga" 
+18,Oscar Miller,Scoala Gimnaziala "Octavian Goga" 
+19,Paula Allen,Scoala Gimnaziala "Octavian Goga" 
+20,Quincy Scott,Scoala Gimnaziala "Octavian Goga" 
+21,Rachel Walker,Scoala Gimnaziala "Octavian Goga" 
+22,Samuel Young,Scoala Gimnaziala "Octavian Goga" 
+23,Tina Harris,Scoala Gimnaziala "Octavian Goga" 
+24,Ursula Nelson,Scoala Gimnaziala "Octavian Goga" 
+25,Victor Carter,Scoala Gimnaziala "Octavian Goga" 
+26,William Mitchell,Scoala Gimnaziala "Octavian Goga" 
+27,Xavier Roberts,Scoala Gimnaziala "Octavian Goga" 
+28,Yvonne Edwards,Scoala Gimnaziala "Octavian Goga" 
+29,Zachary Collins,Scoala Gimnaziala "Octavian Goga" 
+30,Aaron Hall,Scoala Gimnaziala "Octavian Goga" 
+31,Betty King,Liceul Teoretic "Lucian Blaga"
+32,Carlos Lee,Liceul Teoretic "Lucian Blaga"
+33,Diana Baker,Liceul Teoretic "Lucian Blaga"
+34,Erin Wright,Liceul Teoretic "Lucian Blaga"
+35,Felix Green,Liceul Teoretic "Lucian Blaga"
+36,Gina Morgan,Liceul Teoretic "Lucian Blaga"
+37,Howard Stone,Liceul Teoretic "Lucian Blaga"
+38,Ian Phillips,Liceul Teoretic "Lucian Blaga"
+39,Julia Campbell,Liceul Teoretic "Lucian Blaga"
+40,Kurt Gonzalez,Liceul Teoretic "Lucian Blaga"
+41,Laura Ramirez,Liceul Teoretic "Lucian Blaga"
+42,Mona Rivera,Liceul Teoretic "Lucian Blaga"
+43,Noel James,Liceul Teoretic "Lucian Blaga"
+44,Olive Peterson,Liceul Teoretic "Lucian Blaga"
+45,Patrick Reed,Liceul Teoretic "Lucian Blaga"
